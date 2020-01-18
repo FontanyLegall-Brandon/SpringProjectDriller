@@ -1,0 +1,510 @@
+
+
+ ***** le git du projet : https://github.com/RameshMF/initializr *****
+************** date : 2014-08-18 17:50:21+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean(MainController.class)
+		ligne ajouté : 	@ConditionalOnMissingBean(ProjectGenerator.class)
+['initializr/src/main/groovy/io/spring/initializr/InitializrAutoConfiguration.groovy']
+
+************** date : 2014-08-26 15:25:06+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean(MainController)
+		ligne ajouté : 	@ConditionalOnMissingBean(ProjectGenerator)
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean(CacheManager)
+['initializr/src/main/groovy/io/spring/initializr/InitializrAutoConfiguration.groovy']
+
+************** date : 2014-08-27 13:21:09+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean(MainController)
+		ligne ajouté : 	@ConditionalOnMissingBean(ProjectGenerator)
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean(CacheManager)
+['initializr/src/main/groovy/io/spring/initializr/InitializrAutoConfiguration.groovy']
+
+************** date : 2014-08-28 10:42:19+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean(MainController)
+		ligne ajouté : 	@ConditionalOnMissingBean(ProjectGenerator)
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean(CacheManager)
+['initializr/src/main/groovy/io/spring/initializr/InitializrAutoConfiguration.groovy']
+
+************** date : 2014-09-02 09:00:11+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean(MainController)
+		ligne ajouté : 	@ConditionalOnMissingBean(ProjectGenerator)
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean(CacheManager)
+['initializr/src/main/groovy/io/spring/initializr/InitializrAutoConfiguration.groovy']
+
+************** date : 2015-01-20 18:52:32+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean(MainController)
+		ligne ajouté : 	@ConditionalOnMissingBean(ProjectGenerator)
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean(CacheManager)
+['initializr/src/main/groovy/io/spring/initializr/InitializrAutoConfiguration.groovy']
+
+************** date : 2015-03-02 16:55:34+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean(MainController)
+		ligne ajouté : 	@ConditionalOnMissingBean(ProjectGenerator)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean(CacheManager)
+['initializr/src/main/groovy/io/spring/initializr/config/InitializrAutoConfiguration.groovy']
+
+************** date : 2015-03-03 18:30:06+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean(MainController)
+		ligne ajouté : 	@ConditionalOnMissingBean(ProjectGenerator)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean(CacheManager)
+['initializr/src/main/groovy/io/spring/initializr/config/InitializrAutoConfiguration.groovy']
+
+************** date : 2015-06-04 13:32:44+02:00*****************
+		ligne ajouté : @ConditionalOnBean(RedisConnectionFactory)
+		ligne ajouté : @ConditionalOnProperty(value='spring.metrics.export.enabled', matchIfMissing=true)
+		ligne ajouté : 	@ConditionalOnMissingClass(name='org.springframework.boot.actuate.autoconfigure.ActuatorMetricWriter')
+		ligne ajouté : 	@ConditionalOnMissingClass(name='org.springframework.boot.actuate.autoconfigure.ActuatorMetricWriter')
+['initializr/src/main/groovy/io/spring/initializr/config/InitializrMetricsExporterAutoConfiguration.groovy']
+
+************** date : 2015-06-04 14:19:17+02:00*****************
+		ligne ajouté : @ConditionalOnBean(RedisConnectionFactory)
+		ligne ajouté : @ConditionalOnProperty(value = 'spring.metrics.export.enabled')
+		ligne ajouté : 	@ConditionalOnMissingClass(name = 'org.springframework.boot.actuate.autoconfigure.ActuatorMetricWriter')
+		ligne ajouté : 	@ConditionalOnMissingClass(name = 'org.springframework.boot.actuate.autoconfigure.ActuatorMetricWriter')
+['initializr/src/main/groovy/io/spring/initializr/config/InitializrMetricsExporterAutoConfiguration.groovy']
+
+************** date : 2015-09-29 21:56:05+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean(MainController)
+		ligne ajouté : 	@ConditionalOnMissingBean(ProjectGenerator)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean(CacheManager)
+['initializr/src/main/groovy/io/spring/initializr/config/InitializrAutoConfiguration.groovy']
+
+************** date : 2015-10-06 09:53:59+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean(MainController)
+		ligne ajouté : 	@ConditionalOnMissingBean(UiController)
+		ligne ajouté : 	@ConditionalOnMissingBean(ProjectGenerator)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean(CacheManager)
+['initializr/src/main/groovy/io/spring/initializr/config/InitializrAutoConfiguration.groovy']
+
+************** date : 2015-11-30 16:00:42+01:00*****************
+		ligne ajouté : @ConditionalOnBean(RedisConnectionFactory)
+		ligne ajouté : @ConditionalOnProperty(value = 'spring.metrics.export.enabled')
+['initializr/src/main/groovy/io/spring/initializr/config/InitializrMetricsExporterAutoConfiguration.groovy']
+
+************** date : 2015-12-11 11:19:08+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean(MainController)
+		ligne ajouté : 	@ConditionalOnMissingBean(UiController)
+		ligne ajouté : 	@ConditionalOnMissingBean(ProjectGenerator)
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean(CacheManager)
+['initializr/src/main/groovy/io/spring/initializr/config/InitializrAutoConfiguration.groovy']
+
+************** date : 2015-12-11 17:05:59+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr/src/main/groovy/io/spring/initializr/config/InitializrAutoConfiguration.groovy']
+
+************** date : 2016-02-01 11:08:48+01:00*****************
+		ligne ajouté : @ConditionalOnBean(RedisConnectionFactory)
+		ligne ajouté : @ConditionalOnProperty(value = 'spring.metrics.export.enabled')
+['initializr/src/main/groovy/io/spring/initializr/config/InitializrMetricsExporterAutoConfiguration.groovy']
+
+************** date : 2016-02-01 11:09:08+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr/src/main/groovy/io/spring/initializr/config/InitializrAutoConfiguration.groovy']
+
+************** date : 2016-02-13 09:38:15+01:00*****************
+		ligne ajouté : @ConditionalOnProperty('initializr.stats.elastic.uri')
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+['initializr/src/main/groovy/io/spring/initializr/config/InitializrStatsAutoConfiguration.groovy']
+
+************** date : 2016-04-08 12:01:38+02:00*****************
+		ligne ajouté : 	@ConditionalOnBean(RedisConnectionFactory)
+		ligne ajouté : 	@ConditionalOnProperty(value = 'spring.metrics.export.enabled')
+************** date : 2016-04-08 12:01:38+02:00*****************
+		ligne ajouté : @ConditionalOnProperty('initializr.stats.elastic.uri')
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+************** date : 2016-04-08 12:01:38+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-actuator/src/main/groovy/io/spring/initializr/actuate/autoconfigure/InitializrMetricsConfiguration.groovy', 'initializr-actuator/src/main/groovy/io/spring/initializr/actuate/autoconfigure/InitializrStatsAutoConfiguration.groovy', 'initializr-web/src/main/groovy/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.groovy']
+
+************** date : 2016-07-20 15:09:35+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-web/src/main/groovy/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.groovy']
+
+************** date : 2016-07-29 12:30:50+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-web/src/main/groovy/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.groovy']
+
+************** date : 2016-07-29 12:52:53+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-web/src/main/groovy/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.groovy']
+
+************** date : 2016-09-13 14:34:10+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-web/src/main/groovy/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.groovy']
+
+************** date : 2016-12-01 12:07:47+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-web/src/main/groovy/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.groovy']
+
+************** date : 2017-01-27 10:11:33+01:00*****************
+		ligne ajouté : 	@ConditionalOnBean(RedisConnectionFactory)
+		ligne ajouté : 	@ConditionalOnProperty(value = 'spring.metrics.export.enabled')
+************** date : 2017-01-27 10:11:33+01:00*****************
+		ligne ajouté : @ConditionalOnProperty('initializr.stats.elastic.uri')
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+************** date : 2017-01-27 10:11:33+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-actuator/src/main/groovy/io/spring/initializr/actuate/autoconfigure/InitializrMetricsConfiguration.groovy', 'initializr-actuator/src/main/groovy/io/spring/initializr/actuate/autoconfigure/InitializrStatsAutoConfiguration.groovy', 'initializr-web/src/main/groovy/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.groovy']
+
+************** date : 2017-02-25 09:31:03+01:00*****************
+		ligne ajouté : 	@ConditionalOnBean(RedisConnectionFactory.class)
+		ligne ajouté : 	@ConditionalOnProperty(value = "spring.metrics.export.enabled")
+************** date : 2017-02-25 09:31:03+01:00*****************
+		ligne ajouté : @ConditionalOnProperty("initializr.stats.elastic.uri")
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+['initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrMetricsConfiguration.java', 'initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrStatsAutoConfiguration.java']
+
+************** date : 2017-02-25 09:31:03+01:00*****************
+		ligne ajouté : 	@ConditionalOnBean(RedisConnectionFactory.class)
+		ligne ajouté : 	@ConditionalOnProperty(value = "spring.metrics.export.enabled")
+************** date : 2017-02-25 09:31:03+01:00*****************
+		ligne ajouté : @ConditionalOnProperty("initializr.stats.elastic.uri")
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+['initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrMetricsConfiguration.java', 'initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrStatsAutoConfiguration.java']
+
+************** date : 2017-02-25 09:31:03+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2017-02-25 09:31:03+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2017-02-25 09:31:03+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2017-02-25 09:31:03+01:00*****************
+		ligne ajouté : 	@ConditionalOnBean(RedisConnectionFactory.class)
+		ligne ajouté : 	@ConditionalOnProperty(value = "spring.metrics.export.enabled")
+************** date : 2017-02-25 09:31:03+01:00*****************
+		ligne ajouté : @ConditionalOnProperty("initializr.stats.elastic.uri")
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+************** date : 2017-02-25 09:31:03+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrMetricsConfiguration.java', 'initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrStatsAutoConfiguration.java', 'initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2017-02-25 09:31:04+01:00*****************
+		ligne ajouté : @ConditionalOnProperty("initializr.stats.elastic.uri")
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+************** date : 2017-02-25 09:31:04+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrStatsAutoConfiguration.java', 'initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2017-03-15 16:49:46+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+['initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2017-03-29 12:55:29+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2017-08-14 11:26:34+02:00*****************
+		ligne ajouté : @ConditionalOnProperty("initializr.stats.elastic.uri")
+		ligne ajouté : 	@ConditionalOnBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+************** date : 2017-08-14 11:26:34+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrStatsAutoConfiguration.java', 'initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2017-08-14 12:12:30+02:00*****************
+		ligne ajouté : @ConditionalOnProperty("initializr.stats.elastic.uri")
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+['initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrStatsAutoConfiguration.java']
+
+************** date : 2017-09-15 13:29:45+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2017-12-29 15:30:44+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2018-03-01 08:00:49+01:00*****************
+		ligne ajouté : @ConditionalOnClass(MeterRegistry.class)
+		ligne ajouté : 	@ConditionalOnSingleCandidate(MeterRegistry.class)
+************** date : 2018-03-01 08:00:49+01:00*****************
+		ligne ajouté : @ConditionalOnProperty("initializr.stats.elastic.uri")
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+************** date : 2018-03-01 08:00:49+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrMetricsConfiguration.java', 'initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrStatsAutoConfiguration.java', 'initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2018-03-02 14:40:21+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2018-03-08 16:38:44+01:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2018-04-13 12:36:06-07:00*****************
+		ligne ajouté : @ConditionalOnClass(MeterRegistry.class)
+		ligne ajouté : 	@ConditionalOnSingleCandidate(MeterRegistry.class)
+************** date : 2018-04-13 12:36:06-07:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrMetricsConfiguration.java', 'initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2018-04-13 12:36:06-07:00*****************
+		ligne ajouté : @ConditionalOnProperty("initializr.stats.elastic.uri")
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+************** date : 2018-04-13 12:36:06-07:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrStatsAutoConfiguration.java', 'initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2018-04-13 12:36:06-07:00*****************
+		ligne ajouté : @ConditionalOnProperty("initializr.stats.elastic.uri")
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+************** date : 2018-04-13 12:36:06-07:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrStatsAutoConfiguration.java', 'initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2018-05-31 16:19:02-07:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2018-07-10 09:22:03-07:00*****************
+		ligne ajouté : @ConditionalOnClass(MeterRegistry.class)
+		ligne ajouté : 	@ConditionalOnSingleCandidate(MeterRegistry.class)
+************** date : 2018-07-10 09:22:03-07:00*****************
+		ligne ajouté : @ConditionalOnProperty("initializr.stats.elastic.uri")
+		ligne ajouté : 	@ConditionalOnBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean(name = "statsRetryTemplate")
+************** date : 2018-07-10 09:22:03-07:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrMetricsAutoConfiguration.java', 'initializr-actuator/src/main/java/io/spring/initializr/actuate/autoconfigure/InitializrStatsAutoConfiguration.java', 'initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2018-07-31 18:01:40+02:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+************** date : 2018-10-28 07:24:38+09:00*****************
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnMissingBean(InitializrMetadataProvider.class)
+		ligne ajouté : 	@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnWebApplication
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 		@ConditionalOnMissingBean
+		ligne ajouté : 	@ConditionalOnClass(javax.cache.CacheManager.class)
+['initializr-web/src/main/java/io/spring/initializr/web/autoconfigure/InitializrAutoConfiguration.java']
+
+
+
+##### nombre de conditional dans ce projet : 65  #####

@@ -1,0 +1,1024 @@
+
+
+ ***** le git du projet : https://github.com/RameshMF/BroadleafCommerce *****
+************** date : 2015-01-20 20:21:32-06:00*****************
+		ligne ajouté : @Conditional(IsJaxrsAvailableCondition.class)
+************** date : 2015-01-20 20:21:32-06:00*****************
+		ligne ajouté : @Conditional(IsJaxrsAvailableCondition.class)
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/api/jaxrs/JaxrsObjectMapperProvider.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/api/jaxrs/JaxrsRestExceptionMapper.java']
+
+************** date : 2016-05-02 11:37:33-05:00*****************
+		ligne ajouté : @Conditional(IsJaxrsAvailableCondition.class)
+************** date : 2016-05-02 11:37:33-05:00*****************
+		ligne ajouté : @Conditional(IsJaxrsAvailableCondition.class)
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/api/jaxrs/JaxrsObjectMapperProvider.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/api/jaxrs/JaxrsRestExceptionMapper.java']
+
+************** date : 2016-05-03 10:25:46-05:00*****************
+		ligne ajouté : @Conditional(IsJaxrsAvailableCondition.class)
+************** date : 2016-05-03 10:25:46-05:00*****************
+		ligne ajouté : @Conditional(IsJaxrsAvailableCondition.class)
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/api/jaxrs/JaxrsObjectMapperProvider.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/api/jaxrs/JaxrsRestExceptionMapper.java']
+
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/ContentProcessor.java', 'admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/ContentProcessorExtensionManager.java', 'admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/HrefUrlRewriteProcessor.java', 'admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/UrlRewriteProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminComponentIdProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminFieldBuilderProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminModuleProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminSectionHrefProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminUserProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/ErrorsProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/web/expression/EntityFormVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/breadcrumbs/processor/BreadcrumbProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/BroadleafTemplateViewResolverExtensionManager.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/AssetURLVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/BRCVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/NullBroadleafVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/PropertiesVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/payment/expression/PaymentGatewayFieldVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/payment/processor/CreditCardTypesProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/payment/processor/TransparentRedirectCreditCardFormProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/ConfigVariableProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/DataDrivenEnumerationProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/FormProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/ResourceBundleProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/BLCVariableExpression.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/AddSortLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/CatalogRelativeHrefProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/CategoriesProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/CategoriesProcessorExtensionManager.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/GoogleAnalyticsProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/GoogleUniversalAnalyticsProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/HeadProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/NamedOrderProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/OnePageCheckoutProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PaginationPageLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PaginationSizeLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PaginationSortLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PriceTextDisplayProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionDisplayProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionValueProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionsProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RatingsProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RelatedProductProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RemoveFacetValuesLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ToggleFacetLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/UncacheableDataProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/extension/HeadProcessorExtensionManager.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/extension/UncacheableDataProcessorExtensionManager.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/resolver/DatabaseResourceResolverExtensionManager.java']
+
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminComponentIdProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminFieldBuilderProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminModuleProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminSectionHrefProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminUserProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/ErrorsProcessor.java']
+
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['common/src/main/java/org/broadleafcommerce/common/web/payment/processor/TransparentRedirectCreditCardFormProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/FormProcessor.java']
+
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RelatedProductProcessor.java']
+
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['common/src/main/java/org/broadleafcommerce/common/web/resolver/DatabaseResourceResolverExtensionManager.java']
+
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/BLCVariableExpression.java']
+
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['common/src/main/java/org/broadleafcommerce/core/web/resolver/DatabaseResourceResolverExtensionManager.java']
+
+************** date : 2016-11-11 14:54:31-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RelatedProductProcessor.java']
+
+************** date : 2016-11-11 14:54:32-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:32-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-11 14:54:32-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminFieldBuilderProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PriceTextDisplayProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/UncacheableDataProcessor.java']
+
+************** date : 2016-11-11 14:54:32-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionsProcessor.java']
+
+************** date : 2016-11-11 14:54:32-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/PromotionMessageVariableExpression.java']
+
+************** date : 2016-11-14 09:53:05-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-14 09:53:05-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-14 09:53:05-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-14 09:53:05-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminFieldBuilderProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/payment/processor/CreditCardTypesProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/OnePageCheckoutProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionDisplayProcessor.java']
+
+************** date : 2016-11-16 08:46:53-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RelatedProductProcessor.java']
+
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 20:51:20-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/ContentProcessor.java', 'admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/ContentProcessorExtensionManager.java', 'admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/HrefUrlRewriteProcessor.java', 'admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/UrlRewriteProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminComponentIdProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminFieldBuilderProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminModuleProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminSectionHrefProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminUserProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/ErrorsProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/web/expression/EntityFormVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/breadcrumbs/processor/BreadcrumbProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/BroadleafTemplateViewResolverExtensionManager.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/AssetURLVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/BRCVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/BreadcrumbVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/DataDrivenEnumVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/NullBroadleafVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/PropertiesVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/payment/expression/PaymentGatewayFieldVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/payment/processor/CreditCardTypesProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/payment/processor/TransparentRedirectCreditCardFormProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/ConfigVariableProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/DataDrivenEnumerationProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/FormProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/ResourceBundleProcessor.java', 'common/src/main/java/org/broadleafcommerce/core/web/resolver/DatabaseResourceResolverExtensionManager.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/BLCVariableExpression.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/PromotionMessageVariableExpression.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/AddSortLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/CatalogRelativeHrefProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/CategoriesProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/CategoriesProcessorExtensionManager.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/GoogleUniversalAnalyticsProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/NamedOrderProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/OnePageCheckoutProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PaginationPageLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PaginationSizeLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PaginationSortLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PriceTextDisplayProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionDisplayProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionValueProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionsProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RatingsProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RelatedProductProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RemoveFacetValuesLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ToggleFacetLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/UncacheableDataProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/extension/HeadProcessorExtensionManager.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/extension/UncacheableDataProcessorExtensionManager.java']
+
+************** date : 2016-11-27 21:03:12-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+************** date : 2016-11-27 21:03:12-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['common/src/main/java/org/broadleafcommerce/common/web/expression/BreadcrumbVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/DataDrivenEnumVariableExpression.java']
+
+************** date : 2016-11-30 10:25:42-06:00*****************
+		ligne ajouté : @Conditional(TemplatingExistCondition.class)
+['common/src/main/java/org/broadleafcommerce/common/web/processor/ResourceBundleProcessor.java']
+
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2016-12-04 18:25:00-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/ContentProcessor.java', 'admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/ContentProcessorExtensionManager.java', 'admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/HrefUrlRewriteProcessor.java', 'admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/UrlRewriteProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminComponentIdProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminFieldBuilderProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminModuleProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminSectionHrefProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/AdminUserProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/processor/ErrorsProcessor.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/web/expression/EntityFormVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/breadcrumbs/processor/BreadcrumbProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/BroadleafTemplateViewResolverExtensionManager.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/AssetURLVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/BRCVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/BreadcrumbVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/DataDrivenEnumVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/NullBroadleafVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/expression/PropertiesVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/payment/expression/PaymentGatewayFieldVariableExpression.java', 'common/src/main/java/org/broadleafcommerce/common/web/payment/processor/CreditCardTypesProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/payment/processor/TransparentRedirectCreditCardFormProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/ConfigVariableProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/DataDrivenEnumerationProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/FormProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/ResourceBundleProcessor.java', 'common/src/main/java/org/broadleafcommerce/core/web/resolver/DatabaseResourceResolverExtensionManager.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/BLCVariableExpression.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/PromotionMessageVariableExpression.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/AddSortLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/CatalogRelativeHrefProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/CategoriesProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/CategoriesProcessorExtensionManager.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/GoogleUniversalAnalyticsProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/NamedOrderProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/OnePageCheckoutProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PaginationPageLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PaginationSizeLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PaginationSortLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/PriceTextDisplayProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionDisplayProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionValueProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionsProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RatingsProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RelatedProductProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RemoveFacetValuesLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ToggleFacetLinkProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/UncacheableDataProcessor.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/extension/UncacheableDataProcessorExtensionManager.java']
+
+************** date : 2016-12-12 14:53:58-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-profile-web/src/main/java/org/broadleafcommerce/profile/web/core/expression/CustomerVariableExpression.java']
+
+************** date : 2017-01-24 16:55:21-06:00*****************
+		ligne ajouté : @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(MTCondition.class)
+************** date : 2017-01-24 16:55:21-06:00*****************
+		ligne ajouté : @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(MTCondition.class)
+************** date : 2017-01-24 16:55:21-06:00*****************
+		ligne ajouté : @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(MTCondition.class)
+************** date : 2017-01-24 16:55:21-06:00*****************
+		ligne ajouté : @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(MTCondition.class)
+************** date : 2017-01-24 16:55:21-06:00*****************
+		ligne ajouté : @Conditional(DemoCondition.class)
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/demo/ImportSQLConfig.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/demo/ImportSQLConfig.java', 'common/src/main/java/org/broadleafcommerce/common/demo/ImportSQLConfig.java', 'core/broadleaf-framework/src/main/java/org/broadleafcommerce/core/demo/ImportSQLConfig.java', 'core/broadleaf-profile/src/main/java/org/broadleafcommerce/profile/core/demo/ImportSQLConfig.java']
+
+************** date : 2017-01-24 16:55:21-06:00*****************
+		ligne ajouté : @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(MTCondition.class)
+['common/src/main/java/org/broadleafcommerce/common/demo/ImportSQLConfig.java']
+
+************** date : 2017-01-24 16:55:22-06:00*****************
+		ligne ajouté : @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(MTCondition.class)
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/demo/ImportSQLConfig.java']
+
+************** date : 2017-01-24 16:55:22-06:00*****************
+		ligne ajouté : @Conditional(ImportCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional({MTCondition.class, DemoCondition.class})
+************** date : 2017-01-24 16:55:22-06:00*****************
+		ligne ajouté : @Conditional(ImportCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional({MTCondition.class, DemoCondition.class})
+************** date : 2017-01-24 16:55:22-06:00*****************
+		ligne ajouté : @Conditional(ImportCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional({MTCondition.class, DemoCondition.class})
+************** date : 2017-01-24 16:55:22-06:00*****************
+		ligne ajouté : @Conditional(ImportCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/demo/ImportSQLConfig.java', 'common/src/main/java/org/broadleafcommerce/common/demo/ImportSQLConfig.java', 'core/broadleaf-framework/src/main/java/org/broadleafcommerce/core/demo/ImportSQLConfig.java', 'core/broadleaf-profile/src/main/java/org/broadleafcommerce/profile/core/demo/ImportSQLConfig.java']
+
+************** date : 2017-01-24 16:55:24-06:00*****************
+		ligne ajouté : @Conditional(AdminExistsCondition.class)
+['common/src/main/java/org/broadleafcommerce/common/admin/condition/ConditionalOnAdmin.java']
+
+************** date : 2017-01-24 16:55:24-06:00*****************
+		ligne ajouté : @Conditional(AdminExistsCondition.class)
+['common/src/main/java/org/broadleafcommerce/common/admin/condition/ConditionalOnAdmin.java']
+
+************** date : 2017-01-24 16:55:24-06:00*****************
+		ligne ajouté : @Conditional(ImportCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional({MTCondition.class, DemoCondition.class})
+		ligne ajouté :     @Conditional({AssetFoldersExistCondition.class, DemoCondition.class})
+['core/broadleaf-framework/src/main/java/org/broadleafcommerce/core/demo/ImportSQLConfig.java']
+
+************** date : 2017-01-26 16:06:33-06:00*****************
+		ligne ajouté :     @ConditionalOnMissingBean(name = "blJpaVendorAdapter")
+['common/src/main/java/org/broadleafcommerce/common/config/BroadleafCommonConfig.java']
+
+************** date : 2017-01-30 14:11:29-06:00*****************
+		ligne ajouté : @Conditional(ImportCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional({MTCondition.class, DemoCondition.class})
+		ligne ajouté :     @Conditional({AssetFoldersExistCondition.class, DemoCondition.class})
+************** date : 2017-01-30 14:11:29-06:00*****************
+		ligne ajouté : @Conditional(ImportCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+['core/broadleaf-framework/src/main/java/org/broadleafcommerce/core/demo/ImportSQLConfig.java', 'core/broadleaf-profile/src/main/java/org/broadleafcommerce/profile/core/demo/ImportSQLConfig.java']
+
+************** date : 2017-01-30 16:24:51-06:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+		ligne ajouté :     @ConditionalOnTemplating
+		ligne ajouté :     @Conditional(ImportCondition.class)
+************** date : 2017-01-30 16:24:51-06:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+************** date : 2017-01-30 16:24:51-06:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+['export/src/main/java/com/broadleafcommerce/export/admin/config/ExportsModuleAdminConfig.java', 'export/src/main/java/com/broadleafcommerce/export/admin/server/security/service/ExportRowLevelSecurityProvider.java', 'export/src/main/java/com/broadleafcommerce/export/admin/web/controller/AdminExportDownloadController.java']
+
+************** date : 2017-01-30 17:53:22-06:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+		ligne ajouté :     @ConditionalOnTemplating
+		ligne ajouté :     @Conditional(ImportCondition.class)
+['export/src/main/java/com/broadleafcommerce/export/admin/config/ExportsModuleAdminConfig.java']
+
+************** date : 2017-01-30 18:41:31-06:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+		ligne ajouté :     @ConditionalOnTemplating
+		ligne ajouté :     @Conditional(ImportCondition.class)
+['export/src/main/java/com/broadleafcommerce/export/admin/config/ExportsModuleAdminConfig.java']
+
+************** date : 2017-01-31 11:47:51-06:00*****************
+		ligne ajouté : @Conditional(ImportCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional({MTCondition.class, DemoCondition.class})
+************** date : 2017-01-31 11:47:51-06:00*****************
+		ligne ajouté : @Conditional(ImportCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional({MTCondition.class, DemoCondition.class})
+		ligne ajouté :     @Conditional({AssetFoldersExistCondition.class, DemoCondition.class})
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/demo/ImportSQLConfig.java', 'core/broadleaf-framework/src/main/java/org/broadleafcommerce/core/demo/ImportSQLConfig.java']
+
+************** date : 2017-02-01 18:36:14-06:00*****************
+		ligne ajouté :     @ConditionalOnMissingBean(name = "blJpaVendorAdapter")
+['common/src/main/java/org/broadleafcommerce/common/config/BroadleafCommonConfig.java']
+
+************** date : 2017-02-07 15:36:40-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/DefaultSEOVariableExpression.java']
+
+************** date : 2017-02-20 10:08:12-06:00*****************
+		ligne ajouté : @ConditionalOnBean(name = "blBasicPersistenceModule")
+['common/src/main/java/org/broadleafcommerce/common/admin/condition/ConditionalOnAdmin.java']
+
+************** date : 2017-02-22 14:18:46-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/DefaultSEOVariableExpression.java']
+
+************** date : 2017-02-23 07:53:28-06:00*****************
+		ligne ajouté : @Conditional(BroadleafModuleCondition.class)
+['common/src/main/java/org/broadleafcommerce/common/condition/ConditionalOnBroadleafModule.java']
+
+************** date : 2017-02-24 09:52:44-06:00*****************
+		ligne ajouté : @Conditional(OnBroadleafModuleCondition.class)
+************** date : 2017-02-24 09:52:44-06:00*****************
+		ligne ajouté :     @ConditionalOnBroadleafModule(moduleName = CommonTestRegistration.COMMON_TEST_REGISTRATION_NAME)
+		ligne ajouté :         @ConditionalOnBroadleafModule(moduleName = CommonTestRegistration.COMMON_TEST_REGISTRATION_NAME)
+		ligne ajouté :         @ConditionalOnBroadleafModule(moduleName = "Random Module Name")
+['common/src/main/java/org/broadleafcommerce/common/condition/ConditionalOnBroadleafModule.java', 'common/src/test/java/org/broadleafcommerce/test/common/condition/ConditionalOnModuleTest.java']
+
+************** date : 2017-02-27 10:45:56-06:00*****************
+		ligne ajouté : @Conditional(ImportCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional({MTCondition.class, DemoCondition.class})
+		ligne ajouté :     @Conditional({AssetFoldersExistCondition.class, DemoCondition.class})
+		ligne ajouté :     @Conditional({AssetFoldersExistCondition.class, GiftCardAndCustomerCreditExistCondition.class, DemoCondition.class})
+['core/broadleaf-framework/src/main/java/org/broadleafcommerce/core/demo/ImportSQLConfig.java']
+
+************** date : 2017-02-27 10:48:27-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['common/src/main/java/org/broadleafcommerce/common/web/expression/ModuleVariableExpression.java']
+
+************** date : 2017-03-02 17:29:28-06:00*****************
+		ligne ajouté :     @ConditionalOnMissingBean(name = "blJpaVendorAdapter")
+['common/src/main/java/org/broadleafcommerce/common/config/BroadleafCommonConfig.java']
+
+************** date : 2017-03-09 17:52:06-06:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+['common/src/main/java/org/broadleafcommerce/common/controller/AdminFrameworkControllerHandlerMapping.java']
+
+************** date : 2017-03-09 17:52:11-06:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+['common/src/main/java/org/broadleafcommerce/common/controller/AdminFrameworkControllerHandlerMapping.java']
+
+************** date : 2017-03-09 17:52:14-06:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+['common/src/main/java/org/broadleafcommerce/common/web/controller/AdminFrameworkControllerHandlerMapping.java']
+
+************** date : 2017-03-10 13:01:01-06:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+['common/src/main/java/org/broadleafcommerce/common/web/controller/AdminFrameworkControllerHandlerMapping.java']
+
+************** date : 2017-03-10 14:59:09-06:00*****************
+		ligne ajouté : @Conditional(ImportCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional(DemoCondition.class)
+		ligne ajouté :     @Conditional({MTCondition.class, DemoCondition.class})
+['common/src/main/java/org/broadleafcommerce/common/demo/ImportSQLConfig.java']
+
+************** date : 2017-03-17 12:12:01-05:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+************** date : 2017-03-17 12:12:01-05:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+['admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/web/controller/AdminControllerHandlerMapping.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/web/controller/config/AdminWebMvcConfiguration.java']
+
+************** date : 2017-03-17 13:30:19-05:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+************** date : 2017-03-17 13:30:19-05:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+['admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/web/controller/AdminControllerHandlerMapping.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/web/controller/config/AdminWebMvcConfiguration.java']
+
+************** date : 2017-03-18 13:04:50-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+************** date : 2017-03-18 13:04:50-05:00*****************
+		ligne ajouté : @ConditionalOnMissingBean(name = "blBasicPersistenceModule")
+************** date : 2017-03-18 13:04:50-05:00*****************
+		ligne ajouté : @ConditionalOnProperty(value = "use.basic.request", matchIfMissing = true)
+************** date : 2017-03-18 13:04:50-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+		ligne ajouté : @ConditionalOnProperty(value = "use.stateless.request", matchIfMissing = true, havingValue = "false")
+************** date : 2017-03-18 13:04:50-05:00*****************
+		ligne ajouté : @ConditionalOnProperty(value = "use.stateless.request", matchIfMissing = true)
+************** date : 2017-03-18 13:04:50-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+************** date : 2017-03-18 13:04:50-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+************** date : 2017-03-18 13:04:50-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+************** date : 2017-03-18 13:04:50-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+		ligne ajouté : @ConditionalOnProperty(value = "use.customer.state.filter", matchIfMissing = true)
+************** date : 2017-03-18 13:04:50-05:00*****************
+		ligne ajouté : @ConditionalOnProperty(value = "use.session.fixation.protection", matchIfMissing = true)
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/URLHandlerFilter.java', 'common/src/main/java/org/broadleafcommerce/common/admin/condition/ConditionalOnNotAdmin.java', 'common/src/main/java/org/broadleafcommerce/common/web/BroadleafRequestFilter.java', 'common/src/main/java/org/broadleafcommerce/common/web/filter/EstablishSessionFilter.java', 'common/src/main/java/org/broadleafcommerce/common/web/filter/StatelessSessionFilter.java', 'common/src/main/java/org/broadleafcommerce/common/web/filter/TranslationFilter.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/geolocation/GeolocationFilter.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/order/security/CartStateFilter.java', 'core/broadleaf-profile-web/src/main/java/org/broadleafcommerce/profile/web/core/security/CustomerStateFilter.java', 'core/broadleaf-profile-web/src/main/java/org/broadleafcommerce/profile/web/core/security/SessionFixationProtectionFilter.java']
+
+************** date : 2017-03-24 18:22:27-05:00*****************
+		ligne ajouté :     @ConditionalOnMissingBean(name = "blJpaVendorAdapter")
+************** date : 2017-03-24 18:22:27-05:00*****************
+		ligne ajouté :  * Test to verify that properties are added to the environment early enough via the ApplicationListener so that @ConditionalOnProperty works
+		ligne ajouté :         @ConditionalOnProperty("test.property.source")
+		ligne ajouté :         @ConditionalOnProperty("property.that.does.not.exist")
+['common/src/main/java/org/broadleafcommerce/common/config/BroadleafCommonConfig.java', 'common/src/test/java/org/broadleafcommerce/test/common/properties/ConditionalOnPropertyTest.java']
+
+************** date : 2017-04-03 14:28:47-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+************** date : 2017-04-03 14:28:47-05:00*****************
+		ligne ajouté : @ConditionalOnProperty(value = "use.basic.request", matchIfMissing = true)
+************** date : 2017-04-03 14:28:47-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+		ligne ajouté : @ConditionalOnProperty(value = "use.stateless.request", matchIfMissing = true, havingValue = "false")
+************** date : 2017-04-03 14:28:47-05:00*****************
+		ligne ajouté : @ConditionalOnProperty(value = "use.stateless.request", matchIfMissing = true)
+************** date : 2017-04-03 14:28:47-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+************** date : 2017-04-03 14:28:47-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+************** date : 2017-04-03 14:28:47-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+************** date : 2017-04-03 14:28:47-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+		ligne ajouté : @ConditionalOnProperty(value = "use.customer.state.filter", matchIfMissing = true)
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/URLHandlerFilter.java', 'common/src/main/java/org/broadleafcommerce/common/web/BroadleafRequestFilter.java', 'common/src/main/java/org/broadleafcommerce/common/web/filter/EstablishSessionFilter.java', 'common/src/main/java/org/broadleafcommerce/common/web/filter/StatelessSessionFilter.java', 'common/src/main/java/org/broadleafcommerce/common/web/filter/TranslationFilter.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/geolocation/GeolocationFilter.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/order/security/CartStateFilter.java', 'core/broadleaf-profile-web/src/main/java/org/broadleafcommerce/profile/web/core/security/CustomerStateFilter.java']
+
+************** date : 2017-04-06 07:54:31-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+['common/src/main/java/org/broadleafcommerce/common/web/BroadleafRequestFilter.java']
+
+************** date : 2017-04-13 10:22:12-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RelatedProductProcessor.java']
+
+************** date : 2017-04-20 11:48:23-05:00*****************
+		ligne ajouté : @ConditionalOnBroadleafModule(BroadleafModuleEnum.ADMIN)
+['common/src/main/java/org/broadleafcommerce/common/admin/condition/ConditionalOnAdmin.java']
+
+************** date : 2017-04-20 17:18:58-05:00*****************
+		ligne ajouté : @ConditionalOnMissingBroadleafModule(BroadleafModuleEnum.ADMIN)
+************** date : 2017-04-20 17:18:58-05:00*****************
+		ligne ajouté : @Conditional(OnMissingBroadleafModuleCondition.class)
+['common/src/main/java/org/broadleafcommerce/common/admin/condition/ConditionalOnNotAdmin.java', 'common/src/main/java/org/broadleafcommerce/common/condition/ConditionalOnMissingBroadleafModule.java']
+
+************** date : 2017-04-26 14:20:27-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/processor/HrefUrlRewriteProcessor.java']
+
+************** date : 2017-05-29 20:23:43-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+************** date : 2017-05-29 20:23:43-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+************** date : 2017-05-29 20:23:43-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+************** date : 2017-05-29 20:23:43-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+************** date : 2017-05-29 20:23:43-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/web/URLHandlerFilter.java', 'common/src/main/java/org/broadleafcommerce/common/web/BroadleafRequestFilter.java', 'common/src/main/java/org/broadleafcommerce/common/web/filter/TranslationFilter.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/geolocation/GeolocationFilter.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/order/security/CartStateFilter.java']
+
+************** date : 2017-05-29 22:04:25-05:00*****************
+		ligne ajouté :     @ConditionalOnMissingBean(name = "blJpaVendorAdapter")
+['common/src/main/java/org/broadleafcommerce/common/config/BroadleafCommonConfig.java']
+
+************** date : 2017-06-07 08:58:47-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+['common/src/main/java/org/broadleafcommerce/common/web/BroadleafRequestFilter.java']
+
+************** date : 2017-06-14 18:03:53-05:00*****************
+		ligne ajouté :  * required to have a particular component. This allows you to confidently use annotations like {@code @ConditionalOnMissingBean}
+************** date : 2017-06-14 18:03:53-05:00*****************
+		ligne ajouté :     @ConditionalOnMissingBean(name = "nonOverridingBean")
+		ligne ajouté :     @ConditionalOnMissingBean(name = "nestedRunsFirst")
+************** date : 2017-06-14 18:03:53-05:00*****************
+		ligne ajouté :         @ConditionalOnMissingBean(name = "nestedRunsFirst")
+************** date : 2017-06-14 18:03:53-05:00*****************
+		ligne ajouté :     @ConditionalOnMissingBean(name = "nonOverridingBean")
+['common/src/main/java/org/broadleafcommerce/common/config/PostAutoConfigurationDefferedImportSelector.java', 'common/src/test/java/org/broadleafcommerce/test/common/context/autoconfig/BaseAutoConfiguration.java', 'common/src/test/java/org/broadleafcommerce/test/common/context/autoconfig/nested/ContainsNestedConfiguration.java', 'common/src/test/java/org/broadleafcommerce/test/common/context/autoconfig/scan/AfterAutoConfiguration.java']
+
+************** date : 2017-06-14 18:03:56-05:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+************** date : 2017-06-14 18:03:56-05:00*****************
+		ligne ajouté : @ConditionalOnMissingBean(WebMvcConfigurationSupport.class)
+['admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/web/controller/config/AdminWebMvcConfiguration.java', 'admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/web/controller/config/AdminWebMvcConfigurationSupport.java']
+
+************** date : 2017-06-14 18:03:59-05:00*****************
+		ligne ajouté :     @ConditionalOnMissingBean
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/admin/web/controller/NonAutoconfigMultiPartConfiguration.java']
+
+************** date : 2017-06-15 14:13:05-05:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+['admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/web/controller/config/AdminWebMvcConfiguration.java']
+
+************** date : 2017-06-15 17:22:02-05:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+['admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/web/controller/config/AdminWebMvcConfiguration.java']
+
+************** date : 2017-06-23 10:27:40-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionsProcessor.java']
+
+************** date : 2017-06-29 08:19:17-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/BasicAddressVariableExpression.java']
+
+************** date : 2017-06-29 08:45:03-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/PaymentMethodVariableExpression.java']
+
+************** date : 2017-06-29 08:52:40-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/FulfillmentVariableExpression.java']
+
+************** date : 2017-06-29 08:58:29-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/CheckoutFormVariableExpression.java']
+
+************** date : 2017-06-29 09:31:28-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/CheckoutStageVariableExpression.java']
+
+************** date : 2017-06-29 09:32:46-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/CheckoutFormVariableExpression.java']
+
+************** date : 2017-06-29 09:37:13-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/OnePageCheckoutProcessor.java']
+
+************** date : 2017-06-29 10:16:41-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/OnePageCheckoutProcessor.java']
+
+************** date : 2017-06-29 10:30:55-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2017-06-29 10:30:55-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/CheckoutFormVariableExpression.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/OnePageCheckoutProcessor.java']
+
+************** date : 2017-06-29 15:46:03-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+['common/src/main/java/org/broadleafcommerce/common/web/config/BroadleafSiteServletConfig.java']
+
+************** date : 2017-07-07 09:16:44-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/CheckoutFormVariableExpression.java']
+
+************** date : 2017-07-14 08:37:03-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/OnePageCheckoutProcessor.java']
+
+************** date : 2017-07-14 08:42:07-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/CheckoutFormVariableExpression.java']
+
+************** date : 2017-07-19 08:20:08-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/CheckoutFormVariableExpression.java']
+
+************** date : 2017-07-25 14:48:44+03:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/UncacheableDataProcessor.java']
+
+************** date : 2017-07-25 14:39:45-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/BroadleafDeviceResolverRequestFilter.java']
+
+************** date : 2017-07-26 14:55:39-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/device/BroadleafDeviceResolverRequestFilter.java']
+
+************** date : 2017-07-28 15:43:41-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/PaymentMethodVariableExpression.java']
+
+************** date : 2017-07-28 15:43:41-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/PaymentStageVariableExpression.java']
+
+************** date : 2017-07-28 15:43:42-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/CheckoutFormVariableExpression.java']
+
+************** date : 2017-07-28 15:43:42-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-profile-web/src/main/java/org/broadleafcommerce/profile/web/core/expression/CustomerVariableExpression.java']
+
+************** date : 2017-07-28 15:43:42-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2017-07-28 15:43:42-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/FulfillmentVariableExpression.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/OnePageCheckoutProcessor.java']
+
+************** date : 2017-07-31 07:36:04-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/PaymentMethodVariableExpression.java']
+
+************** date : 2017-08-01 12:39:06-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2017-08-01 12:39:06-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/seo/BasicSeoPropertyGeneratorImpl.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/seo/SeoPropertyServiceImpl.java']
+
+************** date : 2017-08-01 12:42:25-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/seo/SeoDefaultPropertyServiceImpl.java']
+
+************** date : 2017-08-01 12:54:54-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2017-08-01 12:54:54-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/SeoElementVariableExpression.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/SeoVariableExpression.java']
+
+************** date : 2017-08-01 13:01:45-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2017-08-01 13:01:45-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2017-08-01 13:01:45-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/seo/BasicSeoPropertyGeneratorImpl.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/seo/SeoDefaultPropertyServiceImpl.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/seo/SeoPropertyServiceImpl.java']
+
+************** date : 2017-08-02 09:04:57-05:00*****************
+		ligne ajouté :     @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/config/FrameworkWebConfig.java']
+
+************** date : 2017-08-13 18:17:55-05:00*****************
+		ligne ajouté : @ConditionalOnNotAdmin
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/device/BroadleafDeviceResolverRequestFilter.java']
+
+************** date : 2017-08-14 10:52:48-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-profile-web/src/main/java/org/broadleafcommerce/profile/web/core/expression/CustomerVariableExpression.java']
+
+************** date : 2017-08-17 14:34:03-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/PaymentMethodVariableExpression.java']
+
+************** date : 2017-08-25 18:57:42-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/seo/BasicSeoPropertyGeneratorImpl.java']
+
+************** date : 2017-09-19 11:03:03-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/BasicAddressVariableExpression.java']
+
+************** date : 2017-09-21 08:50:20-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-profile-web/src/main/java/org/broadleafcommerce/profile/web/core/expression/CustomerVariableExpression.java']
+
+************** date : 2017-11-02 09:51:57-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2017-11-02 09:51:57-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/seo/BasicSeoPropertyGeneratorImpl.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/seo/SeoDefaultPropertyServiceImpl.java']
+
+************** date : 2017-11-02 13:13:12-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/seo/SeoDefaultPropertyServiceImpl.java']
+
+************** date : 2017-11-17 16:56:25-06:00*****************
+		ligne ajouté : @ConditionalOnProperty("filter.compression.enabled")
+['common/src/main/java/org/broadleafcommerce/common/web/util/CachingCompressedResponseFilter.java']
+
+************** date : 2017-11-28 09:59:43-06:00*****************
+		ligne ajouté : @ConditionalOnProperty("filter.compression.enabled")
+['common/src/main/java/org/broadleafcommerce/common/web/util/CachingCompressedResponseFilter.java']
+
+************** date : 2017-12-04 16:33:53-06:00*****************
+		ligne ajouté : @ConditionalOnProperty("filter.compression.enabled")
+['common/src/main/java/org/broadleafcommerce/common/web/util/CachingCompressedResponseFilter.java']
+
+************** date : 2017-12-04 16:50:17-06:00*****************
+		ligne ajouté : @ConditionalOnProperty("filter.compression.enabled")
+['common/src/main/java/org/broadleafcommerce/common/web/util/CachingCompressedResponseFilter.java']
+
+************** date : 2017-12-04 16:54:08-06:00*****************
+		ligne ajouté : @ConditionalOnProperty("filter.compression.enabled")
+['common/src/main/java/org/broadleafcommerce/common/web/util/CachingCompressedResponseFilter.java']
+
+************** date : 2017-12-06 15:59:59-06:00*****************
+		ligne ajouté : @ConditionalOnProperty("filter.compression.enabled")
+['common/src/main/java/org/broadleafcommerce/common/web/util/CachingCompressedResponseFilter.java']
+
+************** date : 2017-12-11 11:46:23-06:00*****************
+		ligne ajouté : @ConditionalOnProperty("filter.compression.enabled")
+['common/src/main/java/org/broadleafcommerce/common/web/util/CachingCompressedResponseFilter.java']
+
+************** date : 2017-12-11 11:51:28-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/UncacheableDataProcessor.java']
+
+************** date : 2017-12-11 16:36:16-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['common/src/main/java/org/broadleafcommerce/common/web/processor/ResourceBundleProcessor.java']
+
+************** date : 2018-01-15 14:05:20-06:00*****************
+		ligne ajouté : @ConditionalOnBean(AdminOnlyTarget.class)
+************** date : 2018-01-15 14:05:20-06:00*****************
+		ligne ajouté : @ConditionalOnMissingBean(AdminOnlyTarget.class)
+['common/src/main/java/org/broadleafcommerce/common/admin/condition/ConditionalOnAdmin.java', 'common/src/main/java/org/broadleafcommerce/common/admin/condition/ConditionalOnNotAdmin.java']
+
+************** date : 2018-01-22 12:23:04-06:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['common/src/main/java/org/broadleafcommerce/common/web/processor/ResourceBundleProcessor.java']
+
+************** date : 2018-02-16 15:17:30-06:00*****************
+		ligne ajouté :     @ConditionalOnProperty("cookie.content.targeting.enabled")
+************** date : 2018-02-16 15:17:30-06:00*****************
+		ligne ajouté :     @ConditionalOnTemplating
+		ligne ajouté :     @ConditionalOnProperty("cookie.content.targeting.enabled")
+		ligne ajouté :     @ConditionalOnNotAdmin
+		ligne ajouté :     @ConditionalOnProperty("cookie.content.targeting.enabled")
+		ligne ajouté :     @ConditionalOnNotAdmin
+['admin/broadleaf-admin-module/src/main/java/org/broadleafcommerce/admin/web/config/AdminWebConfig.java', 'core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/config/FrameworkWebConfig.java']
+
+************** date : 2018-02-20 11:48:11-06:00*****************
+		ligne ajouté : @ConditionalOnProperty("filter.html.minification.enabled")
+['common/src/main/java/org/broadleafcommerce/common/web/util/HtmlMinifyFilter.java']
+
+************** date : 2018-02-21 12:15:21-06:00*****************
+		ligne ajouté : @ConditionalOnProperty("filter.html.minification.enabled")
+['common/src/main/java/org/broadleafcommerce/common/web/util/HtmlMinifyFilter.java']
+
+************** date : 2018-04-03 19:27:24-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionsProcessor.java']
+
+************** date : 2018-04-04 20:58:50-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionsProcessor.java']
+
+************** date : 2018-04-05 10:14:10-05:00*****************
+		ligne ajouté :     @ConditionalOnMissingBean
+['admin/broadleaf-contentmanagement-module/src/main/java/org/broadleafcommerce/cms/admin/web/controller/NonAutoconfigMultiPartConfiguration.java']
+
+************** date : 2018-04-10 10:35:38-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/ProductOptionsProcessor.java']
+
+************** date : 2018-04-10 13:25:30-05:00*****************
+		ligne ajouté : @ConditionalOnAdmin
+['admin/broadleaf-open-admin-platform/src/main/java/org/broadleafcommerce/openadmin/web/controller/config/AdminWebMvcConfiguration.java']
+
+************** date : 2018-04-12 16:12:47-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/GoogleUniversalAnalyticsProcessor.java']
+
+************** date : 2018-04-24 17:01:15-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/expression/checkout/PaymentMethodVariableExpression.java']
+
+************** date : 2018-04-25 15:45:16-05:00*****************
+		ligne ajouté :     @ConditionalOnMissingBean(name = "blJpaVendorAdapter")
+['common/src/main/java/org/broadleafcommerce/common/config/BroadleafCommonConfig.java']
+
+************** date : 2018-04-25 15:45:16-05:00*****************
+		ligne ajouté :     @ConditionalOnMissingBean(name = "blJpaVendorAdapter")
+['common/src/main/java/org/broadleafcommerce/common/config/BroadleafCommonConfig.java']
+
+************** date : 2018-04-25 15:45:16-05:00*****************
+		ligne ajouté :     @ConditionalOnMissingBean(name = "blJpaVendorAdapter")
+************** date : 2018-04-25 15:45:16-05:00*****************
+		ligne ajouté : @ConditionalOnClass(name = "com.google.javascript.jscomp.Compiler")
+************** date : 2018-04-25 15:45:16-05:00*****************
+		ligne ajouté : @ConditionalOnMissingClass(value = "com.google.javascript.jscomp.Compiler")
+['common/src/main/java/org/broadleafcommerce/common/config/BroadleafCommonConfig.java', 'common/src/main/java/org/broadleafcommerce/common/resource/service/GoogleClosureJavascriptMinificationServiceImpl.java', 'common/src/main/java/org/broadleafcommerce/common/resource/service/YUIJavscriptionMinificationServiceImpl.java']
+
+************** date : 2018-04-25 17:05:29-05:00*****************
+		ligne ajouté : @ConditionalOnClass(name = "com.google.javascript.jscomp.Compiler")
+************** date : 2018-04-25 17:05:29-05:00*****************
+		ligne ajouté : @ConditionalOnMissingClass(value = "com.google.javascript.jscomp.Compiler")
+['common/src/main/java/org/broadleafcommerce/common/resource/service/GoogleClosureJavascriptMinificationServiceImpl.java', 'common/src/main/java/org/broadleafcommerce/common/resource/service/YUIJavascriptMinificationServiceImpl.java']
+
+************** date : 2018-05-31 11:15:16-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+************** date : 2018-05-31 11:15:16-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['common/src/main/java/org/broadleafcommerce/common/web/processor/ResourceBundleProcessor.java', 'common/src/main/java/org/broadleafcommerce/common/web/processor/ResourcePreloadProcessor.java']
+
+************** date : 2018-06-05 20:14:14-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['core/broadleaf-framework-web/src/main/java/org/broadleafcommerce/core/web/processor/RatingsProcessor.java']
+
+************** date : 2018-06-06 12:23:12-05:00*****************
+		ligne ajouté : @ConditionalOnClass(name = "com.google.javascript.jscomp.Compiler")
+['common/src/main/java/org/broadleafcommerce/common/resource/service/GoogleClosureJavascriptMinificationServiceImpl.java']
+
+************** date : 2018-06-21 18:15:56-05:00*****************
+		ligne ajouté : @ConditionalOnTemplating
+['common/src/main/java/org/broadleafcommerce/common/web/processor/ResourceBundleProcessor.java']
+
+************** date : 2018-09-07 13:33:13-05:00*****************
+		ligne ajouté : @ConditionalOnProperty("filter.html.minification.enabled")
+['common/src/main/java/org/broadleafcommerce/common/web/util/HtmlMinifyFilter.java']
+
+
+
+##### nombre de conditional dans ce projet : 346  #####
