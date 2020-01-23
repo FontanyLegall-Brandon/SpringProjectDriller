@@ -1,1 +1,7 @@
 pydriller
+json
+requests
+fileinput
+xlsxwriter
+subprocess
+csv

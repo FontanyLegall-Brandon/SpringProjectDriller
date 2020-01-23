@@ -3,24 +3,29 @@
  ***** le git du projet : https://github.com/RameshMF/sagan *****
 ************** date : 2013-07-02 10:49:05+01:00*****************
 		ligne ajouté : 	@Conditional(ElasticsearchStubCondition.class)
+		ligne retiré : 	@Conditional(ElasticsearchStubCondition.class)
 ['src/test/java/org/springframework/test/configuration/ElasticsearchStubConfiguration.java']
 
 ************** date : 2013-07-03 16:01:35+01:00*****************
 		ligne ajouté : 	@Conditional(ElasticsearchStubCondition.class)
+		ligne retiré : 	@Conditional(ElasticsearchStubCondition.class)
 ['src/test/java/integration/configuration/ElasticsearchStubConfiguration.java']
 
 ************** date : 2013-07-05 18:04:04+01:00*****************
 		ligne ajouté : 	@Conditional(ElasticsearchStubCondition.class)
+		ligne retiré : 	@Conditional(ElasticsearchStubCondition.class)
 ['src/test/java/integration/configuration/ElasticsearchStubbedConfiguration.java']
 
 ************** date : 2013-08-08 11:36:45+01:00*****************
 		ligne ajouté : 		@ConditionalOnMissingBean(ErrorController.class)
+		ligne retiré : 		@ConditionalOnMissingBean(ErrorController.class)
 ['src/main/java/org/springframework/site/web/configuration/DefaultViewControllerConfiguration.java']
 
 ************** date : 2013-08-08 16:25:11+01:00*****************
 		ligne ajouté : 		@ConditionalOnMissingBean(ErrorController.class)
+		ligne retiré : 		@ConditionalOnMissingBean(ErrorController.class)
 ['src/main/java/org/springframework/site/web/configuration/DefaultViewControllerConfiguration.java']
 
 
 
-##### nombre de conditional dans ce projet : 5  #####
+##### nombre de conditional dans ce projet : 0  #####

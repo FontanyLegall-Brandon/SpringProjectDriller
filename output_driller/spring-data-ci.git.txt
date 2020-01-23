@@ -1,0 +1,6 @@
+
+
+ ***** le git du projet : https://github.com/spring-projects/spring-data-ci.git *****
+
+
+##### nombre de conditional ajouté dans ce projet : 0  #####

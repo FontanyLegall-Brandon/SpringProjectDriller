@@ -1,8 +1,0 @@
-https://github.com/RameshMF/sagan
-https://github.com/RameshMF/BroadleafCommerce
-https://github.com/RameshMF/spring-petclinic
-https://github.com/RameshMF/initializr
-https://github.com/RameshMF/java-blog-aggregator-boot
-https://github.com/openzipkin/zipkin
-https://github.com/Libresonic/libresonic
-https://github.com/aol/micro-server
