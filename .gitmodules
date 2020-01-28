@@ -1,0 +1,3 @@
+[submodule "rimel-spring-conditional"]
+	path = rimel-spring-conditional
+	url = git@github.com:Mahe-Thomas/rimel-spring-conditional.git
