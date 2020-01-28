@@ -21,14 +21,14 @@ def clone_and_search_occurence(repo_input):
         project_name = line[line.rfind('/')+1:line.rfind('.')]
 
         worksheet.write(row,column_project_name,project_name)
-        os.system('cd repository_cache/ ; git clone '+line)
-        occurence_contional = subprocess.check_output('grep -r \"@Conditional\" ./repository_cache/*/* | wc -l ', shell=True).decode()
+        os.system('cd ../repository_cache/ ; git clone '+line)
+        occurence_conditional = subprocess.check_output('grep -r \"@Conditional\" ../repository_cache/*/* | wc -l ', shell=True).decode()
 
-        worksheet.write(row, column_conditional, int(occurence_contional))
-        occurence_profile = subprocess.check_output('grep -r \"@Profil\" ./repository_cache/*/* | wc -l ', shell=True).decode()
+        worksheet.write(row, column_conditional, int(occurence_conditional))
+        occurence_profile = subprocess.check_output('grep -r \"@Profil\" ../repository_cache/*/* | wc -l ', shell=True).decode()
         worksheet.write(row, column_profile, int(occurence_profile))
-        os.system('rm -rf repository_cache/'+ project_name)
-        data_list.append([project_name,int(occurence_contional),int(occurence_contional)])
+        os.system('rm -rf ../repository_cache/'+ project_name)
+        data_list.append([project_name,int(occurence_conditional),int(occurence_profile)])
         row = row + 1
 
 
@@ -38,7 +38,7 @@ def file_cvs_with_array():
         writer.writerows(data_list)
 
 if __name__ == '__main__' :
-    workbook = xlsxwriter.Workbook('../stats/stat.xlsx')
+    workbook = xlsxwriter.Workbook('../stats/stats_occurence_in_repo.xlsx')
     data_list = [["Project Name","@Conditional","@Profil"]]
     worksheet = setup_excel_file()
     finput = open("../project_url/repos_url.txt", "r")

@@ -1,6 +1,20 @@
-import fileinput
+import xlsxwriter
 
 from pydriller import RepositoryMining, GitRepository
+
+def setup_excel_file():
+    worksheet = workbook.add_worksheet()
+    worksheet.write(0, 0,"Project Name")
+    worksheet.write(0, 1, " 2011")
+    worksheet.write(0, 2, " 2012")
+    worksheet.write(0, 3, " 2013")
+    worksheet.write(0, 4, " 2014")
+    worksheet.write(0, 5, " 2015")
+    worksheet.write(0, 6, " 2016")
+    worksheet.write(0, 7, " 2017")
+    worksheet.write(0, 8, " 2018")
+    worksheet.write(0, 9, " 2019")
+    return worksheet
 
 def find_occurence_in_commit(commit, word,file):
 
@@ -43,28 +57,45 @@ def find_occurence_in_commit(commit, word,file):
 
     return conditional_added
 
+
+def find_occurence_in_commit(commit, word):
+    conditional_added = 0
+    for m in commit.modifications:
+        conditional_added = conditional_added + str(m.diff).count(word)
+
+    return conditional_added
+
+
 def explore_commits(repo_input):
+    row = 1
+    column_project_name = 0
+    column_conditional = 1
+    column_profile = 2
 
     #pour tous les projets github
     for repo in repo_input :
-        #On créer un fichier
-        repofilename = "output_driller"+ repo[repo.rfind('/'):] + ".txt"
-        #et on l'ouvre en ecriture
-        file = open(repofilename, 'w+')
-        #compteur du nombre de conditionnal
+
+        occurences = [0 for x in range(10)]
+        worksheet.write(row,0,repo[repo.rfind('/'):repo.rfind('.')])
         conditional_added = 0
-        file.write("\n\n ***** le git du projet : {} *****\n".format(repo))
         #pour tous les commit dans ces projets
-        for commit in RepositoryMining(repo).traverse_commits():
-            #on récupere le nombre de conditional ajouté dans le commit et on l'ajoute au  nombre total de conditional
-            conditional_added = conditional_added + find_occurence_in_commit(commit,"@Conditional",file)
+        print(repo)
+        for commit in RepositoryMining(repo, only_modifications_with_file_types=['.java']).traverse_commits():
+            if(int(str(commit.committer_date)[0:4])>2010) :
+                # on récupere le nombre de conditional ajouté dans le commit et on l'ajoute au  nombre total de conditional
+                occurences[int(str(commit.committer_date)[3])] = occurences[int(str(commit.committer_date)[3])] + find_occurence_in_commit(commit, word)
 
-        file.write("\n\n##### nombre de conditional ajouté dans ce projet : {}  #####".format(conditional_added))
+        for i in range(9):
+            worksheet.write(row,i+1,occurences[i+1])
 
 
+        row = row + 1
 
 
 if __name__ == '__main__' :
+    word ="@Conditional"
+    workbook = xlsxwriter.Workbook('../stats/stats_occurence_in_year_'+word+'.xlsx')
+    worksheet = setup_excel_file()
     #get in repos_url.txt all the the github to explore
     f = open("../project_url/repos_url.txt", "r")
     #Set an array with all repo url
@@ -72,4 +103,5 @@ if __name__ == '__main__' :
     #Close the file
     f.close()
     explore_commits(repo_input)
+    workbook.close()
 
