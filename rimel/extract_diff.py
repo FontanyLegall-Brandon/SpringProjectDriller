@@ -11,9 +11,9 @@ def extract_diff(repo, out_folder, regexpr):
 
     commits = repo.traverse_commits()
 
-    def process(data):
+    def process(commit):
         try:
-            for m in data.modifications:
+            for m in commit.modifications:
                 code = m.diff
                 code = remove_comments(code)
 
@@ -21,8 +21,12 @@ def extract_diff(repo, out_folder, regexpr):
 
                 # Catch only commit where @conditional is in diff
                 if len(matches) > 0:
-                    f = open(out_folder + "/{}_commit_info.txt".format(m.hash), 'w')
+                    print("FOUND {} in {}".format(matches, commit.hash))
+                    f = open(out_folder + "/{}_commit_info.json".format(commit.hash), 'w')
                     print(m.__dict__, file=f)
+                    f.close()
+                    f = open(out_folder + "/{}.txt".format(commit.hash), 'w')
+                    print(code, file=f)
                     f.close()
 
         except TypeError:
