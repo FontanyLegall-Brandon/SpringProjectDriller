@@ -1,0 +1,34 @@
+@@ -0,0 +1,60 @@
++
++
++package org.springframework.boot.autoconfigure.cloud;
++
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
++import org.springframework.cloud.Cloud;
++import org.springframework.cloud.app.ApplicationInstanceInfo;
++import org.springframework.cloud.config.java.CloudScan;
++import org.springframework.cloud.config.java.CloudScanConfiguration;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.context.annotation.Import;
++import org.springframework.context.annotation.Profile;
++import org.springframework.core.Ordered;
++import org.springframework.core.annotation.Order;
++
++
++@Configuration
++@Profile()
++@Order(CloudAutoConfiguration.ORDER)
++@ConditionalOnClass(Cloud.class)
++@ConditionalOnMissingBean(Cloud.class)
++@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
++@Import(CloudScanConfiguration.class)
++public class CloudAutoConfiguration {
++
++	
++	public static final int ORDER = Ordered.HIGHEST_PRECEDENCE + 20;
++
++}
+

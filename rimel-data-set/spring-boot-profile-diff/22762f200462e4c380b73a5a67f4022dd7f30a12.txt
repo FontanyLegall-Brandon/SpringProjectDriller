@@ -1,0 +1,73 @@
+@@ -24,6 +24,7 @@ import org.junit.Test;
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.context.ConfigurableApplicationContext;
+ import org.springframework.context.annotation.Configuration;
++import org.springframework.context.annotation.Profile;
+ import org.springframework.context.annotation.PropertySource;
+ import org.springframework.context.support.StaticApplicationContext;
+ import org.springframework.core.env.MapPropertySource;
+@@ -34,6 +35,7 @@ import static org.hamcrest.Matchers.equalTo;
+ import static org.hamcrest.Matchers.notNullValue;
+ import static org.hamcrest.Matchers.nullValue;
+ import static org.junit.Assert.assertNotNull;
++import static org.junit.Assert.assertNull;
+ import static org.junit.Assert.assertThat;
+ 
+ /**
+@@ -196,6 +198,35 @@ public class ConfigFileApplicationContextInitializerTests {
+ 		context.close();
+ 	}
+ 
++	@Test
++	public void propertySourceAnnotationInProfile() throws Exception {
++		SpringApplication application = new SpringApplication(
++				WithPropertySourceInProfile.class);
++		application.setWebEnvironment(false);
++		ConfigurableApplicationContext context = application
++				.run();
++		String property = context.getEnvironment().getProperty();
++		assertThat(property, equalTo());
++		assertNotNull(context.getEnvironment().getPropertySources()
++				.get());
++		assertNull(context.getEnvironment().getPropertySources()
++				.get());
++		context.close();
++	}
++
++	@Test
++	public void propertySourceAnnotationAndProfile() throws Exception {
++		SpringApplication application = new SpringApplication(
++				WithPropertySourceAndProfile.class);
++		application.setWebEnvironment(false);
++		ConfigurableApplicationContext context = application.run();
++		String property = context.getEnvironment().getProperty();
++		assertThat(property, equalTo(null));
++		assertNull(context.getEnvironment().getPropertySources()
++				.get());
++		context.close();
++	}
++
+ 	@Test
+ 	public void propertySourceAnnotationMultipleLocations() throws Exception {
+ 		SpringApplication application = new SpringApplication(
+@@ -242,6 +273,19 @@ public class ConfigFileApplicationContextInitializerTests {
+ 
+ 	}
+ 
++	@Configuration
++	@PropertySource()
++	protected static class WithPropertySourceInProfile {
++
++	}
++
++	@Configuration
++	@PropertySource()
++	@Profile()
++	protected static class WithPropertySourceAndProfile {
++
++	}
++
+ 	@Configuration
+ 	@PropertySource({ ,
+ 			 })
+

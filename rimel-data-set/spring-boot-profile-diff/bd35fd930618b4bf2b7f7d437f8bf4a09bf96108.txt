@@ -1,0 +1,40 @@
+@@ -0,0 +1,55 @@
++
++package org.springframework.bootstrap.sample.service;
++
++import javax.sql.DataSource;
++
++import org.springframework.beans.factory.annotation.Value;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.context.annotation.Profile;
++
++
++@Configuration
++@Profile()
++public class ProductionDatabase {
++
++	@Value()
++	private String driverClassName;
++
++	@Value()
++	private String url;
++
++	@Value()
++	private String username;
++
++	@Value()
++	private String password;
++
++	@Bean
++	public DataSource dataSource() {
++		org.apache.tomcat.jdbc.pool.DataSource pool = new org.apache.tomcat.jdbc.pool.DataSource();
++		pool.setDriverClassName(this.driverClassName);
++		pool.setUrl(this.url);
++		pool.setUsername(this.username);
++		pool.setPassword(this.password);
++		return pool;
++	}
++
++}
+

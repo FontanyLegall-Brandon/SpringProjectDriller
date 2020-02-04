@@ -1,0 +1,23 @@
+@@ -1,35 +0,0 @@
+-
+-
+-package org.springframework.zero.sample.profile.service;
+-
+-import org.springframework.beans.factory.annotation.Value;
+-import org.springframework.context.annotation.Profile;
+-import org.springframework.stereotype.Component;
+-
+-@Component
+-@Profile({ ,  })
+-public class HelloWorldService implements MessageService {
+-
+-	@Value()
+-	private String name;
+-
+-	@Override
+-	public String getMessage() {
+-		return  + this.name;
+-	}
+-
+-}
+
