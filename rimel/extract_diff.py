@@ -19,9 +19,8 @@ def fetch_keyword_introduce(repo):
 
                 matches = re.findall(conditional_tag, code)
                 if len(matches) > 0:
-
-                for e in matches:
-                    print(e[2:len(e)-1], data.committer_date, sep=" ; ")
+                    for e in matches:
+                        print(e[2:len(e)-1], data.committer_date, sep=" ; ")
 
         except TypeError:
             # print("WARNING cannot analyse commit : ", commit.hash)
