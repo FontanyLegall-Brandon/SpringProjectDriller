@@ -1,0 +1,10 @@
+@@ -60,7 +60,7 @@ import org.springframework.util.ReflectionUtils;
+ @Configuration
+ @ConditionalOnClass(SpringLiquibase.class)
+ @ConditionalOnBean(DataSource.class)
+-@ConditionalOnProperty(prefix = , name = , matchIfMissing = true)
++@ConditionalOnProperty(prefix = , name = , matchIfMissing = true)
+ @AutoConfigureAfter({ DataSourceAutoConfiguration.class,
+ 		HibernateJpaAutoConfiguration.class })
+ public class LiquibaseAutoConfiguration {
+

@@ -1,0 +1,50 @@
+@@ -1,5 +1,5 @@
+ 
+ public class ConditionalOnExpressionTests {
+ 
+ 	private final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+ 
+ 	@Test
+-	public void testResourceExists() {
++	public void expressionIsTrue() {
+ 		this.context.register(BasicConfiguration.class);
+ 		this.context.refresh();
+ 		assertThat(this.context.containsBean()).isTrue();
+@@ -42,12 +43,19 @@ public class ConditionalOnExpressionTests {
+ 	}
+ 
+ 	@Test
+-	public void testResourceNotExists() {
++	public void expressionIsFalse() {
+ 		this.context.register(MissingConfiguration.class);
+ 		this.context.refresh();
+ 		assertThat(this.context.containsBean()).isFalse();
+ 	}
+ 
++	@Test
++	public void expressionIsNull() {
++		this.context.register(NullConfiguration.class);
++		this.context.refresh();
++		assertThat(this.context.containsBean()).isFalse();
++	}
++
+ 	@Configuration
+ 	@ConditionalOnExpression()
+ 	protected static class MissingConfiguration {
+@@ -70,4 +78,15 @@ public class ConditionalOnExpressionTests {
+ 
+ 	}
+ 
++	@Configuration
++	@ConditionalOnExpression()
++	protected static class NullConfiguration {
++
++		@Bean
++		public String foo() {
++			return ;
++		}
++
++	}
++
+ }
+

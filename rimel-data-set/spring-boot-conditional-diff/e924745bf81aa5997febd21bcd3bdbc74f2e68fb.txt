@@ -1,0 +1,43 @@
+@@ -1,5 +1,5 @@
+ 
++@SuppressWarnings()
+ @Configuration
+ @ConditionalOnBean(NamedParameterJdbcOperations.class)
+-@ConditionalOnClass({ NamedParameterJdbcOperations.class, JdbcConfiguration.class })
++@ConditionalOnClass({ NamedParameterJdbcOperations.class,
++		AbstractJdbcConfiguration.class })
+ @ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+ @AutoConfigureAfter(JdbcTemplateAutoConfiguration.class)
+ public class JdbcRepositoriesAutoConfiguration {
+@@ -62,27 +59,9 @@ public class JdbcRepositoriesAutoConfiguration {
+ 	}
+ 
+ 	@Configuration
+-	@ConditionalOnMissingBean(JdbcConfiguration.class)
+-	static class SpringBootJdbcConfiguration extends JdbcConfiguration {
+-
+-		
+-		
+-		@Override
+-		public JdbcCustomConversions jdbcCustomConversions() {
+-			return super.jdbcCustomConversions();
+-		}
+-
+-		@Override
+-		public RelationalMappingContext jdbcMappingContext(
+-				Optional<NamingStrategy> namingStrategy) {
+-			return super.jdbcMappingContext(namingStrategy);
+-		}
+-
+-		@Override
+-		public RelationalConverter relationalConverter(
+-				RelationalMappingContext mappingContext) {
+-			return super.relationalConverter(mappingContext);
+-		}
++	@ConditionalOnMissingBean({ AbstractJdbcConfiguration.class,
++			JdbcConfiguration.class })
++	static class SpringBootJdbcConfiguration extends AbstractJdbcConfiguration {
+ 
+ 	}
+ 
+

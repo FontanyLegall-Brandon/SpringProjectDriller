@@ -1,0 +1,16 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration(proxyBeanMethods = false)
+@@ -39,11 +39,4 @@ class LegacyHealthEndpointAdaptersConfiguration {
+ 		return new HealthAggregatorStatusAggregatorAdapter(healthAggregator);
+ 	}
+ 
+-	@Bean
+-	@ConditionalOnBean(org.springframework.boot.actuate.health.HealthStatusHttpMapper.class)
+-	HttpCodeStatusMapper healthStatusHttpMapperHttpCodeStatusMapperAdapter(
+-			org.springframework.boot.actuate.health.HealthStatusHttpMapper healthStatusHttpMapper) {
+-		return new HealthStatusHttpMapperHttpCodeStatusMapperAdapter(healthStatusHttpMapper);
+-	}
+-
+ }
+

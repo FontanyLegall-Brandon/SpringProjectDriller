@@ -1,0 +1,11 @@
+@@ -65,7 +65,8 @@ public class MongoAutoConfiguration {
+ 	}
+ 
+ 	@Bean
+-	@ConditionalOnMissingBean
++	@ConditionalOnMissingBean(type = { ,
++			 })
+ 	public MongoClient mongo() {
+ 		this.mongo = this.factory.createMongoClient(this.options);
+ 		return this.mongo;
+

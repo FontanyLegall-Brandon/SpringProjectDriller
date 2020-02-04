@@ -1,0 +1,100 @@
+@@ -0,0 +1,120 @@
++
++
++package org.springframework.boot.autoconfigure.cache;
++
++import java.io.Closeable;
++import java.io.IOException;
++
++import com.hazelcast.core.Hazelcast;
++import com.hazelcast.core.HazelcastInstance;
++import com.hazelcast.spring.cache.HazelcastCacheManager;
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
++import org.springframework.boot.autoconfigure.hazelcast.HazelcastConfigResourceCondition;
++import org.springframework.boot.autoconfigure.hazelcast.HazelcastInstanceFactory;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Conditional;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.core.io.Resource;
++
++
++abstract class HazelcastInstanceConfiguration {
++
++	@Configuration
++	@ConditionalOnSingleCandidate(HazelcastInstance.class)
++	static class Existing {
++
++		@Autowired
++		private CacheProperties cacheProperties;
++
++		@Bean
++		public HazelcastCacheManager cacheManager(
++				HazelcastInstance existingHazelcastInstance) throws IOException {
++			Resource config = this.cacheProperties.getHazelcast().getConfig();
++			Resource location = this.cacheProperties.resolveConfigLocation(config);
++			if (location != null) {
++				HazelcastInstance cacheHazelcastInstance = new HazelcastInstanceFactory(
++						location).getHazelcastInstance();
++				return new CloseableHazelcastCacheManager(cacheHazelcastInstance);
++			}
++			return new HazelcastCacheManager(existingHazelcastInstance);
++		}
++	}
++
++	@Configuration
++	@ConditionalOnMissingBean(HazelcastInstance.class)
++	@Conditional(ConfigAvailableCondition.class)
++	static class Specific {
++
++		@Autowired
++		private CacheProperties cacheProperties;
++
++		@Bean
++		public HazelcastInstance hazelcastInstance() throws IOException {
++			Resource config = this.cacheProperties.getHazelcast().getConfig();
++			Resource location = this.cacheProperties.resolveConfigLocation(config);
++			if (location != null) {
++				return new HazelcastInstanceFactory(location).getHazelcastInstance();
++			}
++			return Hazelcast.newHazelcastInstance();
++		}
++
++		@Bean
++		public HazelcastCacheManager cacheManager() throws IOException {
++			return new HazelcastCacheManager(hazelcastInstance());
++		}
++
++	}
++
++
++	
++	static class ConfigAvailableCondition extends HazelcastConfigResourceCondition {
++
++		ConfigAvailableCondition() {
++			super(, );
++		}
++
++	}
++
++	private static class CloseableHazelcastCacheManager extends HazelcastCacheManager
++			implements Closeable {
++
++		private final HazelcastInstance hazelcastInstance;
++
++		CloseableHazelcastCacheManager(HazelcastInstance hazelcastInstance) {
++			super(hazelcastInstance);
++			this.hazelcastInstance = hazelcastInstance;
++		}
++
++		@Override
++		public void close() throws IOException {
++			this.hazelcastInstance.shutdown();
++		}
++
++	}
++
++}
+

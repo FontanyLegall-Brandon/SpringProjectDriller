@@ -1,0 +1,10 @@
+@@ -116,7 +116,7 @@ public class ThymeleafAutoConfiguration {
+ 	}
+ 
+ 	@Configuration
+-	@ConditionalOnClass({ LayoutDialect.class })
++	@ConditionalOnClass(name = )
+ 	@ConditionalOnMissingBean(SpringTemplateEngine.class)
+ 	protected static class ThymeleafWebLayoutConfiguration {
+ 
+

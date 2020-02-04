@@ -1,0 +1,28 @@
+@@ -16,20 +16,31 @@
+ 
+ package org.springframework.boot.actuate.autoconfigure;
+ 
++import org.springframework.boot.actuate.endpoint.Endpoint;
+ import org.springframework.boot.actuate.endpoint.jmx.EndpointMBeanExporter;
+ import org.springframework.boot.autoconfigure.AutoConfigureAfter;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.jmx.export.MBeanExporter;
+ 
++
+ @Configuration
+ @ConditionalOnBean({ MBeanExporter.class })
+ @AutoConfigureAfter({ EndpointAutoConfiguration.class })
++@ConditionalOnExpression()
+ class EndpointMBeanExportAutoConfiguration {
+ 
+ 	@Bean
+ 	public EndpointMBeanExporter endpointMBeanExporter() {
++		
+ 		return new EndpointMBeanExporter();
+ 	}
+ 
+

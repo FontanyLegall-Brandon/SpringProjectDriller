@@ -1,0 +1,29 @@
+@@ -1,46 +0,0 @@
+-
+-
+-package org.springframework.bootstrap.autoconfigure.web;
+-
+-import javax.servlet.Servlet;
+-
+-import org.apache.catalina.startup.Tomcat;
+-import org.springframework.bootstrap.context.annotation.ConditionalOnClass;
+-import org.springframework.bootstrap.context.annotation.ConditionalOnMissingBean;
+-import org.springframework.bootstrap.context.annotation.EnableAutoConfiguration;
+-import org.springframework.bootstrap.context.embedded.EmbeddedServletContainerFactory;
+-import org.springframework.bootstrap.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+-import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.Configuration;
+-
+-
+-@Configuration
+-@ConditionalOnClass({ Servlet.class, Tomcat.class })
+-@ConditionalOnMissingBean(EmbeddedServletContainerFactory.class)
+-public class EmbeddedTomcatAutoConfiguration {
+-
+-	@Bean
+-	public TomcatEmbeddedServletContainerFactory tomcatEmbeddedServletContainerFactory() {
+-		return new TomcatEmbeddedServletContainerFactory();
+-	}
+-
+-}
+

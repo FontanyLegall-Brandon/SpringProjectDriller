@@ -1,0 +1,13 @@
+@@ -25,18 +25,18 @@ import org.springframework.context.annotation.EnableMBeanExport;
+ import org.springframework.jmx.export.MBeanExporter;
+ 
+ 
+ @Configuration
+ @ConditionalOnClass({ MBeanExporter.class })
+ @ConditionalOnMissingBean({ MBeanExporter.class })
+-@ConditionalOnExpression()
++@ConditionalOnExpression()
+ public class JmxAutoConfiguration {
+ 
+ 	@Configuration
+

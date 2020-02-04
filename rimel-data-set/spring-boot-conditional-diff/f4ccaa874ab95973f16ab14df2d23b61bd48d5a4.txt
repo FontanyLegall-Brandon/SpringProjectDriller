@@ -1,0 +1,45 @@
+@@ -23,15 +23,18 @@ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration;
+ import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
+ import org.springframework.boot.context.properties.EnableConfigurationProperties;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.context.annotation.Import;
+ import org.springframework.http.converter.HttpMessageConverter;
++import org.springframework.http.converter.json.GsonHttpMessageConverter;
+ import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+ 
+ import com.fasterxml.jackson.databind.ObjectMapper;
++import com.google.gson.Gson;
+ 
+ 
+ @Configuration
+ @ConditionalOnClass(HttpMessageConverter.class)
+-@Import(JacksonAutoConfiguration.class)
++@Import({ JacksonAutoConfiguration.class, GsonAutoConfiguration.class })
+ public class HttpMessageConvertersAutoConfiguration {
+ 
+ 	@Autowired(required = false)
+@@ -75,4 +79,18 @@ public class HttpMessageConvertersAutoConfiguration {
+ 
+ 	}
+ 
++	@Configuration
++	@ConditionalOnClass(Gson.class)
++	protected static class GsonConfiguration {
++
++		@Bean
++		@ConditionalOnMissingBean
++		public GsonHttpMessageConverter gsonHttpMessageConverter(Gson gson) {
++			GsonHttpMessageConverter converter = new GsonHttpMessageConverter();
++			converter.setGson(gson);
++			return converter;
++		}
++
++	}
++
+ }
+

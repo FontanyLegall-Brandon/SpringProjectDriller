@@ -1,0 +1,70 @@
+@@ -0,0 +1,88 @@
++
++
++package org.springframework.boot.devtools.autoconfigure;
++
++import java.util.Arrays;
++import java.util.HashSet;
++import java.util.Set;
++
++import javax.sql.DataSource;
++
++import org.springframework.beans.factory.DisposableBean;
++import org.springframework.boot.autoconfigure.AutoConfigureAfter;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
++import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
++
++
++@AutoConfigureAfter(DataSourceAutoConfiguration.class)
++@ConditionalOnBean({ DataSource.class, DataSourceProperties.class })
++@Configuration
++public class DevToolsDataSourceAutoConfiguration {
++
++	@Bean
++	NonEmbeddedInMemoryDatabaseShutdownExecutor inMemoryDatabaseShutdownExecutor(
++			DataSource dataSource, DataSourceProperties dataSourceProperties) {
++		return new NonEmbeddedInMemoryDatabaseShutdownExecutor(dataSource,
++				dataSourceProperties);
++	}
++
++	static final class NonEmbeddedInMemoryDatabaseShutdownExecutor
++			implements DisposableBean {
++
++		private static final Set<String> IN_MEMORY_DRIVER_CLASS_NAMES = new HashSet<String>(
++				Arrays.asList(, ,
++						, ,
++						,
++						));
++
++		private final DataSource dataSource;
++
++		private final DataSourceProperties dataSourceProperties;
++
++		public NonEmbeddedInMemoryDatabaseShutdownExecutor(DataSource dataSource,
++				DataSourceProperties dataSourceProperties) {
++			this.dataSource = dataSource;
++			this.dataSourceProperties = dataSourceProperties;
++		}
++
++		@Override
++		public void destroy() throws Exception {
++			if (dataSourceRequiresShutdown()) {
++				this.dataSource.getConnection().createStatement().execute();
++			}
++		}
++
++		private boolean dataSourceRequiresShutdown() {
++			return IN_MEMORY_DRIVER_CLASS_NAMES
++					.contains(this.dataSourceProperties.getDriverClassName())
++					&& (!(this.dataSource instanceof EmbeddedDatabase));
++		}
++
++	}
++
++}
+

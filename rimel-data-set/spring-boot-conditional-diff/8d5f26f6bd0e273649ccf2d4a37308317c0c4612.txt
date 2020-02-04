@@ -1,0 +1,10 @@
+@@ -48,7 +48,7 @@ import org.springframework.core.annotation.Order;
+ @Configuration
+ @Profile()
+ @Order(CloudAutoConfiguration.ORDER)
+-@ConditionalOnClass(Cloud.class)
++@ConditionalOnClass(CloudScanConfiguration.class)
+ @ConditionalOnMissingBean(Cloud.class)
+ @ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+ @Import(CloudScanConfiguration.class)
+

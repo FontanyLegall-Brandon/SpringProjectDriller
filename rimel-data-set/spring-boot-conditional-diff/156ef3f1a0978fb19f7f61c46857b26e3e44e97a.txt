@@ -1,0 +1,10 @@
+@@ -61,7 +61,7 @@ public class RedisAutoConfiguration {
+ 		}
+ 
+ 		@Bean
+-		@ConditionalOnMissingBean(RedisOperations.class)
++		@ConditionalOnMissingBean(name = )
+ 		RedisOperations<Object, Object> redisTemplate(
+ 				RedisConnectionFactory redisConnectionFactory)
+ 				throws UnknownHostException {
+

@@ -1,0 +1,15 @@
+@@ -38,11 +38,10 @@ class OAuth2ResourceServerJwkConfiguration {
+ 	}
+ 
+ 	@Bean
+-	@ConditionalOnProperty(name = )
++	@ConditionalOnProperty(name = )
+ 	@ConditionalOnMissingBean
+ 	public JwtDecoder jwtDecoder() {
+-		return new NimbusJwtDecoderJwkSupport(
+-				this.properties.getJwt().getJwk().getSetUri());
++		return new NimbusJwtDecoderJwkSupport(this.properties.getJwt().getJwkSetUri());
+ 	}
+ 
+ }
+

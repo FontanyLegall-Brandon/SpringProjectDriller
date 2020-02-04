@@ -1,0 +1,17 @@
+@@ -1,5 +1,5 @@
+ 
+ 	@Configuration
+-	@ConditionalOnClass({ EnableIntegrationManagement.class,
+-			EnableIntegrationMBeanExport.class })
++	@ConditionalOnClass(EnableIntegrationManagement.class)
+ 	@ConditionalOnMissingBean(value = IntegrationManagementConfigurer.class, name = IntegrationManagementConfigurer.MANAGEMENT_CONFIGURER_NAME, search = SearchStrategy.CURRENT)
+-	@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+ 	protected static class IntegrationManagementConfiguration {
+ 
+ 		@Configuration
+-		@EnableIntegrationManagement(defaultCountsEnabled = , defaultStatsEnabled = )
++		@EnableIntegrationManagement(countsEnabled = )
+ 		protected static class EnableIntegrationManagementConfiguration {
+ 		}
+ 
+

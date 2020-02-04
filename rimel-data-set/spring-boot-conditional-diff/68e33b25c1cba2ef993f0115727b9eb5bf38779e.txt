@@ -1,0 +1,67 @@
+@@ -0,0 +1,83 @@
++
++
++package org.springframework.boot.autoconfigure.liquibase;
++
++import javax.annotation.PostConstruct;
++import javax.sql.DataSource;
++
++import liquibase.integration.spring.SpringLiquibase;
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.autoconfigure.AutoConfigureAfter;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
++import org.springframework.boot.context.properties.EnableConfigurationProperties;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.core.io.DefaultResourceLoader;
++import org.springframework.core.io.Resource;
++import org.springframework.core.io.ResourceLoader;
++import org.springframework.util.Assert;
++
++
++@Configuration
++@ConditionalOnClass(SpringLiquibase.class)
++@AutoConfigureAfter(DataSourceAutoConfiguration.class)
++public class LiquibaseAutoConfiguration {
++
++	@Configuration
++	@ConditionalOnMissingBean(SpringLiquibase.class)
++	@EnableConfigurationProperties(LiquibaseProperties.class)
++	public static class LiquibaseConfiguration {
++
++		@Autowired
++		private LiquibaseProperties properties = new LiquibaseProperties();
++
++		@Autowired
++		private ResourceLoader resourceLoader = new DefaultResourceLoader();
++
++		@Autowired
++		private DataSource dataSource;
++
++		@PostConstruct
++		public void checkChangelogExists() {
++			if (this.properties.isCheckChangeLogLocation()) {
++				Resource resource = this.resourceLoader.getResource(this.properties.getChangeLog());
++				Assert.state(resource.exists(), 
++						+ resource + );
++			}
++		}
++
++		@Bean
++		public SpringLiquibase liquibase() {
++			SpringLiquibase liquibase = new SpringLiquibase();
++			liquibase.setChangeLog(this.properties.getChangeLog());
++			liquibase.setContexts(this.properties.getContexts());
++	        liquibase.setDataSource(dataSource);
++	        liquibase.setDefaultSchema(this.properties.getDefaultSchema());
++	        liquibase.setDropFirst(this.properties.isDropFirst());
++	        liquibase.setShouldRun(this.properties.isShouldRun());
++			return liquibase;
++		}
++	}
++}
+

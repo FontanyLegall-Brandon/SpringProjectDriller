@@ -1,0 +1,47 @@
+@@ -1,70 +0,0 @@
+-
+-
+-package org.springframework.boot.autoconfigure.lifecycle;
+-
+-import javax.management.MalformedObjectNameException;
+-
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+-import org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;
+-import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.Configuration;
+-import org.springframework.core.env.Environment;
+-import org.springframework.jmx.export.MBeanExporter;
+-
+-
+-@Configuration
+-@AutoConfigureAfter(JmxAutoConfiguration.class)
+-@ConditionalOnProperty(value = , havingValue = , matchIfMissing = false)
+-class SpringApplicationLifecycleAutoConfiguration {
+-
+-	
+-	static final String JMX_NAME_PROPERTY = ;
+-
+-	
+-	static final String DEFAULT_JMX_NAME = ;
+-
+-	@Autowired(required = false)
+-	private MBeanExporter mbeanExporter;
+-
+-	@Autowired
+-	private Environment environment;
+-
+-	@Bean
+-	public SpringApplicationLifecycleRegistrar springApplicationLifecycleRegistrar()
+-			throws MalformedObjectNameException {
+-
+-		String jmxName = this.environment.getProperty(JMX_NAME_PROPERTY, DEFAULT_JMX_NAME);
+-		if (mbeanExporter != null) { 
+-			mbeanExporter.addExcludedBean(jmxName);
+-		}
+-		return new SpringApplicationLifecycleRegistrar(jmxName);
+-	}
+-
+-}
+

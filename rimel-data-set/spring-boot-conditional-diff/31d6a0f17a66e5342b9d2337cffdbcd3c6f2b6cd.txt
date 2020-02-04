@@ -1,0 +1,106 @@
+@@ -29,6 +29,7 @@ import org.springframework.boot.actuate.metrics.export.MetricExporters;
+ import org.springframework.boot.actuate.metrics.reader.CompositeMetricReader;
+ import org.springframework.boot.actuate.metrics.reader.MetricReader;
+ import org.springframework.boot.actuate.metrics.writer.MetricWriter;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+ import org.springframework.boot.context.properties.EnableConfigurationProperties;
+@@ -37,9 +38,13 @@ import org.springframework.context.annotation.Configuration;
+ import org.springframework.scheduling.annotation.EnableScheduling;
+ import org.springframework.scheduling.annotation.SchedulingConfigurer;
+ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
++import org.springframework.util.CollectionUtils;
+ 
+ 
+ @Configuration
+ @EnableScheduling
+@@ -47,22 +52,39 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
+ @EnableConfigurationProperties
+ public class MetricExportAutoConfiguration {
+ 
+-	@Autowired(required = false)
+-	@ExportMetricWriter
+-	private Map<String, MetricWriter> writers = Collections.emptyMap();
+-
+ 	@Autowired
+-	private MetricExportProperties metrics;
++	private MetricExportProperties properties;
++
++	@Autowired(required = false)
++	private MetricsEndpointMetricReader endpointReader;
+ 
+ 	@Autowired(required = false)
+ 	@ExportMetricReader
+ 	private List<MetricReader> readers;
+ 
+ 	@Autowired(required = false)
+-	private MetricsEndpointMetricReader endpointReader;
++	@ExportMetricWriter
++	private Map<String, MetricWriter> writers = Collections.emptyMap();
++
++	@Bean
++	@ConditionalOnMissingBean(name = )
++	public SchedulingConfigurer metricWritersMetricExporter() {
++		Map<String, MetricWriter> writers = new HashMap<String, MetricWriter>();
++		MetricReader reader = this.endpointReader;
++		if (reader == null && !CollectionUtils.isEmpty(this.readers)) {
++			reader = new CompositeMetricReader(
++					this.readers.toArray(new MetricReader[this.readers.size()]));
++		}
++		if (reader != null) {
++			writers.putAll(this.writers);
++			return new MetricExporters(reader, writers, this.properties);
++		}
++		return new NoOpSchedulingConfigurer();
++	}
+ 
+ 	@Configuration
+ 	protected static class MetricExportPropertiesConfiguration {
++
+ 		@Value()
+ 		private String prefix = ;
+ 
+@@ -70,36 +92,18 @@ public class MetricExportAutoConfiguration {
+ 		@ConditionalOnMissingBean
+ 		public MetricExportProperties metricExportProperties() {
+ 			MetricExportProperties export = new MetricExportProperties();
+-			export.getRedis().setPrefix(prefix);
++			export.getRedis().setPrefix(this.prefix);
+ 			return export;
+ 		}
+-	}
+-
+-	@Bean
+-	@ConditionalOnMissingBean(name = )
+-	public SchedulingConfigurer metricWritersMetricExporter() {
+ 
+-		Map<String, MetricWriter> writers = new HashMap<String, MetricWriter>();
++	}
+ 
+-		MetricReader reader = this.endpointReader;
+-		if (reader == null && this.readers != null && !this.readers.isEmpty()) {
+-			reader = new CompositeMetricReader(
+-					this.readers.toArray(new MetricReader[this.readers.size()]));
+-		}
++	private static class NoOpSchedulingConfigurer implements SchedulingConfigurer {
+ 
+-		if (reader != null) {
+-			writers.putAll(this.writers);
+-			MetricExporters exporters = new MetricExporters(reader, writers, this.metrics);
+-			return exporters;
++		@Override
++		public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+ 		}
+ 
+-		return new SchedulingConfigurer() {
+-
+-			@Override
+-			public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+-			}
+-		};
+-
+ 	}
+ 
+ }
+

@@ -1,0 +1,87 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+ @ConditionalOnClass({ CouchbaseClient.class, CouchbaseRepository.class })
++@Import(CouchbaseRepositoriesAutoConfigureRegistrar.class)
++@EnableConfigurationProperties(CouchbaseProperties.class)
+ public class CouchbaseRepositoriesAutoConfiguration {
+ 
+-	@Import(CouchbaseRepositoriesAutoConfigureRegistrar.class)
+-	@Configuration
+-	@EnableConfigurationProperties(CouchbaseProperties.class)
+-	protected static class CouchbaseRepositoriesConfiguration {
+-
+-		@Autowired
+-		private CouchbaseProperties config;
+-
+-		@PreDestroy
+-		public void close() throws URISyntaxException, IOException {
+-			couchbaseClient().shutdown();
+-		}
+-
+-		@Bean
+-		@ConditionalOnMissingBean(CouchbaseClient.class)
+-		CouchbaseClient couchbaseClient() throws URISyntaxException, IOException {
+-			return this.config.couchbaseClient();
+-		}
++	@Autowired
++	private CouchbaseProperties properties;
+ 
+-		@Bean
+-		@ConditionalOnMissingBean(CouchbaseTemplate.class)
+-		CouchbaseTemplate couchbaseTemplate(CouchbaseClient couchbaseClient) {
+-			return new CouchbaseTemplate(couchbaseClient);
+-		}
++	@PreDestroy
++	public void close() throws URISyntaxException, IOException {
++		couchbaseClient().shutdown();
+ 	}
+ 
+-	@ConfigurationProperties(prefix = )
+-	public static class CouchbaseProperties {
+-
+-		private String host = ;
+-		private String bucket = ;
+-		private String password = ;
+-
+-		public CouchbaseClient couchbaseClient() throws URISyntaxException, IOException {
+-			return new CouchbaseClient(Arrays.asList(new URI( + getHost()
+-					+ )), getBucket(), getPassword());
+-		}
+-
+-		public String getHost() {
+-			return this.host;
+-		}
+-
+-		public void setHost(String host) {
+-			this.host = host;
+-		}
+-
+-		public String getBucket() {
+-			return this.bucket;
+-		}
+-
+-		public void setBucket(String bucket) {
+-			this.bucket = bucket;
+-		}
+-
+-		public String getPassword() {
+-			return this.password;
+-		}
++	@Bean
++	@ConditionalOnMissingBean(CouchbaseClient.class)
++	CouchbaseClient couchbaseClient() throws URISyntaxException, IOException {
++		return this.properties.createClient();
++	}
+ 
+-		public void setPassword(String password) {
+-			this.password = password;
+-		}
++	@Bean
++	@ConditionalOnMissingBean(CouchbaseTemplate.class)
++	CouchbaseTemplate couchbaseTemplate(CouchbaseClient couchbaseClient) {
++		return new CouchbaseTemplate(couchbaseClient);
+ 	}
++
+ }
+

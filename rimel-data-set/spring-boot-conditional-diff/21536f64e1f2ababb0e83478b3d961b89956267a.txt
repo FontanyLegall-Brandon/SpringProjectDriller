@@ -1,0 +1,10 @@
+@@ -62,7 +62,7 @@ public class ProjectInfoAutoConfiguration {
+ 		return new GitProperties(loadFrom(this.properties.getGit().getLocation(), ));
+ 	}
+ 
+-	@ConditionalOnResource(resources = )
++	@ConditionalOnResource(resources = )
+ 	@ConditionalOnMissingBean
+ 	@Bean
+ 	public BuildProperties buildProperties() throws Exception {
+

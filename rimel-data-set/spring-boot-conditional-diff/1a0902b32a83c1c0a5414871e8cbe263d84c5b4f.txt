@@ -1,0 +1,54 @@
+@@ -0,0 +1,69 @@
++
++package org.springframework.bootstrap.context.annotation;
++
++import org.junit.Test;
++import org.springframework.context.annotation.AnnotationConfigApplicationContext;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.assertFalse;
++import static org.junit.Assert.assertTrue;
++
++
++public class OnMissingBeanConditionTests {
++
++	private AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
++
++	@Test
++	public void testNameOnMissingBeanCondition() {
++		this.context.register(FooConfiguration.class, OnBeanNameConfiguration.class);
++		this.context.refresh();
++		assertFalse(this.context.containsBean());
++		assertEquals(, this.context.getBean());
++	}
++
++	@Test
++	public void testNameOnMissingBeanConditionReverseOrder() {
++		this.context.register(OnBeanNameConfiguration.class, FooConfiguration.class);
++		this.context.refresh();
++		
++		assertTrue(this.context.containsBean());
++		assertEquals(, this.context.getBean());
++	}
++
++	@Configuration
++	@ConditionalOnMissingBean(name = )
++	protected static class OnBeanNameConfiguration {
++		@Bean
++		public String bar() {
++			return ;
++		}
++	}
++
++	@Configuration
++	protected static class FooConfiguration {
++		@Bean
++		public String foo() {
++			return ;
++		}
++	}
++
++}
+

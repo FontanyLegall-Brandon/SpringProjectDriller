@@ -1,0 +1,23 @@
+@@ -14,11 +14,9 @@
+  * limitations under the License.
+  */
+ 
+-package org.springframework.boot.strap.context.condition;
++package org.springframework.boot.context.condition;
+ 
+ import org.junit.Test;
+-import org.springframework.boot.strap.context.condition.ConditionalOnMissingClass;
+-import org.springframework.boot.strap.context.condition.OnMissingClassCondition;
+ import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+@@ -53,7 +51,7 @@ public class OnMissingClassConditionTests {
+ 	}
+ 
+ 	@Configuration
+-	@ConditionalOnMissingClass()
++	@ConditionalOnMissingClass()
+ 	protected static class BasicConfiguration {
+ 		@Bean
+ 		public String bar() {
+

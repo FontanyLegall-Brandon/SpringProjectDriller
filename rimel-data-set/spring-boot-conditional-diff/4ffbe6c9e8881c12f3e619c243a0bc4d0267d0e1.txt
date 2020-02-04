@@ -1,0 +1,228 @@
+@@ -0,0 +1,244 @@
++
++
++package org.springframework.boot.actuate.autoconfigure.endpoint.condition;
++
++import org.junit.Test;
++
++import org.springframework.boot.actuate.endpoint.EndpointFilter;
++import org.springframework.boot.actuate.endpoint.ExposableEndpoint;
++import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
++import org.springframework.boot.actuate.endpoint.annotation.EndpointExtension;
++import org.springframework.boot.test.context.runner.ApplicationContextRunner;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++import static org.assertj.core.api.Assertions.assertThat;
++
++
++public class ConditionalOnExposedEndpointTests {
++
++	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
++			.withUserConfiguration(AllEndpointsConfiguration.class);
++
++	@Test
++	public void outcomeShouldMatchDefaults() {
++		this.contextRunner.run((context) -> assertThat(context).hasBean()
++				.hasBean().doesNotHaveBean().doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeAllWebShouldMatch() {
++		this.contextRunner
++				.withPropertyValues()
++				.run((context) -> assertThat(context).hasBean().hasBean()
++						.hasBean().hasBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeAllJmxButJmxDisabledShouldMatchDefaults() {
++		this.contextRunner
++				.withPropertyValues()
++				.run((context) -> assertThat(context).hasBean().hasBean()
++						.doesNotHaveBean().doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeAllJmxAndJmxEnabledShouldMatch() {
++		this.contextRunner
++				.withPropertyValues(,
++						)
++				.run((context) -> assertThat(context).hasBean().hasBean()
++						.hasBean().hasBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeAllWebAndExcludeMatchesShouldNotMatch() {
++		this.contextRunner
++				.withPropertyValues(,
++						)
++				.run((context) -> assertThat(context).hasBean().hasBean()
++						.doesNotHaveBean().doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeMatchesAndExcludeMatchesShouldNotMatch() {
++		this.contextRunner.withPropertyValues(
++				,
++				)
++				.run((context) -> assertThat(context).hasBean().hasBean()
++						.doesNotHaveBean().doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeMatchesShouldMatch() {
++		this.contextRunner
++				.withPropertyValues()
++				.run((context) -> assertThat(context).hasBean()
++						.doesNotHaveBean().doesNotHaveBean()
++						.doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeMatchesWithCaseShouldMatch() {
++		this.contextRunner
++				.withPropertyValues()
++				.run((context) -> assertThat(context).hasBean()
++						.doesNotHaveBean().doesNotHaveBean()
++						.doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeMatchesAndExcludeAllShouldNotMatch() {
++		this.contextRunner.withPropertyValues(
++				,
++				)
++				.run((context) -> assertThat(context).doesNotHaveBean()
++						.doesNotHaveBean().doesNotHaveBean()
++						.doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeMatchesShoulMatchWithExtensionsAndComponents() {
++		this.contextRunner
++				.withUserConfiguration(
++						ComponentEnabledIfEndpointIsExposedConfiguration.class)
++				.withPropertyValues()
++				.run((context) -> assertThat(context).hasBean()
++						.hasBean().hasBean()
++						.doesNotHaveBean().doesNotHaveBean()
++						.doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWithNoEndpointReferenceShouldFail() {
++		this.contextRunner
++				.withUserConfiguration(
++						ComponentWithNoEndpointReferenceConfiguration.class)
++				.withPropertyValues()
++				.run((context) -> {
++					assertThat(context).hasFailed();
++					assertThat(context.getStartupFailure().getCause().getMessage())
++							.contains(
++									
++											+ );
++				});
++	}
++
++	@Test
++	public void outcomeOnCloudFoundryShouldMatchAll() {
++		this.contextRunner
++				.withPropertyValues()
++				.run((context) -> assertThat(context).hasBean()
++				.hasBean().hasBean().hasBean());
++	}
++
++	@Endpoint(id = )
++	static class HealthEndpoint {
++
++	}
++
++	@Endpoint(id = )
++	static class InfoEndpoint {
++
++	}
++
++	@Endpoint(id = )
++	static class SpringEndpoint {
++
++	}
++
++	@Endpoint(id = )
++	static class TestEndpoint {
++
++	}
++
++	@EndpointExtension(endpoint = SpringEndpoint.class, filter = TestFilter.class)
++	static class SpringEndpointExtension {
++
++	}
++
++	static class TestFilter implements EndpointFilter<ExposableEndpoint<?>> {
++
++		@Override
++		public boolean match(ExposableEndpoint<?> endpoint) {
++			return true;
++		}
++
++	}
++
++	@Configuration
++	static class AllEndpointsConfiguration {
++
++		@Bean
++		@ConditionalOnExposedEndpoint
++		public HealthEndpoint health() {
++			return new HealthEndpoint();
++		}
++
++		@Bean
++		@ConditionalOnExposedEndpoint
++		public InfoEndpoint info() {
++			return new InfoEndpoint();
++		}
++
++		@Bean
++		@ConditionalOnExposedEndpoint
++		public SpringEndpoint spring() {
++			return new SpringEndpoint();
++		}
++
++		@Bean
++		@ConditionalOnExposedEndpoint
++		public TestEndpoint test() {
++			return new TestEndpoint();
++		}
++
++	}
++
++	@Configuration
++	static class ComponentEnabledIfEndpointIsExposedConfiguration {
++
++		@Bean
++		@ConditionalOnExposedEndpoint(endpoint = SpringEndpoint.class)
++		public String springComponent() {
++			return ;
++		}
++
++		@Bean
++		@ConditionalOnExposedEndpoint
++		public SpringEndpointExtension springExtension() {
++			return new SpringEndpointExtension();
++		}
++
++	}
++
++	@Configuration
++	static class ComponentWithNoEndpointReferenceConfiguration {
++
++		@Bean
++		@ConditionalOnExposedEndpoint
++		public String springcomp() {
++			return ;
++		}
++
++	}
++
++}
+

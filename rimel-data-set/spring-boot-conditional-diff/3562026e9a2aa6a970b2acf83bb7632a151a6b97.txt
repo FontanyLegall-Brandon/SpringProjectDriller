@@ -1,0 +1,59 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+@@ -49,27 +50,27 @@ public class SendGridAutoConfiguration {
+ 	@Bean
+ 	@ConditionalOnMissingBean(SendGrid.class)
+ 	public SendGrid sendGrid() {
+-
+-		SendGrid sendGrid;
+-
+-		if (this.properties.getApikey() != null) {
+-			sendGrid = new SendGrid(this.properties.getApikey());
+-		}
+-		else {
+-			sendGrid = new SendGrid(this.properties.getUsername(),
+-					this.properties.getPassword());
+-		}
+-
++		SendGrid sendGrid = createSendGrid();
+ 		if (this.properties.isProxyConfigured()) {
+ 			HttpHost proxy = new HttpHost(this.properties.getProxy().getHost(),
+ 					this.properties.getProxy().getPort());
+ 			sendGrid.setClient(HttpClientBuilder.create().setProxy(proxy)
+ 					.setUserAgent( + sendGrid.getVersion() + ).build());
+ 		}
+-
+ 		return sendGrid;
+ 	}
+ 
++	private SendGrid createSendGrid() {
++		if (this.properties.getApiKey() != null) {
++			return new SendGrid(this.properties.getApiKey());
++		}
++		else {
++			return new SendGrid(this.properties.getUsername(),
++					this.properties.getPassword());
++		}
++	}
++
++
+ 	static class SendGridPropertyCondition extends AnyNestedCondition {
+ 
+ 		SendGridPropertyCondition() {
+@@ -77,11 +78,11 @@ public class SendGridAutoConfiguration {
+ 		}
+ 
+ 		@ConditionalOnProperty(prefix = , value = )
+-		private class SendGridUserProperty {
++		static class SendGridUserProperty {
+ 		}
+ 
+-		@ConditionalOnProperty(prefix = , value = )
+-		private class SendGridApiKeyProperty {
++		@ConditionalOnProperty(prefix = , value = )
++		static class SendGridApiKeyProperty {
+ 		}
+ 	}
+ }
+

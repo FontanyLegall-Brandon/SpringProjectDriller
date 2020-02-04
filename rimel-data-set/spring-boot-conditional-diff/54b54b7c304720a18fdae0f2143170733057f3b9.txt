@@ -1,0 +1,10 @@
+@@ -36,7 +36,7 @@ import org.springframework.context.annotation.Configuration;
+  */
+ @Configuration
+ @ConditionalOnClass(DatadogMeterRegistry.class)
+-@ConditionalOnProperty()
++@ConditionalOnProperty()
+ @EnableConfigurationProperties(DatadogProperties.class)
+ public class DatadogExportConfiguration {
+ 
+

@@ -1,0 +1,19 @@
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ 
+-package org.springframework.zero.context.condition;
++package org.springframework.bootstrap.context.condition;
+ 
+ import org.junit.Test;
+ import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+@@ -51,7 +51,7 @@ public class OnMissingClassConditionTests {
+ 	}
+ 
+ 	@Configuration
+-	@ConditionalOnMissingClass()
++	@ConditionalOnMissingClass()
+ 	protected static class BasicConfiguration {
+ 		@Bean
+ 		public String bar() {
+

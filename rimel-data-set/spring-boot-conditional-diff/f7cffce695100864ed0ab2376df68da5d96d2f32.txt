@@ -1,0 +1,38 @@
+@@ -21,14 +21,19 @@ import java.util.Arrays;
+ import javax.jms.ConnectionFactory;
+ import javax.naming.NamingException;
+ 
++import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.AnyNestedCondition;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnJndi;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
++import org.springframework.boot.autoconfigure.jms.JndiConnectionFactoryAutoConfiguration.JndiOrPropertyCondition;
+ import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Conditional;
+ import org.springframework.context.annotation.Configuration;
+-import org.springframework.core.annotation.AnnotationUtils;
+ import org.springframework.jndi.JndiLocatorDelegate;
++import org.springframework.util.StringUtils;
+ 
+ 
++	static class JndiOrPropertyCondition extends AnyNestedCondition {
++
++		public JndiOrPropertyCondition() {
++			super(ConfigurationPhase.PARSE_CONFIGURATION);
++		}
++
++		@ConditionalOnJndi({ ,  })
++		static class Jndi {
++		}
++
++		@ConditionalOnProperty(prefix = , name = )
++		static class Property {
++		}
++
+ 	}
+ 
+ }
+

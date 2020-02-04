@@ -1,0 +1,55 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+ @ConditionalOnClass(EnableIntegration.class)
++@EnableConfigurationProperties(IntegrationProperties.class)
+ @AutoConfigureAfter(JmxAutoConfiguration.class)
+ public class IntegrationAutoConfiguration {
+ 
+@@ -131,4 +143,47 @@ public class IntegrationAutoConfiguration {
+ 
+ 	}
+ 
++	
++	@Configuration
++	@ConditionalOnClass(JdbcMessageStore.class)
++	@ConditionalOnSingleCandidate(DataSource.class)
++	protected static class IntegrationJdbcConfiguration {
++
++		@Bean
++		@ConditionalOnMissingBean
++		@Conditional(IntegrationSchemaCondition.class)
++		public IntegrationDatabaseInitializer integrationDatabaseInitializer(
++			DataSource dataSource, ResourceLoader resourceLoader,
++			IntegrationProperties properties) {
++			return new IntegrationDatabaseInitializer(dataSource, resourceLoader,
++				properties);
++		}
++
++	}
++
++	static class IntegrationSchemaCondition extends AnyNestedCondition {
++
++		IntegrationSchemaCondition() {
++			super(ConfigurationPhase.REGISTER_BEAN);
++		}
++
++		@ConditionalOnBean(JdbcMessageStore.class)
++		static class JdbcMessageStoreUsed {
++
++		}
++
++		@ConditionalOnBean(JdbcChannelMessageStore.class)
++		static class JdbcChannelMessageStoreUsed {
++
++		}
++
++		@ConditionalOnBean(DefaultLockRepository.class)
++		static class DefaultLockRepositoryUsed {
++
++		}
++
++	}
++
+ }
+

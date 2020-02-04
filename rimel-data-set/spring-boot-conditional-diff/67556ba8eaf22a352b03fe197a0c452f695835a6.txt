@@ -1,0 +1,87 @@
+@@ -38,14 +38,14 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type;
+ import org.springframework.boot.autoconfigure.condition.SearchStrategy;
+-import org.springframework.boot.autoconfigure.web.EmbeddedServletContainerAutoConfiguration.BeanPostProcessorsRegistrar;
+-import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizerBeanPostProcessor;
+-import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
+-import org.springframework.boot.context.embedded.jetty.JettyEmbeddedServletContainerFactory;
+-import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+-import org.springframework.boot.context.embedded.undertow.UndertowEmbeddedServletContainerFactory;
++import org.springframework.boot.autoconfigure.web.ServletWebServerFactoryAutoConfiguration.BeanPostProcessorsRegistrar;
+ import org.springframework.boot.context.properties.EnableConfigurationProperties;
+-import org.springframework.boot.web.servlet.ErrorPageRegistrarBeanPostProcessor;
++import org.springframework.boot.web.embedded.jetty.JettyServletWebServerFactory;
++import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
++import org.springframework.boot.web.embedded.undertow.UndertowServletWebServerFactory;
++import org.springframework.boot.web.server.ErrorPageRegistrarBeanPostProcessor;
++import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
++import org.springframework.boot.web.servlet.server.ServletWebServerFactoryCustomizerBeanPostProcessor;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.context.annotation.Import;
+@@ -55,7 +55,7 @@ import org.springframework.core.type.AnnotationMetadata;
+ import org.springframework.util.ObjectUtils;
+ 
+ 
+ 	@Configuration
+ 	@ConditionalOnClass({ Servlet.class, Tomcat.class })
+-	@ConditionalOnMissingBean(value = EmbeddedServletContainerFactory.class, search = SearchStrategy.CURRENT)
++	@ConditionalOnMissingBean(value = ServletWebServerFactory.class, search = SearchStrategy.CURRENT)
+ 	public static class EmbeddedTomcat {
+ 
+ 		@Bean
+-		public TomcatEmbeddedServletContainerFactory tomcatEmbeddedServletContainerFactory() {
+-			return new TomcatEmbeddedServletContainerFactory();
++		public TomcatServletWebServerFactory tomcatServletWebServerFactory() {
++			return new TomcatServletWebServerFactory();
+ 		}
+ 
+ 	}
+@@ -98,12 +98,12 @@ public class EmbeddedServletContainerAutoConfiguration {
+ 	@Configuration
+ 	@ConditionalOnClass({ Servlet.class, Server.class, Loader.class,
+ 			WebAppContext.class })
+-	@ConditionalOnMissingBean(value = EmbeddedServletContainerFactory.class, search = SearchStrategy.CURRENT)
++	@ConditionalOnMissingBean(value = ServletWebServerFactory.class, search = SearchStrategy.CURRENT)
+ 	public static class EmbeddedJetty {
+ 
+ 		@Bean
+-		public JettyEmbeddedServletContainerFactory jettyEmbeddedServletContainerFactory() {
+-			return new JettyEmbeddedServletContainerFactory();
++		public JettyServletWebServerFactory JettyServletWebServerFactory() {
++			return new JettyServletWebServerFactory();
+ 		}
+ 
+ 	}
+@@ -113,18 +113,18 @@ public class EmbeddedServletContainerAutoConfiguration {
+ 	 */
+ 	@Configuration
+ 	@ConditionalOnClass({ Servlet.class, Undertow.class, SslClientAuthMode.class })
+-	@ConditionalOnMissingBean(value = EmbeddedServletContainerFactory.class, search = SearchStrategy.CURRENT)
++	@ConditionalOnMissingBean(value = ServletWebServerFactory.class, search = SearchStrategy.CURRENT)
+ 	public static class EmbeddedUndertow {
+ 
+ 		@Bean
+-		public UndertowEmbeddedServletContainerFactory undertowEmbeddedServletContainerFactory() {
+-			return new UndertowEmbeddedServletContainerFactory();
++		public UndertowServletWebServerFactory undertowServletWebServerFactory() {
++			return new UndertowServletWebServerFactory();
+ 		}
+ 
+ 	}
+ 
+ 	
+ 	public static class BeanPostProcessorsRegistrar
+@@ -146,8 +146,8 @@ public class EmbeddedServletContainerAutoConfiguration {
+ 				return;
+ 			}
+ 			registerSyntheticBeanIfMissing(registry,
+-					,
+-					EmbeddedServletContainerCustomizerBeanPostProcessor.class);
++					,
++					ServletWebServerFactoryCustomizerBeanPostProcessor.class);
+ 			registerSyntheticBeanIfMissing(registry,
+ 					,
+ 					ErrorPageRegistrarBeanPostProcessor.class);
+

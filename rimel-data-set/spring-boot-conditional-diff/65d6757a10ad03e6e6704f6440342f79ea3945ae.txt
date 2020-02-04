@@ -1,0 +1,64 @@
+@@ -16,15 +16,19 @@
+ 
+ package org.springframework.boot.actuate.autoconfigure;
+ 
++import java.util.Properties;
++
++import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.boot.actuate.endpoint.Endpoint;
+ import org.springframework.boot.actuate.endpoint.jmx.EndpointMBeanExporter;
+ import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
++import org.springframework.boot.bind.RelaxedPropertyResolver;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+-import org.springframework.jmx.export.MBeanExporter;
++import org.springframework.core.env.Environment;
++import org.springframework.util.StringUtils;
+ 
+ 
+ @Configuration
+-@ConditionalOnBean({ MBeanExporter.class })
+ @AutoConfigureAfter({ EndpointAutoConfiguration.class })
+ @ConditionalOnExpression()
+ class EndpointMBeanExportAutoConfiguration {
+ 
++	private RelaxedPropertyResolver environment;
++
++	@Autowired
++	public void setEnvironment(Environment environment) {
++		this.environment = new RelaxedPropertyResolver(environment);
++	}
++
+ 	@Bean
+ 	public EndpointMBeanExporter endpointMBeanExporter() {
+-		return new EndpointMBeanExporter();
++		EndpointMBeanExporter mbeanExporter = new EndpointMBeanExporter();
++
++		String domain = this.environment.getProperty();
++		if (StringUtils.hasText(domain)) {
++			mbeanExporter.setDomain(domain);
++		}
++
++		Boolean ensureUnique = this.environment.getProperty(,
++				Boolean.class, Boolean.FALSE);
++		mbeanExporter.setEnsureUniqueRuntimeObjectNames(ensureUnique);
++
++		mbeanExporter.setObjectNameStaticProperties(getObjectNameStaticProperties());
++
++		return mbeanExporter;
++	}
++
++	private Properties getObjectNameStaticProperties() {
++		String staticNames = this.environment.getProperty();
++		if (StringUtils.hasText(staticNames)) {
++			return StringUtils.splitArrayElementsIntoProperties(
++					StringUtils.commaDelimitedListToStringArray(staticNames), );
++		}
++		return new Properties();
+ 	}
+ }
+\ No newline at end of file
+

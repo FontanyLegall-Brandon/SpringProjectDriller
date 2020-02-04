@@ -1,0 +1,17 @@
+@@ -155,6 +155,7 @@ public class CrshAutoConfiguration {
+ 	 * Class to configure CRaSH to authenticate against Spring Security.
+ 	 */
+ 	@Configuration
++	@ConditionalOnExpression()
+ 	@ConditionalOnBean({ AuthenticationManager.class })
+ 	@AutoConfigureAfter(CrshAutoConfiguration.class)
+ 	public static class AuthenticationManagerAdapterAutoConfiguration {
+@@ -168,7 +169,6 @@ public class CrshAutoConfiguration {
+ 		}
+ 
+ 		@Bean
+-		@ConditionalOnExpression()
+ 		@ConditionalOnMissingBean({ CrshShellAuthenticationProperties.class })
+ 		public CrshShellAuthenticationProperties springAuthenticationProperties() {
+ 			
+

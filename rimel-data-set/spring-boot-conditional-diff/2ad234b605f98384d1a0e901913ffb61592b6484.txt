@@ -1,0 +1,9 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+-@ConditionalOnClass({ Resource.class, RequestMapping.class, Plugin.class })
++@ConditionalOnClass({ EntityModel.class, RequestMapping.class, Plugin.class })
+ @ConditionalOnWebApplication
+ @AutoConfigureAfter({ WebMvcAutoConfiguration.class, JacksonAutoConfiguration.class,
+ 		HttpMessageConvertersAutoConfiguration.class,
+

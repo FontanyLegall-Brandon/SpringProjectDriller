@@ -1,0 +1,111 @@
+@@ -16,7 +16,6 @@
+ 
+ package org.springframework.boot.autoconfigure.security;
+ 
+-import java.lang.reflect.Field;
+ import java.util.UUID;
+ 
+ import org.apache.commons.logging.Log;
+@@ -31,30 +30,21 @@ import org.springframework.context.ApplicationContext;
+ import org.springframework.context.ApplicationListener;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+-import org.springframework.context.annotation.Primary;
+-import org.springframework.core.Ordered;
+ import org.springframework.core.annotation.Order;
+ import org.springframework.security.authentication.AuthenticationEventPublisher;
+ import org.springframework.security.authentication.AuthenticationManager;
+ import org.springframework.security.authentication.AuthenticationProvider;
+ import org.springframework.security.authentication.ProviderManager;
+ import org.springframework.security.config.annotation.ObjectPostProcessor;
+-import org.springframework.security.config.annotation.SecurityConfigurer;
+-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+-import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
+-import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
++import org.springframework.security.core.userdetails.User;
+ import org.springframework.security.core.userdetails.UserDetailsService;
+-import org.springframework.util.ReflectionUtils;
++import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+ 
+ 
+ @Configuration
+ @ConditionalOnBean(ObjectPostProcessor.class)
+-@ConditionalOnMissingBean({ AuthenticationManager.class, AuthenticationProvider.class,
+-		UserDetailsService.class })
+ @Order(0)
+ public class AuthenticationManagerConfiguration {
+ 
+@@ -71,15 +59,13 @@ public class AuthenticationManagerConfiguration {
+ 			.getLog(AuthenticationManagerConfiguration.class);
+ 
+ 	@Bean
+-	@Primary
+-	public AuthenticationManager authenticationManager(
+-			AuthenticationConfiguration configuration) throws Exception {
+-		return configuration.getAuthenticationManager();
+-	}
+-
+-	@Bean
+-	public static SpringBootAuthenticationConfigurerAdapter springBootAuthenticationConfigurerAdapter() {
+-		return new SpringBootAuthenticationConfigurerAdapter();
++	@ConditionalOnMissingBean({ AuthenticationManager.class, AuthenticationProvider.class,
++			UserDetailsService.class })
++	public InMemoryUserDetailsManager inMemoryUserDetailsManager() throws Exception {
++		String password = UUID.randomUUID().toString();
++		logger.info(
++				String.format(, password));
++		return new InMemoryUserDetailsManager(User.withUsername().password(password).roles().build());
+ 	}
+ 
+ 	@Bean
+@@ -87,91 +73,6 @@ public class AuthenticationManagerConfiguration {
+ 		return new AuthenticationManagerConfigurationListener();
+ 	}
+ 
+-	
+-	@Order(Ordered.LOWEST_PRECEDENCE - 100)
+-	private static class SpringBootAuthenticationConfigurerAdapter
+-			extends GlobalAuthenticationConfigurerAdapter {
+-
+-		@Override
+-		public void init(AuthenticationManagerBuilder auth) throws Exception {
+-			auth.apply(new DefaultInMemoryUserDetailsManagerConfigurer());
+-		}
+-
+-	}
+-
+-	
+-	private static class DefaultInMemoryUserDetailsManagerConfigurer
+-			extends InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> {
+-
+-		@Override
+-		public void configure(AuthenticationManagerBuilder auth) throws Exception {
+-			if (auth.isConfigured()) {
+-				return;
+-			}
+-			String password = UUID.randomUUID().toString();
+-			logger.info(
+-					String.format(, password));
+-			withUser().password(password).roles();
+-			setField(auth, , getUserDetailsService());
+-			super.configure(auth);
+-		}
+-
+-		private void setField(Object target, String name, Object value) {
+-			try {
+-				Field field = ReflectionUtils.findField(target.getClass(), name);
+-				ReflectionUtils.makeAccessible(field);
+-				ReflectionUtils.setField(field, target, value);
+-			}
+-			catch (Exception ex) {
+-				logger.info( + name);
+-			}
+-		}
+-
+-	}
+-
+ 	/**
+ 	 * {@link ApplicationListener} to autowire the {@link AuthenticationEventPublisher}
+ 	 * into the {@link AuthenticationManager}.
+

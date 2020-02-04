@@ -1,0 +1,27 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+-@ConditionalOnClass(Mongo.class)
++@ConditionalOnClass(MongoClient.class)
+ @EnableConfigurationProperties(MongoProperties.class)
+ @ConditionalOnMissingBean(type = )
+ public class MongoAutoConfiguration {
+@@ -50,7 +50,7 @@ public class MongoAutoConfiguration {
+ 	@Autowired(required = false)
+ 	private MongoClientOptions options;
+ 
+-	private Mongo mongo;
++	private MongoClient mongo;
+ 
+ 	@PreDestroy
+ 	public void close() {
+@@ -61,7 +61,7 @@ public class MongoAutoConfiguration {
+ 
+ 	@Bean
+ 	@ConditionalOnMissingBean
+-	public Mongo mongo() throws UnknownHostException {
++	public MongoClient mongo() throws UnknownHostException {
+ 		this.mongo = this.properties.createMongoClient(this.options);
+ 		return this.mongo;
+ 	}
+

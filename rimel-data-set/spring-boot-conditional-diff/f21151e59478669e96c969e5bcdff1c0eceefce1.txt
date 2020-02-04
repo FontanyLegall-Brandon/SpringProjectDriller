@@ -1,0 +1,10 @@
+@@ -47,12 +47,12 @@ import org.springframework.web.servlet.view.velocity.VelocityViewResolver;
+ 
+ 
+ @Configuration
+-@ConditionalOnClass(VelocityEngine.class)
++@ConditionalOnClass({ VelocityEngine.class, VelocityEngineFactory.class })
+ @AutoConfigureAfter(WebMvcAutoConfiguration.class)
+ @EnableConfigurationProperties(VelocityProperties.class)
+ public class VelocityAutoConfiguration {
+

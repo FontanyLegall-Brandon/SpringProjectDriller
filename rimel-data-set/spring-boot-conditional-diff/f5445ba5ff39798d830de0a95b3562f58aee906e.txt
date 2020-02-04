@@ -1,0 +1,33 @@
+@@ -1,5 +1,5 @@
+ 
+ @ConditionalOnClass(ExecutableValidator.class)
+ @ConditionalOnResource(resources = )
+-@Conditional(ValidationAutoConfiguration.OnValidatorAvailableCondition.class)
+ public class ValidationAutoConfiguration {
+ 
+ 	@Bean
+@@ -67,23 +57,4 @@ public class ValidationAutoConfiguration {
+ 		return processor;
+ 	}
+ 
+-	@Order(Ordered.LOWEST_PRECEDENCE)
+-	static class OnValidatorAvailableCondition extends SpringBootCondition {
+-
+-		@Override
+-		public ConditionOutcome getMatchOutcome(ConditionContext context,
+-				AnnotatedTypeMetadata metadata) {
+-			ConditionMessage.Builder message = ConditionMessage
+-					.forCondition(getClass().getName());
+-			try {
+-				Validation.buildDefaultValidatorFactory().getValidator();
+-				return ConditionOutcome.match(message.available());
+-			}
+-			catch (Exception ex) {
+-				return ConditionOutcome.noMatch(message.notAvailable());
+-			}
+-		}
+-
+-	}
+-
+ }
+

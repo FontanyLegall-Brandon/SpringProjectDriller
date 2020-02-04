@@ -1,0 +1,147 @@
+@@ -0,0 +1,163 @@
++
++
++package org.springframework.boot.autoconfigure.condition;
++
++import org.junit.Test;
++
++import org.springframework.boot.test.context.runner.ApplicationContextRunner;
++import org.springframework.context.annotation.AnnotationConfigApplicationContext;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Conditional;
++import org.springframework.context.annotation.Configuration;
++
++import static org.assertj.core.api.Assertions.assertThat;
++
++
++public class AbstractNestedConditionTest {
++
++	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner();
++
++	@Test
++	public void validMemberPhaseEvaluatesCorrectly() {
++		this.contextRunner.withUserConfiguration(ValidConfig.class)
++				.run((context) -> assertThat(context).hasBean());
++	}
++
++	@Test
++	public void invalidMemberPhaseThrowsIllegalState() {
++		this.contextRunner.withUserConfiguration(InvalidConfig.class).run((context) -> {
++			assertThat(context).hasFailed();
++			assertThat(context.getStartupFailure().getCause())
++					.isInstanceOf(IllegalStateException.class)
++					.hasMessageContaining(
++							+ InvalidNestedCondition.class.getName()
++							+ 
++							+ OnBeanCondition.class.getName());
++		});
++	}
++
++	@Test
++	public void invalidNestedMemberPhaseThrowsIllegalState() {
++		this.contextRunner.withUserConfiguration(DoubleNestedConfig.class)
++				.run((context) -> {
++					assertThat(context).hasFailed();
++					assertThat(context.getStartupFailure().getCause())
++							.isInstanceOf(IllegalStateException.class)
++							.hasMessageContaining(
++									+ DoubleNestedCondition.class.getName()
++									+ 
++									+ ValidNestedCondition.class.getName());
++				});
++	}
++
++	private AnnotationConfigApplicationContext load(Class<?> config) {
++		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
++		context.register(config);
++		context.refresh();
++		return context;
++	}
++
++	@Configuration
++	@Conditional(ValidNestedCondition.class)
++	public static class ValidConfig {
++
++		@Bean
++		public String myBean() {
++			return ;
++		}
++
++	}
++
++	static class ValidNestedCondition extends AbstractNestedCondition {
++
++		ValidNestedCondition() {
++			super(ConfigurationPhase.REGISTER_BEAN);
++		}
++
++		@Override
++		protected ConditionOutcome getFinalMatchOutcome(
++				MemberMatchOutcomes memberOutcomes) {
++			return ConditionOutcome.match();
++		}
++
++		@ConditionalOnMissingBean(name = )
++		static class MissingMyBean {
++
++		}
++
++	}
++
++	@Configuration
++	@Conditional(InvalidNestedCondition.class)
++	public static class InvalidConfig {
++
++		@Bean
++		public String myBean() {
++			return ;
++		}
++
++	}
++
++	static class InvalidNestedCondition extends AbstractNestedCondition {
++
++		InvalidNestedCondition() {
++			super(ConfigurationPhase.PARSE_CONFIGURATION);
++		}
++
++		@Override
++		protected ConditionOutcome getFinalMatchOutcome(
++				MemberMatchOutcomes memberOutcomes) {
++			return ConditionOutcome.match();
++		}
++
++		@ConditionalOnMissingBean(name = )
++		static class MissingMyBean {
++
++		}
++
++	}
++
++	@Configuration
++	@Conditional(DoubleNestedCondition.class)
++	public static class DoubleNestedConfig {
++
++	}
++
++	static class DoubleNestedCondition extends AbstractNestedCondition {
++
++		DoubleNestedCondition() {
++			super(ConfigurationPhase.PARSE_CONFIGURATION);
++		}
++
++		@Override
++		protected ConditionOutcome getFinalMatchOutcome(
++				MemberMatchOutcomes memberOutcomes) {
++			return ConditionOutcome.match();
++		}
++
++		@Conditional(ValidNestedCondition.class)
++		static class NestedConditionThatIsValid {
++
++		}
++
++	}
++
++}
+

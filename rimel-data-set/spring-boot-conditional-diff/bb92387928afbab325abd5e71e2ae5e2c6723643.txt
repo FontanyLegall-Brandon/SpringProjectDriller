@@ -1,0 +1,17 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+-@ConditionalOnClass({SecurityEvaluationContextExtension.class, EvaluationContextExtensionSupport.class})
++@ConditionalOnClass({ SecurityEvaluationContextExtension.class,
++		EvaluationContextExtensionSupport.class })
+ public class SecurityDataConfiguration {
+ 
+ 	@ConditionalOnMissingBean(SecurityEvaluationContextExtension.class)
+@@ -37,4 +38,5 @@ public class SecurityDataConfiguration {
+ 	public SecurityEvaluationContextExtension securityEvaluationContextExtension() {
+ 		return new SecurityEvaluationContextExtension();
+ 	}
++
+ }
+\ No newline at end of file
+

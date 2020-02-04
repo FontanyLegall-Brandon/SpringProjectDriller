@@ -1,0 +1,10 @@
+@@ -49,7 +49,7 @@ public class StatsdExportConfiguration {
+ 	}
+ 
+ 	@Bean
+-	@ConditionalOnProperty(value = , matchIfMissing = true)
++	@ConditionalOnProperty(value = , matchIfMissing = true)
+ 	public MetricsExporter statsdExporter(StatsdConfig statsdConfig, Clock clock) {
+ 		return () -> new StatsdMeterRegistry(statsdConfig, clock);
+ 	}
+

@@ -1,0 +1,9 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+-@ConditionalOnClass({ Servlet.class, WebSocketHandler.class })
++@ConditionalOnClass({ Servlet.class, ServerContainer.class })
+ @AutoConfigureBefore(EmbeddedServletContainerAutoConfiguration.class)
+ public class WebSocketAutoConfiguration {
+ 
+

@@ -1,0 +1,50 @@
+@@ -0,0 +1,66 @@
++
++
++package org.springframework.boot.test.autoconfigure.restdocs;
++
++import org.springframework.beans.factory.ObjectProvider;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
++import org.springframework.boot.context.properties.ConfigurationProperties;
++import org.springframework.boot.context.properties.EnableConfigurationProperties;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.restdocs.RestDocumentationContextProvider;
++import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
++import org.springframework.restdocs.mockmvc.MockMvcRestDocumentationConfigurer;
++import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler;
++
++
++@Configuration
++@ConditionalOnWebApplication
++@EnableConfigurationProperties
++class RestDocsAutoConfiguration {
++
++	@Bean
++	@ConditionalOnMissingBean(MockMvcRestDocumentationConfigurer.class)
++	public MockMvcRestDocumentationConfigurer restDocsMockMvcConfigurer(
++			ObjectProvider<RestDocsMockMvcConfigurationCustomizer> configurationCustomizerProvider,
++			RestDocumentationContextProvider contextProvider) {
++		MockMvcRestDocumentationConfigurer configurer = MockMvcRestDocumentation
++				.documentationConfiguration(contextProvider);
++		RestDocsMockMvcConfigurationCustomizer configurationCustomizer = configurationCustomizerProvider
++				.getIfAvailable();
++		if (configurationCustomizer != null) {
++			configurationCustomizer.customize(configurer);
++		}
++		return configurer;
++	}
++
++	@Bean
++	@ConfigurationProperties()
++	public RestDocsMockMvcBuilderCustomizer restDocumentationConfigurer(
++			MockMvcRestDocumentationConfigurer configurer,
++			ObjectProvider<RestDocumentationResultHandler> resultHandler) {
++		return new RestDocsMockMvcBuilderCustomizer(configurer,
++				resultHandler.getIfAvailable());
++	}
++
++}
+

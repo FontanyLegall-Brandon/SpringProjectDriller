@@ -1,0 +1,9 @@
+@@ -79,6 +79,7 @@ public class ServletWebServerFactoryAutoConfiguration {
+ 	}
+ 
+ 	@Bean
++	@ConditionalOnMissingFilterBean(ForwardedHeaderFilter.class)
+ 	@ConditionalOnProperty(value = ,
+ 			havingValue = )
+ 	public FilterRegistrationBean<ForwardedHeaderFilter> forwardedHeaderFilter() {
+

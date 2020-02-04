@@ -1,0 +1,37 @@
+@@ -39,6 +39,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+ import org.springframework.boot.autoconfigure.data.jpa.EntityManagerFactoryDependsOnPostProcessor;
+ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
++import org.springframework.boot.autoconfigure.jdbc.JdbcOperationsDependsOnPostProcessor;
+ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+ import org.springframework.boot.context.properties.EnableConfigurationProperties;
+ import org.springframework.boot.jdbc.DataSourceBuilder;
+@@ -47,6 +48,7 @@ import org.springframework.context.annotation.Configuration;
+ import org.springframework.context.annotation.Import;
+ import org.springframework.core.io.Resource;
+ import org.springframework.core.io.ResourceLoader;
++import org.springframework.jdbc.core.JdbcOperations;
+ import org.springframework.orm.jpa.AbstractEntityManagerFactoryBean;
+ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+ import org.springframework.util.Assert;
+@@ -189,6 +191,22 @@ public class LiquibaseAutoConfiguration {
+ 
+ 	}
+ 
++	
++	@Configuration
++	@ConditionalOnClass(JdbcOperations.class)
++	@ConditionalOnBean(JdbcOperations.class)
++	protected static class LiquibaseJdbcOperationsDependencyConfiguration
++			extends JdbcOperationsDependsOnPostProcessor {
++
++		public LiquibaseJdbcOperationsDependencyConfiguration() {
++			super();
++		}
++
++	}
++
+ 	/**
+ 	 * A custom {@link SpringLiquibase} extension that closes the underlying
+ 	 * {@link DataSource} once the database has been migrated.
+

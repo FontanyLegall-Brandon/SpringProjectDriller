@@ -1,0 +1,29 @@
+@@ -1,5 +1,5 @@
+ 
+-	@ConditionalOnProperty(prefix = , name = , matchIfMissing = true)
+-	@ConditionalOnClass(Filter.class)
+-	@Conditional(LocalDebugPortAvailableCondition.class)
+-	static class RemoteDebugTunnelClientConfiguration {
+-
+-		@Autowired
+-		private DevToolsProperties properties;
+-
+-		@Value()
+-		private String remoteUrl;
+-
+-		@Bean
+-		public TunnelClient remoteDebugTunnelClient(
+-				ClientHttpRequestFactory requestFactory) {
+-			RemoteDevToolsProperties remoteProperties = this.properties.getRemote();
+-			String url = this.remoteUrl + remoteProperties.getContextPath() + ;
+-			TunnelConnection connection = new HttpTunnelConnection(url, requestFactory);
+-			int localPort = remoteProperties.getDebug().getLocalPort();
+-			TunnelClient client = new TunnelClient(localPort, connection);
+-			client.addListener(new LoggingTunnelClientListener());
+-			return client;
+-		}
+-
+-	}
+-
+ }
+

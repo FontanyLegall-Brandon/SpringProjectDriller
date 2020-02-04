@@ -1,0 +1,13 @@
+@@ -45,9 +45,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
+  */
+ @Configuration
+ @ConditionalOnClass({ SitePreferenceHandlerInterceptor.class,
+-		SitePreferenceHandlerMethodArgumentResolver.class })
++	SitePreferenceHandlerMethodArgumentResolver.class })
+ @AutoConfigureAfter(DeviceResolverAutoConfiguration.class)
+-@ConditionalOnExpression()
++@ConditionalOnExpression()
+ public class SitePreferenceAutoConfiguration {
+ 
+ 	@Configuration
+

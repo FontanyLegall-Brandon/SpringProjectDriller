@@ -1,0 +1,9 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+-@ConditionalOnClass({ Neo4jSession.class, GraphRepository.class })
++@ConditionalOnClass({ Neo4jSession.class, Neo4jRepository.class })
+ @ConditionalOnMissingBean({ Neo4jRepositoryFactoryBean.class,
+ 		Neo4jRepositoryConfigurationExtension.class })
+ @ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+

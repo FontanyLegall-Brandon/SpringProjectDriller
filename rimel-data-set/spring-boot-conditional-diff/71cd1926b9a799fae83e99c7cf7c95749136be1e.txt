@@ -1,0 +1,10 @@
+@@ -59,7 +59,7 @@ public class ConditionalOnResourceTests {
+ 	}
+ 
+ 	@Configuration
+-	@ConditionalOnResource(resources = )
++	@ConditionalOnResource(resources = )
+ 	protected static class BasicConfiguration {
+ 		@Bean
+ 		public String foo() {
+

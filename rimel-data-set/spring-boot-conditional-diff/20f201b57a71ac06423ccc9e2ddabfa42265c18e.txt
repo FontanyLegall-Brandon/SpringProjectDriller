@@ -1,0 +1,10 @@
+@@ -238,7 +238,7 @@ public class EndpointWebMvcAutoConfiguration
+ 	
+ 	
+ 	@Configuration
+-	@ConditionalOnProperty(prefix = , name = , matchIfMissing = true, havingValue = )
++	@ConditionalOnProperty(prefix = , name = , havingValue = )
+ 	protected static class ApplicationContextFilterConfiguration {
+ 
+ 		@Bean
+

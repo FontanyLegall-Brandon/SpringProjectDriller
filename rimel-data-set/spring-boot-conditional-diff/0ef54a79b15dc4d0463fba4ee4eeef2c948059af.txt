@@ -1,0 +1,33 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+ @ConditionalOnMissingBean(ConnectionFactory.class)
+ class ArtemisConnectionFactoryConfiguration {
+ 
+ 	@Bean
++	@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+ 	public ActiveMQConnectionFactory jmsConnectionFactory(ListableBeanFactory beanFactory,
+ 			ArtemisProperties properties) {
+ 		return new ArtemisConnectionFactoryFactory(beanFactory, properties)
+ 				.createConnectionFactory(ActiveMQConnectionFactory.class);
+ 	}
+ 
++	@Configuration
++	@ConditionalOnClass({ PooledConnectionFactory.class, PooledObject.class })
++	static class PooledConnectionFactoryConfiguration {
++
++		@Bean(destroyMethod = )
++		@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = false)
++		public PooledConnectionFactory pooledJmsConnectionFactory(
++				ListableBeanFactory beanFactory, ArtemisProperties properties) {
++			ActiveMQConnectionFactory connectionFactory = new ArtemisConnectionFactoryFactory(
++					beanFactory, properties)
++							.createConnectionFactory(ActiveMQConnectionFactory.class);
++			return new PooledConnectionFactoryFactory(properties.getPool())
++					.createPooledConnectionFactory(connectionFactory);
++		}
++
++	}
++
+ }
+

@@ -1,0 +1,52 @@
+@@ -0,0 +1,67 @@
++
++package org.springframework.bootstrap.context.annotation;
++
++import org.junit.Test;
++import org.springframework.context.annotation.AnnotationConfigApplicationContext;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.assertFalse;
++import static org.junit.Assert.assertTrue;
++
++
++public class OnResourceConditionTests {
++
++	private AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
++
++	@Test
++	public void testResourceExists() {
++		this.context.register(BasicConfiguration.class);
++		this.context.refresh();
++		assertTrue(this.context.containsBean());
++		assertEquals(, this.context.getBean());
++	}
++
++	@Test
++	public void testResourceNotExists() {
++		this.context.register(MissingConfiguration.class);
++		this.context.refresh();
++		assertFalse(this.context.containsBean());
++	}
++
++	@Configuration
++	@ConditionalOnResource(resources = )
++	protected static class MissingConfiguration {
++		@Bean
++		public String bar() {
++			return ;
++		}
++	}
++
++	@Configuration
++	@ConditionalOnResource(resources = )
++	protected static class BasicConfiguration {
++		@Bean
++		public String foo() {
++			return ;
++		}
++	}
++}
+

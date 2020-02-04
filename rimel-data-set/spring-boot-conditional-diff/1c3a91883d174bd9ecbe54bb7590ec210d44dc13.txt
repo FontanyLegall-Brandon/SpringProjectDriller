@@ -1,0 +1,10 @@
+@@ -75,7 +75,7 @@ class DataSourceJmxConfiguration {
+ 	}
+ 
+ 	@Configuration(proxyBeanMethods = false)
+-	@ConditionalOnProperty(prefix = , name = )
++	@ConditionalOnProperty(prefix = , name = )
+ 	@ConditionalOnClass(DataSourceProxy.class)
+ 	@ConditionalOnSingleCandidate(DataSource.class)
+ 	static class TomcatDataSourceJmxConfiguration {
+

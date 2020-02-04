@@ -1,0 +1,20 @@
+@@ -111,8 +111,9 @@ public class EndpointWebMvcHypermediaManagementContextConfiguration {
+ 		};
+ 	}
+ 
+-	@ConditionalOnEnabledEndpoint()
+ 	@Bean
++	@ConditionalOnEnabledEndpoint()
++	@ConditionalOnMissingBean
+ 	public HalJsonMvcEndpoint halJsonMvcEndpoint(
+ 			ManagementServletContext managementServletContext,
+ 			ResourceProperties resources, ResourceLoader resourceLoader) {
+@@ -137,6 +138,7 @@ public class EndpointWebMvcHypermediaManagementContextConfiguration {
+ 	static class DocsMvcEndpointConfiguration {
+ 
+ 		@Bean
++		@ConditionalOnMissingBean
+ 		@ConditionalOnEnabledEndpoint()
+ 		@ConditionalOnResource(resources = )
+ 		public DocsMvcEndpoint docsMvcEndpoint(
+

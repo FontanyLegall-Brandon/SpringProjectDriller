@@ -1,0 +1,68 @@
+@@ -105,8 +105,8 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
+ 		JestAutoConfiguration.class, JmsAutoConfiguration.class,
+ 		LdapDataAutoConfiguration.class, MailSenderAutoConfiguration.class,
+ 		MongoAutoConfiguration.class, MongoDataAutoConfiguration.class,
+-		RabbitAutoConfiguration.class, RedisAutoConfiguration.class,
+-		SolrAutoConfiguration.class, Neo4jDataAutoConfiguration.class })
++		Neo4jDataAutoConfiguration.class, RabbitAutoConfiguration.class,
++		RedisAutoConfiguration.class, SolrAutoConfiguration.class })
+ @EnableConfigurationProperties({ HealthIndicatorProperties.class })
+ @Import({
+ 		ElasticsearchHealthIndicatorConfiguration.ElasticsearchClientHealthIndicatorConfiguration.class,
+@@ -261,6 +261,27 @@ public class HealthIndicatorAutoConfiguration {
+ 
+ 	}
+ 
++	@Configuration
++	@ConditionalOnBean(MongoTemplate.class)
++	@ConditionalOnEnabledHealthIndicator()
++	public static class MongoHealthIndicatorConfiguration extends
++			CompositeHealthIndicatorConfiguration<MongoHealthIndicator, MongoTemplate> {
++
++		private final Map<String, MongoTemplate> mongoTemplates;
++
++		public MongoHealthIndicatorConfiguration(
++				Map<String, MongoTemplate> mongoTemplates) {
++			this.mongoTemplates = mongoTemplates;
++		}
++
++		@Bean
++		@ConditionalOnMissingBean(name = )
++		public HealthIndicator mongoHealthIndicator() {
++			return createHealthIndicator(this.mongoTemplates);
++		}
++
++	}
++
+ 	@Configuration
+ 	@ConditionalOnClass(SessionFactory.class)
+ 	@ConditionalOnBean(SessionFactory.class)
+@@ -283,27 +304,6 @@ public class HealthIndicatorAutoConfiguration {
+ 
+ 	}
+ 
+-	@Configuration
+-	@ConditionalOnBean(MongoTemplate.class)
+-	@ConditionalOnEnabledHealthIndicator()
+-	public static class MongoHealthIndicatorConfiguration extends
+-			CompositeHealthIndicatorConfiguration<MongoHealthIndicator, MongoTemplate> {
+-
+-		private final Map<String, MongoTemplate> mongoTemplates;
+-
+-		public MongoHealthIndicatorConfiguration(
+-				Map<String, MongoTemplate> mongoTemplates) {
+-			this.mongoTemplates = mongoTemplates;
+-		}
+-
+-		@Bean
+-		@ConditionalOnMissingBean(name = )
+-		public HealthIndicator mongoHealthIndicator() {
+-			return createHealthIndicator(this.mongoTemplates);
+-		}
+-
+-	}
+-
+ 	@Configuration
+ 	@ConditionalOnBean(RedisConnectionFactory.class)
+ 	@ConditionalOnEnabledHealthIndicator()
+

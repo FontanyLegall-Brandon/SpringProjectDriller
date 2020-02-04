@@ -1,0 +1,10 @@
+@@ -52,7 +52,7 @@ import org.springframework.web.filter.RequestContextFilter;
+ @ConditionalOnClass(name = {
+ 		,
+ 		 })
+-@ConditionalOnBean(ResourceConfig.class)
++@ConditionalOnBean(type = )
+ @ConditionalOnWebApplication
+ @Order(Ordered.HIGHEST_PRECEDENCE)
+ @AutoConfigureBefore(DispatcherServletAutoConfiguration.class)
+

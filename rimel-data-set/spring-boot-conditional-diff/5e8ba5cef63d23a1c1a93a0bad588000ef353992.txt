@@ -1,0 +1,36 @@
+@@ -34,7 +34,6 @@ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Conditional;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.context.annotation.Primary;
+-import org.springframework.data.couchbase.config.CouchbaseConfigurer;
+ 
+ 
+ @Configuration
+-@ConditionalOnClass({ CouchbaseBucket.class, Cluster.class, CouchbaseConfigurer.class })
++@ConditionalOnClass({ CouchbaseBucket.class, Cluster.class })
+ @Conditional(CouchbaseAutoConfiguration.CouchbaseCondition.class)
+ @EnableConfigurationProperties(CouchbaseProperties.class)
+ public class CouchbaseAutoConfiguration {
+ 
+ 	@Configuration
+-	@ConditionalOnMissingBean({ CouchbaseConfigurer.class, CouchbaseConfiguration.class })
++	@ConditionalOnMissingBean(value = CouchbaseConfiguration.class,
++			type = )
+ 	public static class CouchbaseConfiguration {
+ 
+ 		private final CouchbaseProperties properties;
+@@ -122,8 +122,10 @@ public class CouchbaseAutoConfiguration {
+ 
+ 	
+ 	static class CouchbaseCondition extends AnyNestedCondition {
+ 
+@@ -135,7 +137,7 @@ public class CouchbaseAutoConfiguration {
+ 		static class BootstrapHostsProperty {
+ 		}
+ 
+-		@ConditionalOnBean(CouchbaseConfigurer.class)
++		@ConditionalOnBean(type = )
+ 		static class CouchbaseConfigurerAvailable {
+ 		}
+ 
+

@@ -1,0 +1,124 @@
+@@ -1,5 +1,5 @@
+ 
+-public class AutoConfigurationReportTests {
++public class ConditionEvaluationReportTests {
+ 
+ 	private DefaultListableBeanFactory beanFactory;
+ 
+@@ -225,6 +232,23 @@ public class AutoConfigurationReportTests {
+ 		context.close();
+ 	}
+ 
++	@Test
++	public void negativeOuterPositiveInnerBean() throws Exception {
++		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
++		EnvironmentTestUtils.addEnvironment(context, );
++		context.register(NegativeOuterConfig.class);
++		context.refresh();
++		ConditionEvaluationReport report = ConditionEvaluationReport.get(context
++				.getBeanFactory());
++		Map<String, ConditionAndOutcomes> sourceOutcomes = report
++				.getConditionAndOutcomesBySource();
++		assertThat(context.containsBean(), equalTo(false));
++		String negativeConfig = NegativeOuterConfig.class.getName();
++		assertThat(sourceOutcomes.get(negativeConfig).isFullMatch(), equalTo(false));
++		String positiveConfig = NegativeOuterConfig.PositiveInnerConfig.class.getName();
++		assertThat(sourceOutcomes.get(positiveConfig).isFullMatch(), equalTo(false));
++	}
++
+ 	private int getNumberOfOutcomes(ConditionAndOutcomes outcomes) {
+ 		Iterator<ConditionAndOutcome> iterator = outcomes.iterator();
+ 		int numberOfOutcomesAdded = 0;
+@@ -235,16 +259,89 @@ public class AutoConfigurationReportTests {
+ 		return numberOfOutcomesAdded;
+ 	}
+ 
+-	@Configurable
++	@Configuration
+ 	@Import(WebMvcAutoConfiguration.class)
+ 	static class Config {
+ 
+ 	}
+ 
+-	@Configurable
++	@Configuration
+ 	@Import(MultipartAutoConfiguration.class)
+ 	static class DuplicateConfig {
+ 
+ 	}
+ 
++	@Configuration
++	@Conditional({ ConditionEvaluationReportTests.MatchParseCondition.class,
++			ConditionEvaluationReportTests.NoMatchBeanCondition.class })
++	public static class NegativeOuterConfig {
++
++		@Configuration
++		@Conditional({ ConditionEvaluationReportTests.MatchParseCondition.class })
++		public static class PositiveInnerConfig {
++
++			@Bean
++			public String negativeOuterPositiveInnerBean() {
++				return ;
++			}
++
++		}
++	}
++
++	static class TestMatchCondition extends SpringBootCondition implements
++			ConfigurationCondition {
++
++		private final ConfigurationPhase phase;
++		private final boolean match;
++
++		public TestMatchCondition(ConfigurationPhase phase, boolean match) {
++			this.phase = phase;
++			this.match = match;
++		}
++
++		@Override
++		public ConfigurationPhase getConfigurationPhase() {
++			return this.phase;
++		}
++
++		@Override
++		public ConditionOutcome getMatchOutcome(ConditionContext context,
++				AnnotatedTypeMetadata metadata) {
++			return new ConditionOutcome(this.match, ClassUtils.getShortName(getClass()));
++		}
++
++	}
++
++	static class MatchParseCondition extends TestMatchCondition {
++
++		public MatchParseCondition() {
++			super(ConfigurationPhase.PARSE_CONFIGURATION, true);
++		}
++
++	}
++
++	static class MatchBeanCondition extends TestMatchCondition {
++
++		public MatchBeanCondition() {
++			super(ConfigurationPhase.REGISTER_BEAN, true);
++		}
++
++	}
++
++	static class NoMatchParseCondition extends TestMatchCondition {
++
++		public NoMatchParseCondition() {
++			super(ConfigurationPhase.PARSE_CONFIGURATION, false);
++		}
++
++	}
++
++	static class NoMatchBeanCondition extends TestMatchCondition {
++
++		public NoMatchBeanCondition() {
++			super(ConfigurationPhase.REGISTER_BEAN, false);
++		}
++
++	}
++
+ }
+

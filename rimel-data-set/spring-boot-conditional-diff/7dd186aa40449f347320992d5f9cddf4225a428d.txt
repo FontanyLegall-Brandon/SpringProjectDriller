@@ -1,0 +1,10 @@
+@@ -111,7 +111,7 @@ public class OnMissingBeanConditionTests {
+ 	}
+ 
+ 	@Configuration
+-	@ConditionalOnMissingBean(name = , parentContext = false)
++	@ConditionalOnMissingBean(name = , search = SearchStrategy.CURRENT)
+ 	protected static class HierarchyNotConsidered {
+ 		@Bean
+ 		public String bar() {
+

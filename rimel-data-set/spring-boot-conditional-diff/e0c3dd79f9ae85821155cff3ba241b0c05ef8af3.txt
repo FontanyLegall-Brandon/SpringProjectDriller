@@ -1,0 +1,56 @@
+@@ -76,6 +76,14 @@ public class ConditionalOnBeanTests {
+ 		assertEquals(, this.context.getBean());
+ 	}
+ 
++	@Test
++	public void testClassOnBeanClassNameCondition() {
++		this.context.register(FooConfiguration.class, OnBeanClassNameConfiguration.class);
++		this.context.refresh();
++		assertTrue(this.context.containsBean());
++		assertEquals(, this.context.getBean());
++	}
++
+ 	@Test
+ 	public void testOnBeanConditionWithXml() {
+ 		this.context.register(XmlConfiguration.class, OnBeanNameConfiguration.class);
+@@ -100,6 +108,14 @@ public class ConditionalOnBeanTests {
+ 		assertEquals(, this.context.getBean());
+ 	}
+ 
++	@Test
++	public void testOnMissingBeanType() throws Exception {
++		this.context.register(FooConfiguration.class,
++				OnBeanMissingClassConfiguration.class);
++		this.context.refresh();
++		assertFalse(this.context.containsBean());
++	}
++
+ 	@Configuration
+ 	@ConditionalOnBean(name = )
+ 	protected static class OnBeanNameConfiguration {
+@@ -136,6 +152,24 @@ public class ConditionalOnBeanTests {
+ 		}
+ 	}
+ 
++	@Configuration
++	@ConditionalOnBean(type = )
++	protected static class OnBeanClassNameConfiguration {
++		@Bean
++		public String bar() {
++			return ;
++		}
++	}
++
++	@Configuration
++	@ConditionalOnBean(type = )
++	protected static class OnBeanMissingClassConfiguration {
++		@Bean
++		public String bar() {
++			return ;
++		}
++	}
++
+ 	@Configuration
+ 	@EnableScheduling
+ 	protected static class FooConfiguration {
+

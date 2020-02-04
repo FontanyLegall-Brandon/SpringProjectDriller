@@ -1,0 +1,10 @@
+@@ -46,7 +46,7 @@ import org.springframework.web.servlet.HandlerMapping;
+ @ConditionalOnClass({ Servlet.class, ServletRegistration.class,
+ 		OncePerRequestFilter.class, HandlerMapping.class })
+ @AutoConfigureAfter(MetricRepositoryAutoConfiguration.class)
+-@ConditionalOnProperty(prefix = , name=, matchIfMissing = true)
++@ConditionalOnProperty(prefix = , name = , matchIfMissing = true)
+ @EnableConfigurationProperties({ MetricFilterProperties.class })
+ public class MetricFilterAutoConfiguration {
+ 
+

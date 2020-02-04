@@ -1,0 +1,32 @@
+@@ -0,0 +1,48 @@
++
++
++package org.springframework.bootstrap.autoconfigure.batch;
++
++import org.springframework.batch.core.launch.JobLauncher;
++import org.springframework.bootstrap.CommandLineRunner;
++import org.springframework.bootstrap.context.annotation.ConditionalOnClass;
++import org.springframework.bootstrap.context.annotation.ConditionalOnMissingBean;
++import org.springframework.bootstrap.context.annotation.EnableAutoConfiguration;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++
++@Configuration
++@ConditionalOnClass({ JobLauncher.class })
++public class BatchAutoConfiguration {
++
++	@Bean
++	
++	public BatchDatabaseInitializer batchDatabaseInitializer() {
++		return new BatchDatabaseInitializer();
++	}
++
++	@Bean
++	@ConditionalOnMissingBean({ CommandLineRunner.class })
++	public JobLauncherCommandLineRunner jobLauncherCommandLineRunner() {
++		return new JobLauncherCommandLineRunner();
++	}
++
++}
+

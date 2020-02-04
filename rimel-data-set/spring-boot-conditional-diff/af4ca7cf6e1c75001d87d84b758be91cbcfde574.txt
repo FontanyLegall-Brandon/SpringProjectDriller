@@ -1,0 +1,21 @@
+@@ -27,24 +27,20 @@ import org.springframework.context.annotation.Configuration;
+ import org.springframework.context.annotation.Import;
+ import org.springframework.data.neo4j.repository.GraphRepository;
+ import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
+-import org.springframework.data.neo4j.repository.config.GraphRepositoryConfigurationExtension;
+-import org.springframework.data.neo4j.repository.support.GraphRepositoryFactoryBean;
++import org.springframework.data.neo4j.repository.config.Neo4jRepositoryConfigurationExtension;
++import org.springframework.data.neo4j.repository.support.Neo4jRepositoryFactoryBean;
+ 
+ 
+-@SuppressWarnings()
+ @Configuration
+ @ConditionalOnClass({ Neo4jSession.class, GraphRepository.class })
+-@ConditionalOnMissingBean({ GraphRepositoryFactoryBean.class,
+-		GraphRepositoryConfigurationExtension.class })
++@ConditionalOnMissingBean({ Neo4jRepositoryFactoryBean.class,
++		Neo4jRepositoryConfigurationExtension.class })
+ @ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+ @Import(Neo4jRepositoriesAutoConfigureRegistrar.class)
+ @AutoConfigureAfter(Neo4jDataAutoConfiguration.class)
+

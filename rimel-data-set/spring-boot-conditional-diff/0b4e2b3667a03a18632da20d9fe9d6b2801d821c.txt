@@ -1,0 +1,63 @@
+@@ -20,7 +20,6 @@ import javax.jms.ConnectionFactory;
+ 
+ import org.apache.activemq.ActiveMQConnectionFactory;
+ import org.apache.activemq.transport.vm.VMTransportFactory;
+-
+ import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+ import org.springframework.boot.autoconfigure.condition.ConditionOutcome;
+@@ -34,17 +33,16 @@ import org.springframework.context.annotation.Import;
+ import org.springframework.core.type.AnnotatedTypeMetadata;
+ 
+ 
+ @Configuration
+ @AutoConfigureBefore(JmsTemplateAutoConfiguration.class)
+-@ConditionalOnClass({ConnectionFactory.class, ActiveMQConnectionFactory.class})
++@ConditionalOnClass({ ConnectionFactory.class, ActiveMQConnectionFactory.class })
+ @ConditionalOnMissingBean(ConnectionFactory.class)
+ public class ActiveMQAutoConfiguration {
+ 
+@@ -69,18 +67,22 @@ public class ActiveMQAutoConfiguration {
+ 		}
+ 
+ 		@Override
+-		public ConditionOutcome getMatchOutcome(ConditionContext context, AnnotatedTypeMetadata metadata) {
+-			String brokerUrl = ActiveMQProperties.determineBrokerUrl(context.getEnvironment());
++		public ConditionOutcome getMatchOutcome(ConditionContext context,
++				AnnotatedTypeMetadata metadata) {
++			String brokerUrl = ActiveMQProperties.determineBrokerUrl(context
++					.getEnvironment());
+ 			boolean match = brokerUrl.contains();
+ 			boolean outcome = (match == this.embedded);
+ 			return new ConditionOutcome(outcome, buildMessage(brokerUrl, outcome));
+ 		}
+ 
+ 		protected String buildMessage(String brokerUrl, boolean outcome) {
+-			String brokerType = embedded ?  : ;
++			String brokerType = this.embedded ?  : ;
+ 			String detected = outcome ?  : ;
+-			return brokerType +  + detected +  + brokerUrl + ;
++			return brokerType +  + detected + 
++					+ brokerUrl + ;
+ 		}
++
+ 	}
+ 
+ 	static class EmbeddedBrokerCondition extends BrokerTypeCondition {
+@@ -88,6 +90,7 @@ public class ActiveMQAutoConfiguration {
+ 		EmbeddedBrokerCondition() {
+ 			super(true);
+ 		}
++
+ 	}
+ 
+ 	static class NonEmbeddedBrokerCondition extends BrokerTypeCondition {
+@@ -95,6 +98,7 @@ public class ActiveMQAutoConfiguration {
+ 		NonEmbeddedBrokerCondition() {
+ 			super(false);
+ 		}
++
+ 	}
+ 
+ }
+

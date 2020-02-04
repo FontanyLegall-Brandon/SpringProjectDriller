@@ -1,0 +1,11 @@
+@@ -1,5 +1,5 @@
+ 
+-@Conditional(OnPropertyCondition.class)
+ @Retention(RetentionPolicy.RUNTIME)
+ @Target({ ElementType.TYPE, ElementType.METHOD })
++@Documented
++@Conditional(OnPropertyCondition.class)
+ public @interface ConditionalOnProperty {
+ 
+ 	/**
+

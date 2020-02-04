@@ -1,0 +1,57 @@
+@@ -16,6 +16,7 @@
+ 
+ package org.springframework.boot.autoconfigure.condition;
+ 
++import org.junit.Ignore;
+ import org.junit.Test;
+ import org.springframework.beans.factory.FactoryBean;
+ import org.springframework.boot.autoconfigure.PropertyPlaceholderAutoConfiguration;
+@@ -109,6 +110,25 @@ public class ConditionalOnMissingBeanTests {
+ 		assertEquals(, this.context.getBean());
+ 	}
+ 
++	@Test
++	@Ignore()
++	public void testOnMissingBeanConditionWithFactoryBean() {
++		this.context.register(ExampleBeanAndFactoryBeanConfiguration.class,
++				PropertyPlaceholderAutoConfiguration.class);
++		this.context.refresh();
++		
++		this.context.getBean(ExampleBean.class);
++	}
++
++	@Test
++	public void testOnMissingBeanConditionWithFactoryBeanInXml() {
++		this.context.register(ConfigurationWithFactoryBean.class,
++				PropertyPlaceholderAutoConfiguration.class);
++		this.context.refresh();
++		
++		this.context.getBean(ExampleBean.class);
++	}
++
+ 	@Configuration
+ 	@ConditionalOnMissingBean(name = )
+ 	protected static class OnBeanNameConfiguration {
+@@ -118,6 +138,21 @@ public class ConditionalOnMissingBeanTests {
+ 		}
+ 	}
+ 
++	@Configuration
++	protected static class ExampleBeanAndFactoryBeanConfiguration {
++
++		@Bean
++		public FactoryBean<ExampleBean> exampleBeanFactoryBean() {
++			return new ExampleFactoryBean();
++		}
++
++		@Bean
++		@ConditionalOnMissingBean(ExampleBean.class)
++		public ExampleBean createExampleBean() {
++			return new ExampleBean();
++		}
++	}
++
+ 	@Configuration
+ 	@ConditionalOnMissingBean(annotation = EnableScheduling.class)
+ 	protected static class OnAnnotationConfiguration {
+

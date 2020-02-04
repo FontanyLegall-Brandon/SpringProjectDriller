@@ -1,0 +1,9 @@
+@@ -1,5 +1,5 @@
+ 
+ 	@Configuration
+-	@ConditionalOnClass({MongoClient.class, MongoClientFactoryBean.class})
++	@ConditionalOnClass({ MongoClient.class, MongoClientFactoryBean.class })
+ 	protected static class EmbeddedMongoDependencyConfiguration
+ 			extends MongoClientDependsOnBeanFactoryPostProcessor {
+ 
+

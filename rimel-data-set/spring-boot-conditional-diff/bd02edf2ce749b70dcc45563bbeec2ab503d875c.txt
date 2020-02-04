@@ -1,0 +1,164 @@
+@@ -0,0 +1,190 @@
++
++
++package org.springframework.boot.autoconfigure.orm.jpa;
++
++import java.util.Collections;
++import java.util.LinkedHashMap;
++import java.util.List;
++import java.util.Map;
++
++import javax.sql.DataSource;
++
++import org.apache.commons.logging.Log;
++import org.apache.commons.logging.LogFactory;
++
++import org.springframework.beans.factory.ObjectProvider;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
++import org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers;
++import org.springframework.boot.jdbc.SchemaManagementProvider;
++import org.springframework.boot.orm.jpa.hibernate.SpringJtaPlatform;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.jndi.JndiLocatorDelegate;
++import org.springframework.orm.jpa.vendor.AbstractJpaVendorAdapter;
++import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
++import org.springframework.transaction.jta.JtaTransactionManager;
++import org.springframework.util.ClassUtils;
++
++
++@Configuration
++@ConditionalOnSingleCandidate(DataSource.class)
++public class JpaHibernateConfiguration extends JpaBaseConfiguration {
++
++	private static final Log logger = LogFactory
++			.getLog(JpaHibernateConfiguration.class);
++
++	private static final String JTA_PLATFORM = ;
++
++	
++	private static final String[] NO_JTA_PLATFORM_CLASSES = {
++			,
++			 };
++
++	
++	private static final String[] WEBSPHERE_JTA_PLATFORM_CLASSES = {
++			,
++			, };
++
++	private final HibernateDefaultDdlAutoProvider defaultDdlAutoProvider;
++
++	public JpaHibernateConfiguration(DataSource dataSource,
++			JpaProperties jpaProperties,
++			ObjectProvider<JtaTransactionManager> jtaTransactionManager,
++			ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers,
++			ObjectProvider<List<SchemaManagementProvider>> providers) {
++		super(dataSource, jpaProperties, jtaTransactionManager,
++				transactionManagerCustomizers);
++		this.defaultDdlAutoProvider = new HibernateDefaultDdlAutoProvider(
++				providers.getIfAvailable(Collections::emptyList));
++	}
++
++	@Override
++	protected AbstractJpaVendorAdapter createJpaVendorAdapter() {
++		return new HibernateJpaVendorAdapter();
++	}
++
++	@Override
++	protected Map<String, Object> getVendorProperties() {
++		Map<String, Object> vendorProperties = new LinkedHashMap<>();
++		String defaultDdlMode = this.defaultDdlAutoProvider
++				.getDefaultDdlAuto(getDataSource());
++		vendorProperties.putAll(getProperties().getHibernateProperties(defaultDdlMode));
++		return vendorProperties;
++	}
++
++	@Override
++	protected void customizeVendorProperties(Map<String, Object> vendorProperties) {
++		super.customizeVendorProperties(vendorProperties);
++		if (!vendorProperties.containsKey(JTA_PLATFORM)) {
++			configureJtaPlatform(vendorProperties);
++		}
++	}
++
++	private void configureJtaPlatform(Map<String, Object> vendorProperties)
++			throws LinkageError {
++		JtaTransactionManager jtaTransactionManager = getJtaTransactionManager();
++		if (jtaTransactionManager != null) {
++			if (runningOnWebSphere()) {
++				
++				
++				
++				configureWebSphereTransactionPlatform(vendorProperties);
++			}
++			else {
++				configureSpringJtaPlatform(vendorProperties, jtaTransactionManager);
++			}
++		}
++		else {
++			vendorProperties.put(JTA_PLATFORM, getNoJtaPlatformManager());
++		}
++	}
++
++	private boolean runningOnWebSphere() {
++		return ClassUtils.isPresent(
++				 + ,
++				getClass().getClassLoader());
++	}
++
++	private void configureWebSphereTransactionPlatform(
++			Map<String, Object> vendorProperties) {
++		vendorProperties.put(JTA_PLATFORM, getWebSphereJtaPlatformManager());
++	}
++
++	private Object getWebSphereJtaPlatformManager() {
++		return getJtaPlatformManager(WEBSPHERE_JTA_PLATFORM_CLASSES);
++	}
++
++	private void configureSpringJtaPlatform(Map<String, Object> vendorProperties,
++			JtaTransactionManager jtaTransactionManager) {
++		try {
++			vendorProperties.put(JTA_PLATFORM,
++					new SpringJtaPlatform(jtaTransactionManager));
++		}
++		catch (LinkageError ex) {
++			
++			
++			if (!isUsingJndi()) {
++				throw new IllegalStateException(
++						+ 
++						+ , ex);
++			}
++			
++			if (logger.isDebugEnabled()) {
++				logger.debug( + ex.getMessage());
++			}
++		}
++	}
++
++	private boolean isUsingJndi() {
++		try {
++			return JndiLocatorDelegate.isDefaultJndiEnvironmentAvailable();
++		}
++		catch (Error ex) {
++			return false;
++		}
++	}
++
++	private Object getNoJtaPlatformManager() {
++		return getJtaPlatformManager(NO_JTA_PLATFORM_CLASSES);
++	}
++
++	private Object getJtaPlatformManager(String[] candidates) {
++		for (String candidate : candidates) {
++			try {
++				return Class.forName(candidate).newInstance();
++			}
++			catch (Exception ex) {
++				
++			}
++		}
++		throw new IllegalStateException();
++	}
++
++}
+

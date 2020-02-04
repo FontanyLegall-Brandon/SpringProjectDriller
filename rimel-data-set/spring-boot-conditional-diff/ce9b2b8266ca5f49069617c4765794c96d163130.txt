@@ -1,0 +1,57 @@
+@@ -0,0 +1,74 @@
++
++
++package org.springframework.boot.actuate.autoconfigure.metrics.web.tomcat;
++
++import java.util.Collections;
++
++import io.micrometer.core.instrument.binder.tomcat.TomcatMetrics;
++import org.apache.catalina.Container;
++import org.apache.catalina.Context;
++import org.apache.catalina.Manager;
++
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
++import org.springframework.boot.web.context.WebServerApplicationContext;
++import org.springframework.boot.web.embedded.tomcat.TomcatWebServer;
++import org.springframework.boot.web.server.WebServer;
++import org.springframework.context.ApplicationContext;
++import org.springframework.context.annotation.Bean;
++
++
++@ConditionalOnWebApplication
++@ConditionalOnClass({ TomcatMetrics.class, Manager.class })
++public class TomcatMetricsAutoConfiguration {
++
++	@Bean
++	@ConditionalOnMissingBean(TomcatMetrics.class)
++	public TomcatMetrics tomcatMetrics(ApplicationContext applicationContext) {
++		Context context = findContext(applicationContext);
++		return new TomcatMetrics(context == null ? null : context.getManager(),
++				Collections.emptyList());
++	}
++
++	private Context findContext(ApplicationContext context) {
++		if (!(context instanceof WebServerApplicationContext)) {
++			return null;
++		}
++		WebServer webServer = ((WebServerApplicationContext) context).getWebServer();
++		if (!(webServer instanceof TomcatWebServer)) {
++			return null;
++		}
++		return findContext((TomcatWebServer) webServer);
++	}
++
++	private Context findContext(TomcatWebServer webServer) {
++		for (Container child : webServer.getTomcat().getHost().findChildren()) {
++			if (child instanceof Context) {
++				return (Context) child;
++			}
++		}
++		return null;
++	}
++
++}
+

@@ -1,0 +1,37 @@
+@@ -20,10 +20,10 @@ import java.util.Map;
+ 
+ import org.apache.solr.client.solrj.SolrClient;
+ 
+-import org.springframework.boot.actuate.autoconfigure.health.CompositeHealthIndicatorConfiguration;
++import org.springframework.boot.actuate.autoconfigure.health.CompositeHealthContributorConfiguration;
+ import org.springframework.boot.actuate.autoconfigure.health.ConditionalOnEnabledHealthIndicator;
+-import org.springframework.boot.actuate.autoconfigure.health.HealthIndicatorAutoConfiguration;
+-import org.springframework.boot.actuate.health.HealthIndicator;
++import org.springframework.boot.actuate.autoconfigure.health.HealthContributorAutoConfiguration;
++import org.springframework.boot.actuate.health.HealthContributor;
+ import org.springframework.boot.actuate.solr.SolrHealthIndicator;
+ import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+ import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+@@ -46,15 +46,15 @@ import org.springframework.context.annotation.Configuration;
+ @ConditionalOnClass(SolrClient.class)
+ @ConditionalOnBean(SolrClient.class)
+ @ConditionalOnEnabledHealthIndicator()
+-@AutoConfigureBefore(HealthIndicatorAutoConfiguration.class)
++@AutoConfigureBefore(HealthContributorAutoConfiguration.class)
+ @AutoConfigureAfter(SolrAutoConfiguration.class)
+-public class SolrHealthIndicatorAutoConfiguration
+-		extends CompositeHealthIndicatorConfiguration<SolrHealthIndicator, SolrClient> {
++public class SolrHealthContributorAutoConfiguration
++		extends CompositeHealthContributorConfiguration<SolrHealthIndicator, SolrClient> {
+ 
+ 	@Bean
+-	@ConditionalOnMissingBean(name = )
+-	public HealthIndicator solrHealthIndicator(Map<String, SolrClient> solrClients) {
+-		return createHealthIndicator(solrClients);
++	@ConditionalOnMissingBean(name = { ,  })
++	public HealthContributor solrHealthContributor(Map<String, SolrClient> solrClients) {
++		return createContributor(solrClients);
+ 	}
+ 
+ }
+

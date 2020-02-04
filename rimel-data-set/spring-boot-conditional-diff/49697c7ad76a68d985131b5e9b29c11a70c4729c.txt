@@ -1,0 +1,10 @@
+@@ -132,7 +132,7 @@ public class HornetQAutoConfiguration {
+ 	 */
+ 	@Configuration
+ 	@ConditionalOnClass(name = EMBEDDED_JMS_CLASS)
+-	@ConditionalOnExpression()
++	@ConditionalOnExpression()
+ 	static class EmbeddedServerConfiguration {
+ 
+ 		@Autowired
+

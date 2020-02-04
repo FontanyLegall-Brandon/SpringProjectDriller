@@ -1,0 +1,7 @@
+@@ -1,5 +1,5 @@
+ 
++@ConditionalOnMissingBean(MongoRepositoryFactoryBean.class)
+ class MongoRepositoriesAutoConfigureRegistrar extends
+ 		AbstractRepositoryConfigurationSourceSupport {
+ 
+

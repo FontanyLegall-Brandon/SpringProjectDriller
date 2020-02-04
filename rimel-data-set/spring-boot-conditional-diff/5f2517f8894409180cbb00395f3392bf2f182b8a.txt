@@ -1,0 +1,49 @@
+@@ -0,0 +1,66 @@
++
++
++package org.springframework.boot.actuate.autoconfigure.metrics.export.appoptics;
++
++import io.micrometer.appoptics.AppOpticsConfig;
++import io.micrometer.appoptics.AppOpticsMeterRegistry;
++import io.micrometer.core.instrument.Clock;
++
++import org.springframework.boot.actuate.autoconfigure.metrics.CompositeMeterRegistryAutoConfiguration;
++import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
++import org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration;
++import org.springframework.boot.autoconfigure.AutoConfigureAfter;
++import org.springframework.boot.autoconfigure.AutoConfigureBefore;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
++import org.springframework.boot.context.properties.EnableConfigurationProperties;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++
++@Configuration
++@AutoConfigureBefore({ CompositeMeterRegistryAutoConfiguration.class,
++		SimpleMetricsExportAutoConfiguration.class })
++@AutoConfigureAfter(MetricsAutoConfiguration.class)
++@ConditionalOnBean(Clock.class)
++@ConditionalOnClass(AppOpticsMeterRegistry.class)
++@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
++@EnableConfigurationProperties(AppOpticsProperties.class)
++public class AppOpticsMetricsExportAutoConfiguration {
++
++	@Bean
++	@ConditionalOnMissingBean
++	public AppOpticsConfig appOpticsConfig(AppOpticsProperties appOpticsProperties) {
++		return new AppOpticsPropertiesConfigAdapter(appOpticsProperties);
++	}
++
++	@Bean
++	@ConditionalOnMissingBean
++	public AppOpticsMeterRegistry appOpticsMeterRegistry(AppOpticsConfig config,
++			Clock clock) {
++		return new AppOpticsMeterRegistry(config, clock);
++	}
++
++}
+

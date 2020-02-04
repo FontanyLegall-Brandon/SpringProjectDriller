@@ -1,0 +1,36 @@
+@@ -79,6 +79,16 @@ public class ConditionalOnPropertyTests {
+ 		assertTrue(this.context.containsBean());
+ 	}
+ 
++	@Test
++	public void prefixWithoutPeriod() throws Exception {
++		EnvironmentTestUtils.addEnvironment(this.context.getEnvironment(),
++				);
++		this.context
++				.register(RelaxedPropertiesRequiredConfigurationWithShortPrefix.class);
++		this.context.refresh();
++		assertTrue(this.context.containsBean());
++	}
++
+ 	@Test
+ 	public void nonRelaxedName() throws Exception {
+ 		EnvironmentTestUtils.addEnvironment(this.context.getEnvironment(),
+@@ -110,6 +120,17 @@ public class ConditionalOnPropertyTests {
+ 
+ 	}
+ 
++	@Configuration
++	@ConditionalOnProperty(prefix = , value = )
++	protected static class RelaxedPropertiesRequiredConfigurationWithShortPrefix {
++
++		@Bean
++		public String foo() {
++			return ;
++		}
++
++	}
++
+ 	@Configuration
+ 	@ConditionalOnProperty(value = , relaxedNames = false)
+ 	protected static class NonRelaxedPropertiesRequiredConfiguration {
+

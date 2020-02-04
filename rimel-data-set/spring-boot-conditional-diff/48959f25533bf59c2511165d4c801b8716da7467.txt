@@ -1,0 +1,48 @@
+@@ -0,0 +1,70 @@
++
++
++package org.springframework.boot.autoconfigure.cache;
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.cache.CacheManager;
++import org.springframework.cache.ehcache.EhCacheCacheManager;
++import org.springframework.cache.ehcache.EhCacheManagerUtils;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Conditional;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.core.io.Resource;
++
++
++@Configuration
++@ConditionalOnClass(EhCacheCacheManager.class)
++@ConditionalOnMissingBean(CacheManager.class)
++@Conditional({ CacheCondition.class,
++		EhCacheCacheConfiguration.ConfigAvailableCondition.class })
++class EhCacheCacheConfiguration {
++
++	@Autowired
++	private CacheProperties properties;
++
++	@Bean
++	public EhCacheCacheManager cacheManager() {
++		Resource location = this.properties.resolveConfigLocation();
++		if (location != null) {
++			return new EhCacheCacheManager(
++					EhCacheManagerUtils.buildCacheManager(location));
++		}
++		return new EhCacheCacheManager(EhCacheManagerUtils.buildCacheManager());
++	}
++
++	
++	static class ConfigAvailableCondition extends CacheConfigFileCondition {
++
++		public ConfigAvailableCondition() {
++			super(, );
++		}
++
++	}
++
++}
+

@@ -1,0 +1,67 @@
+@@ -0,0 +1,88 @@
++
++
++package org.springframework.boot.actuate.autoconfigure.metrics.amqp;
++
++import java.util.List;
++import java.util.Map;
++
++import com.rabbitmq.client.ConnectionFactory;
++import io.micrometer.core.instrument.MeterRegistry;
++import io.micrometer.core.instrument.Tag;
++import io.micrometer.core.instrument.Tags;
++
++import org.springframework.amqp.rabbit.connection.AbstractConnectionFactory;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.actuate.metrics.amqp.RabbitMetrics;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
++import org.springframework.boot.context.properties.EnableConfigurationProperties;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.util.StringUtils;
++
++
++@Configuration
++@ConditionalOnClass({ ConnectionFactory.class, AbstractConnectionFactory.class })
++@ConditionalOnBean(AbstractConnectionFactory.class)
++@ConditionalOnProperty(value = , matchIfMissing = true)
++@EnableConfigurationProperties(RabbitMetricsProperties.class)
++public class RabbitMetricsConfiguration {
++
++	private static final String CONNECTION_FACTORY_SUFFIX = ;
++
++	private final MeterRegistry registry;
++
++	private final String metricName;
++
++	public RabbitMetricsConfiguration(MeterRegistry registry,
++			RabbitMetricsProperties rabbitMetricsProperties) {
++		this.registry = registry;
++		this.metricName = rabbitMetricsProperties.getMetricName();
++	}
++
++	@Autowired
++	public void bindConnectionFactoriesToRegistry(
++			Map<String, AbstractConnectionFactory> connectionFactories) {
++		connectionFactories.forEach(this::bindConnectionFactoryToRegistry);
++	}
++
++	private void bindConnectionFactoryToRegistry(String beanName,
++			AbstractConnectionFactory connectionFactory) {
++		List<Tag> tags = Tags.zip(, getConnectionFactoryName(beanName));
++		new RabbitMetrics(connectionFactory.getRabbitConnectionFactory(), this.metricName,
++				tags).bindTo(this.registry);
++	}
++
++	
++	private String getConnectionFactoryName(String beanName) {
++		if (beanName.length() > CONNECTION_FACTORY_SUFFIX.length()
++				&& StringUtils.endsWithIgnoreCase(beanName, CONNECTION_FACTORY_SUFFIX)) {
++			return beanName.substring(0, beanName.length() - CONNECTION_FACTORY_SUFFIX.length());
++		}
++		return beanName;
++	}
++
++}
+

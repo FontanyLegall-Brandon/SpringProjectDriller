@@ -1,0 +1,65 @@
+@@ -0,0 +1,86 @@
++
++
++package org.springframework.boot.actuate.autoconfigure.metrics.jdbc;
++
++import java.util.Collection;
++import java.util.Map;
++
++import javax.sql.DataSource;
++
++import io.micrometer.core.instrument.MeterRegistry;
++import io.micrometer.core.instrument.Tags;
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.actuate.metrics.jdbc.DataSourcePoolMetrics;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
++import org.springframework.boot.context.properties.EnableConfigurationProperties;
++import org.springframework.boot.jdbc.metadata.DataSourcePoolMetadataProvider;
++import org.springframework.context.annotation.Configuration;
++
++
++@Configuration
++@ConditionalOnBean({ DataSource.class, DataSourcePoolMetadataProvider.class })
++@ConditionalOnProperty(value = , matchIfMissing = true)
++@EnableConfigurationProperties(JdbcMetricsProperties.class)
++public class DataSourcePoolMetricsConfiguration {
++
++	private static final String DATASOURCE_SUFFIX = ;
++
++	private final MeterRegistry registry;
++
++	private final Collection<DataSourcePoolMetadataProvider> metadataProviders;
++
++	private final String metricName;
++
++	public DataSourcePoolMetricsConfiguration(MeterRegistry registry,
++			Collection<DataSourcePoolMetadataProvider> metadataProviders,
++			JdbcMetricsProperties jdbcMetricsProperties) {
++		this.registry = registry;
++		this.metadataProviders = metadataProviders;
++		this.metricName = jdbcMetricsProperties.getDatasourceMetricName();
++	}
++
++	@Autowired
++	public void bindDataSourcesToRegistry(Map<String, DataSource> dataSources) {
++		for (Map.Entry<String, DataSource> entry : dataSources.entrySet()) {
++			String beanName = entry.getKey();
++			DataSource dataSource = entry.getValue();
++			new DataSourcePoolMetrics(dataSource, this.metadataProviders, this.metricName,
++					Tags.zip(, getDataSourceName(beanName))).bindTo(this.registry);
++		}
++	}
++
++	
++	private String getDataSourceName(String beanName) {
++		if (beanName.length() > DATASOURCE_SUFFIX.length()
++				&& beanName.toLowerCase().endsWith(DATASOURCE_SUFFIX.toLowerCase())) {
++			return beanName.substring(0, beanName.length() - DATASOURCE_SUFFIX.length());
++		}
++		return beanName;
++	}
++
++}
+

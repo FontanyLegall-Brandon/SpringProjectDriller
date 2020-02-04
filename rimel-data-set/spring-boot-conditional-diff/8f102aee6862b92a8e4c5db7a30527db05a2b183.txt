@@ -1,0 +1,260 @@
+@@ -1,277 +0,0 @@
+-
+-
+-package org.springframework.boot.actuate.autoconfigure.endpoint.condition;
+-
+-import org.junit.jupiter.api.Test;
+-
+-import org.springframework.boot.actuate.endpoint.EndpointFilter;
+-import org.springframework.boot.actuate.endpoint.ExposableEndpoint;
+-import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
+-import org.springframework.boot.actuate.endpoint.annotation.EndpointExtension;
+-import org.springframework.boot.test.context.runner.ApplicationContextRunner;
+-import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.Configuration;
+-
+-import static org.assertj.core.api.Assertions.assertThat;
+-
+-
+-@Deprecated
+-@SuppressWarnings()
+-class ConditionalOnEnabledEndpointTests {
+-
+-	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner();
+-
+-	@Test
+-	void outcomeWhenEndpointEnabledPropertyIsTrueShouldMatch() {
+-		this.contextRunner.withPropertyValues()
+-				.withUserConfiguration(FooEndpointEnabledByDefaultFalseConfiguration.class)
+-				.run((context) -> assertThat(context).hasBean());
+-	}
+-
+-	@Test
+-	void outcomeWhenEndpointEnabledPropertyIsFalseShouldNotMatch() {
+-		this.contextRunner.withPropertyValues()
+-				.withUserConfiguration(FooEndpointEnabledByDefaultTrueConfiguration.class)
+-				.run((context) -> assertThat(context).doesNotHaveBean());
+-	}
+-
+-	@Test
+-	void outcomeWhenNoEndpointPropertyAndUserDefinedDefaultIsTrueShouldMatch() {
+-		this.contextRunner.withPropertyValues()
+-				.withUserConfiguration(FooEndpointEnabledByDefaultFalseConfiguration.class)
+-				.run((context) -> assertThat(context).hasBean());
+-	}
+-
+-	@Test
+-	void outcomeWhenNoEndpointPropertyAndUserDefinedDefaultIsFalseShouldNotMatch() {
+-		this.contextRunner.withPropertyValues()
+-				.withUserConfiguration(FooEndpointEnabledByDefaultTrueConfiguration.class)
+-				.run((context) -> assertThat(context).doesNotHaveBean());
+-	}
+-
+-	@Test
+-	void outcomeWhenNoPropertiesAndAnnotationIsEnabledByDefaultShouldMatch() {
+-		this.contextRunner.withUserConfiguration(FooEndpointEnabledByDefaultTrueConfiguration.class)
+-				.run((context) -> assertThat(context).hasBean());
+-	}
+-
+-	@Test
+-	void outcomeWhenNoPropertiesAndAnnotationIsNotEnabledByDefaultShouldNotMatch() {
+-		this.contextRunner.withUserConfiguration(FooEndpointEnabledByDefaultFalseConfiguration.class)
+-				.run((context) -> assertThat(context).doesNotHaveBean());
+-	}
+-
+-	@Test
+-	void outcomeWhenNoPropertiesAndExtensionAnnotationIsEnabledByDefaultShouldMatch() {
+-		this.contextRunner.withUserConfiguration(FooEndpointAndExtensionEnabledByDefaultTrueConfiguration.class)
+-				.run((context) -> assertThat(context).hasBean().hasBean());
+-	}
+-
+-	@Test
+-	void outcomeWhenNoPropertiesAndExtensionAnnotationIsNotEnabledByDefaultShouldNotMatch() {
+-		this.contextRunner.withUserConfiguration(FooEndpointAndExtensionEnabledByDefaultFalseConfiguration.class)
+-				.run((context) -> assertThat(context).doesNotHaveBean().doesNotHaveBean());
+-	}
+-
+-	@Test
+-	void outcomeWithReferenceWhenNoPropertiesShouldMatch() {
+-		this.contextRunner
+-				.withUserConfiguration(FooEndpointEnabledByDefaultTrue.class,
+-						ComponentEnabledIfEndpointIsEnabledConfiguration.class)
+-				.run((context) -> assertThat(context).hasBean());
+-	}
+-
+-	@Test
+-	void outcomeWithReferenceWhenEndpointEnabledPropertyIsTrueShouldMatch() {
+-		this.contextRunner.withPropertyValues()
+-				.withUserConfiguration(FooEndpointEnabledByDefaultTrue.class,
+-						ComponentEnabledIfEndpointIsEnabledConfiguration.class)
+-				.run((context) -> assertThat(context).hasBean());
+-	}
+-
+-	@Test
+-	void outcomeWithReferenceWhenEndpointEnabledPropertyIsFalseShouldNotMatch() {
+-		this.contextRunner.withPropertyValues()
+-				.withUserConfiguration(FooEndpointEnabledByDefaultTrue.class,
+-						ComponentEnabledIfEndpointIsEnabledConfiguration.class)
+-				.run((context) -> assertThat(context).doesNotHaveBean());
+-	}
+-
+-	@Test
+-	void outcomeWithNoReferenceShouldFail() {
+-		this.contextRunner.withUserConfiguration(ComponentWithNoEndpointReferenceConfiguration.class).run((context) -> {
+-			assertThat(context).hasFailed();
+-			assertThat(context.getStartupFailure().getCause().getMessage())
+-					.contains(
+-							+ );
+-		});
+-	}
+-
+-	@Test
+-	void outcomeWhenEndpointEnabledPropertyIsTrueAndMixedCaseShouldMatch() {
+-		this.contextRunner.withPropertyValues()
+-				.withUserConfiguration(FooBarEndpointEnabledByDefaultFalseConfiguration.class)
+-				.run((context) -> assertThat(context).hasBean());
+-	}
+-
+-	@Test
+-	void outcomeWhenEndpointEnabledPropertyIsFalseOnClassShouldNotMatch() {
+-		this.contextRunner.withPropertyValues()
+-				.withUserConfiguration(FooEndpointEnabledByDefaultTrueOnConfigurationConfiguration.class)
+-				.run((context) -> assertThat(context).doesNotHaveBean());
+-	}
+-
+-	@Endpoint(id = , enableByDefault = true)
+-	static class FooEndpointEnabledByDefaultTrue {
+-
+-	}
+-
+-	@Endpoint(id = , enableByDefault = false)
+-	static class FooEndpointEnabledByDefaultFalse {
+-
+-	}
+-
+-	@Endpoint(id = , enableByDefault = false)
+-	static class FooBarEndpointEnabledByDefaultFalse {
+-
+-	}
+-
+-	@EndpointExtension(endpoint = FooEndpointEnabledByDefaultTrue.class, filter = TestFilter.class)
+-	static class FooEndpointExtensionEnabledByDefaultTrue {
+-
+-	}
+-
+-	@EndpointExtension(endpoint = FooEndpointEnabledByDefaultFalse.class, filter = TestFilter.class)
+-	static class FooEndpointExtensionEnabledByDefaultFalse {
+-
+-	}
+-
+-	static class TestFilter implements EndpointFilter<ExposableEndpoint<?>> {
+-
+-		@Override
+-		public boolean match(ExposableEndpoint<?> endpoint) {
+-			return true;
+-		}
+-
+-	}
+-
+-	@Configuration(proxyBeanMethods = false)
+-	static class FooEndpointEnabledByDefaultTrueConfiguration {
+-
+-		@Bean
+-		@ConditionalOnEnabledEndpoint
+-		FooEndpointEnabledByDefaultTrue foo() {
+-			return new FooEndpointEnabledByDefaultTrue();
+-		}
+-
+-	}
+-
+-	@Configuration(proxyBeanMethods = false)
+-	@ConditionalOnEnabledEndpoint(endpoint = FooEndpointEnabledByDefaultTrue.class)
+-	static class FooEndpointEnabledByDefaultTrueOnConfigurationConfiguration {
+-
+-		@Bean
+-		FooEndpointEnabledByDefaultTrue foo() {
+-			return new FooEndpointEnabledByDefaultTrue();
+-		}
+-
+-	}
+-
+-	@Configuration(proxyBeanMethods = false)
+-	static class FooEndpointEnabledByDefaultFalseConfiguration {
+-
+-		@Bean
+-		@ConditionalOnEnabledEndpoint
+-		FooEndpointEnabledByDefaultFalse foo() {
+-			return new FooEndpointEnabledByDefaultFalse();
+-		}
+-
+-	}
+-
+-	@Configuration(proxyBeanMethods = false)
+-	static class FooBarEndpointEnabledByDefaultFalseConfiguration {
+-
+-		@Bean
+-		@ConditionalOnEnabledEndpoint
+-		FooBarEndpointEnabledByDefaultFalse fooBar() {
+-			return new FooBarEndpointEnabledByDefaultFalse();
+-		}
+-
+-	}
+-
+-	@Configuration(proxyBeanMethods = false)
+-	static class FooEndpointAndExtensionEnabledByDefaultTrueConfiguration {
+-
+-		@Bean
+-		@ConditionalOnEnabledEndpoint
+-		FooEndpointEnabledByDefaultTrue foo() {
+-			return new FooEndpointEnabledByDefaultTrue();
+-		}
+-
+-		@Bean
+-		@ConditionalOnEnabledEndpoint
+-		FooEndpointExtensionEnabledByDefaultTrue fooExt() {
+-			return new FooEndpointExtensionEnabledByDefaultTrue();
+-		}
+-
+-	}
+-
+-	@Configuration(proxyBeanMethods = false)
+-	static class FooEndpointAndExtensionEnabledByDefaultFalseConfiguration {
+-
+-		@Bean
+-		@ConditionalOnEnabledEndpoint
+-		FooEndpointEnabledByDefaultFalse foo() {
+-			return new FooEndpointEnabledByDefaultFalse();
+-		}
+-
+-		@Bean
+-		@ConditionalOnEnabledEndpoint
+-		FooEndpointExtensionEnabledByDefaultFalse fooExt() {
+-			return new FooEndpointExtensionEnabledByDefaultFalse();
+-		}
+-
+-	}
+-
+-	@Configuration(proxyBeanMethods = false)
+-	static class ComponentEnabledIfEndpointIsEnabledConfiguration {
+-
+-		@Bean
+-		@ConditionalOnEnabledEndpoint(endpoint = FooEndpointEnabledByDefaultTrue.class)
+-		String fooComponent() {
+-			return ;
+-		}
+-
+-	}
+-
+-	@Configuration(proxyBeanMethods = false)
+-	static class ComponentWithNoEndpointReferenceConfiguration {
+-
+-		@Bean
+-		@ConditionalOnEnabledEndpoint
+-		String fooComponent() {
+-			return ;
+-		}
+-
+-	}
+-
+-}
+

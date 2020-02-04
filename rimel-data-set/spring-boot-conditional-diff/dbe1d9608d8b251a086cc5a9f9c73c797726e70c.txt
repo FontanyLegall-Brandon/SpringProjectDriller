@@ -1,0 +1,43 @@
+@@ -0,0 +1,61 @@
++
++
++package org.springframework.boot.autoconfigure.security.oauth2.client;
++
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.security.config.annotation.web.builders.HttpSecurity;
++import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
++import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
++
++
++@Configuration
++@ConditionalOnMissingBean(WebSecurityConfigurerAdapter.class)
++@ConditionalOnBean(ClientRegistrationRepository.class)
++class OAuth2WebSecurityConfiguration {
++
++	@Configuration
++	private static class OAuth2WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
++
++		private final ClientRegistrationRepository clientRegistrationRepository;
++
++		OAuth2WebSecurityConfigurationAdapter(
++				ClientRegistrationRepository clientRegistrationRepository) {
++			this.clientRegistrationRepository = clientRegistrationRepository;
++		}
++
++		@Override
++		protected void configure(HttpSecurity http) throws Exception {
++			http
++					.authorizeRequests()
++					.anyRequest()
++					.authenticated().and()
++					.oauth2Login()
++					.clients(this.clientRegistrationRepository);
++		}
++
++	}
++
++}
++
+

@@ -1,0 +1,34 @@
+@@ -0,0 +1,51 @@
++
++
++package org.springframework.boot.autoconfigure.session;
++
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.web.ServerProperties;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Conditional;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.session.ExpiringSession;
++import org.springframework.session.MapSessionRepository;
++import org.springframework.session.SessionRepository;
++import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
++
++
++@Configuration
++@ConditionalOnMissingBean(SessionRepository.class)
++@EnableSpringHttpSession
++@Conditional(SessionCondition.class)
++class SimpleSessionConfiguration {
++
++	@Bean
++	public SessionRepository<ExpiringSession> sessionRepository(ServerProperties serverProperties) {
++		MapSessionRepository sessionRepository = new MapSessionRepository();
++
++		Integer timeout = serverProperties.getSession().getTimeout();
++		if (serverProperties.getSession().getTimeout() != null) {
++			sessionRepository.setDefaultMaxInactiveInterval(timeout);
++		}
++		return sessionRepository;
++	}
++}
+

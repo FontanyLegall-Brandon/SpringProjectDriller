@@ -1,0 +1,28 @@
+@@ -0,0 +1,45 @@
++
++package org.springframework.boot.autoconfigure.security.servlet;
++
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.security.web.util.matcher.RequestMatcher;
++import org.springframework.web.servlet.DispatcherServlet;
++import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
++
++
++@Configuration
++@ConditionalOnClass({ RequestMatcher.class, DispatcherServlet.class })
++@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
++@ConditionalOnBean(HandlerMappingIntrospector.class)
++public class SecurityRequestMatcherProviderAutoConfiguration {
++
++	@Bean
++	public RequestMatcherProvider requestMatcherProvider(
++			HandlerMappingIntrospector introspector) {
++		return new MvcRequestMatcherProvider(introspector);
++	}
++
++}
+

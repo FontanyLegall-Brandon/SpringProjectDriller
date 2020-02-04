@@ -1,0 +1,50 @@
+@@ -38,6 +38,7 @@ import org.springframework.core.convert.converter.Converter;
+ import org.springframework.core.convert.converter.GenericConverter;
+ import org.springframework.core.io.ClassPathResource;
+ import org.springframework.core.io.Resource;
++import org.springframework.core.io.ResourceLoader;
+ import org.springframework.format.Formatter;
+ import org.springframework.format.FormatterRegistry;
+ import org.springframework.web.accept.ContentNegotiationManager;
+@@ -48,6 +49,7 @@ import org.springframework.web.servlet.View;
+ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
++import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+ import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
+ import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
+@@ -76,6 +78,9 @@ public class WebMvcAutoConfiguration {
+ 		@Autowired
+ 		private ListableBeanFactory beanFactory;
+ 
++		@Autowired
++		private ResourceLoader resourceLoader;
++
+ 		@ConditionalOnBean(View.class)
+ 		@Bean
+ 		public BeanNameViewResolver beanNameViewResolver() {
+@@ -128,6 +133,22 @@ public class WebMvcAutoConfiguration {
+ 					, );
+ 		}
+ 
++		
++		@Override
++		public void addViewControllers(ViewControllerRegistry registry) {
++			if (this.resourceLoader.getResource().exists()) {
++				registry.addViewController().setViewName();
++			}
++			else if (this.resourceLoader.getResource()
++					.exists()) {
++				registry.addViewController().setViewName();
++			}
++			else if (this.resourceLoader.getResource()
++					.exists()) {
++				registry.addViewController().setViewName();
++			}
++		}
++
+ 		@Configuration
+ 		public static class FaviconConfiguration {
+ 
+

@@ -1,0 +1,36 @@
+@@ -327,14 +327,34 @@ public class ThymeleafAutoConfiguration {
+ 	@ConditionalOnClass({ SpringSecurityDialect.class })
+ 	protected static class ThymeleafSecurityDialectConfiguration {
+ 
++		private final Log logger = LogFactory
++				.getLog(ThymeleafSecurityDialectConfiguration.class);
++
+ 		@Bean
+ 		@ConditionalOnMissingBean
+ 		public SpringSecurityDialect securityDialect() {
++			if (this.logger.isWarnEnabled()) {
++				this.logger.warn(
++						+ );
++			}
+ 			return new SpringSecurityDialect();
+ 		}
+ 
+ 	}
+ 
++	@Configuration
++	@ConditionalOnClass({
++			org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect.class })
++	protected static class ThymeleafSecurity5DialectConfiguration {
++
++		@Bean
++		@ConditionalOnMissingBean
++		public org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect securityDialect() {
++			return new org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect();
++		}
++
++	}
++
+ 	@Configuration
+ 	@ConditionalOnClass(Java8TimeDialect.class)
+ 	protected static class ThymeleafJava8TimeDialect {
+

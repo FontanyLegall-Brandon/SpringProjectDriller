@@ -1,0 +1,24 @@
+@@ -32,10 +32,8 @@ import org.springframework.context.annotation.Configuration;
+ import org.springframework.context.annotation.Import;
+ import org.springframework.hateoas.EntityModel;
+ import org.springframework.hateoas.client.LinkDiscoverers;
+-import org.springframework.hateoas.config.EnableEntityLinks;
+ import org.springframework.hateoas.config.EnableHypermediaSupport;
+ import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
+-import org.springframework.hateoas.server.EntityLinks;
+ import org.springframework.plugin.core.Plugin;
+ import org.springframework.web.bind.annotation.RequestMapping;
+ 
+@@ -65,11 +63,4 @@ public class HypermediaAutoConfiguration {
+ 
+ 	}
+ 
+-	@Configuration(proxyBeanMethods = false)
+-	@ConditionalOnMissingBean(EntityLinks.class)
+-	@EnableEntityLinks
+-	protected static class EntityLinksConfiguration {
+-
+-	}
+-
+ }
+

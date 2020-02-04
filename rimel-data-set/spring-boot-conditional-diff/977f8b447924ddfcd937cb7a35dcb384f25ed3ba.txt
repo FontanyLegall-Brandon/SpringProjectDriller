@@ -1,0 +1,37 @@
+@@ -0,0 +1,54 @@
++
++
++package org.springframework.boot.actuate.autoconfigure.metrics;
++
++import java.util.Collections;
++
++import javax.management.MBeanServer;
++
++import io.micrometer.core.instrument.MeterRegistry;
++import io.micrometer.core.instrument.binder.kafka.KafkaConsumerMetrics;
++import org.apache.kafka.clients.consumer.KafkaConsumer;
++
++import org.springframework.boot.autoconfigure.AutoConfigureAfter;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++
++@Configuration
++@AutoConfigureAfter({ MetricsAutoConfiguration.class, JmxAutoConfiguration.class })
++@ConditionalOnClass({ KafkaConsumerMetrics.class, KafkaConsumer.class })
++@ConditionalOnBean(MeterRegistry.class)
++public class KafkaMetricsAutoConfiguration {
++
++	@Bean
++	@ConditionalOnMissingBean
++	@ConditionalOnBean(MBeanServer.class)
++	public KafkaConsumerMetrics kafkaConsumerMetrics(MBeanServer mbeanServer) {
++		return new KafkaConsumerMetrics(mbeanServer, Collections.emptyList());
++	}
++
++}
+

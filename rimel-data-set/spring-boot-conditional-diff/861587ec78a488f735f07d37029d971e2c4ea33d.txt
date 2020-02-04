@@ -1,0 +1,73 @@
+@@ -102,6 +102,44 @@ public class ConditionalOnEnabledEndpointTests {
+ 						.doesNotHaveBean());
+ 	}
+ 
++	@Test
++	public void outcomeWithReferenceWhenNoPropertiesShouldMatch() {
++		this.contextRunner
++				.withUserConfiguration(FooEndpointEnabledByDefaultTrue.class,
++						ComponentEnabledIfEndpointIsEnabledConfiguration.class)
++				.run((context) -> assertThat(context).hasBean());
++	}
++
++	@Test
++	public void outcomeWithReferenceWhenEndpointEnabledPropertyIsTrueShouldMatch() {
++		this.contextRunner.withPropertyValues()
++				.withUserConfiguration(FooEndpointEnabledByDefaultTrue.class,
++						ComponentEnabledIfEndpointIsEnabledConfiguration.class)
++				.run((context) -> assertThat(context).hasBean());
++	}
++
++	@Test
++	public void outcomeWithReferenceWhenEndpointEnabledPropertyIsFalseShouldNotMatch() {
++		this.contextRunner.withPropertyValues()
++				.withUserConfiguration(FooEndpointEnabledByDefaultTrue.class,
++						ComponentEnabledIfEndpointIsEnabledConfiguration.class)
++				.run((context) -> assertThat(context).doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWithNoReferenceShouldFail() {
++		this.contextRunner
++				.withUserConfiguration(
++						ComponentWithNoEndpointReferenceConfiguration.class)
++				.run((context) -> {
++					assertThat(context).hasFailed();
++					assertThat(context.getStartupFailure().getCause().getMessage())
++							.contains(
++									
++											+ );
++				});
++	}
++
+ 	@Endpoint(id = , enableByDefault = true)
+ 	static class FooEndpointEnabledByDefaultTrue {
+ 
+@@ -187,4 +225,26 @@ public class ConditionalOnEnabledEndpointTests {
+ 
+ 	}
+ 
++	@Configuration
++	static class ComponentEnabledIfEndpointIsEnabledConfiguration {
++
++		@Bean
++		@ConditionalOnEnabledEndpoint(endpoint = FooEndpointEnabledByDefaultTrue.class)
++		public String fooComponent() {
++			return ;
++		}
++
++	}
++
++	@Configuration
++	static class ComponentWithNoEndpointReferenceConfiguration {
++
++		@Bean
++		@ConditionalOnEnabledEndpoint
++		public String fooComponent() {
++			return ;
++		}
++
++	}
++
+ }
+

@@ -1,0 +1,76 @@
+@@ -0,0 +1,98 @@
++
++
++package org.springframework.boot.actuate.autoconfigure.metrics.cache;
++
++import java.util.Collection;
++import java.util.Map;
++
++import javax.annotation.PostConstruct;
++
++import io.micrometer.core.instrument.MeterRegistry;
++import io.micrometer.core.instrument.Tag;
++
++import org.springframework.boot.actuate.metrics.cache.CacheMeterBinderProvider;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.cache.Cache;
++import org.springframework.cache.CacheManager;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.util.StringUtils;
++
++
++@Configuration
++@ConditionalOnBean(CacheMeterBinderProvider.class)
++class CacheMetricsRegistrarConfiguration {
++
++	private static final String CACHE_MANAGER_SUFFIX = ;
++
++	private final MeterRegistry registry;
++
++	private final CacheMetricsProperties properties;
++
++	private final Collection<CacheMeterBinderProvider> cacheMeterBinderProviders;
++
++	private final Map<String, CacheManager> cacheManagers;
++
++	CacheMetricsRegistrarConfiguration(MeterRegistry registry,
++			CacheMetricsProperties properties,
++			Collection<CacheMeterBinderProvider> cacheMeterBinderProviders,
++			Map<String, CacheManager> cacheManagers) {
++		this.registry = registry;
++		this.cacheMeterBinderProviders = cacheMeterBinderProviders;
++		this.properties = properties;
++		this.cacheManagers = cacheManagers;
++	}
++
++	@Bean
++	public CacheMetricsRegistrar cacheMetricsRegistrar() {
++		return new CacheMetricsRegistrar(this.registry,
++				this.properties.getCacheMetricName(), this.cacheMeterBinderProviders);
++	}
++
++	@PostConstruct
++	public void bindCachesToRegistry() {
++		this.cacheManagers.forEach((beanName, cacheManager) -> cacheManager.getCacheNames()
++				.forEach((cacheName) ->
++						bindCacheToRegistry(beanName, cacheManager.getCache(cacheName))));
++	}
++
++	private void bindCacheToRegistry(String beanName, Cache cache) {
++		Tag cacheManagerTag = Tag.of(, getCacheManagerName(beanName));
++		cacheMetricsRegistrar().bindCacheToRegistry(cache, cacheManagerTag);
++	}
++
++	
++	private String getCacheManagerName(String beanName) {
++		if (beanName.length() > CACHE_MANAGER_SUFFIX.length()
++				&& StringUtils.endsWithIgnoreCase(beanName, CACHE_MANAGER_SUFFIX)) {
++			return beanName.substring(0,
++					beanName.length() - CACHE_MANAGER_SUFFIX.length());
++		}
++		return beanName;
++	}
++
++}
+

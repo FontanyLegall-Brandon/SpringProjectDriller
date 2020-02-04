@@ -1,0 +1,10 @@
+@@ -153,7 +153,7 @@ public class WebMvcAutoConfiguration {
+ 
+ 	@Bean
+ 	@ConditionalOnMissingBean(HiddenHttpMethodFilter.class)
+-	@ConditionalOnProperty(prefix = , name = , matchIfMissing = true)
++	@ConditionalOnProperty(prefix = , name = , matchIfMissing = false)
+ 	public OrderedHiddenHttpMethodFilter hiddenHttpMethodFilter() {
+ 		return new OrderedHiddenHttpMethodFilter();
+ 	}
+

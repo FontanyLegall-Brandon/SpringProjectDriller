@@ -1,0 +1,49 @@
+@@ -0,0 +1,66 @@
++
++
++package org.springframework.boot.autoconfigure.sendgrid;
++
++import org.apache.http.HttpHost;
++import org.apache.http.impl.client.CloseableHttpClient;
++import org.apache.http.impl.client.HttpClientBuilder;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
++import org.springframework.boot.context.properties.EnableConfigurationProperties;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++import com.sendgrid.SendGrid;
++
++
++@Configuration
++@ConditionalOnClass(SendGrid.class)
++@ConditionalOnProperty(prefix = , value = )
++@EnableConfigurationProperties(SendGridProperties.class)
++public class SendGridAutoConfiguration {
++
++	@Autowired
++	private SendGridProperties properties;
++
++	@Bean
++	@ConditionalOnMissingBean(SendGrid.class)
++	public SendGrid sendGrid() {
++		SendGrid sendGrid = new SendGrid(this.properties.getUsername(),
++				this.properties.getPassword());
++
++		if (this.properties.isProxyConfigured()) {
++			HttpHost proxy = new HttpHost(this.properties.getProxy().getHost(),
++					this.properties.getProxy().getPort());
++			CloseableHttpClient http = HttpClientBuilder.create().setProxy(proxy)
++					.setUserAgent( + sendGrid.getVersion() + ).build();
++
++			sendGrid.setClient(http);
++		}
++
++		return sendGrid;
++	}
++
++}
+

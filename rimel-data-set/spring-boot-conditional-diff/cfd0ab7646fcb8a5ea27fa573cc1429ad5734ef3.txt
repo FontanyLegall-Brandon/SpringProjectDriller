@@ -1,0 +1,16 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+ @Profile()
+-@AutoConfigureOrder(CloudAutoConfiguration.ORDER)
++@AutoConfigureOrder(CloudServiceConnectorsAutoConfiguration.ORDER)
+ @ConditionalOnClass(CloudScanConfiguration.class)
+ @ConditionalOnMissingBean(Cloud.class)
+-@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+ @Import(CloudScanConfiguration.class)
+-public class CloudAutoConfiguration {
++public class CloudServiceConnectorsAutoConfiguration {
+ 
+ 	
+ 	public static final int ORDER = Ordered.HIGHEST_PRECEDENCE + 20;
+

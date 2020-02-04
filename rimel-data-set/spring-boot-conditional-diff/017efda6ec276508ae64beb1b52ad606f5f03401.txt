@@ -1,0 +1,50 @@
+@@ -1,81 +0,0 @@
+-
+-
+-package org.springframework.boot.actuate.autoconfigure.jolokia;
+-
+-import org.jolokia.http.AgentServlet;
+-
+-import org.springframework.boot.actuate.autoconfigure.web.ManagementContextConfiguration;
+-import org.springframework.boot.actuate.autoconfigure.web.servlet.ManagementServletContext;
+-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type;
+-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+-import org.springframework.boot.web.servlet.ServletRegistrationBean;
+-import org.springframework.context.annotation.Bean;
+-import org.springframework.web.servlet.mvc.ServletWrappingController;
+-
+-
+-@ManagementContextConfiguration
+-@ConditionalOnWebApplication(type = Type.SERVLET)
+-@ConditionalOnClass({ AgentServlet.class, ServletWrappingController.class })
+-@ConditionalOnProperty(value = , havingValue = )
+-@EnableConfigurationProperties(JolokiaProperties.class)
+-public class JolokiaManagementContextConfiguration {
+-
+-	private final ManagementServletContext managementServletContext;
+-
+-	private final JolokiaProperties properties;
+-
+-	public JolokiaManagementContextConfiguration(
+-			ManagementServletContext managementServletContext,
+-			JolokiaProperties properties) {
+-		this.managementServletContext = managementServletContext;
+-		this.properties = properties;
+-	}
+-
+-	@Bean
+-	public ServletRegistrationBean<AgentServlet> jolokiaServlet() {
+-		String path = this.managementServletContext.getServletPath()
+-				+ this.properties.getPath();
+-		String urlMapping = (path.endsWith() ? path +  : path + );
+-		ServletRegistrationBean<AgentServlet> registration = new ServletRegistrationBean<>(
+-				new AgentServlet(), urlMapping);
+-		registration.setInitParameters(this.properties.getConfig());
+-		return registration;
+-	}
+-
+-}
+

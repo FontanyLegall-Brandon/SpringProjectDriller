@@ -1,0 +1,105 @@
+@@ -1,5 +1,5 @@
+ 
+ public class ConditionalOnWebApplicationTests {
+ 
+-	private final AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
++	private ConfigurableApplicationContext context;
++
++	@After
++	public void closeContext() {
++		if (this.context != null) {
++			this.context.close();
++		}
++	}
+ 
+ 	@Test
+-	public void testWebApplication() {
+-		this.context.register(BasicConfiguration.class);
+-		this.context.setServletContext(new MockServletContext());
+-		this.context.refresh();
+-		assertThat(this.context.containsBean()).isTrue();
+-		assertThat(this.context.getBean()).isEqualTo();
++	public void testWebApplicationWithServletContext() {
++		AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
++		ctx.register(AnyWebApplicationConfiguration.class,
++				ServletWebApplicationConfiguration.class,
++				ReactiveWebApplicationConfiguration.class);
++		ctx.setServletContext(new MockServletContext());
++		ctx.refresh();
++
++		this.context = ctx;
++		assertThat(this.context.getBeansOfType(String.class)).containsExactly(
++				entry(, ), entry(, ));
+ 	}
+ 
+ 	@Test
+-	public void testNotWebApplication() {
+-		this.context.register(MissingConfiguration.class);
+-		this.context.setServletContext(new MockServletContext());
+-		this.context.refresh();
+-		assertThat(this.context.containsBean()).isFalse();
++	public void testWebApplicationWithReactiveContext() {
++		ReactiveWebApplicationContext ctx = new ReactiveWebApplicationContext();
++		ctx.register(AnyWebApplicationConfiguration.class,
++				ServletWebApplicationConfiguration.class,
++				ReactiveWebApplicationConfiguration.class);
++		ctx.refresh();
++
++		this.context = ctx;
++		assertThat(this.context.getBeansOfType(String.class)).containsExactly(
++				entry(, ), entry(, ));
++	}
++
++	@Test
++	public void testNonWebApplication() {
++		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
++		ctx.register(AnyWebApplicationConfiguration.class,
++				ServletWebApplicationConfiguration.class,
++				ReactiveWebApplicationConfiguration.class);
++		ctx.refresh();
++
++		this.context = ctx;
++		assertThat(this.context.getBeansOfType(String.class)).isEmpty();
+ 	}
+ 
+ 	@Configuration
+-	@ConditionalOnNotWebApplication
+-	protected static class MissingConfiguration {
++	@ConditionalOnWebApplication
++	protected static class AnyWebApplicationConfiguration {
+ 
+ 		@Bean
+-		public String bar() {
+-			return ;
++		public String any() {
++			return ;
+ 		}
+ 
+ 	}
+ 
+ 	@Configuration
+-	@ConditionalOnWebApplication
+-	protected static class BasicConfiguration {
++	@ConditionalOnWebApplication(type = Type.SERVLET)
++	protected static class ServletWebApplicationConfiguration {
++
++		@Bean
++		public String servlet() {
++			return ;
++		}
++
++	}
++
++	@Configuration
++	@ConditionalOnWebApplication(type = Type.REACTIVE)
++	protected static class ReactiveWebApplicationConfiguration {
+ 
+ 		@Bean
+-		public String foo() {
+-			return ;
++		public String reactive() {
++			return ;
+ 		}
+ 
+ 	}
+

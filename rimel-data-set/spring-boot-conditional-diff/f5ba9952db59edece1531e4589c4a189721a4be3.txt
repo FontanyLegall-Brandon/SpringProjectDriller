@@ -1,0 +1,9 @@
+@@ -70,6 +70,7 @@ class ServletManagementChildContextConfiguration {
+ 	}
+ 
+ 	@Bean
++	@ConditionalOnClass(name = )
+ 	public UndertowAccessLogCustomizer undertowAccessLogCustomizer() {
+ 		return new UndertowAccessLogCustomizer();
+ 	}
+

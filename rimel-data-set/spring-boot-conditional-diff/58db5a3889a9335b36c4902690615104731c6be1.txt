@@ -1,0 +1,401 @@
+@@ -25,32 +25,23 @@ import javax.annotation.PostConstruct;
+ 
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.boot.actuate.endpoint.mvc.ActuatorDocsEndpoint;
+-import org.springframework.boot.actuate.endpoint.mvc.HalBrowserMvcEndpoint;
+-import org.springframework.boot.actuate.endpoint.mvc.HalBrowserMvcEndpoint.HalBrowserLocation;
++import org.springframework.boot.actuate.endpoint.mvc.ActuatorMvcEndpoint;
+ import org.springframework.boot.actuate.endpoint.mvc.HypermediaDisabled;
+-import org.springframework.boot.actuate.endpoint.mvc.LinksMvcEndpoint;
+ import org.springframework.boot.actuate.endpoint.mvc.MvcEndpoint;
+ import org.springframework.boot.actuate.endpoint.mvc.MvcEndpoints;
+-import org.springframework.boot.autoconfigure.condition.ConditionOutcome;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnResource;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+-import org.springframework.boot.autoconfigure.condition.SpringBootCondition;
+ import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
+ import org.springframework.boot.autoconfigure.web.ResourceProperties;
+ import org.springframework.boot.autoconfigure.web.ServerProperties;
+ import org.springframework.boot.context.properties.EnableConfigurationProperties;
+ import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.ConditionContext;
+-import org.springframework.context.annotation.Conditional;
+ import org.springframework.core.MethodParameter;
+ import org.springframework.core.annotation.AnnotationUtils;
+-import org.springframework.core.io.DefaultResourceLoader;
+-import org.springframework.core.io.ResourceLoader;
+-import org.springframework.core.type.AnnotatedTypeMetadata;
+ import org.springframework.hateoas.Link;
+ import org.springframework.hateoas.Resource;
+ import org.springframework.hateoas.ResourceSupport;
+@@ -75,7 +66,6 @@ import com.fasterxml.jackson.annotation.JsonUnwrapped;
+ import com.fasterxml.jackson.databind.ObjectMapper;
+ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+ 
+-import static org.springframework.hateoas.mvc.BasicLinkBuilder.linkToCurrentMapping;
+ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+ 
+ 
+ @ManagementContextConfiguration
+@@ -93,16 +84,15 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+ @EnableConfigurationProperties(ResourceProperties.class)
+ public class EndpointWebMvcHypermediaManagementContextConfiguration {
+ 
+-	@ConditionalOnProperty(value = , matchIfMissing = true)
+-	@Conditional(HalBrowserCondition.class)
++	@ConditionalOnProperty(prefix = , name = , matchIfMissing = true)
+ 	@Bean
+-	public HalBrowserMvcEndpoint halBrowserMvcEndpoint(
+-			ManagementServerProperties management, ResourceProperties resources) {
+-		return new HalBrowserMvcEndpoint(management);
++	public ActuatorMvcEndpoint actuatorMvcEndpoint(ManagementServerProperties management,
++			ResourceProperties resources) {
++		return new ActuatorMvcEndpoint(management);
+ 	}
+ 
+ 	@Bean
+-	@ConditionalOnProperty(value = , matchIfMissing = true)
++	@ConditionalOnProperty(prefix = , name = , matchIfMissing = true)
+ 	@ConditionalOnResource(resources = )
+ 	public ActuatorDocsEndpoint actuatorDocsEndpoint(ManagementServerProperties management) {
+ 		return new ActuatorDocsEndpoint(management);
+@@ -111,7 +101,7 @@ public class EndpointWebMvcHypermediaManagementContextConfiguration {
+ 	@Bean
+ 	@ConditionalOnBean(ActuatorDocsEndpoint.class)
+ 	@ConditionalOnMissingBean(CurieProvider.class)
+-	@ConditionalOnProperty(value = , matchIfMissing = false)
++	@ConditionalOnProperty(prefix = , name = , matchIfMissing = false)
+ 	public DefaultCurieProvider curieProvider(ServerProperties server,
+ 			ManagementServerProperties management, ActuatorDocsEndpoint endpoint) {
+ 		String path = management.getContextPath() + endpoint.getPath()
+@@ -124,217 +114,167 @@ public class EndpointWebMvcHypermediaManagementContextConfiguration {
+ 	}
+ 
+ 	
+-	protected static class HalBrowserCondition extends SpringBootCondition {
++	@ControllerAdvice
++	public static class ActuatorEndpointLinksAdvice implements ResponseBodyAdvice<Object> {
+ 
+-		@Override
+-		public ConditionOutcome getMatchOutcome(ConditionContext context,
+-				AnnotatedTypeMetadata metadata) {
+-			ResourceLoader loader = context.getResourceLoader();
+-			loader = (loader == null ? new DefaultResourceLoader() : loader);
+-			HalBrowserLocation found = HalBrowserMvcEndpoint
+-					.getHalBrowserLocation(loader);
+-			return new ConditionOutcome(found != null, 
+-					+ (found == null ?  :  + found));
+-		}
+-
+-	}
+-
+-	
+-	@ConditionalOnProperty(value = , matchIfMissing = true)
+-	public static class LinksConfiguration {
++		@Autowired
++		private MvcEndpoints endpoints;
+ 
+-		@Bean
+-		public LinksMvcEndpoint linksMvcEndpoint(ResourceProperties resources) {
+-			return new LinksMvcEndpoint();
+-		}
+-
+-		
+-		@ControllerAdvice
+-		public static class HomePageLinksAdvice implements ResponseBodyAdvice<Object> {
++		@Autowired(required = false)
++		private ActuatorMvcEndpoint actuatorEndpoint;
+ 
+-			@Autowired
+-			private MvcEndpoints endpoints;
++		@Autowired
++		private ManagementServerProperties management;
+ 
+-			@Autowired(required = false)
+-			private LinksMvcEndpoint linksEndpoint;
++		private LinksEnhancer linksEnhancer;
+ 
+-			@Autowired
+-			private ManagementServerProperties management;
++		@PostConstruct
++		public void init() {
++			this.linksEnhancer = new LinksEnhancer(this.management.getContextPath(),
++					this.endpoints);
++		}
+ 
+-			private LinksEnhancer linksEnhancer;
++		@Override
++		public boolean supports(MethodParameter returnType,
++				Class<? extends HttpMessageConverter<?>> converterType) {
++			returnType.increaseNestingLevel();
++			Type nestedType = returnType.getNestedGenericParameterType();
++			returnType.decreaseNestingLevel();
++			return ResourceSupport.class.isAssignableFrom(returnType.getParameterType())
++					|| TypeUtils.isAssignable(ResourceSupport.class, nestedType);
++		}
+ 
+-			@PostConstruct
+-			public void init() {
+-				this.linksEnhancer = new LinksEnhancer(this.management.getContextPath(),
+-						this.endpoints);
++		@Override
++		public Object beforeBodyWrite(Object body, MethodParameter returnType,
++				MediaType selectedContentType,
++				Class<? extends HttpMessageConverter<?>> selectedConverterType,
++				ServerHttpRequest request, ServerHttpResponse response) {
++			if (request instanceof ServletServerHttpRequest) {
++				beforeBodyWrite(body, (ServletServerHttpRequest) request);
+ 			}
++			return body;
++		}
+ 
+-			@Override
+-			public boolean supports(MethodParameter returnType,
+-					Class<? extends HttpMessageConverter<?>> converterType) {
+-				Class<?> controllerType = returnType.getDeclaringClass();
+-				if (!LinksMvcEndpoint.class.isAssignableFrom(controllerType)
+-						&& MvcEndpoint.class.isAssignableFrom(controllerType)) {
+-					return false;
+-				}
+-				returnType.increaseNestingLevel();
+-				Type nestedType = returnType.getNestedGenericParameterType();
+-				returnType.decreaseNestingLevel();
+-				return ResourceSupport.class.isAssignableFrom(returnType
+-						.getParameterType())
+-						|| TypeUtils.isAssignable(ResourceSupport.class, nestedType);
++		private void beforeBodyWrite(Object body, ServletServerHttpRequest request) {
++			Object pattern = request.getServletRequest().getAttribute(
++					HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
++			if (pattern != null && body instanceof ResourceSupport) {
++				beforeBodyWrite(pattern.toString(), (ResourceSupport) body);
+ 			}
++		}
+ 
+-			@Override
+-			public Object beforeBodyWrite(Object body, MethodParameter returnType,
+-					MediaType selectedContentType,
+-					Class<? extends HttpMessageConverter<?>> selectedConverterType,
+-					ServerHttpRequest request, ServerHttpResponse response) {
+-				if (request instanceof ServletServerHttpRequest) {
+-					beforeBodyWrite(body, (ServletServerHttpRequest) request);
+-				}
+-				return body;
++		private void beforeBodyWrite(String path, ResourceSupport body) {
++			if (isActuatorEndpointPath(path)) {
++				this.linksEnhancer
++						.addEndpointLinks(body, this.actuatorEndpoint.getPath());
+ 			}
++		}
+ 
+-			private void beforeBodyWrite(Object body, ServletServerHttpRequest request) {
+-				Object pattern = request.getServletRequest().getAttribute(
+-						HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
+-				if (pattern != null && body instanceof ResourceSupport) {
+-					beforeBodyWrite(pattern.toString(), (ResourceSupport) body);
+-				}
+-			}
++		private boolean isActuatorEndpointPath(String path) {
++			return this.actuatorEndpoint != null
++					&& (this.management.getContextPath() + this.actuatorEndpoint
++							.getPath()).equals(path);
++		}
+ 
+-			private void beforeBodyWrite(String path, ResourceSupport body) {
+-				if (isLinksPath(path)) {
+-					this.linksEnhancer.addEndpointLinks(body,
+-							this.linksEndpoint.getPath());
+-				}
+-				else if (isHomePage(path)) {
+-					body.add(linkToCurrentMapping()
+-							.slash(this.management.getContextPath())
+-							.slash(this.linksEndpoint.getPath()).withRel());
+-				}
+-			}
++	}
+ 
+-			private boolean isLinksPath(String path) {
+-				return this.linksEndpoint != null
+-						&& (this.management.getContextPath() + this.linksEndpoint
+-								.getPath()).equals(path);
+-			}
++	
++	@ControllerAdvice(assignableTypes = MvcEndpoint.class)
++	public static class MvcEndpointAdvice implements ResponseBodyAdvice<Object> {
+ 
+-			private boolean isHomePage(String path) {
+-				return .equals(path) || .equals(path);
+-			}
++		@Autowired
++		private ManagementServerProperties management;
++
++		@Autowired
++		private HttpMessageConverters converters;
+ 
++		private Map<MediaType, HttpMessageConverter<?>> converterCache = new ConcurrentHashMap<MediaType, HttpMessageConverter<?>>();
++
++		@Autowired
++		private ObjectMapper mapper;
++
++		@Override
++		public boolean supports(MethodParameter returnType,
++				Class<? extends HttpMessageConverter<?>> converterType) {
++			Class<?> controllerType = returnType.getDeclaringClass();
++			return !ActuatorMvcEndpoint.class.isAssignableFrom(controllerType);
+ 		}
+ 
+-		
+-		@ControllerAdvice(assignableTypes = MvcEndpoint.class)
+-		public static class MvcEndpointAdvice implements ResponseBodyAdvice<Object> {
+-
+-			@Autowired
+-			private ManagementServerProperties management;
+-
+-			@Autowired
+-			private HttpMessageConverters converters;
+-
+-			private Map<MediaType, HttpMessageConverter<?>> converterCache = new ConcurrentHashMap<MediaType, HttpMessageConverter<?>>();
+-
+-			@Autowired
+-			private ObjectMapper mapper;
+-
+-			@Override
+-			public boolean supports(MethodParameter returnType,
+-					Class<? extends HttpMessageConverter<?>> converterType) {
+-				Class<?> controllerType = returnType.getDeclaringClass();
+-				return !LinksMvcEndpoint.class.isAssignableFrom(controllerType)
+-						&& !HalBrowserMvcEndpoint.class.isAssignableFrom(controllerType);
++		@Override
++		public Object beforeBodyWrite(Object body, MethodParameter returnType,
++				MediaType selectedContentType,
++				Class<? extends HttpMessageConverter<?>> selectedConverterType,
++				ServerHttpRequest request, ServerHttpResponse response) {
++			if (request instanceof ServletServerHttpRequest) {
++				return beforeBodyWrite(body, returnType, selectedContentType,
++						selectedConverterType, (ServletServerHttpRequest) request,
++						response);
+ 			}
++			return body;
++		}
+ 
+-			@Override
+-			public Object beforeBodyWrite(Object body, MethodParameter returnType,
+-					MediaType selectedContentType,
+-					Class<? extends HttpMessageConverter<?>> selectedConverterType,
+-					ServerHttpRequest request, ServerHttpResponse response) {
+-				if (request instanceof ServletServerHttpRequest) {
+-					return beforeBodyWrite(body, returnType, selectedContentType,
+-							selectedConverterType, (ServletServerHttpRequest) request,
+-							response);
+-				}
++		private Object beforeBodyWrite(Object body, MethodParameter returnType,
++				MediaType selectedContentType,
++				Class<? extends HttpMessageConverter<?>> selectedConverterType,
++				ServletServerHttpRequest request, ServerHttpResponse response) {
++			if (body == null || body instanceof Resource) {
++				
+ 				return body;
+ 			}
+-
+-			private Object beforeBodyWrite(Object body, MethodParameter returnType,
+-					MediaType selectedContentType,
+-					Class<? extends HttpMessageConverter<?>> selectedConverterType,
+-					ServletServerHttpRequest request, ServerHttpResponse response) {
+-				if (body == null || body instanceof Resource) {
+-					
+-					return body;
+-				}
+-				HttpMessageConverter<Object> converter = findConverter(
+-						selectedConverterType, selectedContentType);
+-				if (converter == null || isHypermediaDisabled(returnType)) {
+-					
+-					return body;
+-				}
+-				String path = getPath(request);
+-				try {
+-					converter.write(new EndpointResource(body, path),
+-							selectedContentType, response);
+-				}
+-				catch (IOException ex) {
+-					throw new HttpMessageNotWritableException(, ex);
+-				}
+-				return null;
++			HttpMessageConverter<Object> converter = findConverter(selectedConverterType,
++					selectedContentType);
++			if (converter == null || isHypermediaDisabled(returnType)) {
++				
++				return body;
+ 			}
+-
+-			@SuppressWarnings()
+-			private HttpMessageConverter<Object> findConverter(
+-					Class<? extends HttpMessageConverter<?>> selectedConverterType,
+-					MediaType mediaType) {
+-				if (this.converterCache.containsKey(mediaType)) {
+-					return (HttpMessageConverter<Object>) this.converterCache
+-							.get(mediaType);
+-				}
+-				for (HttpMessageConverter<?> converter : this.converters) {
+-					if (selectedConverterType.isAssignableFrom(converter.getClass())
+-							&& converter.canWrite(EndpointResource.class, mediaType)) {
+-						this.converterCache.put(mediaType, converter);
+-						return (HttpMessageConverter<Object>) converter;
+-					}
+-				}
+-				return null;
++			String path = getPath(request);
++			try {
++				converter.write(new EndpointResource(body, path), selectedContentType,
++						response);
+ 			}
+-
+-			private boolean isHypermediaDisabled(MethodParameter returnType) {
+-				return AnnotationUtils.findAnnotation(returnType.getMethod(),
+-						HypermediaDisabled.class) != null
+-						|| AnnotationUtils.findAnnotation(returnType.getMethod()
+-								.getDeclaringClass(), HypermediaDisabled.class) != null;
++			catch (IOException ex) {
++				throw new HttpMessageNotWritableException(, ex);
+ 			}
++			return null;
++		}
+ 
+-			private String getPath(ServletServerHttpRequest request) {
+-				String path = (String) request.getServletRequest().getAttribute(
+-						HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
+-				return (path == null ?  : path);
++		@SuppressWarnings()
++		private HttpMessageConverter<Object> findConverter(
++				Class<? extends HttpMessageConverter<?>> selectedConverterType,
++				MediaType mediaType) {
++			if (this.converterCache.containsKey(mediaType)) {
++				return (HttpMessageConverter<Object>) this.converterCache.get(mediaType);
++			}
++			for (HttpMessageConverter<?> converter : this.converters) {
++				if (selectedConverterType.isAssignableFrom(converter.getClass())
++						&& converter.canWrite(EndpointResource.class, mediaType)) {
++					this.converterCache.put(mediaType, converter);
++					return (HttpMessageConverter<Object>) converter;
++				}
+ 			}
++			return null;
++		}
++
++		private boolean isHypermediaDisabled(MethodParameter returnType) {
++			return AnnotationUtils.findAnnotation(returnType.getMethod(),
++					HypermediaDisabled.class) != null
++					|| AnnotationUtils.findAnnotation(returnType.getMethod()
++							.getDeclaringClass(), HypermediaDisabled.class) != null;
++		}
+ 
++		private String getPath(ServletServerHttpRequest request) {
++			String path = (String) request.getServletRequest().getAttribute(
++					HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
++			return (path == null ?  : path);
+ 		}
+ 
+ 	}
+

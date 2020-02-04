@@ -1,0 +1,70 @@
+@@ -0,0 +1,86 @@
++
++
++package org.springframework.boot.autoconfigure.condition;
++
++import org.junit.Test;
++
++import org.springframework.boot.test.context.runner.ApplicationContextRunner;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Conditional;
++import org.springframework.context.annotation.Configuration;
++
++import static org.assertj.core.api.Assertions.assertThat;
++
++
++public class OnListConditionTests {
++
++	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
++			.withUserConfiguration(TestConfig.class);
++
++	@Test
++	public void propertyNotDefined() {
++		this.contextRunner.run((context) -> assertThat(context).doesNotHaveBean());
++	}
++
++	@Test
++	public void propertyDefinedAsCommaSeparated() {
++		this.contextRunner.withPropertyValues()
++				.run((context) -> assertThat(context).hasBean());
++	}
++
++	@Test
++	public void propertyDefinedAsList() {
++		this.contextRunner.withPropertyValues()
++				.run((context) -> assertThat(context).hasBean());
++	}
++
++	@Test
++	public void propertyDefinedAsCommaSeparatedRelaxed() {
++		this.contextRunner.withPropertyValues()
++				.run((context) -> assertThat(context).hasBean());
++	}
++
++	@Test
++	public void propertyDefinedAsListRelaxed() {
++		this.contextRunner.withPropertyValues()
++				.run((context) -> assertThat(context).hasBean());
++	}
++
++	@Configuration
++	@Conditional(TestListCondition.class)
++	protected static class TestConfig {
++
++		@Bean
++		public String foo() {
++			return ;
++		}
++
++	}
++
++	static class TestListCondition extends OnListCondition {
++
++		TestListCondition() {
++			super(, () -> ConditionMessage.forCondition());
++		}
++
++	}
++
++}
+

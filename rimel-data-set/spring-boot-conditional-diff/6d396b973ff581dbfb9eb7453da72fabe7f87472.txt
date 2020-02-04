@@ -1,0 +1,31 @@
+@@ -38,6 +38,7 @@ import org.springframework.kafka.security.jaas.KafkaJaasLoginModuleInitializer;
+ import org.springframework.kafka.support.LoggingProducerListener;
+ import org.springframework.kafka.support.ProducerListener;
+ import org.springframework.kafka.support.converter.RecordMessageConverter;
++import org.springframework.kafka.transaction.KafkaTransactionManager;
+ 
+ 
+ @Configuration
+@@ -94,8 +96,20 @@ public class KafkaAutoConfiguration {
+ 	@Bean
+ 	@ConditionalOnMissingBean(ProducerFactory.class)
+ 	public ProducerFactory<?, ?> kafkaProducerFactory() {
+-		return new DefaultKafkaProducerFactory<>(
++		DefaultKafkaProducerFactory<Object, Object> factory = new DefaultKafkaProducerFactory<>(
+ 				this.properties.buildProducerProperties());
++		KafkaProperties.Producer producer = this.properties.getProducer();
++		if (producer.getTransactionIdPrefix() != null) {
++			factory.setTransactionIdPrefix(producer.getTransactionIdPrefix());
++		}
++		return factory;
++	}
++
++	@Bean
++	@ConditionalOnProperty(name = )
++	@ConditionalOnMissingBean
++	public KafkaTransactionManager<?, ?> kafkaTransactionManager(ProducerFactory<?, ?> producerFactory) {
++		return new KafkaTransactionManager<>(producerFactory);
+ 	}
+ 
+ 	@Bean
+

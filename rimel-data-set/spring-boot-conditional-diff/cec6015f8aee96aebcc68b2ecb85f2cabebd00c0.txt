@@ -1,0 +1,57 @@
+@@ -54,6 +54,7 @@ import org.springframework.boot.autoconfigure.web.ServerProperties;
+ import org.springframework.boot.context.properties.EnableConfigurationProperties;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Conditional;
++import org.springframework.context.annotation.Configuration;
+ import org.springframework.core.MethodParameter;
+ import org.springframework.core.annotation.AnnotationUtils;
+ import org.springframework.core.io.ResourceLoader;
+@@ -117,14 +118,6 @@ public class EndpointWebMvcHypermediaManagementContextConfiguration {
+ 		return new HalJsonMvcEndpoint(managementServletContext);
+ 	}
+ 
+-	@Bean
+-	@ConditionalOnEnabledEndpoint()
+-	@ConditionalOnResource(resources = )
+-	public DocsMvcEndpoint docsMvcEndpoint(
+-			ManagementServletContext managementServletContext) {
+-		return new DocsMvcEndpoint(managementServletContext);
+-	}
+-
+ 	@Bean
+ 	@ConditionalOnBean(DocsMvcEndpoint.class)
+ 	@ConditionalOnMissingBean(CurieProvider.class)
+@@ -133,12 +126,33 @@ public class EndpointWebMvcHypermediaManagementContextConfiguration {
+ 			ManagementServerProperties management, DocsMvcEndpoint endpoint) {
+ 		String path = management.getContextPath() + endpoint.getPath()
+ 				+ ;
+-		if (server.getPort().equals(management.getPort()) && management.getPort() != 0) {
++		if (serverAndManagementPortsAreTheSame(server, management)) {
+ 			path = server.getPath(path);
+ 		}
+ 		return new DefaultCurieProvider(, new UriTemplate(path));
+ 	}
+ 
++	private boolean serverAndManagementPortsAreTheSame(ServerProperties server,
++			ManagementServerProperties management) {
++		if (server.getPort() == null) {
++			return management.getPort() == null;
++		}
++		return server.getPort().equals(management.getPort()) && management.getPort() != 0;
++	}
++
++	@Configuration
++	static class DocsMvcEndpointConfiguration {
++
++		@Bean
++		@ConditionalOnEnabledEndpoint()
++		@ConditionalOnResource(resources = )
++		public DocsMvcEndpoint docsMvcEndpoint(
++				ManagementServletContext managementServletContext) {
++			return new DocsMvcEndpoint(managementServletContext);
++		}
++
++	}
++
+ 	
+

@@ -1,0 +1,9 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+-@ConditionalOnClass(SpringLiquibase.class)
++@ConditionalOnClass({ SpringLiquibase.class, DatabaseChange.class })
+ @ConditionalOnBean(DataSource.class)
+ @ConditionalOnProperty(prefix = , name = , matchIfMissing = true)
+ @AutoConfigureAfter({ DataSourceAutoConfiguration.class,
+

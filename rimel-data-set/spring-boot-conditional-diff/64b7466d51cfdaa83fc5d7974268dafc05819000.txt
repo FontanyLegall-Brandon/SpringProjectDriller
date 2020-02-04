@@ -1,0 +1,20 @@
+@@ -1,37 +0,0 @@
+-
+-
+-package org.springframework.boot.test.autoconfigure.web.servlet;
+-
+-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+-import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
+-import org.springframework.context.annotation.Configuration;
+-import org.springframework.context.annotation.Import;
+-
+-
+-@Configuration
+-@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+-@Import({ SecurityAutoConfiguration.class, UserDetailsServiceAutoConfiguration.class,
+-		MockMvcSecurityConfiguration.class })
+-public class MockMvcSecurityAutoConfiguration {
+-
+-}
+

@@ -1,0 +1,70 @@
+@@ -0,0 +1,93 @@
++
++
++package org.springframework.boot.autoconfigure.hateoas;
++
++import java.util.Arrays;
++import java.util.Map;
++import java.util.Map.Entry;
++
++import javax.annotation.PostConstruct;
++
++import org.springframework.beans.BeansException;
++import org.springframework.beans.factory.BeanFactory;
++import org.springframework.beans.factory.BeanFactoryAware;
++import org.springframework.beans.factory.ListableBeanFactory;
++import org.springframework.beans.factory.config.BeanPostProcessor;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
++import org.springframework.context.annotation.Bean;
++import org.springframework.hateoas.MediaTypes;
++import org.springframework.hateoas.mvc.TypeConstrainedMappingJackson2HttpMessageConverter;
++import org.springframework.http.MediaType;
++import org.springframework.http.converter.HttpMessageConverter;
++import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
++
++
++public class HypermediaHttpMessageConverterConfiguration {
++
++	@Bean
++	@ConditionalOnProperty(prefix = , name = , matchIfMissing = true)
++	public static HalMessageConverterSupportedMediaTypesCustomizer halMessageConverterSupportedMediaTypeCustomizer() {
++		return new HalMessageConverterSupportedMediaTypesCustomizer();
++	}
++
++	
++	private static class HalMessageConverterSupportedMediaTypesCustomizer implements
++			BeanFactoryAware {
++
++		private volatile BeanFactory beanFactory;
++
++		@PostConstruct
++		public void customizedSupportedMediaTypes() {
++			if (this.beanFactory instanceof ListableBeanFactory) {
++				Map<String, RequestMappingHandlerAdapter> handlerAdapters = ((ListableBeanFactory) this.beanFactory)
++						.getBeansOfType(RequestMappingHandlerAdapter.class);
++				for (Entry<String, RequestMappingHandlerAdapter> entry : handlerAdapters
++						.entrySet()) {
++					RequestMappingHandlerAdapter handlerAdapter = entry.getValue();
++					for (HttpMessageConverter<?> converter : handlerAdapter
++							.getMessageConverters()) {
++						if (converter instanceof TypeConstrainedMappingJackson2HttpMessageConverter) {
++							((TypeConstrainedMappingJackson2HttpMessageConverter) converter)
++									.setSupportedMediaTypes(Arrays.asList(
++											MediaTypes.HAL_JSON,
++											MediaType.APPLICATION_JSON));
++						}
++					}
++
++				}
++			}
++		}
++
++		@Override
++		public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
++			this.beanFactory = beanFactory;
++		}
++
++	}
++
++}
+

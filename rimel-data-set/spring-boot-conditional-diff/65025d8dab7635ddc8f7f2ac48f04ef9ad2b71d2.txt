@@ -1,0 +1,10 @@
+@@ -120,7 +120,7 @@ public class Neo4jDataAutoConfiguration {
+ 	@ConditionalOnClass({ WebMvcConfigurerAdapter.class,
+ 			OpenSessionInViewInterceptor.class })
+ 	@ConditionalOnMissingBean(OpenSessionInViewInterceptor.class)
+-	@ConditionalOnProperty(prefix = , name = , havingValue = )
++	@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+ 	protected static class Neo4jWebConfiguration {
+ 
+ 		@Configuration
+

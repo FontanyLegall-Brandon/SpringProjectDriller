@@ -1,0 +1,29 @@
+@@ -195,13 +195,6 @@ public class WebMvcAutoConfiguration {
+ 			return resolver;
+ 		}
+ 
+-		@Bean
+-		@ConditionalOnMissingBean({ RequestContextListener.class,
+-				RequestContextFilter.class })
+-		public RequestContextFilter requestContextFilter() {
+-			return new OrderedRequestContextFilter();
+-		}
+-
+ 		@Bean
+ 		@ConditionalOnBean(View.class)
+ 		@ConditionalOnMissingBean
+@@ -312,6 +305,13 @@ public class WebMvcAutoConfiguration {
+ 			}
+ 		}
+ 
++		@Bean
++		@ConditionalOnMissingBean({ RequestContextListener.class,
++				RequestContextFilter.class })
++		public static RequestContextFilter requestContextFilter() {
++			return new OrderedRequestContextFilter();
++		}
++
+ 		@Configuration
+ 		@ConditionalOnProperty(value = , matchIfMissing = true)
+ 		public static class FaviconConfiguration {
+

@@ -1,0 +1,115 @@
+@@ -0,0 +1,133 @@
++
++
++package org.springframework.boot.autoconfigure.data;
++
++import java.net.UnknownHostException;
++
++import javax.annotation.PreDestroy;
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.context.properties.ConfigurationProperties;
++import org.springframework.boot.context.properties.EnableConfigurationProperties;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.context.annotation.Import;
++import org.springframework.data.mongodb.core.MongoTemplate;
++import org.springframework.data.mongodb.repository.MongoRepository;
++import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
++
++import com.mongodb.DBPort;
++import com.mongodb.Mongo;
++import com.mongodb.MongoURI;
++
++
++@Configuration
++@ConditionalOnClass({ Mongo.class, MongoRepository.class })
++public class MongoRepositoriesAutoConfiguration {
++
++	@Import(MongoRepositoriesAutoConfigureRegistrar.class)
++	@Configuration
++	@EnableConfigurationProperties(MongoProperties.class)
++	protected static class MongoRepositoriesConfiguration {
++
++		@Autowired
++		private MongoProperties config;
++
++		@PreDestroy
++		public void close() throws UnknownHostException {
++			mongo().close();
++		}
++
++		@Bean
++		@ConditionalOnMissingBean(Mongo.class)
++		Mongo mongo() throws UnknownHostException {
++			return this.config.mongo();
++		}
++
++		@Bean
++		@ConditionalOnMissingBean(MongoTemplate.class)
++		MongoTemplate mongoTemplate(Mongo mongo) throws UnknownHostException {
++			return new MongoTemplate(mongo, this.config.database());
++		}
++
++	}
++
++	@ConfigurationProperties(name = )
++	public static class MongoProperties {
++
++		private String host;
++
++		private int port = DBPort.PORT;
++
++		private String uri = ;
++
++		private String database;
++
++		public String getHost() {
++			return this.host;
++		}
++
++		public String database() {
++			return this.database == null ? new MongoURI(this.uri).getDatabase()
++					: this.database;
++		}
++
++		public Mongo mongo() throws UnknownHostException {
++			return this.host != null ? new Mongo(this.host, this.port) : new Mongo(
++					new MongoURI(this.uri));
++		}
++
++		public void setHost(String host) {
++			this.host = host;
++		}
++
++		public String getDatabase() {
++			return this.database;
++		}
++
++		public void setDatabase(String database) {
++			this.database = database;
++		}
++
++		public String getUri() {
++			return this.uri;
++		}
++
++		public void setUri(String uri) {
++			this.uri = uri;
++		}
++
++		public int getPort() {
++			return this.port;
++		}
++
++		public void setPort(int port) {
++			this.port = port;
++		}
++
++	}
++
++}
+

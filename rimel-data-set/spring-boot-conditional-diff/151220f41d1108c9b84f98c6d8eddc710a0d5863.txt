@@ -1,0 +1,36 @@
+@@ -0,0 +1,53 @@
++
++
++package org.springframework.boot.autoconfigure.cache;
++
++import java.util.List;
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.cache.CacheManager;
++import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Conditional;
++import org.springframework.context.annotation.Configuration;
++
++
++@Configuration
++@ConditionalOnMissingBean(CacheManager.class)
++@Conditional(CacheCondition.class)
++class SimpleCacheConfiguration {
++
++	@Autowired
++	private CacheProperties cacheProperties;
++
++	@Bean
++	public ConcurrentMapCacheManager cacheManager() {
++		ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager();
++		List<String> cacheNames = this.cacheProperties.getCacheNames();
++		if (!cacheNames.isEmpty()) {
++			cacheManager.setCacheNames(cacheNames);
++		}
++		return cacheManager;
++	}
++
++}
+

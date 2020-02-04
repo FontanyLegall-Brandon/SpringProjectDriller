@@ -1,0 +1,16 @@
+@@ -65,6 +65,14 @@ public class ReactiveWebServerFactoryAutoConfiguration {
+ 		return new ReactiveWebServerFactoryCustomizer(serverProperties);
+ 	}
+ 
++
++	@Bean
++	@ConditionalOnClass(name = )
++	public TomcatReactiveWebServerFactoryCustomizer tomcatReactiveWebServerFactoryCustomizer(
++			ServerProperties serverProperties) {
++		return new TomcatReactiveWebServerFactoryCustomizer(serverProperties);
++	}
++
+ 	@Bean
+ 	@ConditionalOnMissingBean
+ 	@ConditionalOnProperty(value = ,
+

@@ -1,0 +1,14 @@
+@@ -48,9 +48,9 @@ import org.springframework.util.StringUtils;
+  */
+ @Configuration(proxyBeanMethods = false)
+ @ConditionalOnClass({ ReactiveAuthenticationManager.class })
+-@ConditionalOnMissingBean(value = { ReactiveAuthenticationManager.class, ReactiveUserDetailsService.class }, type = {
+-		,
+-		 })
++@ConditionalOnMissingBean(value = { ReactiveAuthenticationManager.class, ReactiveUserDetailsService.class },
++		type = { ,
++				 })
+ @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
+ public class ReactiveUserDetailsServiceAutoConfiguration {
+ 
+

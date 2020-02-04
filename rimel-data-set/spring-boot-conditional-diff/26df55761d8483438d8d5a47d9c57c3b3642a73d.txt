@@ -1,0 +1,248 @@
+@@ -29,11 +29,11 @@ import org.springframework.context.annotation.Configuration;
+ import static org.assertj.core.api.Assertions.assertThat;
+ 
+ 
+-public class ConditionalOnExposedEndpointTests {
++public class ConditionalOnAvailableEndpointTests {
+ 
+ 	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
+ 			.withUserConfiguration(AllEndpointsConfiguration.class);
+@@ -41,15 +41,45 @@ public class ConditionalOnExposedEndpointTests {
+ 	@Test
+ 	public void outcomeShouldMatchDefaults() {
+ 		this.contextRunner.run((context) -> assertThat(context).hasBean()
+-				.hasBean().doesNotHaveBean().doesNotHaveBean());
++				.hasBean().doesNotHaveBean().doesNotHaveBean()
++				.doesNotHaveBean());
+ 	}
+ 
+ 	@Test
+-	public void outcomeWhenIncludeAllWebShouldMatch() {
++	public void outcomeWithEnabledByDefaultSetToFalseShouldNotMatchAnything() {
++		this.contextRunner
++				.withPropertyValues()
++				.run((context) -> assertThat(context).doesNotHaveBean()
++						.doesNotHaveBean().doesNotHaveBean()
++						.doesNotHaveBean().doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeAllWebShouldMatchEnabledEndpoints() {
+ 		this.contextRunner
+ 				.withPropertyValues()
+ 				.run((context) -> assertThat(context).hasBean().hasBean()
+-						.hasBean().hasBean());
++						.hasBean().hasBean().doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeAllWebAndDisablingEndpointShouldMatchEnabledEndpoints() {
++		this.contextRunner
++				.withPropertyValues(,
++						,
++						)
++				.run((context) -> assertThat(context).hasBean()
++						.doesNotHaveBean().doesNotHaveBean()
++						.hasBean().doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeAllWebAndEnablingEndpointDisabledByDefaultShouldMatchAll() {
++		this.contextRunner
++				.withPropertyValues(,
++						)
++				.run((context) -> assertThat(context).hasBean().hasBean()
++						.hasBean().hasBean().hasBean());
+ 	}
+ 
+ 	@Test
+@@ -57,16 +87,27 @@ public class ConditionalOnExposedEndpointTests {
+ 		this.contextRunner
+ 				.withPropertyValues()
+ 				.run((context) -> assertThat(context).hasBean().hasBean()
+-						.doesNotHaveBean().doesNotHaveBean());
++						.doesNotHaveBean().doesNotHaveBean()
++						.doesNotHaveBean());
+ 	}
+ 
+ 	@Test
+-	public void outcomeWhenIncludeAllJmxAndJmxEnabledShouldMatch() {
++	public void outcomeWhenIncludeAllJmxAndJmxEnabledShouldMatchEnabledEndpoints() {
+ 		this.contextRunner
+ 				.withPropertyValues(,
+ 						)
+ 				.run((context) -> assertThat(context).hasBean().hasBean()
+-						.hasBean().hasBean());
++						.hasBean().hasBean().doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeAllJmxAndJmxEnabledAndEnablingEndpointDisabledByDefaultShouldMatchAll() {
++		this.contextRunner
++				.withPropertyValues(,
++						,
++						)
++				.run((context) -> assertThat(context).hasBean().hasBean()
++						.hasBean().hasBean().hasBean());
+ 	}
+ 
+ 	@Test
+@@ -75,7 +116,8 @@ public class ConditionalOnExposedEndpointTests {
+ 				.withPropertyValues(,
+ 						)
+ 				.run((context) -> assertThat(context).hasBean().hasBean()
+-						.doesNotHaveBean().doesNotHaveBean());
++						.doesNotHaveBean().doesNotHaveBean()
++						.doesNotHaveBean());
+ 	}
+ 
+ 	@Test
+@@ -84,16 +126,36 @@ public class ConditionalOnExposedEndpointTests {
+ 				,
+ 				)
+ 				.run((context) -> assertThat(context).hasBean().hasBean()
+-						.doesNotHaveBean().doesNotHaveBean());
++						.doesNotHaveBean().doesNotHaveBean()
++						.doesNotHaveBean());
+ 	}
+ 
+ 	@Test
+-	public void outcomeWhenIncludeMatchesShouldMatch() {
++	public void outcomeWhenIncludeMatchesShouldMatchEnabledEndpoints() {
+ 		this.contextRunner
+ 				.withPropertyValues()
+ 				.run((context) -> assertThat(context).hasBean()
+ 						.doesNotHaveBean().doesNotHaveBean()
+-						.doesNotHaveBean());
++						.doesNotHaveBean().doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeMatchOnDisabledEndpointShouldNotMatch() {
++		this.contextRunner
++				.withPropertyValues()
++				.run((context) -> assertThat(context).doesNotHaveBean()
++						.doesNotHaveBean().doesNotHaveBean()
++						.doesNotHaveBean().doesNotHaveBean());
++	}
++
++	@Test
++	public void outcomeWhenIncludeMatchOnEnabledEndpointShouldNotMatch() {
++		this.contextRunner
++				.withPropertyValues(,
++						)
++				.run((context) -> assertThat(context).doesNotHaveBean()
++						.doesNotHaveBean().doesNotHaveBean()
++						.doesNotHaveBean().hasBean());
+ 	}
+ 
+ 	@Test
+@@ -102,7 +164,7 @@ public class ConditionalOnExposedEndpointTests {
+ 				.withPropertyValues()
+ 				.run((context) -> assertThat(context).hasBean()
+ 						.doesNotHaveBean().doesNotHaveBean()
+-						.doesNotHaveBean());
++						.doesNotHaveBean().doesNotHaveBean());
+ 	}
+ 
+ 	@Test
+@@ -112,11 +174,11 @@ public class ConditionalOnExposedEndpointTests {
+ 				)
+ 				.run((context) -> assertThat(context).doesNotHaveBean()
+ 						.doesNotHaveBean().doesNotHaveBean()
+-						.doesNotHaveBean());
++						.doesNotHaveBean().doesNotHaveBean());
+ 	}
+ 
+ 	@Test
+-	public void outcomeWhenIncludeMatchesShoulMatchWithExtensionsAndComponents() {
++	public void outcomeWhenIncludeMatchesShouldMatchWithExtensionsAndComponents() {
+ 		this.contextRunner
+ 				.withUserConfiguration(
+ 						ComponentEnabledIfEndpointIsExposedConfiguration.class)
+@@ -124,7 +186,7 @@ public class ConditionalOnExposedEndpointTests {
+ 				.run((context) -> assertThat(context).hasBean()
+ 						.hasBean().hasBean()
+ 						.doesNotHaveBean().doesNotHaveBean()
+-						.doesNotHaveBean());
++						.doesNotHaveBean().doesNotHaveBean());
+ 	}
+ 
+ 	@Test
+@@ -169,6 +231,11 @@ public class ConditionalOnExposedEndpointTests {
+ 
+ 	}
+ 
++	@Endpoint(id = , enableByDefault = false)
++	static class ShutdownEndpoint {
++
++	}
++
+ 	@EndpointExtension(endpoint = SpringEndpoint.class, filter = TestFilter.class)
+ 	static class SpringEndpointExtension {
+ 
+@@ -187,42 +254,48 @@ public class ConditionalOnExposedEndpointTests {
+ 	static class AllEndpointsConfiguration {
+ 
+ 		@Bean
+-		@ConditionalOnExposedEndpoint
++		@ConditionalOnAvailableEndpoint
+ 		public HealthEndpoint health() {
+ 			return new HealthEndpoint();
+ 		}
+ 
+ 		@Bean
+-		@ConditionalOnExposedEndpoint
++		@ConditionalOnAvailableEndpoint
+ 		public InfoEndpoint info() {
+ 			return new InfoEndpoint();
+ 		}
+ 
+ 		@Bean
+-		@ConditionalOnExposedEndpoint
++		@ConditionalOnAvailableEndpoint
+ 		public SpringEndpoint spring() {
+ 			return new SpringEndpoint();
+ 		}
+ 
+ 		@Bean
+-		@ConditionalOnExposedEndpoint
++		@ConditionalOnAvailableEndpoint
+ 		public TestEndpoint test() {
+ 			return new TestEndpoint();
+ 		}
+ 
++		@Bean
++		@ConditionalOnAvailableEndpoint
++		public ShutdownEndpoint shutdown() {
++			return new ShutdownEndpoint();
++		}
++
+ 	}
+ 
+ 	@Configuration(proxyBeanMethods = false)
+ 	static class ComponentEnabledIfEndpointIsExposedConfiguration {
+ 
+ 		@Bean
+-		@ConditionalOnExposedEndpoint(endpoint = SpringEndpoint.class)
++		@ConditionalOnAvailableEndpoint(endpoint = SpringEndpoint.class)
+ 		public String springComponent() {
+ 			return ;
+ 		}
+ 
+ 		@Bean
+-		@ConditionalOnExposedEndpoint
++		@ConditionalOnAvailableEndpoint
+ 		public SpringEndpointExtension springExtension() {
+ 			return new SpringEndpointExtension();
+ 		}
+@@ -233,7 +306,7 @@ public class ConditionalOnExposedEndpointTests {
+ 	static class ComponentWithNoEndpointReferenceConfiguration {
+ 
+ 		@Bean
+-		@ConditionalOnExposedEndpoint
++		@ConditionalOnAvailableEndpoint
+ 		public String springcomp() {
+ 			return ;
+ 		}
+

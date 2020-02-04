@@ -1,0 +1,73 @@
+@@ -0,0 +1,90 @@
++
++
++package org.springframework.boot.autoconfigure.info;
++
++import java.util.Properties;
++
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionOutcome;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.condition.SpringBootCondition;
++import org.springframework.boot.bind.PropertiesConfigurationFactory;
++import org.springframework.boot.bind.RelaxedPropertyResolver;
++import org.springframework.boot.context.properties.EnableConfigurationProperties;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.ConditionContext;
++import org.springframework.context.annotation.Conditional;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.core.env.PropertyResolver;
++import org.springframework.core.io.DefaultResourceLoader;
++import org.springframework.core.io.ResourceLoader;
++import org.springframework.core.io.support.PropertiesLoaderUtils;
++import org.springframework.core.type.AnnotatedTypeMetadata;
++
++
++@Configuration
++@EnableConfigurationProperties(ProjectInfoProperties.class)
++public class ProjectInfoAutoConfiguration {
++
++	@Configuration
++	@Conditional(GitResourceAvailableCondition.class)
++	protected static class GitInfoAutoConfiguration {
++
++		@ConditionalOnMissingBean
++		@Bean
++		public GitInfo gitInfo(ProjectInfoProperties properties) throws Exception {
++			PropertiesConfigurationFactory<GitInfo> factory = new PropertiesConfigurationFactory<GitInfo>(
++					new GitInfo());
++			factory.setTargetName();
++			Properties gitInfoProperties = PropertiesLoaderUtils
++					.loadProperties(properties.getGit().getLocation());
++			factory.setProperties(gitInfoProperties);
++			return factory.getObject();
++		}
++
++	}
++
++
++	static class GitResourceAvailableCondition extends SpringBootCondition {
++
++		private final ResourceLoader defaultResourceLoader = new DefaultResourceLoader();
++
++		@Override
++		public ConditionOutcome getMatchOutcome(ConditionContext context, AnnotatedTypeMetadata metadata) {
++			ResourceLoader loader = context.getResourceLoader() == null
++					? this.defaultResourceLoader : context.getResourceLoader();
++			PropertyResolver propertyResolver = context.getEnvironment();
++			RelaxedPropertyResolver resolver = new RelaxedPropertyResolver(propertyResolver, );
++			String location = resolver.getProperty();
++			if (location == null) {
++				resolver = new RelaxedPropertyResolver(propertyResolver, );
++				location = resolver.getProperty();
++				if (location == null) {
++					location = ;
++				}
++			}
++			boolean match = loader.getResource(location).exists();
++			return new ConditionOutcome(match,  + (match ?  : ) +  + location);
++		}
++	}
++
++}
+

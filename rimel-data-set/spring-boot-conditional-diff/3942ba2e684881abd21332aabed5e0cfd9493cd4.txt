@@ -1,0 +1,10 @@
+@@ -37,7 +37,7 @@ import org.springframework.context.annotation.Configuration;
+ public class SimpleExportConfiguration {
+ 
+ 	@Bean
+-	@ConditionalOnProperty(value = , matchIfMissing = true)
++	@ConditionalOnProperty(value = , matchIfMissing = true)
+ 	@ConditionalOnMissingBean(MetricsExporter.class)
+ 	public MetricsExporter simpleExporter(Clock clock) {
+ 		return () -> new SimpleMeterRegistry(clock);
+

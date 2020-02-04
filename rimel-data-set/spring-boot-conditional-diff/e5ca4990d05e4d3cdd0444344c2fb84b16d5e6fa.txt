@@ -1,0 +1,79 @@
+@@ -0,0 +1,95 @@
++
++
++package org.springframework.boot.autoconfigure.couchbase;
++
++import org.junit.After;
++import org.junit.Test;
++
++import org.springframework.boot.test.util.EnvironmentTestUtils;
++import org.springframework.context.annotation.AnnotationConfigApplicationContext;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Conditional;
++import org.springframework.context.annotation.Configuration;
++
++import static org.assertj.core.api.Assertions.assertThat;
++
++
++public class OnBootstrapHostsConditionTests {
++
++	private AnnotationConfigApplicationContext context;
++
++	@After
++	public void tearDown() {
++		if (this.context != null) {
++			this.context.close();
++		}
++	}
++
++	@Test
++	public void bootstrapHostsNotDefined() {
++		load(TestConfig.class);
++		assertThat(this.context.containsBean()).isFalse();
++	}
++
++	@Test
++	public void bootstrapHostsDefinedAsCommaSeparated() {
++		load(TestConfig.class, );
++		assertThat(this.context.containsBean()).isTrue();
++	}
++
++	@Test
++	public void bootstrapHostsDefinedAsList() {
++		load(TestConfig.class, );
++		assertThat(this.context.containsBean()).isTrue();
++	}
++
++	@Test
++	public void bootstrapHostsDefinedAsCommaSeparatedRelaxed() {
++		load(TestConfig.class, );
++		assertThat(this.context.containsBean()).isTrue();
++	}
++
++	@Test
++	public void bootstrapHostsDefinedAsListRelaxed() {
++		load(TestConfig.class, );
++		assertThat(this.context.containsBean()).isTrue();
++	}
++
++
++	private void load(Class<?> config, String... environment) {
++		this.context = new AnnotationConfigApplicationContext();
++		EnvironmentTestUtils.addEnvironment(this.context, environment);
++		this.context.register(config);
++		this.context.refresh();
++	}
++
++	@Configuration
++	@Conditional(OnBootstrapHostsCondition.class)
++	protected static class TestConfig {
++
++		@Bean
++		public String foo() {
++			return ;
++		}
++
++	}
++
++}
+

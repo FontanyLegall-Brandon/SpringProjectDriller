@@ -1,0 +1,10 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+-@ConditionalOnClass({ Jedis.class, EnableRedisRepositories.class })
++@ConditionalOnClass(EnableRedisRepositories.class)
++@ConditionalOnBean(RedisConnectionFactory.class)
+ @ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+ @ConditionalOnMissingBean(RedisRepositoryFactoryBean.class)
+ @Import(RedisRepositoriesAutoConfigureRegistrar.class)
+

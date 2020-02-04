@@ -1,0 +1,10 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+ @ConditionalOnBean({ DataSource.class, DataSourcePoolMetadataProvider.class })
+-@ConditionalOnProperty(value = , matchIfMissing = true)
++@ConditionalOnProperty(value = , matchIfMissing = true)
+ @EnableConfigurationProperties(JdbcMetricsProperties.class)
+ public class DataSourcePoolMetricsConfiguration {
+ 
+

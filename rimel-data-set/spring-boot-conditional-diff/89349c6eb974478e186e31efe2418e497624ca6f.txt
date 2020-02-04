@@ -1,0 +1,49 @@
+@@ -0,0 +1,66 @@
++
++
++package org.springframework.boot.actuate.autoconfigure.metrics.export.kairos;
++
++import io.micrometer.core.instrument.Clock;
++import io.micrometer.kairos.KairosConfig;
++import io.micrometer.kairos.KairosMeterRegistry;
++
++import org.springframework.boot.actuate.autoconfigure.metrics.CompositeMeterRegistryAutoConfiguration;
++import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
++import org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration;
++import org.springframework.boot.autoconfigure.AutoConfigureAfter;
++import org.springframework.boot.autoconfigure.AutoConfigureBefore;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
++import org.springframework.boot.context.properties.EnableConfigurationProperties;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++
++@Configuration
++@AutoConfigureBefore({ CompositeMeterRegistryAutoConfiguration.class,
++		SimpleMetricsExportAutoConfiguration.class })
++@AutoConfigureAfter(MetricsAutoConfiguration.class)
++@ConditionalOnBean(Clock.class)
++@ConditionalOnClass(KairosMeterRegistry.class)
++@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
++@EnableConfigurationProperties(KairosProperties.class)
++public class KairosMetricsExportAutoConfiguration {
++
++	@Bean
++	@ConditionalOnMissingBean
++	public KairosConfig kairosConfig(KairosProperties kairosProperties) {
++		return new KairosPropertiesConfigAdapter(kairosProperties);
++	}
++
++	@Bean
++	@ConditionalOnMissingBean
++	public KairosMeterRegistry kairosMeterRegistry(KairosConfig kairosConfig,
++			Clock clock) {
++		return new KairosMeterRegistry(kairosConfig, clock);
++	}
++
++}
+

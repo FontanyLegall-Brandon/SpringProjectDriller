@@ -1,0 +1,52 @@
+@@ -16,15 +16,16 @@
+ 
+ package org.springframework.boot.autoconfigure.condition;
+ 
++import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.assertFalse;
++import static org.junit.Assert.assertTrue;
++
+ import org.junit.Test;
++import org.springframework.boot.test.EnvironmentTestUtils;
+ import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ 
+-import static org.junit.Assert.assertEquals;
+-import static org.junit.Assert.assertFalse;
+-import static org.junit.Assert.assertTrue;
+-
+ /**
+  * Tests for {@link ConditionalOnResource}.
+  *
+@@ -42,6 +43,15 @@ public class ConditionalOnResourceTests {
+ 		assertEquals(, this.context.getBean());
+ 	}
+ 
++	@Test
++	public void testResourceExistsWithPlaceholder() {
++		EnvironmentTestUtils.addEnvironment(this.context, );
++		this.context.register(PlaceholderConfiguration.class);
++		this.context.refresh();
++		assertTrue(this.context.containsBean());
++		assertEquals(, this.context.getBean());
++	}
++
+ 	@Test
+ 	public void testResourceNotExists() {
+ 		this.context.register(MissingConfiguration.class);
+@@ -66,4 +76,13 @@ public class ConditionalOnResourceTests {
+ 			return ;
+ 		}
+ 	}
++
++	@Configuration
++	@ConditionalOnResource(resources = )
++	protected static class PlaceholderConfiguration {
++		@Bean
++		public String foo() {
++			return ;
++		}
++	}
+ }
+

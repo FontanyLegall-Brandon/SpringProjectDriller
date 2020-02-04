@@ -1,0 +1,56 @@
+@@ -64,7 +64,7 @@ import org.springframework.util.StringUtils;
+  * @author Phillip Webb
+  */
+ @Configuration
+-@ConditionalOnClass(EmbeddedDatabaseType.class )
++@ConditionalOnClass(EmbeddedDatabaseType.class)
+ public class DataSourceAutoConfiguration implements EnvironmentAware {
+ 
+ 	private static Log logger = LogFactory.getLog(DataSourceAutoConfiguration.class);
+@@ -77,26 +77,27 @@ public class DataSourceAutoConfiguration implements EnvironmentAware {
+ 	@Autowired
+ 	private ApplicationContext applicationContext;
+ 
+-	private RelaxedPropertyResolver environment;
++	private RelaxedPropertyResolver datasourceProperties;
+ 
+ 	@Override
+ 	public void setEnvironment(Environment environment) {
+-		this.environment = new RelaxedPropertyResolver(environment, CONFIGURATION_PREFIX
+-				+ );
++		this.datasourceProperties = new RelaxedPropertyResolver(environment,
++				CONFIGURATION_PREFIX + );
+ 	}
+ 
+ 	@PostConstruct
+ 	protected void initialize() throws Exception {
+-		if (this.dataSource == null
+-				|| !this.environment.getProperty(, Boolean.class, true)) {
++		boolean initialize = this.datasourceProperties.getProperty(,
++				Boolean.class, true);
++		if (this.dataSource == null || !initialize) {
+ 			logger.debug();
+ 			return;
+ 		}
+ 
+-		String schema = this.environment.getProperty();
++		String schema = this.datasourceProperties.getProperty();
+ 		if (schema == null) {
+ 			schema = 
+-					+ this.environment.getProperty(, )
++					+ this.datasourceProperties.getProperty(, )
+ 					+ ;
+ 		}
+ 
+@@ -106,8 +107,8 @@ public class DataSourceAutoConfiguration implements EnvironmentAware {
+ 					.getResources(schemaLocation)));
+ 		}
+ 
+-		boolean continueOnError = this.environment.getProperty(,
+-				Boolean.class, false);
++		boolean continueOnError = this.datasourceProperties.getProperty(
++				, Boolean.class, false);
+ 		boolean exists = false;
+ 		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+ 		for (Resource resource : resources) {
+

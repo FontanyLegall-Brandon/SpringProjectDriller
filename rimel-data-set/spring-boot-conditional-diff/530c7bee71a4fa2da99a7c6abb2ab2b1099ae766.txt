@@ -1,0 +1,27 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+ @ConditionalOnClass(HttpMessageConverter.class)
++@Conditional(NotReactiveWebApplicationCondition.class)
+ @AutoConfigureAfter({ GsonAutoConfiguration.class, JacksonAutoConfiguration.class,
+ 		JsonbAutoConfiguration.class })
+ @Import({ JacksonHttpMessageConvertersConfiguration.class,
+@@ -93,4 +99,17 @@ public class HttpMessageConvertersAutoConfiguration {
+ 
+ 	}
+ 
++	static class NotReactiveWebApplicationCondition extends NoneNestedConditions {
++
++		NotReactiveWebApplicationCondition() {
++			super(ConfigurationPhase.PARSE_CONFIGURATION);
++		}
++
++		@ConditionalOnWebApplication(type = Type.REACTIVE)
++		private static class ReactiveWebApplication {
++
++		}
++
++	}
++
+ }
+

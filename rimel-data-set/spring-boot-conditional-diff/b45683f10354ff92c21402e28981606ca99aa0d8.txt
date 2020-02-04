@@ -1,0 +1,14 @@
+@@ -38,13 +38,15 @@ import org.springframework.data.redis.core.RedisOperations;
+ import org.springframework.data.redis.core.RedisTemplate;
+ import org.springframework.data.redis.core.StringRedisTemplate;
+ 
++import com.lambdaworks.redis.RedisClient;
++
+ 
+ @Configuration
+-@ConditionalOnClass({ LettuceConnection.class, RedisOperations.class })
++@ConditionalOnClass({ LettuceConnection.class, RedisOperations.class, RedisClient.class })
+ public class RedisAutoConfiguration {
+ 
+ 	@Configuration
+

@@ -1,0 +1,31 @@
+@@ -1,5 +1,5 @@
+ 
+ 
+-package org.springframework.boot.actuate.autoconfigure.metrics.reactive.server;
++package org.springframework.boot.actuate.autoconfigure.metrics.web.reactive;
+ 
+ import io.micrometer.core.instrument.MeterRegistry;
+ 
++import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
+ import org.springframework.boot.actuate.autoconfigure.metrics.MetricsProperties;
+ import org.springframework.boot.actuate.metrics.web.reactive.server.DefaultWebFluxTagsProvider;
+ import org.springframework.boot.actuate.metrics.web.reactive.server.MetricsWebFilter;
+ import org.springframework.boot.actuate.metrics.web.reactive.server.WebFluxTagsProvider;
++import org.springframework.boot.autoconfigure.AutoConfigureAfter;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ 
+ 
+-@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
+ @Configuration
+-public class WebFluxMetricsConfiguration {
++@AutoConfigureAfter(MetricsAutoConfiguration.class)
++@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
++public class WebFluxMetricsAutoConfiguration {
+ 
+ 	@Bean
+ 	@ConditionalOnMissingBean(WebFluxTagsProvider.class)
+

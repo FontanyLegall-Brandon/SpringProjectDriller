@@ -1,0 +1,45 @@
+@@ -21,15 +21,12 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+-import org.springframework.boot.autoconfigure.condition.SearchStrategy;
+ import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
+ import org.springframework.boot.autoconfigure.hazelcast.HazelcastAutoConfiguration;
+ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+ import org.springframework.boot.autoconfigure.session.SessionAutoConfiguration.SessionConfigurationImportSelector;
+-import org.springframework.boot.autoconfigure.web.ServerProperties;
+ import org.springframework.boot.context.properties.EnableConfigurationProperties;
+-import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.context.annotation.Import;
+ import org.springframework.context.annotation.ImportSelector;
+@@ -43,7 +40,8 @@ import org.springframework.session.SessionRepository;
+  * @author Andy Wilkinson
+  * @author Tommy Ludwig
+  * @author Eddú Meléndez
+- * @since 1.3.0
++ * @author Stephane Nicoll
++ * @since 1.4.0
+  */
+ @Configuration
+ @ConditionalOnClass(Session.class)
+@@ -55,19 +53,6 @@ import org.springframework.session.SessionRepository;
+ @Import(SessionConfigurationImportSelector.class)
+ public class SessionAutoConfiguration {
+ 
+-	@Configuration
+-	@ConditionalOnMissingBean(value = ServerProperties.class, search = SearchStrategy.CURRENT)
+-	
+-	public static class ServerPropertiesConfiguration {
+-
+-		@Bean
+-		
+-		public ServerProperties serverProperties() {
+-			return new ServerProperties();
+-		}
+-
+-	}
+-
+ 	
+

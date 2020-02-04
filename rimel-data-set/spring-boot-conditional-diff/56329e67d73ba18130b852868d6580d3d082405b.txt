@@ -1,0 +1,145 @@
+@@ -16,9 +16,6 @@
+ 
+ package org.springframework.boot.autoconfigure.data.mongo;
+ 
+-import java.util.Arrays;
+-import java.util.List;
+-
+ import com.mongodb.ClientSessionOptions;
+ import com.mongodb.DB;
+ import com.mongodb.MongoClient;
+@@ -32,7 +29,7 @@ import org.springframework.boot.autoconfigure.condition.AnyNestedCondition;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+-import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration.AnySyncMongoClientAvailable;
++import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration.AnyMongoClientAvailable;
+ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+ import org.springframework.boot.autoconfigure.mongo.MongoProperties;
+ import org.springframework.boot.context.properties.EnableConfigurationProperties;
+@@ -43,6 +40,7 @@ import org.springframework.context.annotation.Import;
+ import org.springframework.dao.DataAccessException;
+ import org.springframework.dao.support.PersistenceExceptionTranslator;
+ import org.springframework.data.mongodb.MongoDbFactory;
++import org.springframework.data.mongodb.core.MongoDbFactorySupport;
+ import org.springframework.data.mongodb.core.MongoTemplate;
+ import org.springframework.data.mongodb.core.SimpleMongoClientDbFactory;
+ import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+@@ -75,8 +73,9 @@ import org.springframework.util.StringUtils;
+  * @since 1.1.0
+  */
+ @Configuration
+-@ConditionalOnClass({ MongoClient.class, MongoTemplate.class })
+-@Conditional(AnySyncMongoClientAvailable.class)
++@ConditionalOnClass({ MongoClient.class, com.mongodb.client.MongoClient.class,
++		MongoTemplate.class })
++@Conditional(AnyMongoClientAvailable.class)
+ @EnableConfigurationProperties(MongoProperties.class)
+ @Import(MongoDataConfiguration.class)
+ @AutoConfigureAfter(MongoAutoConfiguration.class)
+@@ -84,22 +83,25 @@ public class MongoDataAutoConfiguration {
+ 
+ 	private final MongoProperties properties;
+ 
+-	private final MongoDbFactoryFactory dbFactoryFactory;
+-
+-	public MongoDataAutoConfiguration(ObjectProvider<MongoClient> mongoClientProvider,
+-			ObjectProvider<com.mongodb.client.MongoClient> mongoClientClientProvider,
+-			MongoProperties properties) {
+-
++	public MongoDataAutoConfiguration(MongoProperties properties) {
+ 		this.properties = properties;
+-		this.dbFactoryFactory = new MongoDbFactoryFactory(mongoClientProvider,
+-				mongoClientClientProvider);
+ 	}
+ 
+ 	@Bean
+-	@Conditional(AnySyncMongoClientAvailable.class)
+ 	@ConditionalOnMissingBean(MongoDbFactory.class)
+-	public MongoDbFactory mongoDbFactory() {
+-		return this.dbFactoryFactory.getFor(this.properties.getMongoClientDatabase());
++	public MongoDbFactorySupport<?> mongoDbFactory(ObjectProvider<MongoClient> mongo,
++			ObjectProvider<com.mongodb.client.MongoClient> mongoClient) {
++		MongoClient preferredClient = mongo.getIfAvailable();
++		if (preferredClient != null) {
++			return new SimpleMongoDbFactory(preferredClient,
++					this.properties.getMongoClientDatabase());
++		}
++		com.mongodb.client.MongoClient fallbackClient = mongoClient.getIfAvailable();
++		if (fallbackClient != null) {
++			return new SimpleMongoClientDbFactory(fallbackClient,
++					this.properties.getMongoClientDatabase());
++		}
++		throw new IllegalStateException();
+ 	}
+ 
+ 	@Bean
+@@ -183,87 +185,23 @@ public class MongoDataAutoConfiguration {
+ 	}
+ 
+ 	
+-	static class AnySyncMongoClientAvailable extends AnyNestedCondition {
++	static class AnyMongoClientAvailable extends AnyNestedCondition {
+ 
+-		AnySyncMongoClientAvailable() {
++		AnyMongoClientAvailable() {
+ 			super(ConfigurationPhase.REGISTER_BEAN);
+ 		}
+ 
+-		@ConditionalOnBean(com.mongodb.MongoClient.class)
+-		static class MongoClientPreferred {
++		@ConditionalOnBean(MongoClient.class)
++		static class PreferredClientAvailable {
+ 
+ 		}
+ 
+ 		@ConditionalOnBean(com.mongodb.client.MongoClient.class)
+-		static class MongoClientClientPreferred {
+-
+-		}
+-
+-	}
+-
+-	
+-	static class MongoDbFactoryFactory {
+-
+-		private final List<ObjectProvider<?>> clientProviders;
+-
+-		
+-		MongoDbFactoryFactory(ObjectProvider<?>... clientProviders) {
+-			this.clientProviders = Arrays.asList(clientProviders);
+-		}
+-
+-		
+-		MongoDbFactory getFor(String database) {
+-
+-			Object client = findAvailableClientProvider();
+-
+-			if (client instanceof MongoClient) {
+-				return new SimpleMongoDbFactory(MongoClient.class.cast(client), database);
+-			}
+-
+-			if (client instanceof com.mongodb.client.MongoClient) {
+-				return new SimpleMongoClientDbFactory(
+-						com.mongodb.client.MongoClient.class.cast(client), database);
+-			}
+-
+-			return null;
+-		}
+-
+-		private Object findAvailableClientProvider() {
+-
+-			for (ObjectProvider<?> provider : this.clientProviders) {
+-				Object client = provider.getIfAvailable();
+-				if (client != null) {
+-					return client;
+-				}
+-			}
++		static class FallbackClientAvailable {
+ 
+-			throw new IllegalStateException(
+-					);
+ 		}
+ 
+ 	}
+

@@ -1,0 +1,10 @@
+@@ -97,7 +97,7 @@ public class ErrorMvcAutoConfiguration implements EmbeddedServletContainerCustom
+ 	}
+ 
+ 	@Configuration
+-	@ConditionalOnProperty(prefix = , name = , matchIfMissing = true)
++	@ConditionalOnProperty(prefix = , name = , matchIfMissing = true)
+ 	@Conditional(ErrorTemplateMissingCondition.class)
+ 	protected static class WhitelabelErrorViewConfiguration {
+ 
+

@@ -1,0 +1,10 @@
+@@ -45,7 +45,7 @@ import org.springframework.validation.beanvalidation.MethodValidationPostProcess
+ public class ValidationAutoConfiguration {
+ 
+ 	@Bean
+-	@ConditionalOnResource(resources = )
++	@ConditionalOnResource(resources = )
+ 	@Conditional(OnValidatorAvailableCondition.class)
+ 	@ConditionalOnMissingBean
+ 	public MethodValidationPostProcessor methodValidationPostProcessor() {
+

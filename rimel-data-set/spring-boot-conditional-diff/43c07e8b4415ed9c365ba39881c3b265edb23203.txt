@@ -1,0 +1,9 @@
+@@ -148,6 +148,7 @@ public class DataSourceAutoConfiguration {
+ 	@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+ 	@ConditionalOnClass(name = )
+ 	@Conditional(DataSourceAutoConfiguration.DataSourceAvailableCondition.class)
++	@ConditionalOnMissingBean(name = )
+ 	protected static class TomcatDataSourceJmxConfiguration {
+ 
+ 		@Bean
+

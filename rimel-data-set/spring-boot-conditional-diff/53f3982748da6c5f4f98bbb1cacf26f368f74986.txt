@@ -1,0 +1,35 @@
+@@ -23,6 +23,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.http.client.reactive.ClientHttpConnector;
++import org.springframework.http.client.reactive.JettyClientHttpConnector;
++import org.springframework.http.client.reactive.JettyResourceFactory;
+ import org.springframework.http.client.reactive.ReactorClientHttpConnector;
+ import org.springframework.http.client.reactive.ReactorResourceFactory;
+ 
+@@ -59,4 +61,24 @@ class ClientHttpConnectorConfiguration {
+ 
+ 	}
+ 
++	@Configuration
++	@ConditionalOnClass(org.eclipse.jetty.reactive.client.ReactiveRequest.class)
++	@ConditionalOnMissingBean(ClientHttpConnector.class)
++	public static class JettyClient {
++
++		@Bean
++		@ConditionalOnMissingBean
++		public JettyResourceFactory jettyResourceFactory() {
++			return new JettyResourceFactory();
++		}
++
++		@Bean
++		public JettyClientHttpConnector jettyClientHttpConnector(
++				JettyResourceFactory jettyResourceFactory) {
++			return new JettyClientHttpConnector(jettyResourceFactory, (httpClient) -> {
++			});
++		}
++
++	}
++
+ }
+

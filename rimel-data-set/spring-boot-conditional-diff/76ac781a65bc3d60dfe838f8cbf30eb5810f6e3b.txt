@@ -1,0 +1,52 @@
+@@ -0,0 +1,69 @@
++
++
++package org.springframework.boot.autoconfigure.cache;
++
++import org.infinispan.manager.DefaultCacheManager;
++import org.infinispan.spring.provider.SpringEmbeddedCacheManager;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.cache.CacheManager;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Conditional;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.core.io.Resource;
++import org.springframework.util.CollectionUtils;
++
++import java.io.IOException;
++import java.util.List;
++
++
++@Configuration
++@ConditionalOnClass(SpringEmbeddedCacheManager.class)
++@ConditionalOnMissingBean(CacheManager.class)
++@Conditional(CacheCondition.class)
++public class InfinispanCacheConfiguration {
++
++	@Autowired
++	private CacheProperties cacheProperties;
++
++	@Bean
++	public CacheManager cacheManager() throws IOException {
++		DefaultCacheManager defaultCacheManager = createCacheManager();
++		List<String> cacheNames = this.cacheProperties.getCacheNames();
++		if (!CollectionUtils.isEmpty(cacheNames)) {
++			for (String cacheName : cacheNames) {
++				defaultCacheManager.startCache(cacheName);
++			}
++		}
++		return new SpringEmbeddedCacheManager(defaultCacheManager);
++	}
++
++	private DefaultCacheManager createCacheManager() throws IOException {
++		Resource location = this.cacheProperties.resolveConfigLocation();
++		if (location != null) {
++			return new DefaultCacheManager(this.cacheProperties.getConfig().getInputStream());
++		}
++		return new DefaultCacheManager();
++	}
++
++}
+

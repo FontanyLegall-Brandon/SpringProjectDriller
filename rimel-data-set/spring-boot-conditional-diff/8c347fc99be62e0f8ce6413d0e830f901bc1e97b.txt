@@ -1,0 +1,108 @@
+@@ -1,124 +0,0 @@
+-
+-package org.springframework.bootstrap.context.annotation;
+-
+-import java.util.HashSet;
+-import java.util.Set;
+-
+-import org.junit.Ignore;
+-import org.junit.Test;
+-import org.springframework.context.ApplicationContext;
+-import org.springframework.context.ApplicationListener;
+-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+-import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.Configuration;
+-import org.springframework.context.event.ContextRefreshedEvent;
+-import org.springframework.util.ObjectUtils;
+-
+-import static org.hamcrest.Matchers.equalTo;
+-import static org.junit.Assert.assertThat;
+-
+-
+-@SuppressWarnings()
+-public class OnApplicationContextConditionTest {
+-
+-	@Test
+-	public void forContextById() throws Exception {
+-		AnnotationConfigApplicationContext parent = new AnnotationConfigApplicationContext();
+-		parent.setId();
+-		parent.register(ForContextByIdConf.class);
+-
+-		AnnotationConfigApplicationContext child = new AnnotationConfigApplicationContext();
+-		child.setId();
+-		child.setParent(parent);
+-		child.register(ForContextByIdConf.class);
+-
+-		parent.refresh();
+-		child.refresh();
+-
+-		assertThat(parent.containsLocalBean(), equalTo(true));
+-		assertThat(parent.containsLocalBean(), equalTo(false));
+-
+-		assertThat(child.containsLocalBean(), equalTo(false));
+-		assertThat(child.containsLocalBean(), equalTo(true));
+-	}
+-
+-	@Test
+-	@Ignore
+-	public void createContext() throws Exception {
+-		AnnotationConfigApplicationContext parent = new AnnotationConfigApplicationContext();
+-		ApplicationContextCollector collector = new ApplicationContextCollector();
+-		parent.addApplicationListener(collector);
+-		parent.register(CreateContext.class);
+-		parent.refresh();
+-		assertThat(collector.get().containsLocalBean(), equalTo(true));
+-	}
+-
+-	
+-	
+-	
+-
+-	private static class ApplicationContextCollector implements
+-			ApplicationListener<ContextRefreshedEvent> {
+-
+-		private Set<ApplicationContext> contexts = new HashSet<ApplicationContext>();
+-
+-		@Override
+-		public void onApplicationEvent(ContextRefreshedEvent event) {
+-			this.contexts.add(event.getApplicationContext());
+-		}
+-
+-		public ApplicationContext get(String id) {
+-			for (ApplicationContext context : this.contexts) {
+-				if (ObjectUtils.nullSafeEquals(context.getId(), id)) {
+-					return context;
+-				}
+-			}
+-			throw new IllegalArgumentException( + id);
+-		}
+-	}
+-
+-	@Configuration
+-	public static class ForContextByIdConf {
+-
+-		@Bean
+-		@ConditionalOnApplicationContext()
+-		public String inParent() {
+-			return ;
+-		}
+-
+-		@Bean
+-		@ConditionalOnApplicationContext()
+-		public String inChild() {
+-			return ;
+-		}
+-	}
+-
+-	@Configuration
+-	@ConditionalOnApplicationContext(value = , createIfMissing = true)
+-	public static class CreateContext {
+-
+-		@Bean
+-		public String inChild() {
+-			return ;
+-		}
+-	}
+-
+-}
+

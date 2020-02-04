@@ -1,0 +1,234 @@
+@@ -72,6 +72,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+  * @see EndpointWebMvcAutoConfiguration
+  */
+ @Configuration
++@EnableWebMvc
++@Import(EndpointWebMvcImportSelector.class)
+ public class EndpointWebMvcChildContextConfiguration {
+ 
+ 	private static Log logger = LogFactory
+@@ -83,14 +85,119 @@ public class EndpointWebMvcChildContextConfiguration {
+ 	@Autowired
+ 	private ManagementServerProperties managementServerProperties;
+ 
++	@Bean(name = DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_BEAN_NAME)
++	public DispatcherServlet dispatcherServlet() {
++		DispatcherServlet dispatcherServlet = new DispatcherServlet();
++		
++		dispatcherServlet.setDetectAllHandlerAdapters(false);
++		dispatcherServlet.setDetectAllHandlerExceptionResolvers(false);
++		dispatcherServlet.setDetectAllHandlerMappings(false);
++		dispatcherServlet.setDetectAllViewResolvers(false);
++		return dispatcherServlet;
++	}
++
++	@Bean(name = DispatcherServlet.HANDLER_MAPPING_BEAN_NAME)
++	public CompositeHandlerMapping compositeHandlerMapping() {
++		return new CompositeHandlerMapping();
++	}
++
++	@Bean(name = DispatcherServlet.HANDLER_ADAPTER_BEAN_NAME)
++	public CompositeHandlerAdapter compositeHandlerAdapter() {
++		return new CompositeHandlerAdapter();
++	}
++
++	@Bean(name = DispatcherServlet.HANDLER_EXCEPTION_RESOLVER_BEAN_NAME)
++	public CompositeHandlerExceptionResolver compositeHandlerExceptionResolver() {
++		return new CompositeHandlerExceptionResolver();
++	}
++
++	@Bean
++	public ServerCustomization serverCustomization() {
++		return new ServerCustomization();
++	}
++
++	
++	@Bean
++	public ManagementErrorEndpoint errorEndpoint(final ErrorAttributes errorAttributes) {
++		return new ManagementErrorEndpoint(this.errorPath, errorAttributes);
++	}
++
++	
++	@Configuration
++	@ConditionalOnMissingClass()
++	protected static class EndpointHandlerMappingConfiguration {
++
++		@Autowired
++		public void handlerMapping(MvcEndpoints endpoints,
++				ListableBeanFactory beanFactory, EndpointHandlerMapping mapping) {
++			
++			mapping.setDetectHandlerMethodsInAncestorContexts(true);
++			postProcessMapping(beanFactory, mapping);
++		}
++
++		
++		protected void postProcessMapping(ListableBeanFactory beanFactory,
++				EndpointHandlerMapping mapping) {
++		}
++
++	}
++
++	
+ 	@Configuration
+-	@Import(EndpointWebMvcImportSelector.class)
+-	protected static class EndpointWebMvcConfiguration {
++	@ConditionalOnClass(WebSecurityConfigurerAdapter.class)
++	protected static class SecureEndpointHandlerMappingConfiguration extends
++			EndpointHandlerMappingConfiguration {
++
++		@Override
++		protected void postProcessMapping(ListableBeanFactory beanFactory,
++				EndpointHandlerMapping mapping) {
++			
++			
++			if (BeanFactoryUtils.beanNamesForTypeIncludingAncestors(beanFactory,
++					ManagementWebSecurityConfigurerAdapter.class).length == 1) {
++				ManagementWebSecurityConfigurerAdapter bean = beanFactory
++						.getBean(ManagementWebSecurityConfigurerAdapter.class);
++				bean.setEndpointHandlerMapping(mapping);
++			}
++			else {
++				logger.warn(
++						+ ManagementWebSecurityConfigurerAdapter.class.getSimpleName()
++						+ );
++			}
++		}
++
+ 	}
+ 
+ 	@Configuration
+-	protected static class ServerCustomization implements
+-	EmbeddedServletContainerCustomizer, Ordered {
++	@ConditionalOnClass({ EnableWebSecurity.class, Filter.class })
++	@ConditionalOnBean(name = , search = SearchStrategy.PARENTS)
++	public static class EndpointWebMvcChildContextSecurityConfiguration {
++
++		@Bean
++		public Filter springSecurityFilterChain(HierarchicalBeanFactory beanFactory) {
++			BeanFactory parent = beanFactory.getParentBeanFactory();
++			return parent.getBean(, Filter.class);
++		}
++
++	}
++
++	static class ServerCustomization implements EmbeddedServletContainerCustomizer,
++			Ordered {
+ 
+ 		@Value()
+ 		private String errorPath = ;
+@@ -131,22 +238,7 @@ public class EndpointWebMvcChildContextConfiguration {
+ 
+ 	}
+ 
+-	@Bean(name = DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_BEAN_NAME)
+-	public DispatcherServlet dispatcherServlet() {
+-		DispatcherServlet dispatcherServlet = new DispatcherServlet();
+-
+-		
+-		dispatcherServlet.setDetectAllHandlerAdapters(false);
+-		dispatcherServlet.setDetectAllHandlerExceptionResolvers(false);
+-		dispatcherServlet.setDetectAllHandlerMappings(false);
+-		dispatcherServlet.setDetectAllViewResolvers(false);
+-
+-		return dispatcherServlet;
+-	}
+-
+-	@Configuration(DispatcherServlet.HANDLER_MAPPING_BEAN_NAME)
+-	@EnableWebMvc
+-	public static class CompositeHandlerMapping implements HandlerMapping {
++	static class CompositeHandlerMapping implements HandlerMapping {
+ 
+ 		@Autowired
+ 		private ListableBeanFactory beanFactory;
+@@ -178,8 +270,7 @@ public class EndpointWebMvcChildContextConfiguration {
+ 
+ 	}
+ 
+-	@Configuration(DispatcherServlet.HANDLER_ADAPTER_BEAN_NAME)
+-	public static class CompositeHandlerAdapter implements HandlerAdapter {
++	static class CompositeHandlerAdapter implements HandlerAdapter {
+ 
+ 		@Autowired
+ 		private ListableBeanFactory beanFactory;
+@@ -236,9 +327,7 @@ public class EndpointWebMvcChildContextConfiguration {
+ 
+ 	}
+ 
+-	@Configuration(DispatcherServlet.HANDLER_EXCEPTION_RESOLVER_BEAN_NAME)
+-	public static class CompositeHandlerExceptionResolver implements
+-	HandlerExceptionResolver {
++	static class CompositeHandlerExceptionResolver implements HandlerExceptionResolver {
+ 
+ 		@Autowired
+ 		private ListableBeanFactory beanFactory;
+@@ -272,84 +361,4 @@ public class EndpointWebMvcChildContextConfiguration {
+ 
+ 	}
+ 
+-	
+-	@Bean
+-	public ManagementErrorEndpoint errorEndpoint(final ErrorAttributes errorAttributes) {
+-		return new ManagementErrorEndpoint(this.errorPath, errorAttributes);
+-	}
+-
+-	
+-	@Configuration
+-	@ConditionalOnMissingClass()
+-	protected static class EndpointHandlerMappingConfiguration {
+-
+-		@Autowired
+-		public void handlerMapping(MvcEndpoints endpoints,
+-				ListableBeanFactory beanFactory, EndpointHandlerMapping mapping) {
+-			
+-			mapping.setDetectHandlerMethodsInAncestorContexts(true);
+-			postProcessMapping(beanFactory, mapping);
+-		}
+-
+-		
+-		protected void postProcessMapping(ListableBeanFactory beanFactory,
+-				EndpointHandlerMapping mapping) {
+-		}
+-
+-	}
+-
+-	
+-	@Configuration
+-	@ConditionalOnClass(WebSecurityConfigurerAdapter.class)
+-	protected static class SecureEndpointHandlerMappingConfiguration extends
+-	EndpointHandlerMappingConfiguration {
+-
+-		@Override
+-		protected void postProcessMapping(ListableBeanFactory beanFactory,
+-				EndpointHandlerMapping mapping) {
+-			
+-			
+-			if (BeanFactoryUtils.beanNamesForTypeIncludingAncestors(beanFactory,
+-					ManagementWebSecurityConfigurerAdapter.class).length == 1) {
+-				ManagementWebSecurityConfigurerAdapter bean = beanFactory
+-						.getBean(ManagementWebSecurityConfigurerAdapter.class);
+-				bean.setEndpointHandlerMapping(mapping);
+-			}
+-			else {
+-				logger.warn(
+-						+ ManagementWebSecurityConfigurerAdapter.class.getSimpleName()
+-						+ );
+-			}
+-		}
+-
+-	}
+-
+-	@Configuration
+-	@ConditionalOnClass({ EnableWebSecurity.class, Filter.class })
+-	@ConditionalOnBean(name = , search = SearchStrategy.PARENTS)
+-	public static class EndpointWebMvcChildContextSecurityConfiguration {
+-
+-		@Bean
+-		public Filter springSecurityFilterChain(HierarchicalBeanFactory beanFactory) {
+-			BeanFactory parent = beanFactory.getParentBeanFactory();
+-			return parent.getBean(, Filter.class);
+-		}
+-
+-	}
+-
+ }
+

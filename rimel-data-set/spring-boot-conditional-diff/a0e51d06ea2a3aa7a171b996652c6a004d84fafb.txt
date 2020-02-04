@@ -1,0 +1,46 @@
+@@ -0,0 +1,62 @@
++
++
++package org.springframework.bootstrap.actuate.autoconfigure;
++
++import javax.servlet.Servlet;
++
++import org.springframework.beans.factory.BeanFactory;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.beans.factory.annotation.Value;
++import org.springframework.bootstrap.actuate.trace.InMemoryTraceRepository;
++import org.springframework.bootstrap.actuate.trace.TraceRepository;
++import org.springframework.bootstrap.actuate.trace.WebRequestLoggingFilter;
++import org.springframework.bootstrap.context.annotation.ConditionalOnClass;
++import org.springframework.bootstrap.context.annotation.ConditionalOnMissingBean;
++import org.springframework.bootstrap.context.annotation.EnableAutoConfiguration;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.web.servlet.DispatcherServlet;
++
++
++@Configuration
++public class TraceFilterConfiguration {
++
++	@Autowired(required = false)
++	private TraceRepository traceRepository = new InMemoryTraceRepository();
++
++	@Value()
++	private boolean dumpRequests;
++
++	@Bean
++	@ConditionalOnMissingBean(TraceRepository.class)
++	protected TraceRepository traceRepository() {
++		return this.traceRepository;
++	}
++
++	@Bean
++	@ConditionalOnClass({ Servlet.class, DispatcherServlet.class })
++	public WebRequestLoggingFilter securityFilterPostProcessor(BeanFactory beanFactory) {
++		WebRequestLoggingFilter filter = new WebRequestLoggingFilter(this.traceRepository);
++		filter.setDumpRequests(this.dumpRequests);
++		return filter;
++	}
++
++}
+

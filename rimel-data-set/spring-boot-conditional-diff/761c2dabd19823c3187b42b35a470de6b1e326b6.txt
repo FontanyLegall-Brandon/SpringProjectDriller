@@ -1,0 +1,12 @@
+@@ -96,9 +96,8 @@ import org.springframework.security.web.util.matcher.AnyRequestMatcher;
+  */
+ @Configuration
+ @ConditionalOnClass({ EnableWebSecurity.class })
+-@ConditionalOnMissingBean(annotation = EnableWebSecurity.class)
++
+ @EnableWebSecurity
+-
+ @EnableConfigurationProperties
+ public class SecurityAutoConfiguration {
+ 
+

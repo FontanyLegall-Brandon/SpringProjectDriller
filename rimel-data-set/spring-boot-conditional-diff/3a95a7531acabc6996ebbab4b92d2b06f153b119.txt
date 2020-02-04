@@ -1,0 +1,9 @@
+@@ -61,6 +61,7 @@ public class AuthenticationManagerConfiguration {
+ 			.getLog(AuthenticationManagerConfiguration.class);
+ 
+ 	@Bean
++	@ConditionalOnMissingBean(type = )
+ 	public InMemoryUserDetailsManager inMemoryUserDetailsManager(
+ 			SecurityProperties properties,
+ 			ObjectProvider<PasswordEncoder> passwordEncoder) throws Exception {
+

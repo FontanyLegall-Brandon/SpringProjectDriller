@@ -1,0 +1,90 @@
+@@ -22,14 +22,12 @@ import java.util.Properties;
+ import javax.sql.DataSource;
+ 
+ import liquibase.integration.spring.SpringLiquibase;
+-import org.flywaydb.core.Flyway;
+ import org.quartz.Calendar;
+ import org.quartz.JobDetail;
+ import org.quartz.Scheduler;
+ import org.quartz.Trigger;
+ 
+ import org.springframework.beans.factory.ObjectProvider;
+-import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+ import org.springframework.boot.autoconfigure.AbstractDependsOnBeanFactoryPostProcessor;
+ import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+@@ -163,6 +161,7 @@ public class QuartzAutoConfiguration {
+ 				QuartzProperties properties) {
+ 			DataSource dataSourceToUse = getDataSource(dataSource, quartzDataSource);
+ 			return new QuartzDataSourceInitializer(dataSourceToUse, resourceLoader, properties);
++
+ 		}
+ 
+ 		
+ 		@Configuration
+-		protected static class SchedulerQuartzDataSourceInitializerDependencyConfiguration
+-				extends AbstractSchedulerDependsOnBeanFactoryPostProcessor {
++		static class QuartzSchedulerDependencyConfiguration {
+ 
+-			SchedulerQuartzDataSourceInitializerDependencyConfiguration() {
+-				super(QuartzDataSourceInitializer.class);
++			@Bean
++			public static SchedulerDependsOnBeanFactoryPostProcessor quartzSchedulerDataSourceInitializerDependsOnBeanFactoryPostProcessor() {
++				return new SchedulerDependsOnBeanFactoryPostProcessor(QuartzDataSourceInitializer.class);
+ 			}
+ 
+-		}
+-
+-		
+-		@Configuration
+-		@ConditionalOnClass(SpringLiquibase.class)
+-		@ConditionalOnBean(SpringLiquibase.class)
+-		protected static class SchedulerSpringLiquibaseDependencyConfiguration
+-				extends AbstractSchedulerDependsOnBeanFactoryPostProcessor {
+-
+-			SchedulerSpringLiquibaseDependencyConfiguration() {
+-				super(SpringLiquibase.class);
++			@Bean
++			@ConditionalOnBean(FlywayMigrationInitializer.class)
++			public static SchedulerDependsOnBeanFactoryPostProcessor quartzSchedulerFilywayDependsOnBeanFactoryPostProcessor() {
++				return new SchedulerDependsOnBeanFactoryPostProcessor(FlywayMigrationInitializer.class);
+ 			}
+ 
+-		}
+-
+-		
+-		@Configuration
+-		@ConditionalOnClass(Flyway.class)
+-		@ConditionalOnBean(FlywayMigrationInitializer.class)
+-		protected static class SchedulerFlywayMigrationInitializerDependencyConfiguration
+-				extends AbstractSchedulerDependsOnBeanFactoryPostProcessor {
+-
+-			SchedulerFlywayMigrationInitializerDependencyConfiguration() {
+-				super(FlywayMigrationInitializer.class);
++			@Bean
++			@ConditionalOnBean(SpringLiquibase.class)
++			public static SchedulerDependsOnBeanFactoryPostProcessor quartzSchedulerLiquibaseDependsOnBeanFactoryPostProcessor() {
++				return new SchedulerDependsOnBeanFactoryPostProcessor(SpringLiquibase.class);
+ 			}
+ 
+ 		}
+ 
+-		
+-		protected abstract static class AbstractSchedulerDependsOnBeanFactoryPostProcessor
+-				extends AbstractDependsOnBeanFactoryPostProcessor {
+-
+-			
+-			protected AbstractSchedulerDependsOnBeanFactoryPostProcessor(Class<?>... dependencyTypes) {
+-				super(Scheduler.class, SchedulerFactoryBean.class, dependencyTypes);
+-			}
++	}
++
++	
++	private static class SchedulerDependsOnBeanFactoryPostProcessor extends AbstractDependsOnBeanFactoryPostProcessor {
+ 
++		SchedulerDependsOnBeanFactoryPostProcessor(Class<?>... dependencyTypes) {
++			super(Scheduler.class, SchedulerFactoryBean.class, dependencyTypes);
+ 		}
+ 
+ 	}
+

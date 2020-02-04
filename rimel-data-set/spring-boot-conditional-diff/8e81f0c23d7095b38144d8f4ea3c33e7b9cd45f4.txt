@@ -1,0 +1,23 @@
+@@ -0,0 +1,39 @@
++
++
++package org.springframework.boot.autoconfigure.condition.config.second;
++
++import org.springframework.boot.autoconfigure.condition.ConditionEvaluationReport;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++
++@Configuration()
++@ConditionalOnProperty()
++public class SampleAutoConfiguration {
++
++	@Bean
++	public String two() {
++		return ;
++	}
++
++}
++
+

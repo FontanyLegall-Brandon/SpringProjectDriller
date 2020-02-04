@@ -1,0 +1,109 @@
+@@ -1,151 +0,0 @@
+-
+-
+-package org.springframework.bootstrap.context.properties;
+-
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.beans.factory.annotation.Qualifier;
+-import org.springframework.bootstrap.context.condition.ConditionalOnClass;
+-import org.springframework.bootstrap.context.condition.ConditionalOnMissingBean;
+-import org.springframework.context.ConfigurableApplicationContext;
+-import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.Configuration;
+-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+-import org.springframework.core.convert.ConversionService;
+-import org.springframework.core.env.ConfigurableEnvironment;
+-import org.springframework.core.env.Environment;
+-import org.springframework.core.env.MutablePropertySources;
+-import org.springframework.core.env.PropertySource;
+-import org.springframework.core.env.PropertySources;
+-import org.springframework.validation.Validator;
+-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+-
+-
+-@Configuration
+-public class ConfigurationPropertiesBindingConfiguration {
+-
+-	public final static String VALIDATOR_BEAN_NAME = ;
+-
+-	@Autowired(required = false)
+-	private PropertySourcesPlaceholderConfigurer configurer;
+-
+-	@Autowired(required = false)
+-	private Environment environment;
+-
+-	@Autowired(required = false)
+-	@Qualifier(ConfigurableApplicationContext.CONVERSION_SERVICE_BEAN_NAME)
+-	private ConversionService conversionService;
+-
+-	@Autowired(required = false)
+-	@Qualifier(VALIDATOR_BEAN_NAME)
+-	private Validator validator;
+-
+-	@ConditionalOnMissingBean(name = VALIDATOR_BEAN_NAME)
+-	@ConditionalOnClass(name = )
+-	protected static class ValidatorConfiguration {
+-		@Bean
+-		protected Validator configurationPropertiesValidator() {
+-			return new LocalValidatorFactoryBean();
+-		}
+-	}
+-
+-	
+-	@Bean
+-	public ConfigurationPropertiesBindingPostProcessor propertySourcesBinder() {
+-		PropertySources propertySources;
+-
+-		if (this.configurer != null) {
+-			propertySources = extractPropertySources(this.configurer);
+-		}
+-		else if (this.environment instanceof ConfigurableEnvironment) {
+-			propertySources = flattenPropertySources(((ConfigurableEnvironment) this.environment)
+-					.getPropertySources());
+-		}
+-		else {
+-			
+-			propertySources = new MutablePropertySources();
+-		}
+-
+-		ConfigurationPropertiesBindingPostProcessor processor = new ConfigurationPropertiesBindingPostProcessor();
+-		processor.setValidator(this.validator);
+-		processor.setConversionService(this.conversionService);
+-		processor.setPropertySources(propertySources);
+-		return processor;
+-	}
+-
+-	
+-	private PropertySources flattenPropertySources(PropertySources propertySources) {
+-		MutablePropertySources result = new MutablePropertySources();
+-		for (PropertySource<?> propertySource : propertySources) {
+-			flattenPropertySources(propertySource, result);
+-		}
+-		return result;
+-	}
+-
+-	
+-	private void flattenPropertySources(PropertySource<?> propertySource,
+-			MutablePropertySources result) {
+-		Object source = propertySource.getSource();
+-		if (source instanceof ConfigurableEnvironment) {
+-			ConfigurableEnvironment environment = (ConfigurableEnvironment) source;
+-			for (PropertySource<?> childSource : environment.getPropertySources()) {
+-				flattenPropertySources(childSource, result);
+-			}
+-		}
+-		else {
+-			result.addLast(propertySource);
+-		}
+-	}
+-
+-	
+-	private PropertySources extractPropertySources(
+-			PropertySourcesPlaceholderConfigurer configurer) {
+-		PropertySources propertySources = configurer.getAppliedPropertySources();
+-		
+-		return flattenPropertySources(propertySources);
+-	}
+-
+-}
+

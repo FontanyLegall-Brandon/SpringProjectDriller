@@ -1,0 +1,10 @@
+@@ -51,7 +51,7 @@ import org.springframework.data.mongodb.repository.support.ReactiveMongoReposito
+ @ConditionalOnClass({ MongoClient.class, ReactiveMongoRepository.class })
+ @ConditionalOnMissingBean({ ReactiveMongoRepositoryFactoryBean.class,
+ 		ReactiveMongoRepositoryConfigurationExtension.class })
+-@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
++@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+ @Import(MongoReactiveRepositoriesAutoConfigureRegistrar.class)
+ @AutoConfigureAfter(MongoReactiveDataAutoConfiguration.class)
+ public class MongoReactiveRepositoriesAutoConfiguration {
+

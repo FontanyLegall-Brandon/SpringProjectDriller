@@ -1,0 +1,10 @@
+@@ -51,7 +51,7 @@ public class ConditionalOnMissingClassTests {
+ 	}
+ 
+ 	@Configuration
+-	@ConditionalOnMissingClass(ConditionalOnMissingClassTests.class)
++	@ConditionalOnMissingClass()
+ 	protected static class BasicConfiguration {
+ 		@Bean
+ 		public String bar() {
+

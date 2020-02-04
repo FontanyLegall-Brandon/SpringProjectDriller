@@ -1,0 +1,24 @@
+@@ -49,14 +49,21 @@ import org.springframework.context.annotation.Configuration;
+  *
+  * @author Andy Wilkinson
+  * @author Phillip Webb
++ * @author Michael Simons
+  */
+ @Configuration
+ @ConditionalOnWebApplication(type = Type.SERVLET)
+ @ConditionalOnClass(ResourceConfig.class)
+-@ConditionalOnBean({ ResourceConfig.class, WebEndpointsSupplier.class })
++@ConditionalOnBean(WebEndpointsSupplier.class)
+ @ConditionalOnMissingBean(type = )
+ class JerseyWebEndpointManagementContextConfiguration {
+ 
++	@ConditionalOnMissingBean(ResourceConfig.class)
++	@Bean
++	public ResourceConfig resourceConfig() {
++		return new ResourceConfig();
++	}
++
+ 	@Bean
+ 	public ResourceConfigCustomizer webEndpointRegistrar(
+ 			WebEndpointsSupplier webEndpointsSupplier,
+

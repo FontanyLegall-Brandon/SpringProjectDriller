@@ -1,0 +1,28 @@
+@@ -1,55 +0,0 @@
+-
+-
+-package org.springframework.boot.actuate.condition;
+-
+-import java.lang.annotation.Documented;
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-import org.springframework.context.annotation.Conditional;
+-
+-
+-@Retention(RetentionPolicy.RUNTIME)
+-@Target({ ElementType.METHOD, ElementType.TYPE })
+-@Conditional(OnEnabledEndpointCondition.class)
+-@Documented
+-public @interface ConditionalOnEnabledEndpoint {
+-
+-	
+-	String value();
+-
+-	
+-	boolean enabledByDefault() default true;
+-
+-}
+

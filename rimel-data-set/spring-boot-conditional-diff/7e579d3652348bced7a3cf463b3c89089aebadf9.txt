@@ -1,0 +1,19 @@
+@@ -58,7 +58,7 @@ import org.springframework.util.StringUtils;
+  */
+ @Configuration
+ @ConditionalOnClass(EmbeddedDatabaseType.class )
+-
++@ConditionalOnMissingBean(DataSource.class)
+ public class DataSourceAutoConfiguration {
+ 
+ 	
+@@ -109,7 +109,7 @@ public class DataSourceAutoConfiguration {
+ 	}
+ 
+ 	
+-	@Value()
++	@Value()
+ 	private String schemaLocations = ;
+ 
+ 	@PostConstruct
+

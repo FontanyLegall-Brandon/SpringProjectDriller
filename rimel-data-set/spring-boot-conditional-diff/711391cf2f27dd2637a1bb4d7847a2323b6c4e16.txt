@@ -1,0 +1,45 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration(proxyBeanMethods = false)
+-@EnableConfigurationProperties(HttpProperties.class)
++@EnableConfigurationProperties(ServerProperties.class)
+ @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+ @ConditionalOnClass(CharacterEncodingFilter.class)
+-@ConditionalOnProperty(prefix = , value = , matchIfMissing = true)
++@ConditionalOnProperty(prefix = , value = , matchIfMissing = true)
+ public class HttpEncodingAutoConfiguration {
+ 
+-	private final HttpProperties.Encoding properties;
++	private final Encoding properties;
+ 
+-	public HttpEncodingAutoConfiguration(HttpProperties properties) {
+-		this.properties = properties.getEncoding();
++	public HttpEncodingAutoConfiguration(ServerProperties properties) {
++		this.properties = properties.getServlet().getEncoding();
+ 	}
+ 
+ 	@Bean
+@@ -58,8 +58,8 @@ public class HttpEncodingAutoConfiguration {
+ 	public CharacterEncodingFilter characterEncodingFilter() {
+ 		CharacterEncodingFilter filter = new OrderedCharacterEncodingFilter();
+ 		filter.setEncoding(this.properties.getCharset().name());
+-		filter.setForceRequestEncoding(this.properties.shouldForce(Type.REQUEST));
+-		filter.setForceResponseEncoding(this.properties.shouldForce(Type.RESPONSE));
++		filter.setForceRequestEncoding(this.properties.shouldForce(Encoding.Type.REQUEST));
++		filter.setForceResponseEncoding(this.properties.shouldForce(Encoding.Type.RESPONSE));
+ 		return filter;
+ 	}
+ 
+@@ -71,9 +71,9 @@ public class HttpEncodingAutoConfiguration {
+ 	static class LocaleCharsetMappingsCustomizer
+ 			implements WebServerFactoryCustomizer<ConfigurableServletWebServerFactory>, Ordered {
+ 
+-		private final HttpProperties.Encoding properties;
++		private final Encoding properties;
+ 
+-		LocaleCharsetMappingsCustomizer(HttpProperties.Encoding properties) {
++		LocaleCharsetMappingsCustomizer(Encoding properties) {
+ 			this.properties = properties;
+ 		}
+ 
+

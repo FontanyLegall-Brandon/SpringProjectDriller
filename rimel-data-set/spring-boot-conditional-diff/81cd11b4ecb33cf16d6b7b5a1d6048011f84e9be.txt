@@ -1,0 +1,18 @@
+@@ -24,6 +24,7 @@ import org.springframework.context.annotation.Configuration;
+ import org.springframework.context.annotation.Import;
+ import org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport;
+ import org.springframework.data.solr.repository.SolrRepository;
++import org.springframework.data.solr.repository.config.SolrRepositoryConfigExtension;
+ 
+ 
+ @Configuration
+ @ConditionalOnClass({ SolrServer.class, SolrRepository.class })
+-@ConditionalOnMissingBean(RepositoryFactoryBeanSupport.class)
+-@ConditionalOnProperty(value= , match=, defaultMatch = true)
++@ConditionalOnMissingBean({ RepositoryFactoryBeanSupport.class,
++		SolrRepositoryConfigExtension.class })
++@ConditionalOnProperty(value = , match = , defaultMatch = true)
+ @Import(SolrRepositoriesAutoConfigureRegistrar.class)
+ public class SolrRepositoriesAutoConfiguration {
+ 
+

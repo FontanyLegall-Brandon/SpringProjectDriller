@@ -1,0 +1,10 @@
+@@ -292,7 +292,7 @@ public class HealthIndicatorAutoConfiguration {
+ 		private Map<String, JavaMailSenderImpl> mailSenders;
+ 
+ 		@Bean
+-		@ConditionalOnMissingBean(name = )
++		@ConditionalOnMissingBean(name = )
+ 		public HealthIndicator mailHealthIndicator() {
+ 			if (this.mailSenders.size() == 1) {
+ 				JavaMailSenderImpl mailSender = this.mailSenders.values().iterator()
+

@@ -1,0 +1,48 @@
+@@ -0,0 +1,66 @@
++
++
++package org.springframework.boot.actuate.cloudfoundry;
++
++import java.util.LinkedHashSet;
++import java.util.Set;
++
++import org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration;
++import org.springframework.boot.actuate.endpoint.mvc.MvcEndpoints;
++import org.springframework.boot.actuate.endpoint.mvc.NamedMvcEndpoint;
++import org.springframework.boot.autoconfigure.AutoConfigureAfter;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnCloudPlatform;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
++import org.springframework.boot.cloud.CloudPlatform;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.web.cors.CorsConfiguration;
++
++
++@Configuration
++@ConditionalOnProperty(prefix = , name = , matchIfMissing = false)
++@ConditionalOnBean(MvcEndpoints.class)
++@AutoConfigureAfter(EndpointWebMvcAutoConfiguration.class)
++@ConditionalOnCloudPlatform(CloudPlatform.CLOUD_FOUNDRY)
++public class CloudFoundryActuatorAutoConfiguration {
++
++	@Bean
++	public CloudFoundryEndpointHandlerMapping cloudFoundryEndpointHandlerMapping(
++			MvcEndpoints mvcEndpoints) {
++		Set<NamedMvcEndpoint> endpoints = new LinkedHashSet<NamedMvcEndpoint>(
++				mvcEndpoints.getEndpoints(NamedMvcEndpoint.class));
++		CloudFoundryEndpointHandlerMapping mapping = new CloudFoundryEndpointHandlerMapping(
++				endpoints, getCorsConfiguration());
++		mapping.setPrefix();
++		return mapping;
++	}
++
++	private CorsConfiguration getCorsConfiguration() {
++		CorsConfiguration corsConfiguration = new CorsConfiguration();
++		corsConfiguration.addAllowedOrigin(CorsConfiguration.ALL);
++		return corsConfiguration;
++	}
++
++}
+

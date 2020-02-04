@@ -1,0 +1,43 @@
+@@ -0,0 +1,57 @@
++
++
++package org.springframework.autoconfigure.reactor;
++
++import org.springframework.autoconfigure.AutoConfigureAfter;
++import org.springframework.autoconfigure.web.WebMvcAutoConfiguration;
++import org.springframework.bootstrap.context.condition.ConditionalOnClass;
++import org.springframework.bootstrap.context.condition.ConditionalOnMissingBean;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.core.Ordered;
++import org.springframework.core.annotation.Order;
++
++import reactor.core.Environment;
++import reactor.core.Reactor;
++import reactor.spring.context.ConsumerBeanPostProcessor;
++
++
++@Configuration
++@ConditionalOnClass(Reactor.class)
++@ConditionalOnMissingBean(Reactor.class)
++@AutoConfigureAfter(WebMvcAutoConfiguration.class)
++public class ReactorAutoConfiguration {
++
++	@Bean
++	public Environment reactorEnvironment() {
++		return new Environment(); 
++	}
++
++	@Bean
++	public Reactor rootReactor() {
++		return reactorEnvironment().getRootReactor();
++	}
++
++	@Bean
++	@Order(Ordered.LOWEST_PRECEDENCE)
++	protected ConsumerBeanPostProcessor reactorConsumerBeanPostProcessor() {
++		return new ConsumerBeanPostProcessor();
++	}
++
++}
+

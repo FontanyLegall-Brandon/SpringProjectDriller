@@ -1,0 +1,317 @@
+@@ -0,0 +1,333 @@
++
++
++package org.springframework.boot.autoconfigure.diagnostics.analyzer;
++
++import java.util.ArrayList;
++import java.util.List;
++
++import org.junit.Test;
++
++import org.springframework.beans.DirectFieldAccessor;
++import org.springframework.beans.FatalBeanException;
++import org.springframework.beans.factory.BeanFactory;
++import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
++import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionEvaluationReport;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
++import org.springframework.boot.diagnostics.FailureAnalysis;
++import org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter;
++import org.springframework.boot.test.util.EnvironmentTestUtils;
++import org.springframework.context.annotation.AnnotationConfigApplicationContext;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.context.annotation.Import;
++import org.springframework.util.ClassUtils;
++
++import static org.assertj.core.api.Assertions.assertThat;
++
++
++public class NoSuchBeanDefinitionFailureAnalyzerTests {
++
++	private final NoSuchBeanDefinitionFailureAnalyzer analyzer = new NoSuchBeanDefinitionFailureAnalyzer();
++
++	@Test
++	public void failureAnalysisForMultipleBeans() {
++		FailureAnalysis analysis = analyzeFailure(
++				new NoUniqueBeanDefinitionException(String.class, 2, ));
++		assertThat(analysis).isNull();
++	}
++
++	@Test
++	public void failureAnalysisForNoMatchType() {
++		FailureAnalysis analysis = analyzeFailure(createFailure(StringHandler.class));
++		assertDescriptionConstructorMissingType(analysis, StringHandler.class, 0,
++				String.class);
++		assertThat(analysis.getDescription()).doesNotContain(
++				);
++		assertThat(analysis.getAction()).startsWith(String.format(
++				,
++				String.class.getName()));
++	}
++
++	@Test
++	public void failureAnalysisForMissingPropertyExactType() {
++		FailureAnalysis analysis = analyzeFailure(
++				createFailure(StringPropertyTypeConfiguration.class));
++		assertDescriptionConstructorMissingType(analysis, StringHandler.class, 0,
++				String.class);
++		assertBeanMethodDisabled(analysis,
++				,
++				TestPropertyAutoConfiguration.class, );
++		assertActionMissingType(analysis, String.class);
++	}
++
++	@Test
++	public void failureAnalysisForMissingPropertySubType() {
++		FailureAnalysis analysis = analyzeFailure(
++				createFailure(IntegerPropertyTypeConfiguration.class));
++		assertThat(analysis).isNotNull();
++		assertDescriptionConstructorMissingType(analysis, NumberHandler.class, 0,
++				Number.class);
++		assertBeanMethodDisabled(analysis,
++				,
++				TestPropertyAutoConfiguration.class, );
++		assertActionMissingType(analysis, Number.class);
++	}
++
++	@Test
++	public void failureAnalysisForMissingClassOnAutoConfigurationType() {
++		FailureAnalysis analysis = analyzeFailure(
++				createFailure(MissingClassOnAutoConfigurationConfiguration.class));
++		assertDescriptionConstructorMissingType(analysis, StringHandler.class, 0,
++				String.class);
++		assertClassDisabled(analysis, ,
++				);
++		assertActionMissingType(analysis, String.class);
++	}
++
++	@Test
++	public void failureAnalysisForExcludedAutoConfigurationType() {
++		FatalBeanException failure = createFailure(StringHandler.class);
++		addExclusions(this.analyzer, TestPropertyAutoConfiguration.class);
++		FailureAnalysis analysis = analyzeFailure(failure);
++		assertDescriptionConstructorMissingType(analysis, StringHandler.class, 0,
++				String.class);
++		String configClass = ClassUtils
++				.getShortName(TestPropertyAutoConfiguration.class.getName());
++		assertClassDisabled(analysis,
++				String.format(, configClass),
++				);
++		assertActionMissingType(analysis, String.class);
++	}
++
++	@Test
++	public void failureAnalysisForSeveralConditionsType() {
++		FailureAnalysis analysis = analyzeFailure(
++				createFailure(SeveralAutoConfigurationTypeConfiguration.class));
++		assertDescriptionConstructorMissingType(analysis, StringHandler.class, 0,
++				String.class);
++		assertBeanMethodDisabled(analysis,
++				,
++				TestPropertyAutoConfiguration.class, );
++		assertClassDisabled(analysis, ,
++				);
++		assertActionMissingType(analysis, String.class);
++	}
++
++	@Test
++	public void failureAnalysisForNoMatchName() {
++		FailureAnalysis analysis = analyzeFailure(createFailure(StringNameHandler.class));
++		assertThat(analysis.getDescription()).startsWith(String.format(
++				,
++				StringNameHandler.class.getName(), ));
++		assertThat(analysis.getDescription().contains(
++				));
++		assertThat(analysis.getAction()).startsWith(String.format(
++				,
++				));
++	}
++
++	@Test
++	public void failureAnalysisForMissingBeanName() {
++		FailureAnalysis analysis = analyzeFailure(
++				createFailure(StringMissingBeanNameConfiguration.class));
++		assertThat(analysis.getDescription()).startsWith(String.format(
++				,
++				StringNameHandler.class.getName(), ));
++		assertBeanMethodDisabled(analysis,
++				,
++				TestMissingBeanAutoConfiguration.class, );
++		assertActionMissingName(analysis, );
++	}
++
++	private void assertDescriptionConstructorMissingType(FailureAnalysis analysis,
++			Class<?> component, int index, Class<?> type) {
++		String expected = String.format(
++				
++						+ ,
++				index, component.getName(), type.getName());
++		assertThat(analysis.getDescription()).startsWith(expected);
++	}
++
++	private void assertActionMissingType(FailureAnalysis analysis, Class<?> type) {
++		assertThat(analysis.getAction()).startsWith(String
++				.format(
++						+ , type.getName()));
++	}
++
++	private void assertActionMissingName(FailureAnalysis analysis, String name) {
++		assertThat(analysis.getAction()).startsWith(String
++				.format(
++						+ , name));
++	}
++
++	private void assertBeanMethodDisabled(FailureAnalysis analysis, String description,
++			Class<?> target, String methodName) {
++		String expected = String.format(,
++				methodName, ClassUtils.getShortName(target), description);
++		assertThat(analysis.getDescription()).contains(expected);
++		assertThat(analysis.getDescription()).contains(description);
++	}
++
++	private void assertClassDisabled(FailureAnalysis analysis, String description,
++			String methodName) {
++		String expected = String.format(, methodName,
++				description);
++		assertThat(analysis.getDescription()).contains(expected);
++		assertThat(analysis.getDescription()).contains(description);
++	}
++
++	private static void addExclusions(NoSuchBeanDefinitionFailureAnalyzer analyzer,
++			Class<?>... classes) {
++		ConditionEvaluationReport report = (ConditionEvaluationReport) new DirectFieldAccessor(
++				analyzer).getPropertyValue();
++		List<String> exclusions = new ArrayList<String>(report.getExclusions());
++		for (Class<?> c : classes) {
++			exclusions.add(c.getName());
++		}
++		report.recordExclusions(exclusions);
++	}
++
++	private FatalBeanException createFailure(Class<?> config, String... environment) {
++		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
++		this.analyzer.setBeanFactory(context.getBeanFactory());
++		EnvironmentTestUtils.addEnvironment(context, environment);
++		context.register(config);
++		try {
++			context.refresh();
++			return null;
++		}
++		catch (FatalBeanException ex) {
++			return ex;
++		}
++		finally {
++			context.close();
++		}
++	}
++
++	private FailureAnalysis analyzeFailure(Exception failure) {
++		FailureAnalysis analysis = this.analyzer.analyze(failure);
++		if (analysis != null) {
++			new LoggingFailureAnalysisReporter().report(analysis);
++		}
++		return analysis;
++	}
++
++	@Configuration
++	@ImportAutoConfiguration(TestPropertyAutoConfiguration.class)
++	@Import(StringHandler.class)
++	protected static class StringPropertyTypeConfiguration {
++
++	}
++
++	@Configuration
++	@ImportAutoConfiguration(TestPropertyAutoConfiguration.class)
++	@Import(NumberHandler.class)
++	protected static class IntegerPropertyTypeConfiguration {
++
++	}
++
++	@Configuration
++	@ImportAutoConfiguration(TestTypeClassAutoConfiguration.class)
++	@Import(StringHandler.class)
++	protected static class MissingClassOnAutoConfigurationConfiguration {
++
++	}
++
++	@Configuration
++	@ImportAutoConfiguration({ TestPropertyAutoConfiguration.class,
++			TestTypeClassAutoConfiguration.class })
++	@Import(StringHandler.class)
++	protected static class SeveralAutoConfigurationTypeConfiguration {
++
++	}
++
++	@Configuration
++	@ImportAutoConfiguration(TestMissingBeanAutoConfiguration.class)
++	@Import(StringNameHandler.class)
++	protected static class StringMissingBeanNameConfiguration {
++
++	}
++
++	@Configuration
++	public static class TestPropertyAutoConfiguration {
++
++		@ConditionalOnProperty()
++		@Bean
++		public String string() {
++			return ;
++		}
++
++		@ConditionalOnProperty()
++		@Bean
++		public Integer integer() {
++			return 42;
++		}
++
++	}
++
++	@Configuration
++	@ConditionalOnClass(name = )
++	public static class TestTypeClassAutoConfiguration {
++
++		@Bean
++		public String string() {
++			return ;
++		}
++
++	}
++
++	@Configuration
++	public static class TestMissingBeanAutoConfiguration {
++
++		@ConditionalOnBean(Integer.class)
++		@Bean(name = )
++		public String string() {
++			return ;
++		}
++
++	}
++
++	protected static class StringHandler {
++
++		public StringHandler(String foo) {
++		}
++
++	}
++
++	protected static class NumberHandler {
++
++		public NumberHandler(Number foo) {
++		}
++
++	}
++
++	protected static class StringNameHandler {
++
++		public StringNameHandler(BeanFactory beanFactory) {
++			beanFactory.getBean();
++		}
++
++	}
++
++}
+

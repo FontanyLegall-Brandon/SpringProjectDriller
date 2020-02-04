@@ -1,0 +1,14 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+ @ConditionalOnClass({ JdbcTemplate.class, PlatformTransactionManager.class })
+@@ -51,7 +52,7 @@ public class DataSourceTransactionManagerAutoConfiguration implements Ordered {
+ 	private DataSource dataSource;
+ 
+ 	@Bean
+-	@ConditionalOnMissingBean(name = )
++	@ConditionalOnMissingBean
+ 	@ConditionalOnBean(DataSource.class)
+ 	public PlatformTransactionManager transactionManager() {
+ 		return new DataSourceTransactionManager(this.dataSource);
+

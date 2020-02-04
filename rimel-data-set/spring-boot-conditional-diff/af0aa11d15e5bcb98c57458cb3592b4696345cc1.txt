@@ -1,0 +1,53 @@
+@@ -1,5 +1,5 @@
+ 
+ package org.springframework.boot.actuate.autoconfigure.cassandra;
+ 
+-import com.datastax.driver.core.Cluster;
++import java.util.Map;
++
+ import org.springframework.boot.actuate.autoconfigure.health.CompositeReactiveHealthIndicatorConfiguration;
+-import org.springframework.boot.actuate.autoconfigure.health.ConditionalOnEnabledHealthIndicator;
+-import org.springframework.boot.actuate.autoconfigure.health.HealthIndicatorAutoConfiguration;
+ import org.springframework.boot.actuate.cassandra.CassandraReactiveHealthIndicator;
+ import org.springframework.boot.actuate.health.ReactiveHealthIndicator;
+-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+-import org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+-import org.springframework.boot.autoconfigure.data.cassandra.CassandraReactiveDataAutoConfiguration;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.data.cassandra.core.ReactiveCassandraOperations;
+ 
+-import java.util.Map;
+-
+ 
+ @Configuration
+-@ConditionalOnClass({ReactiveCassandraOperations.class, Cluster.class })
++@ConditionalOnClass(ReactiveCassandraOperations.class)
+ @ConditionalOnBean(ReactiveCassandraOperations.class)
+-@ConditionalOnEnabledHealthIndicator()
+-@AutoConfigureBefore(HealthIndicatorAutoConfiguration.class)
+-@AutoConfigureAfter({ CassandraAutoConfiguration.class,
+-		CassandraReactiveDataAutoConfiguration.class })
+-public class CassandraReactiveHealthIndicatorAutoConfiguration extends
++class CassandraReactiveHealthIndicatorConfiguration extends
+ 		CompositeReactiveHealthIndicatorConfiguration<CassandraReactiveHealthIndicator, ReactiveCassandraOperations> {
++
+ 	private final Map<String, ReactiveCassandraOperations> reactiveCassandraOperations;
+ 
+-	public CassandraReactiveHealthIndicatorAutoConfiguration(
++	CassandraReactiveHealthIndicatorConfiguration(
+ 			Map<String, ReactiveCassandraOperations> reactiveCassandraOperations) {
+ 		this.reactiveCassandraOperations = reactiveCassandraOperations;
+ 	}
+@@ -63,4 +51,5 @@ public class CassandraReactiveHealthIndicatorAutoConfiguration extends
+ 	public ReactiveHealthIndicator cassandraHealthIndicator() {
+ 		return createHealthIndicator(this.reactiveCassandraOperations);
+ 	}
++
+ }
+

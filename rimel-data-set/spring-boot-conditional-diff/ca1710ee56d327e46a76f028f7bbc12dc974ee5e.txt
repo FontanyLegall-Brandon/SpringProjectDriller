@@ -1,0 +1,9 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration(proxyBeanMethods = false)
+-@ConditionalOnClass({ Session.class, CassandraRepository.class })
++@ConditionalOnClass({ CqlSession.class, CassandraRepository.class })
+ @ConditionalOnRepositoryType(store = , type = RepositoryType.IMPERATIVE)
+ @ConditionalOnMissingBean(CassandraRepositoryFactoryBean.class)
+ @Import(CassandraRepositoriesRegistrar.class)
+

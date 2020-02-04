@@ -1,0 +1,9 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+ @ConditionalOnClass(Jsonb.class)
++@ConditionalOnResource(resources = )
+ public class JsonbAutoConfiguration {
+ 
+ 	@Bean
+

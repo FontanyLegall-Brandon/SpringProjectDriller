@@ -1,0 +1,46 @@
+@@ -0,0 +1,63 @@
++
++
++package org.springframework.boot.autoconfigure.task;
++
++import java.util.stream.Collectors;
++
++import org.springframework.beans.factory.ObjectProvider;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.context.properties.EnableConfigurationProperties;
++import org.springframework.boot.task.TaskSchedulerBuilder;
++import org.springframework.boot.task.TaskSchedulerCustomizer;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.scheduling.TaskScheduler;
++import org.springframework.scheduling.annotation.SchedulingConfigurer;
++import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
++import org.springframework.scheduling.config.TaskManagementConfigUtils;
++
++
++@ConditionalOnClass(ThreadPoolTaskScheduler.class)
++@Configuration
++@EnableConfigurationProperties(TaskSchedulingProperties.class)
++public class TaskSchedulingAutoConfiguration {
++
++	@Bean
++	@ConditionalOnBean(name = TaskManagementConfigUtils.SCHEDULED_ANNOTATION_PROCESSOR_BEAN_NAME)
++	@ConditionalOnMissingBean({ SchedulingConfigurer.class, TaskScheduler.class })
++	public ThreadPoolTaskScheduler taskScheduler(TaskSchedulerBuilder builder) {
++		return builder.build();
++	}
++
++	@Bean
++	@ConditionalOnMissingBean
++	public TaskSchedulerBuilder taskSchedulerBuilder(TaskSchedulingProperties properties,
++			ObjectProvider<TaskSchedulerCustomizer> taskSchedulerCustomizers) {
++		return new TaskSchedulerBuilder().poolSize(properties.getPool().getSize())
++				.threadNamePrefix(properties.getThreadNamePrefix()).customizers(
++						taskSchedulerCustomizers.stream().collect(Collectors.toList()));
++	}
++
++}
+

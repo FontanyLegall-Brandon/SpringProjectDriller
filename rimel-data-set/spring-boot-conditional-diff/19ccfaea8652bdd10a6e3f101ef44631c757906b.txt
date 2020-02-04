@@ -1,0 +1,27 @@
+@@ -166,8 +166,8 @@ public class QuartzAutoConfiguration {
+ 
+ 		
+ 		@Configuration
+ 		static class QuartzSchedulerDependencyConfiguration {
+@@ -183,10 +183,16 @@ public class QuartzAutoConfiguration {
+ 				return new SchedulerDependsOnBeanFactoryPostProcessor(FlywayMigrationInitializer.class);
+ 			}
+ 
+-			@Bean
+-			@ConditionalOnBean(SpringLiquibase.class)
+-			public static SchedulerDependsOnBeanFactoryPostProcessor quartzSchedulerLiquibaseDependsOnBeanFactoryPostProcessor() {
+-				return new SchedulerDependsOnBeanFactoryPostProcessor(SpringLiquibase.class);
++			@Configuration
++			@ConditionalOnClass(SpringLiquibase.class)
++			static class LiquibaseQuartzSchedulerDependencyConfiguration {
++
++				@Bean
++				@ConditionalOnBean(SpringLiquibase.class)
++				public static SchedulerDependsOnBeanFactoryPostProcessor quartzSchedulerLiquibaseDependsOnBeanFactoryPostProcessor() {
++					return new SchedulerDependsOnBeanFactoryPostProcessor(SpringLiquibase.class);
++				}
++
+ 			}
+ 
+ 		}
+

@@ -1,0 +1,182 @@
+@@ -16,6 +16,8 @@
+ 
+ package org.springframework.boot.autoconfigure.condition;
+ 
++import java.util.Date;
++
+ import org.junit.Test;
+ 
+ import org.springframework.beans.factory.FactoryBean;
+@@ -66,6 +68,19 @@ public class ConditionalOnMissingBeanTests {
+ 		assertThat(this.context.getBean()).isEqualTo();
+ 	}
+ 
++	@Test
++	public void testNameAndTypeOnMissingBeanCondition() {
++		this.context.register(FooConfiguration.class,
++				OnBeanNameAndTypeConfiguration.class);
++		this.context.refresh();
++		
++		assertThat(this.context.containsBean()).isFalse();
++	}
++
+ 	@Test
+ 	public void hierarchyConsidered() throws Exception {
+ 		this.context.register(FooConfiguration.class);
+@@ -219,49 +234,72 @@ public class ConditionalOnMissingBeanTests {
+ 	@Configuration
+ 	@ConditionalOnMissingBean(name = )
+ 	protected static class OnBeanNameConfiguration {
++
++		@Bean
++		public String bar() {
++			return ;
++		}
++
++	}
++
++	@Configuration
++	@ConditionalOnMissingBean(name = , value = Date.class)
++	@ConditionalOnBean(name = , value = Date.class)
++	protected static class OnBeanNameAndTypeConfiguration {
++
+ 		@Bean
+ 		public String bar() {
+ 			return ;
+ 		}
++
+ 	}
+ 
+ 	@Configuration
+ 	protected static class FactoryBeanConfiguration {
++
+ 		@Bean
+ 		public FactoryBean<ExampleBean> exampleBeanFactoryBean() {
+ 			return new ExampleFactoryBean();
+ 		}
++
+ 	}
+ 
+ 	@Configuration
+ 	protected static class FactoryBeanWithBeanMethodArgumentsConfiguration {
++
+ 		@Bean
+ 		public FactoryBean<ExampleBean> exampleBeanFactoryBean(
+ 				@Value() String value) {
+ 			return new ExampleFactoryBean(value);
+ 		}
++
+ 	}
+ 
+ 	@Configuration
+ 	protected static class ConcreteFactoryBeanConfiguration {
++
+ 		@Bean
+ 		public ExampleFactoryBean exampleBeanFactoryBean() {
+ 			return new ExampleFactoryBean();
+ 		}
++
+ 	}
+ 
+ 	@Configuration
+ 	protected static class UnhelpfulFactoryBeanConfiguration {
++
+ 		@Bean
+ 		@SuppressWarnings()
+ 		public FactoryBean exampleBeanFactoryBean() {
+ 			return new ExampleFactoryBean();
+ 		}
++
+ 	}
+ 
+ 	@Configuration
+ 	@Import(NonspecificFactoryBeanClassAttributeRegistrar.class)
+ 	protected static class NonspecificFactoryBeanClassAttributeConfiguration {
++
+ 	}
+ 
+ 	protected static class NonspecificFactoryBeanClassAttributeRegistrar
+@@ -284,6 +322,7 @@ public class ConditionalOnMissingBeanTests {
+ 	@Configuration
+ 	@Import(NonspecificFactoryBeanClassAttributeRegistrar.class)
+ 	protected static class NonspecificFactoryBeanStringAttributeConfiguration {
++
+ 	}
+ 
+ 	protected static class NonspecificFactoryBeanStringAttributeRegistrar
+@@ -326,15 +365,18 @@ public class ConditionalOnMissingBeanTests {
+ 	@Configuration
+ 	@ImportResource()
+ 	protected static class FactoryBeanXmlConfiguration {
++
+ 	}
+ 
+ 	@Configuration
+ 	protected static class ConditionalOnFactoryBean {
++
+ 		@Bean
+ 		@ConditionalOnMissingBean(ExampleBean.class)
+ 		public ExampleBean createExampleBean() {
+ 			return new ExampleBean();
+ 		}
++
+ 	}
+ 
+ 	@Configuration
+@@ -372,45 +414,55 @@ public class ConditionalOnMissingBeanTests {
+ 	@Configuration
+ 	@ConditionalOnMissingBean(annotation = EnableScheduling.class)
+ 	protected static class OnAnnotationConfiguration {
++
+ 		@Bean
+ 		public String bar() {
+ 			return ;
+ 		}
++
+ 	}
+ 
+ 	@Configuration
+ 	@EnableScheduling
+ 	protected static class FooConfiguration {
++
+ 		@Bean
+ 		public String foo() {
+ 			return ;
+ 		}
++
+ 	}
+ 
+ 	@Configuration
+ 	@ConditionalOnMissingBean(name = )
+ 	protected static class HierarchyConsidered {
++
+ 		@Bean
+ 		public String bar() {
+ 			return ;
+ 		}
++
+ 	}
+ 
+ 	@Configuration
+ 	@ConditionalOnMissingBean(name = , search = SearchStrategy.CURRENT)
+ 	protected static class HierarchyNotConsidered {
++
+ 		@Bean
+ 		public String bar() {
+ 			return ;
+ 		}
++
+ 	}
+ 
+ 	@Configuration
+ 	protected static class ExampleBeanConfiguration {
++
+ 		@Bean
+ 		public ExampleBean exampleBean() {
+ 			return new ExampleBean();
+ 		}
++
+ 	}
+ 
+ 	@Configuration
+

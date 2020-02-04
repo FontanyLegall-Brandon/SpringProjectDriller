@@ -1,0 +1,22 @@
+@@ -26,12 +26,15 @@ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.core.env.Environment;
+ import org.springframework.ldap.core.ContextSource;
++import org.springframework.ldap.core.LdapOperations;
++import org.springframework.ldap.core.LdapTemplate;
+ import org.springframework.ldap.core.support.LdapContextSource;
+ 
+ 
+ @Configuration
+@@ -62,4 +65,10 @@ public class LdapAutoConfiguration {
+ 		return source;
+ 	}
+ 
++	@Bean
++	@ConditionalOnMissingBean(LdapOperations.class)
++	public LdapTemplate ldapTemplate(ContextSource contextSource) {
++		return new LdapTemplate(contextSource);
++	}
++
+ }
+

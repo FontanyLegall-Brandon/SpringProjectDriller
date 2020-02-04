@@ -1,0 +1,17 @@
+@@ -20,7 +20,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+ import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
+-import org.springframework.security.config.annotation.web.reactive.WebFluxSecurityConfiguration;
+ 
+ 
+ @ConditionalOnClass(EnableWebFluxSecurity.class)
+-@ConditionalOnMissingBean(WebFluxSecurityConfiguration.class)
++@ConditionalOnMissingBean(org.springframework.security.config.annotation.web.reactive.WebFluxSecurityConfiguration.class)
+ @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
+ @EnableWebFluxSecurity
+-public class WebfluxSecurityConfiguration {
++public class WebFluxSecurityConfiguration {
+ 
+ }
+

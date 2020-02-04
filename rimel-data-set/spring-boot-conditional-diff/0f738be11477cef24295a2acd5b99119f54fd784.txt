@@ -1,0 +1,40 @@
+@@ -20,6 +20,7 @@ import java.io.IOException;
+ import java.util.Arrays;
+ import java.util.Collection;
+ import java.util.Collections;
++import java.util.Date;
+ import java.util.List;
+ 
+ import javax.servlet.Servlet;
+@@ -48,6 +49,7 @@ import org.springframework.core.io.Resource;
+ import org.springframework.core.io.ResourceLoader;
+ import org.springframework.format.Formatter;
+ import org.springframework.format.FormatterRegistry;
++import org.springframework.format.datetime.DateFormatter;
+ import org.springframework.http.converter.HttpMessageConverter;
+ import org.springframework.util.StringUtils;
+ import org.springframework.validation.DefaultMessageCodesResolver;
+@@ -143,6 +145,9 @@ public class WebMvcAutoConfiguration {
+ 		@Value()
+ 		private String locale = ;
+ 
++		@Value()
++		private String dateFormat = ;
++
+ 		@Autowired
+ 		private ListableBeanFactory beanFactory;
+ 
+@@ -200,6 +205,12 @@ public class WebMvcAutoConfiguration {
+ 			return new FixedLocaleResolver(StringUtils.parseLocaleString(this.locale));
+ 		}
+ 
++		@Bean
++		@ConditionalOnExpression()
++		public Formatter<Date> dateFormatter() {
++			return new DateFormatter(this.dateFormat);
++		}
++
+ 		@Override
+ 		public MessageCodesResolver getMessageCodesResolver() {
+ 			if (this.messageCodesResolverFormat != null) {
+

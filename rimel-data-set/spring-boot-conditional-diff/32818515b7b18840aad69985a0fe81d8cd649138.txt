@@ -1,0 +1,25 @@
+@@ -0,0 +1,36 @@
++
++
++package org.springframework.boot.actuate.autoconfigure;
++
++import org.springframework.boot.actuate.endpoint.jmx.EndpointMBeanExporter;
++import org.springframework.boot.autoconfigure.AutoConfigureAfter;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.jmx.export.MBeanExporter;
++
++@Configuration
++@ConditionalOnBean({ MBeanExporter.class })
++@AutoConfigureAfter({ EndpointAutoConfiguration.class })
++class EndpointMBeanExportAutoConfiguration {
++
++	@Bean
++	public EndpointMBeanExporter endpointMBeanExporter() {
++		return new EndpointMBeanExporter();
++	}
++
++}
+\ No newline at end of file
+

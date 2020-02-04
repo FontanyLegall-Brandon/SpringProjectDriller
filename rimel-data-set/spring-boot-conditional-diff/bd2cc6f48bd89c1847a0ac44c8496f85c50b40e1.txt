@@ -1,0 +1,8 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
++@ConditionalOnEnabledEndpoint(endpoint = LogFileWebEndpoint.class)
+ @EnableConfigurationProperties(LogFileWebEndpointProperties.class)
+ public class LogFileWebEndpointAutoConfiguration {
+ 
+

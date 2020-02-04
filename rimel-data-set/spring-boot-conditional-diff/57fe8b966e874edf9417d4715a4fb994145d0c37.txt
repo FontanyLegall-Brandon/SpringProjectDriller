@@ -1,0 +1,33 @@
+@@ -0,0 +1,49 @@
++
++
++package org.springframework.boot.autoconfigure.session;
++
++import java.util.EnumSet;
++
++import javax.servlet.DispatcherType;
++
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.web.servlet.FilterRegistrationBean;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.session.web.http.SessionRepositoryFilter;
++
++
++@Configuration
++@ConditionalOnBean(SessionRepositoryFilter.class)
++class SessionRepositoryFilterConfiguration {
++
++	@Bean
++	public FilterRegistrationBean<SessionRepositoryFilter<?>> sessionRepositoryFilterRegistration(
++			SessionRepositoryFilter<?> filter) {
++		FilterRegistrationBean<SessionRepositoryFilter<?>> registration = new FilterRegistrationBean<SessionRepositoryFilter<?>>(
++				filter);
++		registration.setDispatcherTypes(EnumSet.of(DispatcherType.ASYNC,
++				DispatcherType.ERROR, DispatcherType.REQUEST));
++		registration.setOrder(SessionRepositoryFilter.DEFAULT_ORDER);
++		return registration;
++	}
++
++}
+

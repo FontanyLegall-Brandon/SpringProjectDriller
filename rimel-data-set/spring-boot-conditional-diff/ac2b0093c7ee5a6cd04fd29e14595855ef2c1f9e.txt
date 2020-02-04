@@ -1,0 +1,57 @@
+@@ -0,0 +1,73 @@
++
++
++package org.springframework.boot.devtools.autoconfigure;
++
++import org.junit.Before;
++import org.junit.Test;
++
++import org.springframework.context.annotation.AnnotationConfigApplicationContext;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Conditional;
++import org.springframework.context.annotation.Configuration;
++
++import static org.assertj.core.api.Assertions.assertThat;
++
++
++public class OnEnabledDevtoolsConditionTests {
++
++	private AnnotationConfigApplicationContext context;
++
++	@Before
++	public void setup() {
++		this.context = new AnnotationConfigApplicationContext();
++		this.context.register(TestConfiguration.class);
++	}
++
++	@Test
++	public void outcomeWhenDevtoolsShouldBeEnabledIsTrueShouldMatch() throws Exception {
++		Thread thread = new Thread(() -> {
++			OnEnabledDevtoolsConditionTests.this.context.refresh();
++			assertThat(OnEnabledDevtoolsConditionTests.this.context.containsBean())
++					.isTrue();
++		});
++		thread.start();
++		thread.join();
++	}
++
++	@Test
++	public void outcomeWhenDevtoolsShouldBeEnabledIsFalseShouldNotMatch() {
++		OnEnabledDevtoolsConditionTests.this.context.refresh();
++		assertThat(OnEnabledDevtoolsConditionTests.this.context.containsBean())
++				.isFalse();
++	}
++
++	@Configuration(proxyBeanMethods = false)
++	static class TestConfiguration {
++
++		@Bean
++		@Conditional(OnEnabledDevtoolsCondition.class)
++		public String test() {
++			return ;
++		}
++
++	}
++
++}
+

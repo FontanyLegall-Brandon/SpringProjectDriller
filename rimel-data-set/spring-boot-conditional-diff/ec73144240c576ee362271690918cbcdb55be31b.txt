@@ -1,0 +1,41 @@
+@@ -42,6 +42,9 @@ abstract class DataSourceConfiguration {
+ 		return (T) properties.initializeDataSourceBuilder().type(type).build();
+ 	}
+ 
++	
+ 	@ConditionalOnClass(org.apache.tomcat.jdbc.pool.DataSource.class)
+ 	@ConditionalOnProperty(name = , havingValue = , matchIfMissing = true)
+ 	static class Tomcat extends DataSourceConfiguration {
+@@ -64,6 +67,9 @@ abstract class DataSourceConfiguration {
+ 
+ 	}
+ 
++	
+ 	@ConditionalOnClass(HikariDataSource.class)
+ 	@ConditionalOnProperty(name = , havingValue = , matchIfMissing = true)
+ 	static class Hikari extends DataSourceConfiguration {
+@@ -75,6 +81,10 @@ abstract class DataSourceConfiguration {
+ 		}
+ 	}
+ 
++	
+ 	@ConditionalOnClass(org.apache.commons.dbcp.BasicDataSource.class)
+ 	@ConditionalOnProperty(name = , havingValue = , matchIfMissing = true)
+ 	@Deprecated
+@@ -97,6 +107,9 @@ abstract class DataSourceConfiguration {
+ 		}
+ 	}
+ 
++	
+ 	@ConditionalOnClass(org.apache.commons.dbcp2.BasicDataSource.class)
+ 	@ConditionalOnProperty(name = , havingValue = , matchIfMissing = true)
+ 	static class Dbcp2 extends DataSourceConfiguration {
+@@ -110,6 +123,9 @@ abstract class DataSourceConfiguration {
+ 		}
+ 	}
+ 
++	
+ 	@ConditionalOnMissingBean(DataSource.class)
+ 	@ConditionalOnProperty(name = )
+ 	static class Generic {
+

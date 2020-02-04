@@ -1,0 +1,28 @@
+@@ -0,0 +1,44 @@
++
++
++package org.springframework.bootstrap.autoconfigure.service;
++
++import javax.servlet.Servlet;
++
++import org.springframework.bootstrap.context.annotation.ConditionalOnClass;
++import org.springframework.bootstrap.context.annotation.ConditionalOnMissingBean;
++import org.springframework.bootstrap.context.annotation.EnableAutoConfiguration;
++import org.springframework.bootstrap.service.shutdown.ShutdownEndpoint;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.web.servlet.DispatcherServlet;
++
++
++@Configuration
++@ConditionalOnClass({ Servlet.class, DispatcherServlet.class })
++@ConditionalOnMissingBean({ ShutdownEndpoint.class })
++public class ShutdownAutoConfiguration {
++
++	@Bean
++	public ShutdownEndpoint shutdownEndpoint() {
++		return new ShutdownEndpoint();
++	}
++
++}
+

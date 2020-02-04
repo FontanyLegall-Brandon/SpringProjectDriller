@@ -1,0 +1,41 @@
+@@ -1,66 +0,0 @@
+-
+-
+-package org.springframework.boot.autoconfigure.cloud;
+-
+-import org.apache.commons.logging.Log;
+-import org.apache.commons.logging.LogFactory;
+-
+-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+-import org.springframework.cloud.Cloud;
+-import org.springframework.cloud.app.ApplicationInstanceInfo;
+-import org.springframework.cloud.config.java.CloudScan;
+-import org.springframework.cloud.config.java.CloudScanConfiguration;
+-import org.springframework.context.annotation.Configuration;
+-import org.springframework.context.annotation.Import;
+-import org.springframework.context.annotation.Profile;
+-import org.springframework.core.Ordered;
+-
+-
+-@Configuration(proxyBeanMethods = false)
+-@Profile()
+-@AutoConfigureOrder(CloudServiceConnectorsAutoConfiguration.ORDER)
+-@ConditionalOnClass(CloudScanConfiguration.class)
+-@ConditionalOnMissingBean(Cloud.class)
+-@Import(CloudScanConfiguration.class)
+-public class CloudServiceConnectorsAutoConfiguration {
+-
+-	
+-	public static final int ORDER = Ordered.HIGHEST_PRECEDENCE + 20;
+-
+-	private static final Log logger = LogFactory.getLog(CloudServiceConnectorsAutoConfiguration.class);
+-
+-	public CloudServiceConnectorsAutoConfiguration() {
+-		logger.warn();
+-	}
+-
+-}
+

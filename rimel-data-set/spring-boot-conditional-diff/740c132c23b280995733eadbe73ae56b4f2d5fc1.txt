@@ -1,0 +1,10 @@
+@@ -50,7 +50,7 @@ import redis.clients.jedis.JedisPoolConfig;
+ public class RedisAutoConfiguration {
+ 
+ 	@Configuration
+-	@ConditionalOnMissingClass(name = )
++	@ConditionalOnMissingClass(name = )
+ 	protected static class RedisConnectionConfiguration {
+ 
+ 		@Autowired
+

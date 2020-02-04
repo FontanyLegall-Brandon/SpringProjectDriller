@@ -1,0 +1,165 @@
+@@ -30,14 +30,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplicat
+ import org.springframework.boot.autoconfigure.security.SecurityProperties.Headers;
+ import org.springframework.boot.autoconfigure.web.ServerProperties;
+ import org.springframework.boot.context.properties.EnableConfigurationProperties;
+-import org.springframework.context.ApplicationEventPublisher;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.core.annotation.Order;
+-import org.springframework.security.authentication.AuthenticationEventPublisher;
+ import org.springframework.security.authentication.AuthenticationManager;
+-import org.springframework.security.authentication.DefaultAuthenticationEventPublisher;
+-import org.springframework.security.authentication.ProviderManager;
+ import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
+ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+ import org.springframework.security.config.annotation.web.builders.WebSecurity;
+@@ -89,13 +85,6 @@ public class SpringBootWebSecurityConfiguration {
+ 	private static List<String> DEFAULT_IGNORED = Arrays.asList(, ,
+ 			, );
+ 
+-	@Bean
+-	@ConditionalOnMissingBean
+-	public AuthenticationEventPublisher authenticationEventPublisher(
+-			ApplicationEventPublisher publisher) {
+-		return new DefaultAuthenticationEventPublisher(publisher);
+-	}
+-
+ 	@Bean
+ 	@ConditionalOnMissingBean({ IgnoredPathsWebSecurityConfigurerAdapter.class })
+ 	public WebSecurityConfigurer<WebSecurity> ignoredPathsWebSecurityConfigurerAdapter() {
+@@ -164,7 +153,6 @@ public class SpringBootWebSecurityConfiguration {
+ 	
+ 	@ConditionalOnClass(RequestDataValueProcessor.class)
+ 	@ConditionalOnMissingBean(RequestDataValueProcessor.class)
+-	@ConditionalOnExpression()
+ 	@Configuration
+ 	protected static class WebMvcSecurityConfigurationConditions {
+ 
+@@ -179,25 +167,22 @@ public class SpringBootWebSecurityConfiguration {
+ 	
+ 	@ConditionalOnMissingBean(WebMvcSecurityConfigurationConditions.class)
+ 	@ConditionalOnMissingClass(name = )
+-	@ConditionalOnExpression()
+ 	@Configuration
+ 	@EnableWebSecurity
+ 	protected static class DefaultWebSecurityConfiguration {
+ 
+ 	}
+ 
+-	@ConditionalOnExpression()
+-	@Configuration
+-	@Order(SecurityProperties.BASIC_AUTH_ORDER)
+-	protected static class ApplicationWebSecurityConfigurerAdapter extends
++	
++	private static class BaseApplicationWebSecurityConfigurerAdapter extends
+ 			WebSecurityConfigurerAdapter {
+ 
+ 		@Autowired
+ 		private SecurityProperties security;
+ 
+-		@Autowired
+-		private AuthenticationEventPublisher authenticationEventPublisher;
+-
+ 		@Override
+ 		protected void configure(HttpSecurity http) throws Exception {
+ 
+@@ -205,17 +190,6 @@ public class SpringBootWebSecurityConfiguration {
+ 				http.requiresChannel().anyRequest().requiresSecure();
+ 			}
+ 
+-			String[] paths = getSecureApplicationPaths();
+-			if (this.security.getBasic().isEnabled() && paths.length > 0) {
+-				http.exceptionHandling().authenticationEntryPoint(entryPoint());
+-				http.requestMatchers().antMatchers(paths);
+-				http.authorizeRequests()
+-						.anyRequest()
+-						.hasAnyRole(
+-								this.security.getUser().getRole().toArray(new String[0])) 
+-						.and().httpBasic() 
+-						.and().anonymous().disable();
+-			}
+ 			if (!this.security.isEnableCsrf()) {
+ 				http.csrf().disable();
+ 			}
+@@ -225,6 +199,9 @@ public class SpringBootWebSecurityConfiguration {
+ 			SpringBootWebSecurityConfiguration.configureHeaders(http.headers(),
+ 					this.security.getHeaders());
+ 
++			String[] paths = getSecureApplicationPaths();
++			configureAdditionalRules(http, paths);
++
+ 		}
+ 
+ 		private String[] getSecureApplicationPaths() {
+@@ -241,20 +218,60 @@ public class SpringBootWebSecurityConfiguration {
+ 			return list.toArray(new String[list.size()]);
+ 		}
+ 
+-		private AuthenticationEntryPoint entryPoint() {
+-			BasicAuthenticationEntryPoint entryPoint = new BasicAuthenticationEntryPoint();
+-			entryPoint.setRealmName(this.security.getBasic().getRealm());
+-			return entryPoint;
++		protected void configureAdditionalRules(HttpSecurity http, String... paths)
++				throws Exception {
++		}
++
++	}
++
++	@ConditionalOnExpression()
++	@Configuration
++	@Order(SecurityProperties.BASIC_AUTH_ORDER)
++	protected static class ApplicationNoWebSecurityConfigurerAdapter extends
++			BaseApplicationWebSecurityConfigurerAdapter {
++		@Override
++		protected void configureAdditionalRules(HttpSecurity http, String... paths)
++				throws Exception {
++
++			if (paths.length > 0) {
++				http.requestMatchers().antMatchers(paths);
++				
++				http.authorizeRequests().anyRequest().permitAll();
++			}
++
+ 		}
+ 
++	}
++
++	@ConditionalOnExpression()
++	@Configuration
++	@Order(SecurityProperties.BASIC_AUTH_ORDER)
++	protected static class ApplicationWebSecurityConfigurerAdapter extends
++			BaseApplicationWebSecurityConfigurerAdapter {
++
++		@Autowired
++		private SecurityProperties security;
++
+ 		@Override
+-		protected AuthenticationManager authenticationManager() throws Exception {
+-			AuthenticationManager manager = super.authenticationManager();
+-			if (manager instanceof ProviderManager) {
+-				((ProviderManager) manager)
+-						.setAuthenticationEventPublisher(this.authenticationEventPublisher);
++		protected void configureAdditionalRules(HttpSecurity http, String... paths)
++				throws Exception {
++
++			if (paths.length > 0) {
++				http.exceptionHandling().authenticationEntryPoint(entryPoint());
++				http.httpBasic();
++				http.requestMatchers().antMatchers(paths);
++				http.authorizeRequests()
++						.anyRequest()
++						.hasAnyRole(
++								this.security.getUser().getRole().toArray(new String[0]));
+ 			}
+-			return manager;
++
++		}
++
++		private AuthenticationEntryPoint entryPoint() {
++			BasicAuthenticationEntryPoint entryPoint = new BasicAuthenticationEntryPoint();
++			entryPoint.setRealmName(this.security.getBasic().getRealm());
++			return entryPoint;
+ 		}
+ 
+ 	}
+

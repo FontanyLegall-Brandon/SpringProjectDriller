@@ -1,0 +1,95 @@
+@@ -16,7 +16,6 @@
+ 
+ package org.springframework.boot.autoconfigure.amqp;
+ 
+-import com.rabbitmq.client.Channel;
+ import org.springframework.amqp.core.AmqpAdmin;
+ import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+@@ -31,70 +30,89 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ 
++import com.rabbitmq.client.Channel;
++
+ 
+ @Configuration
+-@ConditionalOnClass({RabbitTemplate.class, Channel.class})
++@ConditionalOnClass({ RabbitTemplate.class, Channel.class })
+ @EnableConfigurationProperties(RabbitProperties.class)
+ public class RabbitAutoConfiguration {
+ 
+-    @Bean
+-    @ConditionalOnExpression()
+-    @ConditionalOnMissingBean(AmqpAdmin.class)
+-    public AmqpAdmin amqpAdmin(CachingConnectionFactory connectionFactory) {
+-        return new RabbitAdmin(connectionFactory);
+-    }
++	@Bean
++	@ConditionalOnExpression()
++	@ConditionalOnMissingBean(AmqpAdmin.class)
++	public AmqpAdmin amqpAdmin(CachingConnectionFactory connectionFactory) {
++		return new RabbitAdmin(connectionFactory);
++	}
+ 
+-    @Autowired
+-    private ConnectionFactory connectionFactory;
++	@Autowired
++	private ConnectionFactory connectionFactory;
+ 
+-    @Bean
+-    @ConditionalOnMissingBean(RabbitTemplate.class)
+-    public RabbitTemplate rabbitTemplate() {
+-        return new RabbitTemplate(this.connectionFactory);
+-    }
++	@Bean
++	@ConditionalOnMissingBean(RabbitTemplate.class)
++	public RabbitTemplate rabbitTemplate() {
++		return new RabbitTemplate(this.connectionFactory);
++	}
+ 
+-    @Configuration
+-    @ConditionalOnMissingBean(ConnectionFactory.class)
+-    protected static class RabbitConnectionFactoryCreator {
++	@Configuration
++	@ConditionalOnMissingBean(ConnectionFactory.class)
++	protected static class RabbitConnectionFactoryCreator {
+ 
+-        @Bean
+-        public ConnectionFactory rabbitConnectionFactory(RabbitProperties config) {
+-            CachingConnectionFactory factory = new CachingConnectionFactory(
+-                    config.getHost());
+-            factory.setPort(config.getPort());
+-            if (config.getUsername() != null) {
+-                factory.setUsername(config.getUsername());
+-            }
+-            if (config.getPassword() != null) {
+-                factory.setPassword(config.getPassword());
+-            }
+-            if (config.getVirtualHost() != null) {
+-                factory.setVirtualHost(config.getVirtualHost());
+-            }
+-            return factory;
+-        }
++		@Bean
++		public ConnectionFactory rabbitConnectionFactory(RabbitProperties config) {
++			CachingConnectionFactory factory = new CachingConnectionFactory(
++					config.getHost());
++			factory.setPort(config.getPort());
++			if (config.getUsername() != null) {
++				factory.setUsername(config.getUsername());
++			}
++			if (config.getPassword() != null) {
++				factory.setPassword(config.getPassword());
++			}
++			if (config.getVirtualHost() != null) {
++				factory.setVirtualHost(config.getVirtualHost());
++			}
++			return factory;
++		}
+ 
+-    }
++	}
+ 
+ }
+

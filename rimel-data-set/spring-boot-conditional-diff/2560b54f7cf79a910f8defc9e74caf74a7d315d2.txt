@@ -1,0 +1,29 @@
+@@ -1,45 +0,0 @@
+-
+-package org.springframework.boot.autoconfigure.security.oauth2.resource.servlet;
+-
+-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+-import org.springframework.context.annotation.Configuration;
+-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+-import org.springframework.security.oauth2.jwt.JwtDecoder;
+-
+-
+-@Configuration(proxyBeanMethods = false)
+-@ConditionalOnMissingBean(WebSecurityConfigurerAdapter.class)
+-class OAuth2ResourceServerWebSecurityConfiguration {
+-
+-	@Configuration(proxyBeanMethods = false)
+-	@ConditionalOnBean(JwtDecoder.class)
+-	static class OAuth2WebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+-
+-		@Override
+-		protected void configure(HttpSecurity http) throws Exception {
+-			http.authorizeRequests().anyRequest().authenticated().and().oauth2ResourceServer().jwt();
+-		}
+-
+-	}
+-
+-}
+

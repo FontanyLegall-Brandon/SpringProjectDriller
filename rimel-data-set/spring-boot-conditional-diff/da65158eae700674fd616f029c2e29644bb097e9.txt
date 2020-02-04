@@ -1,0 +1,10 @@
+@@ -54,7 +54,7 @@ import org.springframework.web.servlet.mvc.ServletWrappingController;
+ @ManagementContextConfiguration
+ @ConditionalOnWebApplication(type = Type.SERVLET)
+ @ConditionalOnClass({ AgentServlet.class, ServletWrappingController.class })
+-@ConditionalOnProperty(value = , matchIfMissing = true)
++@ConditionalOnProperty(value = , havingValue = )
+ @EnableConfigurationProperties(JolokiaProperties.class)
+ public class JolokiaManagementContextConfiguration {
+ 
+

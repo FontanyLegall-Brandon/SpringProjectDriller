@@ -1,0 +1,12 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+ @EnableConfigurationProperties(SecurityProperties.class)
+-@ConditionalOnClass({ Flux.class, EnableWebFluxSecurity.class,
+-		WebFilterChainProxy.class })
++@ConditionalOnClass({ Flux.class, EnableWebFluxSecurity.class, WebFilterChainProxy.class,
++		WebFluxConfigurer.class })
+ public class ReactiveSecurityAutoConfiguration {
+ 
+ 	@Configuration
+

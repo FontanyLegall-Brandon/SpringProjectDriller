@@ -1,0 +1,24 @@
+@@ -0,0 +1,43 @@
++
++package org.springframework.bootstrap.autoconfigure.web;
++
++import javax.servlet.MultipartConfigElement;
++
++import org.springframework.bootstrap.context.annotation.ConditionalOnBean;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.web.multipart.support.StandardServletMultipartResolver;
++
++
++@Configuration
++public class MultipartAutoConfiguration {
++	
++	@ConditionalOnBean(MultipartConfigElement.class)
++	@Bean
++	public StandardServletMultipartResolver multipartResolver() {
++		System.out.println();
++	    return new StandardServletMultipartResolver();
++	}
++
++}
+

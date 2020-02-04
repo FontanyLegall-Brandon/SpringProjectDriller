@@ -1,0 +1,11 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
++@ConditionalOnClass(RedisTemplate.class)
+ @ConditionalOnMissingBean(SessionRepository.class)
+-@ConditionalOnBean({ RedisTemplate.class, RedisConnectionFactory.class })
++@ConditionalOnBean(RedisConnectionFactory.class)
+ @Conditional(SessionCondition.class)
+ class RedisSessionConfiguration {
+ 
+

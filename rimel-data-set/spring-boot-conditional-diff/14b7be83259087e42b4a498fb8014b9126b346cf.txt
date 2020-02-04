@@ -1,0 +1,9 @@
+@@ -147,7 +147,6 @@ public class IntegrationAutoConfiguration {
+ 
+ 		@Bean
+ 		@ConditionalOnMissingBean
+-		@ConditionalOnProperty(prefix = , name = )
+ 		public IntegrationDatabaseInitializer integrationDatabaseInitializer(
+ 				DataSource dataSource, ResourceLoader resourceLoader,
+ 				IntegrationProperties properties) {
+

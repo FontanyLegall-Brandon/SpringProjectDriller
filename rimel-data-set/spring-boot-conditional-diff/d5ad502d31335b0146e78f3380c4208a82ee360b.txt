@@ -1,0 +1,14 @@
+@@ -48,6 +48,7 @@ import org.springframework.core.Ordered;
+ import org.springframework.core.annotation.Order;
+ import org.springframework.core.type.AnnotationMetadata;
+ import org.springframework.util.ObjectUtils;
++import org.xnio.SslClientAuthMode;
+ 
+ 
+ 	@Configuration
+-	@ConditionalOnClass({ Servlet.class, Undertow.class })
++	@ConditionalOnClass({ Servlet.class, Undertow.class, SslClientAuthMode.class })
+ 	@ConditionalOnMissingBean(value = EmbeddedServletContainerFactory.class, search = SearchStrategy.CURRENT)
+ 	public static class EmbeddedUndertow {
+ 
+

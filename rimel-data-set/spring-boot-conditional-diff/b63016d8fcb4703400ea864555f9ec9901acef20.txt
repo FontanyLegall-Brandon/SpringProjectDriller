@@ -1,0 +1,45 @@
+@@ -22,6 +22,7 @@ import java.util.Properties;
+ 
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.beans.factory.annotation.Value;
++import org.springframework.boot.actuate.endpoint.AutoConfigurationReportEndpoint;
+ import org.springframework.boot.actuate.endpoint.BeansEndpoint;
+ import org.springframework.boot.actuate.endpoint.DumpEndpoint;
+ import org.springframework.boot.actuate.endpoint.Endpoint;
+@@ -41,7 +42,9 @@ import org.springframework.boot.actuate.trace.InMemoryTraceRepository;
+ import org.springframework.boot.actuate.trace.TraceRepository;
+ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.report.AutoConfigurationReport;
+ import org.springframework.boot.bind.PropertiesConfigurationFactory;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+@@ -54,9 +57,10 @@ import org.springframework.http.MediaType;
+ 
+ @Configuration
+ @ConditionalOnClass(MediaType.class)
+@@ -128,6 +132,13 @@ public class EndpointAutoConfiguration {
+ 		return new DumpEndpoint();
+ 	}
+ 
++	@Bean
++	@ConditionalOnBean(AutoConfigurationReport.class)
++	@ConditionalOnMissingBean
++	public AutoConfigurationReportEndpoint autoConfigurationAuditEndpoint() {
++		return new AutoConfigurationReportEndpoint();
++	}
++
+ 	@Bean
+ 	@ConditionalOnMissingBean
+ 	public ShutdownEndpoint shutdownEndpoint() {
+@@ -139,7 +150,6 @@ public class EndpointAutoConfiguration {
+ 
+ 		@Autowired
+ 		private ConfigurableEnvironment environment = new StandardEnvironment();
+-
+ 		@Value()
+ 		private Resource gitProperties;
+ 
+

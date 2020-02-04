@@ -1,0 +1,15 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
++@ConditionalOnEnabledEndpoint(endpoint = HttpTraceEndpoint.class)
+ @AutoConfigureAfter(HttpTraceAutoConfiguration.class)
+ public class HttpTraceEndpointAutoConfiguration {
+ 
+ 	@Bean
+ 	@ConditionalOnBean(HttpTraceRepository.class)
+ 	@ConditionalOnMissingBean
+-	@ConditionalOnEnabledEndpoint
+ 	public HttpTraceEndpoint httpTraceEndpoint(HttpTraceRepository traceRepository) {
+ 		return new HttpTraceEndpoint(traceRepository);
+ 	}
+

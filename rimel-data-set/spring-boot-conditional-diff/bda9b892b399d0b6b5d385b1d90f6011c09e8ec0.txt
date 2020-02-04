@@ -1,0 +1,41 @@
+@@ -36,6 +36,9 @@ import org.springframework.boot.actuate.endpoint.web.ExposableWebEndpoint;
+ import org.springframework.boot.actuate.endpoint.web.PathMappedEndpoints;
+ import org.springframework.boot.actuate.endpoint.web.PathMapper;
+ import org.springframework.boot.actuate.endpoint.web.WebEndpointsSupplier;
++import org.springframework.boot.actuate.endpoint.web.annotation.ControllerEndpointDiscoverer;
++import org.springframework.boot.actuate.endpoint.web.annotation.ControllerEndpointsSupplier;
++import org.springframework.boot.actuate.endpoint.web.annotation.ExposableControllerEndpoint;
+ import org.springframework.boot.actuate.endpoint.web.annotation.WebEndpointDiscoverer;
+ import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+@@ -100,6 +103,16 @@ public class WebEndpointAutoConfiguration {
+ 				filters.getIfAvailable(Collections::emptyList));
+ 	}
+ 
++	@Bean
++	@ConditionalOnMissingBean(ControllerEndpointsSupplier.class)
++	public ControllerEndpointDiscoverer controllerEndpointDiscoverer(
++			PathMapper webEndpointPathMapper,
++			ObjectProvider<Collection<OperationInvokerAdvisor>> invokerAdvisors,
++			ObjectProvider<Collection<EndpointFilter<ExposableControllerEndpoint>>> filters) {
++		return new ControllerEndpointDiscoverer(this.applicationContext,
++				webEndpointPathMapper, filters.getIfAvailable(Collections::emptyList));
++	}
++
+ 	@Bean
+ 	@ConditionalOnMissingBean
+ 	public PathMappedEndpoints pathMappedEndpoints(
+@@ -117,4 +130,12 @@ public class WebEndpointAutoConfiguration {
+ 				expose, exclude, , );
+ 	}
+ 
++	@Bean
++	public ExposeExcludePropertyEndpointFilter<ExposableControllerEndpoint> controllerIncludeExcludePropertyEndpointFilter() {
++		Set<String> expose = this.properties.getExpose();
++		Set<String> exclude = this.properties.getExclude();
++		return new ExposeExcludePropertyEndpointFilter<>(
++				ExposableControllerEndpoint.class, expose, exclude);
++	}
++
+ }
+

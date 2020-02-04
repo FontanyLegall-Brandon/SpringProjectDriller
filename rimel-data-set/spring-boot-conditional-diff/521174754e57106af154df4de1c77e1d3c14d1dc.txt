@@ -1,0 +1,102 @@
+@@ -16,19 +16,33 @@
+ 
+ package org.springframework.boot.actuate.autoconfigure;
+ 
++import java.util.HashMap;
++import java.util.Map;
++
+ import javax.servlet.Servlet;
++import javax.servlet.http.HttpServletRequest;
++import javax.servlet.http.HttpServletResponse;
+ 
+ import org.springframework.beans.factory.annotation.Value;
+ import org.springframework.boot.actuate.web.BasicErrorController;
+ import org.springframework.boot.actuate.web.ErrorController;
++import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
+ import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainerFactory;
+ import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+ import org.springframework.boot.context.embedded.ErrorPage;
+ import org.springframework.context.annotation.Bean;
++import org.springframework.context.expression.MapAccessor;
++import org.springframework.expression.Expression;
++import org.springframework.expression.spel.standard.SpelExpressionParser;
++import org.springframework.expression.spel.support.StandardEvaluationContext;
++import org.springframework.util.PropertyPlaceholderHelper;
++import org.springframework.util.PropertyPlaceholderHelper.PlaceholderResolver;
+ import org.springframework.web.servlet.DispatcherServlet;
++import org.springframework.web.servlet.View;
+ 
+ 
+ @ConditionalOnClass({ Servlet.class, DispatcherServlet.class })
++
++
++@AutoConfigureBefore(WebMvcAutoConfiguration.class)
+ public class ErrorMvcAutoConfiguration implements EmbeddedServletContainerCustomizer {
+ 
+ 	@Value()
+@@ -53,4 +70,60 @@ public class ErrorMvcAutoConfiguration implements EmbeddedServletContainerCustom
+ 		factory.addErrorPages(new ErrorPage(this.errorPath));
+ 	}
+ 
++	private SpelView defaultErrorView = new SpelView(
++			
++					+ 
++					+ 
++					+ 
++					+  + );
++
++	@Bean(name = )
++	@ConditionalOnMissingBean(name = )
++	public View defaultErrorView() {
++		return this.defaultErrorView;
++	}
++
++	private static class SpelView implements View {
++
++		private final String template;
++
++		private final SpelExpressionParser parser = new SpelExpressionParser();
++
++		private final StandardEvaluationContext context = new StandardEvaluationContext();
++
++		private PropertyPlaceholderHelper helper;
++
++		private PlaceholderResolver resolver;
++
++		public SpelView(String template) {
++			this.template = template;
++			this.context.addPropertyAccessor(new MapAccessor());
++			this.helper = new PropertyPlaceholderHelper(, );
++			this.resolver = new PlaceholderResolver() {
++				public String resolvePlaceholder(String name) {
++					Expression expression = SpelView.this.parser.parseExpression(name);
++					Object value = expression.getValue(SpelView.this.context);
++					return value == null ? null : value.toString();
++				}
++			};
++		}
++
++		public String getContentType() {
++			return ;
++		}
++
++		public void render(Map<String, ?> model, HttpServletRequest request,
++				HttpServletResponse response) throws Exception {
++			if (response.getContentType() == null) {
++				response.setContentType(getContentType());
++			}
++			Map<String, Object> map = new HashMap<String, Object>(model);
++			map.put(, request.getContextPath());
++			this.context.setRootObject(map);
++			String result = this.helper.replacePlaceholders(this.template, this.resolver);
++			response.getWriter().append(result);
++		}
++
++	}
++
+ }
+

@@ -1,0 +1,55 @@
+@@ -0,0 +1,71 @@
++
++
++package org.springframework.boot.autoconfigure.condition;
++
++import org.junit.Test;
++import org.springframework.boot.test.EnvironmentTestUtils;
++import org.springframework.context.annotation.AnnotationConfigApplicationContext;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.assertFalse;
++import static org.junit.Assert.assertTrue;
++
++
++public class ConditionalOnPropertyTests {
++
++	private AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
++
++	@Test
++	public void testBeanIsCreatedWhenAllPropertiesAreDefined() {
++		EnvironmentTestUtils.addEnvironment(this.context.getEnvironment(),
++				, );
++		setupContext();
++		assertTrue(this.context.containsBean());
++		assertEquals(, this.context.getBean());
++	}
++
++	@Test
++	public void testBeanIsNotCreatedWhenNotAllPropertiesAreDefined() {
++		EnvironmentTestUtils.addEnvironment(this.context.getEnvironment(),
++				);
++		setupContext();
++		assertFalse(this.context.containsBean());
++	}
++
++	private void setupContext() {
++		this.context.register(MultiplePropertiesRequiredConfiguration.class);
++		this.context.refresh();
++	}
++
++	@Configuration
++	@ConditionalOnProperty({ ,  })
++	protected static class MultiplePropertiesRequiredConfiguration {
++
++		@Bean
++		public String foo() {
++			return ;
++		}
++
++	}
++
++}
+

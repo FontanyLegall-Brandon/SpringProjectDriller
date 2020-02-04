@@ -1,0 +1,20 @@
+@@ -49,7 +49,6 @@ import org.springframework.boot.autoconfigure.web.ResourceProperties;
+ import org.springframework.boot.autoconfigure.web.ServerProperties;
+ import org.springframework.boot.context.properties.EnableConfigurationProperties;
+ import org.springframework.context.annotation.Bean;
+-import org.springframework.context.annotation.Configuration;
+ import org.springframework.core.MethodParameter;
+ import org.springframework.core.annotation.AnnotationUtils;
+ import org.springframework.core.io.ResourceLoader;
+@@ -136,12 +135,6 @@ public class EndpointWebMvcHypermediaManagementContextConfiguration {
+ 		return new DefaultCurieProvider(, new UriTemplate(path));
+ 	}
+ 
+-	@ConditionalOnProperty(prefix = , name = , matchIfMissing = true)
+-	@Configuration
+-	static class ActuatorMvcEndpointConfiguration {
+-
+-	}
+-
+ 	
+

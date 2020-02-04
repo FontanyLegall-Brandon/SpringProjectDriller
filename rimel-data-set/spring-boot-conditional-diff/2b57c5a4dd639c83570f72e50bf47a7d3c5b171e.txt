@@ -1,0 +1,10 @@
+@@ -56,7 +56,7 @@ import com.mongodb.Mongo;
+ @ConditionalOnClass({ Mongo.class, MongoRepository.class })
+ @ConditionalOnMissingBean({ MongoRepositoryFactoryBean.class,
+ 		MongoRepositoryConfigurationExtension.class })
+-@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
++@ConditionalOnProperty(prefix = , name = , havingValue = , matchIfMissing = true)
+ @Import(MongoRepositoriesAutoConfigureRegistrar.class)
+ @AutoConfigureAfter(MongoAutoConfiguration.class)
+ public class MongoRepositoriesAutoConfiguration {
+

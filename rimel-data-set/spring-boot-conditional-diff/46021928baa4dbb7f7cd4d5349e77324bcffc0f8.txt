@@ -1,0 +1,69 @@
+@@ -0,0 +1,96 @@
++
++
++package org.springframework.boot.autoconfigure.web.servlet;
++
++import javax.servlet.Servlet;
++
++import io.undertow.Undertow;
++import org.apache.catalina.startup.Tomcat;
++import org.apache.coyote.UpgradeProtocol;
++import org.eclipse.jetty.server.Server;
++import org.eclipse.jetty.util.Loader;
++import org.eclipse.jetty.webapp.WebAppContext;
++import org.xnio.SslClientAuthMode;
++
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
++import org.springframework.boot.autoconfigure.condition.SearchStrategy;
++import org.springframework.boot.web.embedded.jetty.JettyServletWebServerFactory;
++import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
++import org.springframework.boot.web.embedded.undertow.UndertowServletWebServerFactory;
++import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++
++class ServletWebServerFactoryConfiguration {
++
++	@Configuration
++	@ConditionalOnClass({ Servlet.class, Tomcat.class, UpgradeProtocol.class })
++	@ConditionalOnMissingBean(value = ServletWebServerFactory.class, search = SearchStrategy.CURRENT)
++	public static class EmbeddedTomcat {
++
++		@Bean
++		public TomcatServletWebServerFactory tomcatServletWebServerFactory() {
++			return new TomcatServletWebServerFactory();
++		}
++
++	}
++
++	
++	@Configuration
++	@ConditionalOnClass({ Servlet.class, Server.class, Loader.class,
++			WebAppContext.class })
++	@ConditionalOnMissingBean(value = ServletWebServerFactory.class, search = SearchStrategy.CURRENT)
++	public static class EmbeddedJetty {
++
++		@Bean
++		public JettyServletWebServerFactory JettyServletWebServerFactory() {
++			return new JettyServletWebServerFactory();
++		}
++
++	}
++
++	
++	@Configuration
++	@ConditionalOnClass({ Servlet.class, Undertow.class, SslClientAuthMode.class })
++	@ConditionalOnMissingBean(value = ServletWebServerFactory.class, search = SearchStrategy.CURRENT)
++	public static class EmbeddedUndertow {
++
++		@Bean
++		public UndertowServletWebServerFactory undertowServletWebServerFactory() {
++			return new UndertowServletWebServerFactory();
++		}
++
++	}
++
++}
+

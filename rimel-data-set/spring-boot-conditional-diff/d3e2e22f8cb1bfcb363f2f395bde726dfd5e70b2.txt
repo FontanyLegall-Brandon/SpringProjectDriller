@@ -1,0 +1,9 @@
+@@ -1,5 +1,5 @@
+ 
+ @ConditionalOnClass({ Servlet.class, DispatcherServlet.class, ServletRegistration.class })
+ @AutoConfigureAfter(TraceRepositoryAutoConfiguration.class)
++@ConditionalOnProperty(name = , matchIfMissing = true)
+ @EnableConfigurationProperties(TraceProperties.class)
+ @Configuration
+ public class TraceWebFilterAutoConfiguration {
+

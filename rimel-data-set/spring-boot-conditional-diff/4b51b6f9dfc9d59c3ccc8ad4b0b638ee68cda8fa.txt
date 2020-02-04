@@ -1,0 +1,105 @@
+@@ -22,7 +22,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ 
+-import static org.junit.Assert.assertEquals;
+ import static org.junit.Assert.assertFalse;
+ import static org.junit.Assert.assertTrue;
+ 
+@@ -36,41 +35,57 @@ public class ConditionalOnPropertyTests {
+ 	private AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+ 
+ 	@Test
+-	public void testBeanIsCreatedWhenAllPropertiesAreDefined() {
++	public void allPropertiesAreDefined() {
+ 		EnvironmentTestUtils.addEnvironment(this.context.getEnvironment(),
+ 				, );
+-		setupContext();
++		this.context.register(MultiplePropertiesRequiredConfiguration.class);
++		this.context.refresh();
+ 		assertTrue(this.context.containsBean());
+-		assertEquals(, this.context.getBean());
+ 	}
+ 
+ 	@Test
+-	public void testBeanIsNotCreatedWhenNotAllPropertiesAreDefined() {
++	public void notAllPropertiesAreDefined() {
+ 		EnvironmentTestUtils.addEnvironment(this.context.getEnvironment(),
+ 				);
+-		setupContext();
++		this.context.register(MultiplePropertiesRequiredConfiguration.class);
++		this.context.refresh();
+ 		assertFalse(this.context.containsBean());
+ 	}
+ 
+ 	@Test
+-	public void testBeanIsNotCreatedWhenPropertyValueEqualsFalse() {
++	public void propertyValueEqualsFalse() {
+ 		EnvironmentTestUtils.addEnvironment(this.context.getEnvironment(),
+ 				, );
+-		setupContext();
++		this.context.register(MultiplePropertiesRequiredConfiguration.class);
++		this.context.refresh();
+ 		assertFalse(this.context.containsBean());
+ 	}
+ 
+ 	@Test
+-	public void testBeanIsNotCreatedWhenPropertyValueEqualsFALSE() {
++	public void propertyValueEqualsFALSE() {
+ 		EnvironmentTestUtils.addEnvironment(this.context.getEnvironment(),
+ 				, );
+-		setupContext();
++		this.context.register(MultiplePropertiesRequiredConfiguration.class);
++		this.context.refresh();
+ 		assertFalse(this.context.containsBean());
+ 	}
+ 
+-	private void setupContext() {
+-		this.context.register(MultiplePropertiesRequiredConfiguration.class);
++	@Test
++	public void relaxedName() throws Exception {
++		EnvironmentTestUtils.addEnvironment(this.context.getEnvironment(),
++				);
++		this.context.register(RelaxedPropertiesRequiredConfiguration.class);
+ 		this.context.refresh();
++		assertTrue(this.context.containsBean());
++	}
++
++	@Test
++	public void nonRelaxedName() throws Exception {
++		EnvironmentTestUtils.addEnvironment(this.context.getEnvironment(),
++				);
++		this.context.register(NonRelaxedPropertiesRequiredConfiguration.class);
++		this.context.refresh();
++		assertFalse(this.context.containsBean());
+ 	}
+ 
+ 	@Configuration
+@@ -84,4 +99,26 @@ public class ConditionalOnPropertyTests {
+ 
+ 	}
+ 
++	@Configuration
++	@ConditionalOnProperty(prefix = , value = )
++	protected static class RelaxedPropertiesRequiredConfiguration {
++
++		@Bean
++		public String foo() {
++			return ;
++		}
++
++	}
++
++	@Configuration
++	@ConditionalOnProperty(value = , relaxedNames = false)
++	protected static class NonRelaxedPropertiesRequiredConfiguration {
++
++		@Bean
++		public String foo() {
++			return ;
++		}
++
++	}
++
+ }
+

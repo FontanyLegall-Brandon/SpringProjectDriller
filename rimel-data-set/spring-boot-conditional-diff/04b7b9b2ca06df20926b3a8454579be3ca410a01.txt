@@ -1,0 +1,32 @@
+@@ -148,13 +148,6 @@ public class CrshAutoConfiguration {
+ 		return new SimpleAuthenticationProperties();
+ 	}
+ 
+-	@Bean
+-	@ConditionalOnExpression()
+-	@ConditionalOnMissingBean({ CrshShellAuthenticationProperties.class })
+-	public CrshShellAuthenticationProperties springAuthenticationProperties() {
+-		return new SpringAuthenticationProperties();
+-	}
+-
+ 	@Bean
+ 	@ConditionalOnMissingBean({ PluginLifeCycle.class })
+ 	public PluginLifeCycle shellBootstrap() {
+@@ -180,12 +173,15 @@ public class CrshAutoConfiguration {
+ 		}
+ 
+ 		@Bean
+-		@ConditionalOnExpression()
++		@ConditionalOnExpression()
+ 		@ConditionalOnMissingBean({ CrshShellAuthenticationProperties.class })
+ 		public CrshShellAuthenticationProperties springAuthenticationProperties() {
+ 			
+ 			
+ 			
++			
++			
++			
+ 			SpringAuthenticationProperties authenticationProperties = new SpringAuthenticationProperties();
+ 			if (this.management != null) {
+ 				authenticationProperties.setRoles(new String[] { this.management
+

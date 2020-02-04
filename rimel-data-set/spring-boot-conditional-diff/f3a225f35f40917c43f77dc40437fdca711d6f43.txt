@@ -1,0 +1,62 @@
+@@ -44,8 +44,11 @@ import org.crsh.vfs.spi.AbstractFSDriver;
+ import org.crsh.vfs.spi.FSDriver;
+ import org.springframework.beans.factory.ListableBeanFactory;
+ import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.actuate.properties.SecurityProperties;
++import org.springframework.boot.actuate.properties.SecurityProperties.Management;
+ import org.springframework.boot.actuate.properties.ShellProperties;
+ import org.springframework.boot.actuate.properties.ShellProperties.CrshShellAuthenticationProperties;
++import org.springframework.boot.actuate.properties.ShellProperties.CrshShellProperties;
+ import org.springframework.boot.actuate.properties.ShellProperties.JaasAuthenticationProperties;
+ import org.springframework.boot.actuate.properties.ShellProperties.KeyAuthenticationProperties;
+ import org.springframework.boot.actuate.properties.ShellProperties.SimpleAuthenticationProperties;
+@@ -76,20 +79,32 @@ import org.springframework.util.StringUtils;
+ 
+ 
+ @Configuration
+ @ConditionalOnClass({ PluginLifeCycle.class })
+@@ -145,15 +161,36 @@ public class CrshAutoConfiguration {
+ 		return bootstrapBean;
+ 	}
+ 
++	
+ 	@Configuration
+ 	@ConditionalOnBean({ AuthenticationManager.class })
++	@AutoConfigureAfter(CrshAutoConfiguration.class)
+ 	public static class AuthenticationManagerAdapterAutoConfiguration {
+ 
++		@Autowired(required = false)
++		private SecurityProperties securityProperties;
++
+ 		@Bean
+ 		public CRaSHPlugin<?> shellAuthenticationManager() {
+ 			return new AuthenticationManagerAdapter();
+ 		}
+ 
++		@Bean
++		@ConditionalOnExpression()
++		@ConditionalOnMissingBean({ CrshShellAuthenticationProperties.class })
++		public CrshShellAuthenticationProperties springAuthenticationProperties() {
++			
++			
++			SpringAuthenticationProperties authenticationProperties = new SpringAuthenticationProperties();
++			if (this.securityProperties != null) {
++				authenticationProperties.setRoles(new String[] { this.securityProperties
++						.getManagement().getRole() });
++			}
++			return authenticationProperties;
++		}
++
+ 	}
+ 
+ 	/**
+@@ -238,7 +275,7 @@ public class CrshAutoConfiguration {
+ 		@Autowired(required = false)
+ 		private AccessDecisionManager accessDecisionManager;
+ 
+-		private String[] roles = new String[] {  };
++		private String[] roles = new String[] {  };
+ 
+ 		@Override
+ 		public boolean authenticate(String username, String password) throws Exception {
+

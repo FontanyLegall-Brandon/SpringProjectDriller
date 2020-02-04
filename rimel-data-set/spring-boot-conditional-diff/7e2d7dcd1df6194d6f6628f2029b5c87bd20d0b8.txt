@@ -1,0 +1,12 @@
+@@ -24,16 +24,17 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
+ import org.springframework.security.web.reactive.result.method.annotation.AuthenticationPrincipalArgumentResolver;
+ 
+ 
+ @Configuration
+-@ConditionalOnClass({EnableWebFluxSecurity.class, AuthenticationPrincipalArgumentResolver.class})
++@ConditionalOnClass({ EnableWebFluxSecurity.class,
++		AuthenticationPrincipalArgumentResolver.class })
+ @Import({ WebfluxSecurityConfiguration.class,
+ 		ReactiveAuthenticationManagerConfiguration.class })
+ public class ReactiveSecurityAutoConfiguration {
+

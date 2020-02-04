@@ -1,0 +1,116 @@
+@@ -51,7 +51,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+  * @author Phillip Webb
+  */
+ @Configuration
+-@ConditionalOnClass(EmbeddedDatabaseType.class)
++@ConditionalOnClass({ DataSource.class, EmbeddedDatabaseType.class })
+ @EnableConfigurationProperties(DataSourceProperties.class)
+ @Import(Registrar.class)
+ public class DataSourceAutoConfiguration {
+@@ -73,7 +73,7 @@ public class DataSourceAutoConfiguration {
+ 		}
+ 	}
+ 
+-	@Conditional(DataSourceAutoConfiguration.EmbeddedDatabaseCondition.class)
++	@Conditional(DataSourceAutoConfiguration.EmbeddedDataSourceCondition.class)
+ 	@ConditionalOnMissingBean(DataSource.class)
+ 	@Import(EmbeddedDataSourceConfiguration.class)
+ 	protected static class EmbeddedConfiguration {
+@@ -88,9 +88,10 @@ public class DataSourceAutoConfiguration {
+ 		public DataSourceInitializer dataSourceInitializer() {
+ 			return new DataSourceInitializer();
+ 		}
++
+ 	}
+ 
+-	@Conditional(DataSourceAutoConfiguration.NonEmbeddedDatabaseCondition.class)
++	@Conditional(DataSourceAutoConfiguration.NonEmbeddedDataSourceCondition.class)
+ 	@ConditionalOnMissingBean(DataSource.class)
+ 	protected static class NonEmbeddedConfiguration {
+ 
+@@ -112,7 +113,7 @@ public class DataSourceAutoConfiguration {
+ 	}
+ 
+ 	@Configuration
+-	@Conditional(DataSourceAutoConfiguration.DatabaseCondition.class)
++	@Conditional(DataSourceAutoConfiguration.DataSourceAvailableCondition.class)
+ 	protected static class JdbcTemplateConfiguration {
+ 
+ 		@Autowired(required = false)
+@@ -133,19 +134,17 @@ public class DataSourceAutoConfiguration {
+ 	}
+ 
+ 	
+-	static class NonEmbeddedDatabaseCondition extends SpringBootCondition {
++	static class NonEmbeddedDataSourceCondition extends SpringBootCondition {
+ 
+ 		@Override
+ 		public ConditionOutcome getMatchOutcome(ConditionContext context,
+ 				AnnotatedTypeMetadata metadata) {
+-
+-			ClassLoader dataSourceClassLoader = getDataSourceClassLoader(context);
+-			if (dataSourceClassLoader != null) {
+-				return ConditionOutcome.match();
++			if (getDataSourceClassLoader(context) != null) {
++				return ConditionOutcome.match();
+ 			}
+-
+ 			return ConditionOutcome.noMatch();
+ 		}
+ 
+@@ -156,20 +155,16 @@ public class DataSourceAutoConfiguration {
+ 		private ClassLoader getDataSourceClassLoader(ConditionContext context) {
+ 			Class<?> dataSourceClass = new DataSourceBuilder(context.getClassLoader())
+ 					.findType();
+-			if (dataSourceClass == null) {
+-				return null;
+-			}
+-			return dataSourceClass.getClassLoader();
++			return (dataSourceClass == null ? null : dataSourceClass.getClassLoader());
+ 		}
+-
+ 	}
+ 
+ 	
+-	static class EmbeddedDatabaseCondition extends SpringBootCondition {
++	static class EmbeddedDataSourceCondition extends SpringBootCondition {
+ 
+-		private final SpringBootCondition nonEmbedded = new NonEmbeddedDatabaseCondition();
++		private final SpringBootCondition nonEmbedded = new NonEmbeddedDataSourceCondition();
+ 
+ 		@Override
+ 		public ConditionOutcome getMatchOutcome(ConditionContext context,
+@@ -189,27 +184,25 @@ public class DataSourceAutoConfiguration {
+ 	}
+ 
+ 	
+-	static class DatabaseCondition extends SpringBootCondition {
++	static class DataSourceAvailableCondition extends SpringBootCondition {
+ 
+-		private final SpringBootCondition nonEmbedded = new NonEmbeddedDatabaseCondition();
++		private final SpringBootCondition nonEmbedded = new NonEmbeddedDataSourceCondition();
+ 
+-		private final SpringBootCondition embeddedCondition = new EmbeddedDatabaseCondition();
++		private final SpringBootCondition embeddedCondition = new EmbeddedDataSourceCondition();
+ 
+ 		@Override
+ 		public ConditionOutcome getMatchOutcome(ConditionContext context,
+ 				AnnotatedTypeMetadata metadata) {
+-
+-			if (anyMatches(context, metadata, this.nonEmbedded, this.embeddedCondition)) {
+-				return ConditionOutcome.match();
+-			}
+-
+ 			if (hasBean(context, DataSource.class)) {
+ 				return ConditionOutcome
+-						.match();
++						.match();
++			}
++			if (anyMatches(context, metadata, this.nonEmbedded, this.embeddedCondition)) {
++				return ConditionOutcome.match();
+ 			}
+-
+ 			return ConditionOutcome.noMatch();
+ 		}
+ 
+

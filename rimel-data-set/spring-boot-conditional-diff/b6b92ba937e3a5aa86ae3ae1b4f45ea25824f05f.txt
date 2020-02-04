@@ -1,0 +1,64 @@
+@@ -0,0 +1,89 @@
++
++
++package org.springframework.boot.actuate.autoconfigure.metrics.orm.jpa;
++
++import java.util.Collections;
++import java.util.Map;
++
++import javax.persistence.EntityManagerFactory;
++
++import io.micrometer.core.instrument.MeterRegistry;
++import io.micrometer.core.instrument.binder.jpa.HibernateMetrics;
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration;
++import org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration;
++import org.springframework.boot.autoconfigure.AutoConfigureAfter;
++import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.util.StringUtils;
++
++
++@Configuration
++@AutoConfigureAfter({ MetricsAutoConfiguration.class, HibernateJpaAutoConfiguration.class,
++		SimpleMetricsExportAutoConfiguration.class })
++@ConditionalOnBean({ EntityManagerFactory.class, MeterRegistry.class })
++public class HibernateMetricsAutoConfiguration {
++
++	private static final String ENTITY_MANAGER_FACTORY_SUFFIX = ;
++
++	private final MeterRegistry registry;
++
++	public HibernateMetricsAutoConfiguration(MeterRegistry registry) {
++		this.registry = registry;
++	}
++
++	@Autowired
++	public void bindEntityManagerFactoriesToRegistry(
++			Map<String, EntityManagerFactory> entityManagerFactories) {
++		entityManagerFactories.forEach(this::maybeBindEntityManagerFactoryToRegistry);
++	}
++
++	private void maybeBindEntityManagerFactoryToRegistry(String beanName,
++			EntityManagerFactory entityManagerFactory) {
++		String entityManagerFactoryName = getEntityManagerFactoryName(beanName);
++		
++		new HibernateMetrics(entityManagerFactory, entityManagerFactoryName,
++				Collections.emptyList()).bindTo(this.registry);
++	}
++
++	
++	private String getEntityManagerFactoryName(String beanName) {
++		if (beanName.length() > ENTITY_MANAGER_FACTORY_SUFFIX.length() && StringUtils
++				.endsWithIgnoreCase(beanName, ENTITY_MANAGER_FACTORY_SUFFIX)) {
++			return beanName.substring(0,
++					beanName.length() - ENTITY_MANAGER_FACTORY_SUFFIX.length());
++		}
++		return beanName;
++	}
++
++}
+

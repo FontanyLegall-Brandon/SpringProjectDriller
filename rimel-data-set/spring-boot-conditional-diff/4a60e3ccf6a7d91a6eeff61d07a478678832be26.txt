@@ -1,0 +1,42 @@
+@@ -16,6 +16,8 @@
+ 
+ package org.springframework.boot.autoconfigure.condition;
+ 
++import java.util.Date;
++
+ import org.junit.Test;
+ import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+ import org.springframework.context.annotation.Bean;
+@@ -45,6 +47,19 @@ public class ConditionalOnBeanTests {
+ 		assertEquals(, this.context.getBean());
+ 	}
+ 
++	@Test
++	public void testNameAndTypeOnBeanCondition() {
++		this.context.register(FooConfiguration.class,
++				OnBeanNameAndTypeConfiguration.class);
++		this.context.refresh();
++		
++		assertFalse(this.context.containsBean());
++	}
++
+ 	@Test
+ 	public void testNameOnBeanConditionReverseOrder() {
+ 		this.context.register(OnBeanNameConfiguration.class, FooConfiguration.class);
+@@ -94,6 +109,15 @@ public class ConditionalOnBeanTests {
+ 		}
+ 	}
+ 
++	@Configuration
++	@ConditionalOnMissingBean(name = , value = Date.class)
++	protected static class OnBeanNameAndTypeConfiguration {
++		@Bean
++		public String bar() {
++			return ;
++		}
++	}
++
+ 	@Configuration
+ 	@ConditionalOnBean(annotation = EnableScheduling.class)
+ 	protected static class OnAnnotationConfiguration {
+

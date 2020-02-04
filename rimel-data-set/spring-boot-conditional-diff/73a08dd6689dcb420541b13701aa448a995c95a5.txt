@@ -1,0 +1,45 @@
+@@ -1,5 +1,5 @@
+ 
+ 	@ConditionalOnClass(org.apache.tomcat.jdbc.pool.DataSource.class)
++	@ConditionalOnMissingBean(DataSource.class)
+ 	@ConditionalOnProperty(name = , havingValue = , matchIfMissing = true)
+-	static class Tomcat extends DataSourceConfiguration {
++	static class Tomcat {
+ 
+ 		@Bean
+ 		@ConfigurationProperties(prefix = )
+@@ -71,8 +72,9 @@ abstract class DataSourceConfiguration {
+ 	 * Hikari DataSource configuration.
+ 	 */
+ 	@ConditionalOnClass(HikariDataSource.class)
++	@ConditionalOnMissingBean(DataSource.class)
+ 	@ConditionalOnProperty(name = , havingValue = , matchIfMissing = true)
+-	static class Hikari extends DataSourceConfiguration {
++	static class Hikari {
+ 
+ 		@Bean
+ 		@ConfigurationProperties(prefix = )
+@@ -88,9 +90,10 @@ abstract class DataSourceConfiguration {
+ 	 * @deprecated as of 1.5 in favor of DBCP2
+ 	 */
+ 	@ConditionalOnClass(org.apache.commons.dbcp.BasicDataSource.class)
++	@ConditionalOnMissingBean(DataSource.class)
+ 	@ConditionalOnProperty(name = , havingValue = , matchIfMissing = true)
+ 	@Deprecated
+-	static class Dbcp extends DataSourceConfiguration {
++	static class Dbcp {
+ 
+ 		@Bean
+ 		@ConfigurationProperties(prefix = )
+@@ -114,8 +117,9 @@ abstract class DataSourceConfiguration {
+ 	 * DBCP DataSource configuration.
+ 	 */
+ 	@ConditionalOnClass(org.apache.commons.dbcp2.BasicDataSource.class)
++	@ConditionalOnMissingBean(DataSource.class)
+ 	@ConditionalOnProperty(name = , havingValue = , matchIfMissing = true)
+-	static class Dbcp2 extends DataSourceConfiguration {
++	static class Dbcp2 {
+ 
+ 		@Bean
+ 		@ConfigurationProperties(prefix = )
+

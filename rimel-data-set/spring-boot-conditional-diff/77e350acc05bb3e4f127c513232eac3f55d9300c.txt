@@ -1,0 +1,21 @@
+@@ -1,5 +1,5 @@
+ 
+ @Configuration
+@@ -164,12 +165,14 @@ public class LocalDevToolsAutoConfiguration {
+ 		}
+ 
+ 		@Configuration
+-		@ConditionalOnBean(name = )
++		@ConditionalOnBean(name = RedisRestartConfiguration.SESSION_REDIS_TEMPLATE_BEAN_NAME)
+ 		static class RedisRestartConfiguration {
+ 
++			static final String SESSION_REDIS_TEMPLATE_BEAN_NAME = ;
++
+ 			@Bean
+ 			public RestartCompatibleRedisSerializerConfigurer restartCompatibleRedisSerializerConfigurer(
+-					@Qualifier() RedisTemplate<?, ?> sessionRedisTemplate) {
++					@Qualifier(SESSION_REDIS_TEMPLATE_BEAN_NAME) RedisTemplate<?, ?> sessionRedisTemplate) {
+ 				return new RestartCompatibleRedisSerializerConfigurer(
+ 						sessionRedisTemplate);
+ 			}
+
