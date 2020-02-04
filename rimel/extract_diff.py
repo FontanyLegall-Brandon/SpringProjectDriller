@@ -2,6 +2,7 @@ from pydriller import RepositoryMining
 from util.string import remove_comments
 import re
 from threading import Thread
+import json
 
 def extract_diff(repo, out_folder, regexpr):
 
@@ -23,7 +24,8 @@ def extract_diff(repo, out_folder, regexpr):
                 if len(matches) > 0:
                     print("FOUND {} in {}".format(matches, commit.hash))
                     f = open(out_folder + "/{}_commit_info.json".format(commit.hash), 'w')
-                    print(m.__dict__, file=f)
+
+                    print(json.dumps(m.__dict__,  default=lambda o: '<not serializable>'), file=f)
                     f.close()
                     f = open(out_folder + "/{}.txt".format(commit.hash), 'w')
                     print(code, file=f)
