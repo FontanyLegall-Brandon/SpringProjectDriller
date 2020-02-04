@@ -1,5 +1,6 @@
 import json
 import requests
+import os
 
 clone_repos_urls = open("../project_url/data_from_api.txt", "w")
 
@@ -22,6 +23,9 @@ def delete_double():
             lines_seen.add(line)
     outfile.close()
 
+def delete_tmp_file():
+    os.remove("../project_url/data_from_api.txt")
+
 if __name__ == '__main__' :
 
     #url de l'organisation spring project
@@ -37,3 +41,4 @@ if __name__ == '__main__' :
     get_repo_info(json_spring_with_star_repo['items'])
     delete_double()
     clone_repos_urls.close()
+    delete_tmp_file()
