@@ -1,3 +1,4 @@
+from rimel.extract_diff import extract_diff
 from rimel.fetch_keyword_introduce import fetch_keyword_introduce
 from util import argparser
 
@@ -12,5 +13,7 @@ if __name__ == '__main__':
 
     repo = args.repo
     search = args.search
+    if args.extract_diff:
+        extract_diff(repo, args.out, search)
 
-    fetch_keyword_introduce(repo, search)
+    #fetch_keyword_introduce(repo, search)
