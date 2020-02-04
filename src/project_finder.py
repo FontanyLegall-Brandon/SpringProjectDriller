@@ -1,6 +1,5 @@
 import json
 import requests
-import fileinput
 
 clone_repos_urls = open("../project_url/data_from_api.txt", "w")
 
