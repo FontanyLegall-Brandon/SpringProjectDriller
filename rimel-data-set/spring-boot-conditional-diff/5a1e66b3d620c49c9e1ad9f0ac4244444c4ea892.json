@@ -1,0 +1,1 @@
+{"author_date": "2015-06-30 12:32:29+01:00", "msg": "Make GzipFilterAutoConfiguration conditional on HttpMethod\n\nGzipFilterProperties uses HttpMethod so GzipFilterAutoConfiguration,\nwhich uses GzipFilterProperties, needs to be conditional on HttpMethod\nbeing on the classpath.\n\nCloses gh-3362"}

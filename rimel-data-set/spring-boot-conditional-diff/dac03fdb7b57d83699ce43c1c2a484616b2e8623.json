@@ -1,0 +1,1 @@
+{"author_date": "2014-05-09 23:43:00+01:00", "msg": "Extract WebMvcProperties\n\nExtract WebMvcProperties from WebMvcAutoConfiguration and also\nupdate conditionals to use @ConditionalOnProperty."}

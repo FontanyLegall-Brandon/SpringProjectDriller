@@ -1,0 +1,1 @@
+{"author_date": "2018-02-09 15:47:31+00:00", "msg": "Allow use of custom DatadogConfig without requiring api-key property\n\nCloses gh-11979"}

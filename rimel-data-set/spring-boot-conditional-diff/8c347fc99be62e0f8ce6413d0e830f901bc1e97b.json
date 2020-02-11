@@ -1,0 +1,1 @@
+{"author_date": "2013-06-12 14:00:22-07:00", "msg": "Numerous changes to actuator\n\nNumerous changes to the actuator project, including:\n- Specific Endpoint interface\n- Spring MVC/Enpoint adapter\n- Management server context changes\n- Consistent auto-configuration class naming\n- Auto-configuration ordering\n- Javadoc, code formatting and tests"}

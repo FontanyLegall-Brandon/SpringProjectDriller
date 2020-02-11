@@ -1,0 +1,1 @@
+{"author_date": "2019-08-02 13:56:16+02:00", "msg": "Fix bean name for reactive Cassandra health indicator\n\nCloses gh-17763"}

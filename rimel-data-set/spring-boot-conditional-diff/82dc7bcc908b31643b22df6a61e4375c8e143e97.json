@@ -1,0 +1,1 @@
+{"author_date": "2020-01-07 14:28:58-08:00", "msg": "HypermediaAutoConfiguration should back off when Spring MVC absent\n\nFixes gh-19392"}

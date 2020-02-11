@@ -1,0 +1,1 @@
+{"author_date": "2019-02-13 13:20:46-08:00", "msg": "Split Jersey management context configuration\n\nThis commit splits the management context configuration for jersey\ninto two separate configurations depending on if the type is SAME or\nCHILD. The configuration for the SAME context should only kick in if\nthere is no existing ResourceConfig bean.\n\nFixes gh-15891"}

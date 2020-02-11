@@ -1,0 +1,1 @@
+{"author_date": "2019-07-11 11:33:50+03:00", "msg": "Create RestClient from a RestHighLevelClient if available\n\nSee gh-17488"}

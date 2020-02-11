@@ -1,0 +1,1 @@
+{"author_date": "2015-06-01 13:23:29-07:00", "msg": "Provide auto-configuration for remote calls\n\nProvide application auto-configuration to provide remote endpoint\nsupport along with a client-side application that can be used to\nestablish connections.\n\nSee gh-3086"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-12-16 11:30:43-08:00", "msg": "Automatically alias MultipartResolver beans\n\nUpdate DispatcherServletAutoConfiguration to alias a MultipartResolver\nthat is not named correctly. This allows the DispatcherServlet to pick\nup any MultipartResolver bean, regardless of its name.\n\nSee gh-2162"}

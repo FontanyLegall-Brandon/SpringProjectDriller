@@ -1,0 +1,1 @@
+{"author_date": "2015-03-27 15:29:10-07:00", "msg": "Add support for EhCache\n\nInclude auto-configuration support for EhCache with auto-detection of\nthe default `ehcache.xml` at the root of the classpath. EhCache\nconfiguration can also be set via `spring.cache.config`.\n\nSee gh-2633"}

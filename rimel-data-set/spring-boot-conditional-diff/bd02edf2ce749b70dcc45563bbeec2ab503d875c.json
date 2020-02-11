@@ -1,0 +1,1 @@
+{"author_date": "2017-10-03 14:40:04+02:00", "msg": "Configure JPA only if a single datasource is available\n\nThis commit changes HibernateJpaAutoConfiguration to back off if no\nsingle datasource candidate is available in the context.\n\nCloses gh-5541"}

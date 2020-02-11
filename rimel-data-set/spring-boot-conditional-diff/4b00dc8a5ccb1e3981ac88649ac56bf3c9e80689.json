@@ -1,0 +1,1 @@
+{"author_date": "2018-09-20 12:16:22+01:00", "msg": "Add support for Spring Data JDBC (auto-config, starter, and test slice)\n\nCloses gh-14489"}

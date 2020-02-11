@@ -1,0 +1,1 @@
+{"author_date": "2015-07-07 16:27:30-07:00", "msg": "Replace @ConditionalOnExpression conditions\n\nReplace @ConditionalOnExpression usage in auto-configuration in favor\nof faster direct Environment access."}

@@ -1,0 +1,1 @@
+{"author_date": "2014-07-31 11:34:10-07:00", "msg": "Add auto-configuration for Spring Cloud\n\nEnable if all of the following are true:\n- spring-cloud is on the classpath\n- There is no Cloud bean present\n  (usually done by extending AbstractCloudConfig)\n- The \"cloud\" profile is active\n\nFixes gh-1302\n\nAutoconfigure spring-cloud"}

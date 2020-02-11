@@ -1,0 +1,1 @@
+{"author_date": "2017-09-07 10:32:21+02:00", "msg": "Fix Elasticsearch template condition if no client is defined\n\nThis commit makes sure to backoff if a Client bean is not available.\n\nCloses gh-10143"}

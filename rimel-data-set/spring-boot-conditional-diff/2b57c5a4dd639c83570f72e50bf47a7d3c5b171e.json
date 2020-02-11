@@ -1,0 +1,1 @@
+{"author_date": "2014-11-20 14:57:49-08:00", "msg": "Rename spring.data.mongo.repositories.enabled\n\nRename mongo to mongodb.\n\nFixes gh-1966"}

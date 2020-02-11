@@ -1,0 +1,1 @@
+{"author_date": "2015-05-04 06:25:32-05:00", "msg": "Add support for Infinispan\n\nInclude auto-configuration support for Infinispan. It is possible\nto specify the caches to create via `spring.cache.cache-names`.\nProvider also allow to set configuration file via `spring.cache.config`.\n\nSee gh-2633"}

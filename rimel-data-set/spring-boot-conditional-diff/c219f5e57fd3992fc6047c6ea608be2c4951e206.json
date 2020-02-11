@@ -1,0 +1,1 @@
+{"author_date": "2015-11-12 17:17:28-05:00", "msg": "Don't create ApplicationContextHeaderFilter when header is disabled\n\nSee gh-4320\nCloses gh-4454"}

@@ -1,0 +1,1 @@
+{"author_date": "2013-06-07 13:29:35+01:00", "msg": "[bs-148] Add /env endpoint for Spring Environment\n\nAny enumerable property source is enumerated.  Plus all\nproperties are available through /env/{name}.\n\n[Fixes #51141441]"}

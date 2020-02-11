@@ -1,0 +1,1 @@
+{"author_date": "2016-05-02 16:40:58-07:00", "msg": "Don't apply multiple session configurations\n\nAdd additional @ConditionalOnMissingBean guards to session\nconfigurations to ensure that the first wins. Also reorder imports\nto prefer Redis over JDBC.\n\nSee gh-5158"}

@@ -1,0 +1,1 @@
+{"author_date": "2013-05-31 16:16:19+01:00", "msg": "Make sure ThymeleafAutoConfiguration works if imported directly\n\nBefore this change if Layout dialect not available then the nested class is\nloaded and barfs because it depended on the layout dialect (in a\n@ConditionalOnClass annotation)."}

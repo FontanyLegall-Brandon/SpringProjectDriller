@@ -1,0 +1,1 @@
+{"author_date": "2018-04-23 10:57:14+02:00", "msg": "Improve @ConditionalOnEnabledEndpoint to be used on any component\n\nThis commit adds an `endpoint` attribute so that the condition can be\nused on arbitrary components, not only endpoints or extensions.\n\nCloses gh-12945"}

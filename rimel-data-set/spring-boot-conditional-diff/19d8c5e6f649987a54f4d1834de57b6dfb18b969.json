@@ -1,0 +1,1 @@
+{"author_date": "2016-03-23 14:15:40+00:00", "msg": "Complete the move to constructor injection in configuration classes\n\nThis is a follow-on from the work done in 5009933. Now that SPR-14015\nhas been fixed, constructor injection can also be used for parameterised\ndependencies, including optional dependencies that are injected via\nan ObjectProvider.\n\nCloses gh-5306"}

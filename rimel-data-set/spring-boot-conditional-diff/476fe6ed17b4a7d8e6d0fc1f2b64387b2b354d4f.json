@@ -1,0 +1,1 @@
+{"author_date": "2018-11-28 10:54:56+01:00", "msg": "Stop configuring metrics if hibernate is not available\n\nCloses gh-15317"}

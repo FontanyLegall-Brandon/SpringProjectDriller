@@ -1,0 +1,1 @@
+{"author_date": "2017-02-14 11:21:51+01:00", "msg": "Add support of reactive repositories with `@DataMongoTest`\n\nCloses gh-8280"}

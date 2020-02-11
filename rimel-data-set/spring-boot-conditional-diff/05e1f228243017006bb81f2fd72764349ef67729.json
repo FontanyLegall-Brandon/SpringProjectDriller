@@ -1,0 +1,1 @@
+{"author_date": "2018-02-20 16:27:04+09:00", "msg": "Auto-configure metrics for Hikari\n\nHikariCP has metrics integration with Micrometer. This configures all\n`HikariDataSource` beans with the `MicrometerMetricsTrackerFactory` if a\n`MeterRegistry` is available.\n\nSee gh-12129"}

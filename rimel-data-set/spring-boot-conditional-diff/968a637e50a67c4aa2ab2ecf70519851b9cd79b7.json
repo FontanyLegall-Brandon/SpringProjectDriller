@@ -1,0 +1,1 @@
+{"author_date": "2018-09-10 14:09:19-07:00", "msg": "Refactor ReactiveOAuth2ClientAutoConfiguration for non webapps\n\nNon web applications might want to leverage\n`ReactiveClientRegistrationRepository` and\n`ServerOAuth2AuthorizedClientRepository` to configure `WebClient`.\n\nCloses gh-14350"}

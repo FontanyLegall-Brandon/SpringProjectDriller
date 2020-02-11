@@ -1,0 +1,1 @@
+{"author_date": "2016-07-12 13:48:08+01:00", "msg": "Add support for Thymeleaf 3 while keeping Thymeleaf 2 as the default\n\nCloses gh-4393"}

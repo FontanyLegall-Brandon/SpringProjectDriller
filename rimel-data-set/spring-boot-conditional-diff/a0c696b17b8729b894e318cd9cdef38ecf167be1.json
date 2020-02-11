@@ -1,0 +1,1 @@
+{"author_date": "2015-11-05 21:17:55+01:00", "msg": "Allow security AuditListener overrides\n\nIntroduce `AbstractAuthenticationAuditListener` and\n`AbstractAuthorizationAuditListener` classes so that users can\nextended them to replace the auto-configured defaults.\n\nCloses gh-4406"}

@@ -1,0 +1,1 @@
+{"author_date": "2016-03-22 11:42:47-07:00", "msg": "Add @DataJpaTest annotation\n\nAdd @DataJpaTest and @AutoConfigureTestDatabase annotations to allow\ntesting of an application \"slice\" that only deals JPA.\n\nSee gh-4901"}

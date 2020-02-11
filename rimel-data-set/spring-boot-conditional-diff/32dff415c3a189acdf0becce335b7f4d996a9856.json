@@ -1,0 +1,1 @@
+{"author_date": "2014-06-05 12:52:23+01:00", "msg": "Rationalize the Reactor autoconfig\n\nIt didn't make sense not to do anything at all if a Reactor @Bean\nwas detected, so now we only back off creating the rootReactor if\none is present."}

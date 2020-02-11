@@ -1,0 +1,1 @@
+{"author_date": "2019-05-13 17:11:03+02:00", "msg": "Remove reference to spring.datasource.jmx-enabled\n\nThis commits moves the single use of that property to the already\nexisting Tomcat-specific one.\n\nCloses gh-16673"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-11-06 19:13:50-08:00", "msg": "Allow DAO ExceptionTranslator to proxy classes\n\nUpdate the auto-configured PersistenceExceptionTranslationPostProcessor\nto proxy target classes as well as interfaces. Also provide a config\nproperty to disable registration all together.\n\nFixes gh-1844"}

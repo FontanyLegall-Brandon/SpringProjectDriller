@@ -1,0 +1,1 @@
+{"author_date": "2015-11-09 20:00:40-08:00", "msg": "Use consistent MvcEndpoint class names\n\nRename HAL and docs MVC endpoints so that classnames consistently end\nwith MvcEndpoint. Also rename integration tests so that they are grouped\ntogether in the IDE."}

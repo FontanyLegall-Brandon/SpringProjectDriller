@@ -1,0 +1,1 @@
+{"author_date": "2017-04-12 10:04:42+02:00", "msg": "Split JPA-specific bits of Batch auto-config\n\nThis commit separates the JPA-specific bits of the batch\nauto-configuration so that it is possible to reuse most of the logic if\nJPA isn't available at all.\n\nCloses gh-8877"}

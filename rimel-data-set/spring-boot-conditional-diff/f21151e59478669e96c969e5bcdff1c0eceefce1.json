@@ -1,0 +1,1 @@
+{"author_date": "2014-05-23 11:36:14+01:00", "msg": "Dont\u2019t auto-configure FreeMarker and Velocity without context-support\n\nBoot\u2019s auto-configuration for FreeMarker and Velocity relies on Spring\u2019s\nsupport for them that\u2019s packaged in spring-context-support. Only\nauto-configure them if their respective Spring classes are on the\nclasspath\n\nFixes #940"}

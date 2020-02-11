@@ -1,0 +1,1 @@
+{"author_date": "2014-11-04 13:12:19+01:00", "msg": "Override StringHttpMessageConverter with UTF-8\n\nOverride the default StringHttpMessageConverter provided by the standard\nSpring MVC configuration so that is uses UTF-8 instead of the aging\ndefault of the servlet spec (that is ISO-8859-1)\n\nFixes gh-1800"}

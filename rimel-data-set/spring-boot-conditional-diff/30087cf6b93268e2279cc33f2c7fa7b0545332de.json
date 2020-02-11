@@ -1,0 +1,1 @@
+{"author_date": "2013-05-01 11:17:27+01:00", "msg": "[bs-55] Add strategy for setting system exit code\n\n* Added ExitCodeGenerator and SpringApplication.exit\nconvenience method\n* User can add bean of type ExitCodeGenerator or supply\none in the call to exit()\n\n[Fixes #48475971]"}

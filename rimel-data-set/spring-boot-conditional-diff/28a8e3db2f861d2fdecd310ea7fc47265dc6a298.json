@@ -1,0 +1,1 @@
+{"author_date": "2017-03-03 11:18:06+01:00", "msg": "Remove spring.cache.hazelcast.config\n\nRemove the creation of a separate `HazelcastInstance` specific to caching.\nInstead, the general `HazelcastAutoConfiguration` is used and if a\n`HazelcastInstance` bean is present we wrap it in a `CacheManager`.\n\nCloses gh-8470"}

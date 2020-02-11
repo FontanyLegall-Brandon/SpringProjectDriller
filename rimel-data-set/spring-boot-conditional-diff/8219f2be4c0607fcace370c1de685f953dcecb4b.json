@@ -1,0 +1,1 @@
+{"author_date": "2014-08-22 12:10:58-07:00", "msg": "Update DataSource auto-configuration to support XA\n\nUpdate DataSource and JPA auto-configuration to consider XA datasources.\n\nSee gh-947"}

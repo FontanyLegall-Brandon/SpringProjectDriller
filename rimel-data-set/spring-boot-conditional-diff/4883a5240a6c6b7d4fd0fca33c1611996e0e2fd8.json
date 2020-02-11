@@ -1,0 +1,1 @@
+{"author_date": "2015-06-04 21:41:10-05:00", "msg": "Remove deprecated SimpleMongoDbFactory call\n\nUpdate MongoAutoConfiguration to create a `MongoClient` bean rather than\n`Mongo` and update `MongoDataAutoConfiguration` to remove the call to\nthe deprecated `SimpleMongoDbFactory`.\n\nFixes gh-3105\nCloses gh-3126"}

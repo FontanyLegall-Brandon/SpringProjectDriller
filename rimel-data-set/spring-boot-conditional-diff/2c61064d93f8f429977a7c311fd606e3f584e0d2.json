@@ -1,0 +1,1 @@
+{"author_date": "2016-08-23 17:11:14+02:00", "msg": "Fix property prefix\n\nThis commit fixes the prefix for the WebClient and WebDriver auto-config\nso that it complies with the prefix set on `AutoconfigureWebMvc`\n\nCloses gh-6727"}

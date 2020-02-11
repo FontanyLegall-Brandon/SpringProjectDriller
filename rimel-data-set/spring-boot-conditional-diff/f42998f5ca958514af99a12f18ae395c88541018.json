@@ -1,0 +1,1 @@
+{"author_date": "2017-04-25 17:14:59+02:00", "msg": "Revert \"Refine validator and MVC validator configuration\"\n\nThis commit reverts c9561f0 and 69a8c0d and effectivly fixes gh-8979 but\nreintroduces the issue reported in gh-8495."}

@@ -1,0 +1,1 @@
+{"author_date": "2013-06-12 12:20:52-07:00", "msg": "Update On(Missing)Bean Condition logic\n\nUpdate OnBeanCondition and OnMissingBeanCondition to work better\nwith @Configuration classes and to support an optional considerHierarchy\nannotation value.\n\nThe class value for conditions can now also be inferred when used on\n@Bean methods."}

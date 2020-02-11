@@ -1,0 +1,1 @@
+{"author_date": "2019-10-28 12:24:09+01:00", "msg": "Make sure Reactive health indicators take precedence\n\nThis commit restores the highest precedence of reactive\nHealthContributor over imperative one. Previously, both would be\nregistered, leading to duplicate entries in health output.\n\nCloses gh-18748"}

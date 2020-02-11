@@ -1,0 +1,1 @@
+{"author_date": "2016-04-26 08:59:41+02:00", "msg": "Move multipart.* properties to spring.http.multipart.*\n\nCloses gh-3044"}

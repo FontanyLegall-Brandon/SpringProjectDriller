@@ -1,0 +1,1 @@
+{"author_date": "2014-05-30 15:09:48+01:00", "msg": "Add extra @Conditional to be defensive in Social autoconfig\n\nOlder versions of Spring Social will not have the SocialConfigurerAdapter\nso making social autoconfig conditional on that class makes sense (since it\nall extends from it).\n\nFixes gh-986"}

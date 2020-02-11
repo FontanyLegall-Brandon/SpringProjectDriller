@@ -1,0 +1,1 @@
+{"author_date": "2014-04-28 11:49:28+01:00", "msg": "Use Jedis rather than Lettuce as preferred Redis client\n\nSalvatore has indicated that Jedis is his Java Redis client of choice.\nThis commit updates the auto-configuration support, actuator and\nRedis starter accordingly.\n\nCompletes #745"}

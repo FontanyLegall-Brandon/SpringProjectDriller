@@ -1,0 +1,1 @@
+{"author_date": "2016-02-16 11:34:19+01:00", "msg": "Improve couchbase support\n\nExpose an `auto-index` property that controls if views and indexes\nshould be created automatically.\n\nUpdate the sample so that it uses this new property, lowering the manual\nsteps to make it working on a vanilla couchbase server.\n\nSee gh-3498"}

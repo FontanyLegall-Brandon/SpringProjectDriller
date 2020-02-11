@@ -1,0 +1,1 @@
+{"author_date": "2016-05-18 22:49:34+10:00", "msg": "Add LDAP auto-configuration support\n\nAdd auto-configuration support for spring-ldap and spring-data-ldap.\n\nSee gh-2645\nSee gh-7733"}

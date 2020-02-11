@@ -1,0 +1,1 @@
+{"author_date": "2018-02-08 19:22:37-08:00", "msg": "Refine metrics export auto-configure ordering\n\nThe `SimpleMetricsExportAutoConfiguration` should be last and it should\ncheck for a `MeterRegistry` bean.\n\nSee gh-11838"}

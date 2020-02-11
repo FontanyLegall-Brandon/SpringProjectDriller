@@ -1,0 +1,1 @@
+{"author_date": "2018-10-23 17:49:14-07:00", "msg": "Add @ConditionalOnMissingFilterBean\n\nAdd a new condition that can be used to check for servlet `Filter`\nbeans that are either registered directly, or via a\n`FilterRegistrationBean`.\n\nCloses gh-14940"}

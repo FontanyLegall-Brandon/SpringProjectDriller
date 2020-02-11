@@ -1,0 +1,1 @@
+{"author_date": "2019-03-23 19:52:22+03:00", "msg": "Fix LogFile conditions to check for exposure as well\n\nCloses gh-16298"}

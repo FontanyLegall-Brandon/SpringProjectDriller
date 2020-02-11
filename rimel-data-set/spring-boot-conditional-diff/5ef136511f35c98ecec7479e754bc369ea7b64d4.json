@@ -1,0 +1,1 @@
+{"author_date": "2014-08-21 23:22:14-07:00", "msg": "Add Atomikos and Bitronix JTA auto-configuration\n\nAdd auto-configuration for the Atomikos and Bitronix JTA libraries.\n\nSee gh-947"}

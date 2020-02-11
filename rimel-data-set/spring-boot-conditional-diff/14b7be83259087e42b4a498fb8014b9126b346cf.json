@@ -1,0 +1,1 @@
+{"author_date": "2017-07-13 13:27:46+02:00", "msg": "Harmonize database initializers\n\nThis commit updates database initializers configuration to enable them\nautomatically only when an embedded `DataSource` is used. Related\nconfiguration properties have been updated to use a more expressive\n`DatabaseInitializerMode` enum rather than `Boolean` flag.\n\nSee gh-9752"}

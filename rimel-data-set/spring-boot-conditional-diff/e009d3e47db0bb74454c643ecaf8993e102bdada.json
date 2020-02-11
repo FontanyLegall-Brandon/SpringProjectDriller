@@ -1,0 +1,1 @@
+{"author_date": "2013-11-18 17:20:45+01:00", "msg": "Polish\n\nFixed inconsistency in method naming after last polish. Method and class name should use 'crsh' instead of 'crash' to be aligned with CRaSH code base.\n\nImplemented facility to provide custom shell properties by adding beans of type CrshShellProperties to the ApplicationContext."}

@@ -1,0 +1,1 @@
+{"author_date": "2014-02-20 09:03:35+00:00", "msg": "Remove @ConditionalOnBean(DataSource.class) from JPA config\n\nStacktrace is then obviously about DataSource, not EntityManager.\n\nFixes gh-375"}

@@ -1,0 +1,1 @@
+{"author_date": "2019-12-28 10:56:04+01:00", "msg": "Extract RabbitTemplate auto-configuration in a configurer\n\nThis commit movers the auto-configuration of RabbitTemplate to a\ndedicated class that can be reused to create additional template with\nsimilar settings.\n\nCLoses gh-19440"}

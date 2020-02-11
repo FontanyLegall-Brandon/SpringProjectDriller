@@ -1,0 +1,1 @@
+{"author_date": "2019-07-09 15:46:45+01:00", "msg": "Make Batch JPA auto-configuration back off without a DataSource\n\nFixes gh-17465"}

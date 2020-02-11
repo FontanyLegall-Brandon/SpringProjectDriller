@@ -1,0 +1,1 @@
+{"author_date": "2019-05-13 16:03:21+02:00", "msg": "Auto-configure RSocketRequester.Builder\n\nThis commit auto-configures a prototype `RSocketRequester.Builder` bean\nfor building requester instances. This builder is pre-configured with\nauto-detected `RSocketStrategies` (same as the server side).\n\nCloses gh-16280"}

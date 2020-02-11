@@ -1,0 +1,1 @@
+{"author_date": "2015-03-16 17:37:41-07:00", "msg": "Polish HealthIndicatorAutoConfiguration\n\nUpdate HealthIndicatorAutoConfiguration to reduce the amount of\nduplication in inner configuration classes."}

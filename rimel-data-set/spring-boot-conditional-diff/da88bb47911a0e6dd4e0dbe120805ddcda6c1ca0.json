@@ -1,0 +1,1 @@
+{"author_date": "2014-08-21 23:35:35-07:00", "msg": "Update JMS auto-configuration to support XA\n\nUpdate JMS auto-configuration for ActiveMQ and HornetQ to support XA\ntransactions.\n\nSee gh-947"}

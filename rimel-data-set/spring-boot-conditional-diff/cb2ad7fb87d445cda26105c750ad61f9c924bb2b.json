@@ -1,0 +1,1 @@
+{"author_date": "2016-03-22 11:43:58+01:00", "msg": "Prevent Thymeleaf to be configured with Thymeleaf 3\n\nSpring Boot does not support Thymeleaf 3 yet. This commit prevents the\nauto-configuration to activate if Thymeleaf 3 is available on the\nclasspath.\n\nCloses gh-5371"}

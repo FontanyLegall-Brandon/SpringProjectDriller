@@ -1,0 +1,1 @@
+{"author_date": "2015-08-25 11:16:29-05:00", "msg": "Ensure that Spring Security Filter's order is configured\n\nThis commit ensures that even when a user specifies a\nWebSecurityConfiguration that the order of Spring Security's Filter\nis still configured.\n\nCloses gh-3824\nSee gh-3703"}

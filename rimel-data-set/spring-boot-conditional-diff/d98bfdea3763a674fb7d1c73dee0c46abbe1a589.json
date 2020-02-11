@@ -1,0 +1,1 @@
+{"author_date": "2014-02-24 11:32:27+00:00", "msg": "Make sure metricsExecutor is shutdown cleanly\n\nThe default executor for publishing metrics was a single\nthread (native JDK) ExecutorService with a non-daemon thread.\nChanged it to a Spring-managed thread pool of size 1, which\nis then shutdown with e ApplicationContext automatically.\n\nFixes gh-388"}

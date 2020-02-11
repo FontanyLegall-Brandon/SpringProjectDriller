@@ -1,0 +1,1 @@
+{"author_date": "2016-05-31 09:33:21-07:00", "msg": "Add @RestClientTest support\n\nAdd @RestClientTest annotation that can be used when testing REST\nclients. Provides auto-configuration for a MockRestServiceServer which\ncan be used when the bean under test builds a single RestTemplate\nvia the auto-configured RestTemplateBuilder.\n\nCloses gh-6030"}

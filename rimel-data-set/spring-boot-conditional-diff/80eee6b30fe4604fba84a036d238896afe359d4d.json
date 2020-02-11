@@ -1,0 +1,1 @@
+{"author_date": "2016-12-03 18:49:15+09:00", "msg": "Support spring transaction manager properties\n\nAdd Spring TransactionManager properties to allow timeout and rollback\nsettings to be configured.\n\nSee gh-7561"}

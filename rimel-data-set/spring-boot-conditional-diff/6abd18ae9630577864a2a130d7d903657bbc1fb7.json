@@ -1,0 +1,1 @@
+{"author_date": "2019-01-18 14:34:35-05:00", "msg": "Do not auto-configure RestTemplateBuilder in reactive web apps\n\nCloses gh-15718"}

@@ -1,0 +1,1 @@
+{"author_date": "2015-01-13 15:02:41-08:00", "msg": "Relax WebSocket auto-configuration conditions\n\nUpdate WebSocketAutoConfiguration so that spring-websocket is no longer\nrequired for WebSocket support.\n\nSee gh-2341"}

@@ -1,0 +1,1 @@
+{"author_date": "2015-10-16 11:07:39+01:00", "msg": "Ignore parent contexts in message source auto-configuration\n\nThis commit applies the changes made in 68b55ad to 1.2.x (it was\noriginally only made in 1.0.x and master). It also adds some tests.\n\nCloses gh-3803"}

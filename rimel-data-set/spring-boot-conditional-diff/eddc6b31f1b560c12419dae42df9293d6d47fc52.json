@@ -1,0 +1,1 @@
+{"author_date": "2014-06-15 09:24:14-07:00", "msg": "Improve error message on condition exceptions\n\nCatch exceptions thrown from SpringBootCondition and re-throw with\nmore context.\n\nSee gh-1098"}

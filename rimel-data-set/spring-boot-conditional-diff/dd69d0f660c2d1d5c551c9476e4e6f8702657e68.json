@@ -1,0 +1,1 @@
+{"author_date": "2013-06-12 12:33:19-07:00", "msg": "Polish and Fixup\n\nPolish and fixup:\n- Ordered auto-configuration\n- @ConditionalOnBean default on @Bean methods\n- Improved separation of auto-configure classes\n- Consistent naming\n- Javadoc, code formatting and tests"}

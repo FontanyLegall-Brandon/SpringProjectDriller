@@ -1,0 +1,1 @@
+{"author_date": "2017-10-19 15:14:58-07:00", "msg": "Upgrade to Spring Security 5.0.0.BUILD-SNAPSHOT\n\nFollowing some changes in the latest snapshot this includes:\n- Some updates to oauth2 client auto-config\n- Security auto-config no longer relies on GlobalAuthenticationConfigurerAdapter\n- Remove reactive security starter\n\nCloses gh-10704"}

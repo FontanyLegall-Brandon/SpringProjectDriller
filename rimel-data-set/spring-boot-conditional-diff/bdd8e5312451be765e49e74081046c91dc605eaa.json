@@ -1,0 +1,1 @@
+{"author_date": "2018-10-05 14:57:17+02:00", "msg": "Improve filtering of actuator auto-configurations\n\nThis commit splits auto-configurations that require different\nenvironments so that they can be filtered early.\n\nCloses gh-12260"}

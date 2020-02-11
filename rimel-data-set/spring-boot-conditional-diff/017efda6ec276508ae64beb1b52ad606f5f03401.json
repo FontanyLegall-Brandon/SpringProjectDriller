@@ -1,0 +1,1 @@
+{"author_date": "2018-01-23 17:15:25-08:00", "msg": "Add @EndpointServlet and migrate Jolokia\n\nAdd first class support for Servlet based endpoints and rework the\nJolokia endpoint to use it.\n\nFixes gh-10264"}

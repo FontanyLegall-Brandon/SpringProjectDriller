@@ -1,0 +1,1 @@
+{"author_date": "2017-11-22 13:54:11-08:00", "msg": "Drop status endpoint\n\nDrop the status endpoint and merge functionality back into the health\nendpoint. The `management.endpoint.health.show-details` property can\nbe used to change if full details, or just the status is displayed.\n\nFixes gh-11113"}

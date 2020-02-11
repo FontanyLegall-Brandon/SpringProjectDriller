@@ -1,0 +1,1 @@
+{"author_date": "2014-12-15 04:52:10-08:00", "msg": "Ensure CharacterEncodingFilter is ordered highest\n\nUpdate HttpEncodingAutoConfiguration to ensure that the\nCharacterEncodingFilter is ordered above any HiddenHttpMethodFilter.\n\nFixes gh-2148"}

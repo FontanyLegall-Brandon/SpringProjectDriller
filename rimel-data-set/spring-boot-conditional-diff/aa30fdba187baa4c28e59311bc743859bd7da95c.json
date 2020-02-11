@@ -1,0 +1,1 @@
+{"author_date": "2014-06-09 10:21:49+01:00", "msg": "Add MBeanServer @Bean in case it is needed\n\nAnywhere that an MBeanServer is needed it should be\ncreated @Conditionally, so that user can exclude the\nJmxAutoConfiguration and still get the other JMX\nbehaviours automatically."}

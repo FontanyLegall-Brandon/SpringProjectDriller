@@ -1,0 +1,1 @@
+{"author_date": "2018-09-04 16:03:23-07:00", "msg": "Make jmsListenerContainerFactory @ConditionalOnSingleCandidate\n\nCloses gh-12700"}

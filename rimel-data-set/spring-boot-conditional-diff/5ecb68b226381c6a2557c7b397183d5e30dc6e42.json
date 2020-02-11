@@ -1,0 +1,1 @@
+{"author_date": "2016-07-25 16:55:07-07:00", "msg": "Add JdbcTemplate only on single DataSource\n\nUpdate auto-configuration logic so that a `JdbcTemplate`\nis only added when there is a single candidate DataSource bean.\n\nCloses gh-6449"}

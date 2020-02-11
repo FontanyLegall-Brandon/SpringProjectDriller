@@ -1,0 +1,1 @@
+{"author_date": "2020-02-03 16:03:45+01:00", "msg": "Fix Embedded Mongo classpath check\n\nThis commit changes the classpath check condition to verify that the\ncore module of the MongoDB driver is present. Previously, we were only\nchecking for the presence of the sync driver, making embedded support\nunavailable with the reactive variant.\n\nCloses gh-19960"}

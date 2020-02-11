@@ -1,0 +1,1 @@
+{"author_date": "2014-11-03 17:43:53-08:00", "msg": "Protect against duplicate datasource MBeans\n\nSee gh-1590"}

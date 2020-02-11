@@ -1,0 +1,1 @@
+{"author_date": "2015-07-13 17:27:02+01:00", "msg": "Ensure Spring Session autoconfig creates ServerProperties carefully\n\nWithout this change there can be more than one ServerProperties in a\ncontext with different names.\n\nFixes gh-3476"}

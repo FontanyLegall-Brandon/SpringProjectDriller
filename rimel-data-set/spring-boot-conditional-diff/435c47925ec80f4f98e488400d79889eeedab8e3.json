@@ -1,0 +1,1 @@
+{"author_date": "2018-07-31 15:19:20+02:00", "msg": "Switch JMS pooling to `pooled-jms`\n\nThis commit removes support for `activemq-pool` in benefit of\n`pooled-jms`. While the former is not JMS 2 compliant, the latter is and\nis independent of the ActiveMQ codebase (so potentially reusable in\ncustom code).\n\nCloses gh-13927"}

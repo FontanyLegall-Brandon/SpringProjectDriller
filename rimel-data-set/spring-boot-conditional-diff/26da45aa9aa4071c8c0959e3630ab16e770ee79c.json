@@ -1,0 +1,1 @@
+{"author_date": "2019-02-08 18:24:55-08:00", "msg": "Configure a JerseyApplicationPath bean for the actuators\n\nThis commit also ensures that Jersey-based actuator endpoints are\navailable before the user has configured a `ResourceConfig` bean\n\nFixes gh-15625\nFixes gh-15877"}

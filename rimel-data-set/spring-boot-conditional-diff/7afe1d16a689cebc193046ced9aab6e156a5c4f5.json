@@ -1,0 +1,1 @@
+{"author_date": "2016-06-13 11:12:49+02:00", "msg": "Add Jest support\n\nThis commit adds auto-configuration support for Jest, an HTTP client for\nElasticsearch. If Jest is present, a `JestClient` targeting a local\nelasticsearch instance is auto-configured. Several properties from the\n`spring.jest.*` namespace allows to tune the client.\n\nCloses gh-6032"}

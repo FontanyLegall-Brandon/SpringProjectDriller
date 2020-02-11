@@ -1,0 +1,1 @@
+{"author_date": "2015-06-01 13:24:18-07:00", "msg": "Add header based remote access security\n\nUpdate the remote endpoints to use 'shared secret' authentication.\nSecrets are provided as Environment properties and transfered using a\ncustom HTTP header.\n\nSee gh-3082"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-07-17 21:11:02+02:00", "msg": "Improved detection of manual Spring Data repository configuration\n\nThe presense of store-specific RepositoryConfigurationExtension beans\nis used to disable auto-configuration for JPA, Mongo, and Solr\n\nCloses #1267"}

@@ -1,0 +1,1 @@
+{"author_date": "2018-08-31 17:17:28-07:00", "msg": "Apply springSecurity configurer to WebTestClient\n\nAlso, @WebFluxTest now adds any ServerHttpSecurity beans\nto the context.\n\nCloses gh-13632"}

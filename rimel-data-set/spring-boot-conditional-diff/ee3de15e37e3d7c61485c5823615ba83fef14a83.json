@@ -1,0 +1,1 @@
+{"author_date": "2017-08-03 10:34:47+09:00", "msg": "Add more ConditionalOnClass checks in HealthIndicatorAutoConfiguration\n\nCloses gh-9940"}

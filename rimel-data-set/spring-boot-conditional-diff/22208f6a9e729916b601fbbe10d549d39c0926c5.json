@@ -1,0 +1,1 @@
+{"author_date": "2016-11-24 11:02:56+01:00", "msg": "Auto-configure validation constraints on bean methods\n\nThis commit auto-configures `MethodValidationPostProcessor` if necessary\nwhen a JSR-303 validator implementation is detected on the classpath.\n\nCloses gh-6228"}

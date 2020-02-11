@@ -1,0 +1,1 @@
+{"author_date": "2016-06-29 20:14:17-07:00", "msg": "Stop RequestContextFilter initializing config\n\nChange WebMvcAutoConfigurationAdapter.requestContextFilter() to a static\nmethod so that the configuration class isn't needed when creating it.\nThis helps to prevent early initialization of beans.\n\nSee gh-6178"}

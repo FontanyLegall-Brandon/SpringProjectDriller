@@ -1,0 +1,1 @@
+{"author_date": "2015-04-07 11:24:24+01:00", "msg": "Add a property to disable auto-configuration of GzipFilter\n\nCloses gh-2776"}

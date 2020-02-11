@@ -1,0 +1,1 @@
+{"author_date": "2018-01-04 17:14:03+03:00", "msg": "Allow GSON customization via properties or beans\n\nUpdate GSON support to allow customization with either properties or\ncustomize beans.\n\nSee gh-11498"}

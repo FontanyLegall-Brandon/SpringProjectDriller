@@ -1,0 +1,1 @@
+{"author_date": "2016-04-12 21:42:42-04:00", "msg": "Add MVC actuator endpoint for heap dumps\n\nAdd MVC only endpoint to obtain GZip compressed heap dump files.\n\nSee gh-5670"}

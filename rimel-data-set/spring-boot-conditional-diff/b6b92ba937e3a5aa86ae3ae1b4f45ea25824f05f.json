@@ -1,0 +1,1 @@
+{"author_date": "2018-03-19 20:34:28+00:00", "msg": "Add auto-configuration for Hibernate metrics\n\nAll Hibernate entityManagerFactories are automatically instrumented\nand their statistics are included into Micrometer using its\nHibernateMetrics binder.\n\nCloses gh-12550"}

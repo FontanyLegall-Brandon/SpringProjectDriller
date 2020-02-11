@@ -1,0 +1,1 @@
+{"author_date": "2018-02-25 19:34:42+01:00", "msg": "Add cache actuator endpoint\n\nThis commits adds an actuator endpoint which lists the caches per\ncontext and cacheManager and provides a delete operation to clear the\ncaches. As the statistics are exposed via the metrics endpoint they are\nnot included\n\nSee gh-12216"}

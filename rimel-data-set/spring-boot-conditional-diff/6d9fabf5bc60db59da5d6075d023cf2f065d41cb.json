@@ -1,0 +1,1 @@
+{"author_date": "2018-07-11 13:15:08-07:00", "msg": "Harmonize mongo auto-configuration\n\nProvides a way to easily exclude `MongoAutoConfiguration` or\n`MongoReactiveAutoConfiguration` so that multiple mongo clients\nare not present.\n\nFixes gh-12407"}

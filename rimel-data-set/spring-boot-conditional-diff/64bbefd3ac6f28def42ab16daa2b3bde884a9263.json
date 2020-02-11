@@ -1,0 +1,1 @@
+{"author_date": "2016-06-13 14:38:34+02:00", "msg": "Add Jest-based health indicator\n\nThis commit adds a Jest-based health indicator for ElasticSearch. If both\nJest and the Spring Data are available, the latter takes precedence as it\nprovides more information.\n\nCloses gh-3178"}

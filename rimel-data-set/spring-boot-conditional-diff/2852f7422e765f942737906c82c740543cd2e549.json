@@ -1,0 +1,1 @@
+{"author_date": "2014-06-08 23:22:44-07:00", "msg": "Polish Spring Mobile Auto-configuration\n\nUpdate Spring Mobile support with the following changes:\n- Apply source formatting\n- User lowercase property prefixes\n- Use dashed notation when accessing properties\n- Inline some constants\n\nSee gh-1049"}

@@ -1,0 +1,1 @@
+{"author_date": "2015-07-06 18:39:20-05:00", "msg": "Add 'flyway' and 'liquibase' actuator endpoints\n\nAdd `/flyway` and `/liquibase` actuator endpoints to provide details of\nany database migrations that have been applied.\n\nFixes gh-3434\nCloses gh-3435"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-11-11 11:57:36+01:00", "msg": "Auto configure CharacterEncodingFilter\n\nProvide a default UTF-8 encoding for HTTP requests and responses unless\nspecified otherwise.\n\nFixes gh-1182"}

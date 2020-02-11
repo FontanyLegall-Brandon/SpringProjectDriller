@@ -1,0 +1,1 @@
+{"author_date": "2013-09-11 05:14:49-07:00", "msg": "Add AopAutoConfiguration (also starter and sample)\n\nA side effect is that spring-boot-starter-data-jpa needs\nto include an aspectjweaver depdendency. Hope that doesn't\nhurt anything else.\n\n[Fixes #56780004]"}

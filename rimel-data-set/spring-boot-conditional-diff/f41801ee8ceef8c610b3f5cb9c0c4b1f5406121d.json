@@ -1,0 +1,1 @@
+{"author_date": "2017-02-07 15:06:56+01:00", "msg": "Narrow down ConditionalOnWebApplication\n\nUse the new `type` attribute of `@ConditionalOnWebApplication` for the\nconfigurations that have a hard dependency on the Servlet/MVC API.\n\nSee gh-8118"}

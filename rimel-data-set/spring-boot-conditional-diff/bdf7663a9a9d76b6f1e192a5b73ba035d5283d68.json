@@ -1,0 +1,1 @@
+{"author_date": "2015-06-01 13:24:01-07:00", "msg": "Add remote debug tunnel auto-configuration\n\nProvide auto-configuration for remote debugging over a HTTP tunnel.\nThe RemoteClientConfiguration provides a server that the local IDE can\nconnect to. When a client connects the remote connection is established\nusing the HTTP tunnel.\n\nSee gh-3087"}

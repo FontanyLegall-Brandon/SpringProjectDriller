@@ -1,0 +1,1 @@
+{"author_date": "2017-06-18 08:44:45+02:00", "msg": "Allow Hikari to export MBeans on the auto-configured datasource\n\nThis commit makes sure that if the `register-mbeans` property of the\nHikary datasource config is set, Spring Boot doesn't attempt to expose\nthe mbean again.\n\nCloses gh-5114"}

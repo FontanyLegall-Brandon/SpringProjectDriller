@@ -1,0 +1,1 @@
+{"author_date": "2017-06-01 10:08:13+02:00", "msg": "Reuse JdbcTemplate in NamedParameterJdbcTemplate\n\nThis commit makes sure to reuse an existing or auto-configured\n`JdbcTemplate` when auto-configuring a `NamedParameterJdbcTemplate`.\n\nThis ensures that whatever customizations have been applied on the\n`JdbcTemplate` are properly shared.\n\nCloses gh-4945"}

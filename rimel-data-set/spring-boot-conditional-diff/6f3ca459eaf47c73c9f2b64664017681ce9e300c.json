@@ -1,0 +1,1 @@
+{"author_date": "2017-11-20 12:07:03-08:00", "msg": "Align MongoReactiveSessionConfiguration conditions\n\nAlign `MongoReactiveSessionConfiguration` `@ConditionalOnClass` with\n`MongoSessionConfiguration`\n\nSee gh-11063"}

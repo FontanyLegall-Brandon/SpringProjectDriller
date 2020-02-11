@@ -1,0 +1,1 @@
+{"author_date": "2015-05-11 11:52:10+01:00", "msg": "Extract metric writers into a MetricExporters composite\n\nAdds a separate exporter per MetricWriter and allows individual\nconfiguration of exporters for fine-grained control of schedules\nand patterns etc."}

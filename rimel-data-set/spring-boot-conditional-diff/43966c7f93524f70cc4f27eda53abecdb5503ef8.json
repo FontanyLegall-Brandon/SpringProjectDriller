@@ -1,0 +1,1 @@
+{"author_date": "2018-10-11 18:12:57+02:00", "msg": "Configure WebFlux HiddenHttpMethodFilter with property\n\nThis commit adds a new configuration property\n`\"spring.webflux.hiddenmethod.filter.enable\"` that enables/disables the\n`HttpHiddenMethodFilter` in Spring WebFlux.\n\nCloses gh-14520"}

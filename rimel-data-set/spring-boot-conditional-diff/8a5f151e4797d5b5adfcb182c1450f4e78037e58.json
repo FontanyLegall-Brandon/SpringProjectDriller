@@ -1,0 +1,1 @@
+{"author_date": "2014-12-10 18:14:58+00:00", "msg": "Add spring.*.enabled for MVC view resolvers\n\nSince we use a composite ViewResolver glbally by default it can be\nawkward to switch off the view technology that you have on the classpath\nbut aren't actually using."}

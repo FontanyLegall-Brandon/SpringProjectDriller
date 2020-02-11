@@ -1,0 +1,1 @@
+{"author_date": "2013-05-09 12:37:23+01:00", "msg": "[bs-111] Extract TraceFilterConfiguration into separate file\n\nWe want the traces to be collected for the main app, but reported\nin the management app, so the confi has to be separate.\n\n[#49578819]"}

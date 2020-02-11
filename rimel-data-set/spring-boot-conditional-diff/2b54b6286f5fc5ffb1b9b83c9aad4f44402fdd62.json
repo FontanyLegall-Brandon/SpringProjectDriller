@@ -1,0 +1,1 @@
+{"author_date": "2013-08-22 02:13:15-07:00", "msg": "Rework database auto-configure\n\nRework several aspects of database auto-configuration:\n\n- Use RelaxedPropertyResolver to obtain property values\n- Extract EmbeddedDatabaseConnection from EmbeddedDatabaseConfiguration\n- Rename several configuration classes for consistency\n\nIssue: #53028397"}

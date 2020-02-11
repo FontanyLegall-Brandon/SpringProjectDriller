@@ -1,0 +1,1 @@
+{"author_date": "2018-06-01 17:55:43+01:00", "msg": "Do not require DataSourcePoolMetrics to auto-configure Hikari meters\n\nCloses gh-13330"}

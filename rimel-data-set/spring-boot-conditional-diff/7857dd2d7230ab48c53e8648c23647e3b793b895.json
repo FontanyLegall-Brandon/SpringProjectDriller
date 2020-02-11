@@ -1,0 +1,1 @@
+{"author_date": "2019-06-21 11:21:13+02:00", "msg": "Update after RSocket changes in Spring Framework\n\nSpring Framework recently removed the `MessageHandlerAcceptor` (which is\na sub-class of `RSocketMessageHandler`).\nInstead of implementing directly the `SocketAcceptor` contract, it now\nexposes them through `clientAcceptor()` and `serverAcceptor()` methods.\n\nSee gh-17280"}

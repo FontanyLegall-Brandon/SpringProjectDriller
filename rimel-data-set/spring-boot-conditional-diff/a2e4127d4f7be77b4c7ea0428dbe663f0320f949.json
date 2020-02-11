@@ -1,0 +1,1 @@
+{"author_date": "2016-09-16 13:07:44-07:00", "msg": "Fix multi-annotation nested condition logic\n\nUpdate `AbstractNestedCondition` to correctly group nested conditions\non members.\n\nFixes gh-6672"}

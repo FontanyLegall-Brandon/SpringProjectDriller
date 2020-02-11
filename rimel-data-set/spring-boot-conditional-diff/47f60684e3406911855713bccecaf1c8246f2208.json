@@ -1,0 +1,1 @@
+{"author_date": "2013-05-02 18:07:53+01:00", "msg": "[bs-94] Add database initializer if schema.sql detected\n\n* If an embedded database is created it is also initialized from\nclasspath:/schema.sql if it exists\n* Also added (but didn't use) @ConditionalOnResource\n\n[Fixes #49142305]"}

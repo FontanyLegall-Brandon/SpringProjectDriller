@@ -1,0 +1,1 @@
+{"author_date": "2017-09-15 12:25:55-04:00", "msg": "Add KafkaAdmin Auto Configuration\n\nSpring for Apache Kafka has added a `KafkaAdmin` feature to automatically\nadd new topics to the broker.\n\nSee gh-10309"}

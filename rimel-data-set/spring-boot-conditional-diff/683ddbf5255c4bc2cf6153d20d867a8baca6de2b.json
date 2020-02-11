@@ -1,0 +1,1 @@
+{"author_date": "2013-07-24 14:56:30+01:00", "msg": "Add Reactor autoconfiguration\n\n* Make Rector @Autowirable\n* Create a ConsumerBeanPostProcessor so users can add\n@On and @Reply to bean methods\n* Added groovy auto compiler and script sample\n\n[#53955419] [bs-250]"}

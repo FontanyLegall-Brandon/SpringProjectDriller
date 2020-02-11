@@ -1,0 +1,1 @@
+{"author_date": "2018-09-13 12:07:45-07:00", "msg": "ReactiveOAuth2ClientAutoConfiguration backs off for servlet env\n\nFixes gh-14463"}

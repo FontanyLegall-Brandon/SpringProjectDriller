@@ -1,0 +1,1 @@
+{"author_date": "2015-01-09 13:50:39+00:00", "msg": "Add jmustache support\n\nThe package names changed a bit from the prototype project, but wuth vanilla\nautconfiguration usage that shouldn't matter. Follows closely the Groovy\ntemplates support. Templates live in classpath:/templates/*.html by default.\n\nFixes gh-2242"}

@@ -1,0 +1,1 @@
+{"author_date": "2016-12-12 15:05:48+00:00", "msg": "Make the Spring Security part of CF autoconfig conditional\n\nOtherwise you get a class not found exception at runtime in\nCF when Spring Securtity is not on the classpath."}

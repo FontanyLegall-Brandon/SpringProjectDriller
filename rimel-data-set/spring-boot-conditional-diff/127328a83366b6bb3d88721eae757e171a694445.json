@@ -1,0 +1,1 @@
+{"author_date": "2014-05-08 12:37:37+02:00", "msg": "Rework HealthEndpoint and HealthIndicators\n\nRefactored HealthEndpoint to be able to take multiple HealthIndicators. Extracted configuration of HealthIndicators out of EndpointAutoConfiguration and added new HealthIndicatorAutoConfiguration class.\n\nAdded HealthIndicators for Redis and Mongo."}

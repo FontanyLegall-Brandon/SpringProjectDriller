@@ -1,0 +1,1 @@
+{"author_date": "2015-08-17 10:05:52+02:00", "msg": "Properly guard DB health indicator\n\nThe DataSource health indicator uses `JdbcTemplate` behind the scenes\nbut nothing was checking that it is actually available.\n\n`DataSourcesHealthIndicatorConfiguration` is now disabled if\n`spring-jdbc` is not on the classpath.\n\nFixes gh-3765"}

@@ -1,0 +1,1 @@
+{"author_date": "2013-07-17 12:25:54+01:00", "msg": "Use enum for parent context modes in @ConditionalOnBean\n\n@ConditionOn*Bean now have search=ALL by default (CURRENT and\nPARENTS also supported).\n\n[Fixes #53538357]"}

@@ -1,0 +1,1 @@
+{"author_date": "2018-02-12 17:16:03-06:00", "msg": "Remove unnecessary config options for JDBC, Rabbit, and Cache metrics\n\nSee gh-12017"}

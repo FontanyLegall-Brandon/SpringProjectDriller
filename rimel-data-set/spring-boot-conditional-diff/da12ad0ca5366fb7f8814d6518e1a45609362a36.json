@@ -1,0 +1,1 @@
+{"author_date": "2019-05-22 12:33:59+01:00", "msg": "Make ReactiveSecurityAutoConfiguration back off without spring-webflux\n\nCloses gh-16934"}

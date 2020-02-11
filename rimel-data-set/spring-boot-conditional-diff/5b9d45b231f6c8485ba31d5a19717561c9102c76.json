@@ -1,0 +1,1 @@
+{"author_date": "2014-08-26 09:14:32-07:00", "msg": "Inject any existing JMS DestinationResolver bean\n\nUpdate JmsAutoConfiguration to inject any existing DestinationResolver\nbean into JmsTemplate and DefaultJmsListenerContainerFactory.\n\nFixes gh-1443"}

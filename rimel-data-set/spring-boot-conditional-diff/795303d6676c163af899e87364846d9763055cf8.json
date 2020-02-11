@@ -1,0 +1,1 @@
+{"author_date": "2019-10-02 18:52:18-07:00", "msg": "Replace depends-on post processor configurations\n\nReplace `AbstractDependsOnBeanFactoryPostProcessor` `@Configuration`\nclasses with simple `@Import` component classes.\n\nCloses gh-18382"}

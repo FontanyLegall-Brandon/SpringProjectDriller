@@ -1,0 +1,1 @@
+{"author_date": "2019-08-20 10:24:41-07:00", "msg": "Migrate HealthIndicator auto-configurations\n\nMigrate all `HealthIndicator` configuration to `HealthContributor`\nconfigurations instead.\n\nSee gh-14022"}

@@ -1,0 +1,1 @@
+{"author_date": "2015-06-29 14:50:48+01:00", "msg": "Replace GzipFilter and Tomcat compression with general purpose approach\n\nCloses gh-3296"}

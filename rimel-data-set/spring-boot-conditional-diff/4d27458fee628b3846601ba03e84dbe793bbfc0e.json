@@ -1,0 +1,1 @@
+{"author_date": "2014-09-04 10:41:32-07:00", "msg": "Replace MongoProperties condition for spring-cloud\n\nReplace @ConditionalOnBean(MongoProperties.class) on\nMongoDataAutoConfiguration with @EnableConfigurationProperties since\nMongoAutoConfiguration will not be applied in a cloud environment.\n\nFixes gh-1502"}

@@ -1,0 +1,1 @@
+{"author_date": "2015-03-18 11:13:46+00:00", "msg": "Use a String when referencing a class with @ConditionalOnMissingClass\n\nUsing a Class reference can cause reflection problems at runtime (see\ngh-1065).\n\nCloses gh-2674"}

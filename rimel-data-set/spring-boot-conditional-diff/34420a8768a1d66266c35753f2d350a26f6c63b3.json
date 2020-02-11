@@ -1,0 +1,1 @@
+{"author_date": "2016-05-05 17:33:18+01:00", "msg": "Allow @ConditionalOnProperty to be used as a meta-annotation\n\nCloses gh-5819"}

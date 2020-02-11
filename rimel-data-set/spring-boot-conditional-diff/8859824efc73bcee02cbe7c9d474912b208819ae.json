@@ -1,0 +1,1 @@
+{"author_date": "2015-06-14 11:12:32-05:00", "msg": "Add Apache Artemis support\n\nAdd auto-configuration support for Apache Artemis which was formed when\nHornetQ was donated to the Apache Foundation. The majority of this code\nis based on the HornetQ auto-configuration.\n\nFixes gh-3154\nCloses gh-3246"}

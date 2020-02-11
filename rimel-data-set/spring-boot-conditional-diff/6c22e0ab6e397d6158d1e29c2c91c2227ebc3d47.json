@@ -1,0 +1,1 @@
+{"author_date": "2013-05-30 14:20:24+01:00", "msg": "[bs-140] Extract framework-provided @ConfigurationProperties into @Bean\n\nAllows @ConfigurationProperties beans to be declared explicitly (to set default values)\n\n[#50804109]"}

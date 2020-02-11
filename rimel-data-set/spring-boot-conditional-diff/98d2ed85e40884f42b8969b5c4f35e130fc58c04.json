@@ -1,0 +1,1 @@
+{"author_date": "2017-02-06 11:11:36+01:00", "msg": "Fix broken build\n\nFix couchbase support until a solution is determined for\nhttps://jira.spring.io/browse/DATACOUCH-279\n\nSee gh-8200"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-06-26 09:48:15+01:00", "msg": "Take care registering DataSourceInitializer\n\nThe DataSourceInitializer is instantiated early by the\nDataSourceInitializerPostProcessor, so it has to live in\nisolation (in its own @Configuration) to prevent early\ninstantiation of the DataSourceAutoConfiguration.\n\nFixes gh-1166"}

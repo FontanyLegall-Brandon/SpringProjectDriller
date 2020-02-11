@@ -1,0 +1,1 @@
+{"author_date": "2014-05-01 19:37:25+01:00", "msg": "Add autoconfig support for Flyway migrations\n\nFlyway starts up with its default settings if it is on the classpath.\nYou can also ask Boot to barf if the migration scripts are missing.\n\nFixes gh-730"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-03-24 15:23:43+00:00", "msg": "Allow Batch configuration without DataSource\n\nIf the user provides a JobExplorer and a BatchConfigurer that\ndon't require a DataSource we can back off on configuring ours\n(and anything else that needs a DataSource).\n\nFixes gh-561"}

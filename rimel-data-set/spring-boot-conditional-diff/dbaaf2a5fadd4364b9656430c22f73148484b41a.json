@@ -1,0 +1,1 @@
+{"author_date": "2017-08-17 13:28:45+02:00", "msg": "Improve conditions on FreeMarkerWebConfiguration\n\nThis commit makes sure to prevent the Freemarker web auto-configuration\nto kick in if `spring-webmvc` is not on the classpath.\n\nCloses gh-10027"}

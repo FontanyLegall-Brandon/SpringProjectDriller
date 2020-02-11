@@ -1,0 +1,1 @@
+{"author_date": "2015-03-31 11:26:25+02:00", "msg": "Add missing classpath checks\n\nCertain cache manager implementations are located in the\nspring-context-support module that isn't pulled automatically.\n\nAs a result, the related cache auto-configurations should make sure that\nthe relevant CacheManager implementation is available.\n\nSee gh-2633"}

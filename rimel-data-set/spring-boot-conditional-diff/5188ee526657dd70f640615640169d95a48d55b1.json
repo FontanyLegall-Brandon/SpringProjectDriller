@@ -1,0 +1,1 @@
+{"author_date": "2014-02-05 17:52:25-08:00", "msg": "Extract Mongo auto-configuration from Spring Data\n\nExtract Mongo auto-configuration classes from Spring Data specific\nauto-configuration, allowing Mongo to be used without Spring Data\nif require."}

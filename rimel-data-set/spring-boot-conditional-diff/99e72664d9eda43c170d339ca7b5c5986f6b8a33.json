@@ -1,0 +1,1 @@
+{"author_date": "2016-12-20 15:27:41-08:00", "msg": "Polish spring transaction manager properties\n\nPolish and update contribution so that TransactionManager properties can\nbe defined per technology, rather than globally.\n\nCloses gh-7561"}

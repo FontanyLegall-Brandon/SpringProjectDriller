@@ -1,0 +1,1 @@
+{"author_date": "2017-02-01 11:39:48+01:00", "msg": "Remove auto-configuration for ServerProperties\n\nThis commit removes `ServerProperties` and `ManagementServerProperties`\nauto-configurations. Those properties objects are now created using\n`@EnableConfigurationProperties` only.\n\nCloses gh-8108"}

@@ -1,0 +1,1 @@
+{"author_date": "2017-09-11 18:16:40+02:00", "msg": "Remove auto-configuration for MapSessionRepository\n\nThis commit removes auto-configuration for Spring Session's simple in\nmemory support.\n\nCloses gh-10253"}

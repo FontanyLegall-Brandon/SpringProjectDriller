@@ -1,0 +1,1 @@
+{"author_date": "2015-07-13 14:57:58-07:00", "msg": "Back-off auto-conf on EntityManagerFactory bean\n\nDon't auto-configure a LocalContainerEntityManagerFactoryBean if the\nuser directly defines an EntityManagerFactory bean.\n\nFixes gh-2803"}

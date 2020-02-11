@@ -1,0 +1,1 @@
+{"author_date": "2014-05-08 11:34:43+02:00", "msg": "Add @ConditionalOnProperty annotation\n\nAdd @ConditionalOnProperty which enables conditional bean creation when\nall required properties are defined in the Environment.\n\nFixes gh-812"}

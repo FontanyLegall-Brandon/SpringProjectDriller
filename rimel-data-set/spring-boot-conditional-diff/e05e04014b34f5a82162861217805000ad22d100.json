@@ -1,0 +1,1 @@
+{"author_date": "2017-09-14 16:44:22+02:00", "msg": "Move security.* to spring.security.*\n\nThis commit also removes `security.basic.enabled` as this property is\nno longer required.\n\nCloses gh-10296"}

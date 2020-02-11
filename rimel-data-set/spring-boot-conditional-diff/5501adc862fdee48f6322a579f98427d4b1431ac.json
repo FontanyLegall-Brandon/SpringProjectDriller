@@ -1,0 +1,1 @@
+{"author_date": "2013-05-01 09:14:01+01:00", "msg": "[bs-35] Add @ConfigurationProperties EndpointsProperties and bind to application.yml\n\n[Fixes #48245695]"}

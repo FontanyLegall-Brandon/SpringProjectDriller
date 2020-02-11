@@ -1,0 +1,1 @@
+{"author_date": "2015-05-22 16:10:43+02:00", "msg": "Improve transaction manager detection\n\nSwitch the condition used to trigger the creation of a transaction\nmanager from the default name to the actual type.\n\nFixes gh-3012"}

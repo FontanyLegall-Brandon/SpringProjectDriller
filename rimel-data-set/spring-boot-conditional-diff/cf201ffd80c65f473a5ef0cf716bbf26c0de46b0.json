@@ -1,0 +1,1 @@
+{"author_date": "2013-05-30 14:15:06+01:00", "msg": "[bs-142] Add @AssertMissingBean\n\nExample usage is to fail fast if trying to provide\na @ConfigurationProperties bean and it was already\ndefined\n\n[Fixes #50812235]"}

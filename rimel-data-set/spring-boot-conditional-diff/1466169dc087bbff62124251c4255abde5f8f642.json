@@ -1,0 +1,1 @@
+{"author_date": "2015-08-20 10:33:04+02:00", "msg": "Register ResourceUrlEncodingFilter only if necessary\n\nPreviously, `ResourceUrlEncodingFilter` was registered even if the\nresource chain handling was disabled (which is the default).\n\nWe now take care of registering it only if the resource chain handling is\nenabled.\n\nCloses gh-3353"}

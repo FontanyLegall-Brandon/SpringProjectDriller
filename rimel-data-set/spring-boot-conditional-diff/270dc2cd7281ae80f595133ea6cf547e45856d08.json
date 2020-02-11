@@ -1,0 +1,1 @@
+{"author_date": "2018-01-24 21:49:44-05:00", "msg": "Add support for multi baseDn\n\nUpdate LDAP properties and auto-configuration to support multiple\nbase DN values.\n\nSee gh-11764"}

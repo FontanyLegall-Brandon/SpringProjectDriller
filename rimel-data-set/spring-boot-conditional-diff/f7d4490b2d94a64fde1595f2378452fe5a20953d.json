@@ -1,0 +1,1 @@
+{"author_date": "2014-02-03 17:21:00-08:00", "msg": "Fix package tangle with AutoConfigurationReport\n\nRename AutoConfigurationReport to ConditionEvaluationReport and\nco-locate with conditions."}

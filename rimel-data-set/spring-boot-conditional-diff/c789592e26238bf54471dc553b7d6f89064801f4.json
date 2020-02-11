@@ -1,0 +1,1 @@
+{"author_date": "2020-01-13 10:10:49-06:00", "msg": "Remove support for deprecated Elasticsearch Jest client\n\nCloses #19676"}

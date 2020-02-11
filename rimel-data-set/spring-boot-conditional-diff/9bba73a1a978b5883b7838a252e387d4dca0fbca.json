@@ -1,0 +1,1 @@
+{"author_date": "2017-01-25 13:53:21+00:00", "msg": "Upgrade to Thymeleaf 3 and drop support for Thymleaf 2\n\nThis commit raises the minimum supported version of Thymeleaf to\n3.0.x. It also upgrades Spring Social to a version that is compatible\nwith Thymeleaf 3.\n\nCloses gh-7450\nCloses gh-6258\nSee gh-7885"}

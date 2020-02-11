@@ -1,0 +1,1 @@
+{"author_date": "2017-10-04 11:12:00-07:00", "msg": "Support Redis without commons-pool2\n\nUpdate `LettuceConnectionConfiguration` so that `commons-pool2` can\nbe an optional dependency.\n\nSee gh-10480"}

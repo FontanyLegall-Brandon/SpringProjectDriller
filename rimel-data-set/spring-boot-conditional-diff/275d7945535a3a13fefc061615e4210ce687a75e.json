@@ -1,0 +1,1 @@
+{"author_date": "2019-05-20 10:52:00+02:00", "msg": "Make sure JdbcTemplateConfiguration is imported once\n\nCloses gh-13806"}

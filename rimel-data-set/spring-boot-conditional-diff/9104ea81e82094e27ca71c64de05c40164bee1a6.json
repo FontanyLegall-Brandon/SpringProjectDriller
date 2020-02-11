@@ -1,0 +1,1 @@
+{"author_date": "2016-12-19 14:06:17+01:00", "msg": "Expose Validator bean\n\nThis commit improves ValidationAutoConfiguration so that a `Validator`\nbean is exposed if JSR 303 is available. This has the side effect of\nautomatically enable Spring Data Couchbase's entity validation rather\nthan requiring to expose a `Validator` bean.\n\nCloses gh-5178"}

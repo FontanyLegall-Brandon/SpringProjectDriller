@@ -1,0 +1,1 @@
+{"author_date": "2018-06-13 14:53:18+02:00", "msg": "Configure X-Forwarded-* support with Reactor Netty\n\nThis commit configures the new X-Forwarded-* / Forwarded HTTP headers\nsupport with Reactor Netty in its 0.8.0 version.\n\nCloses gh-10900"}

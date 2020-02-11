@@ -1,0 +1,1 @@
+{"author_date": "2016-10-11 15:04:11-07:00", "msg": "Add CloudFoundry EndpointHandlerMapping\n\nAdd a CloudFoundryEndpointHandlerMapping that can expose actuator\nendpoints for Cloud Foundry \"appsmanager\" to use.\n\nSee gh-7108"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-06-21 23:56:59+02:00", "msg": "Separate the configuration/creation of the default ObjectMapper\n\nbean from the registration of Jackson modules to avoid circular creation\nof the default ObjectMapper bean (and thus failing to obtain the ObjectMapper\nand registering the module(s)).\n\nFixes gh-1132"}

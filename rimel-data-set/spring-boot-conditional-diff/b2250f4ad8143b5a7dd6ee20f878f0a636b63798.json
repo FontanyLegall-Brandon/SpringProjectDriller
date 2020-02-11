@@ -1,0 +1,1 @@
+{"author_date": "2017-01-07 19:40:05-05:00", "msg": "Add LDAP health actuator\n\nProvide specific health actuator endpoint to verify if LDAP connection\nis valid.\n\nSee gh-7905"}

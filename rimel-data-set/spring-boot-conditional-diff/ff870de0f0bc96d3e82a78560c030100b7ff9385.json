@@ -1,0 +1,1 @@
+{"author_date": "2014-08-27 09:24:45-07:00", "msg": "Fix a few JTA issues\n\n- Search for ConnectionFactories in java:/JmsXA and\n  java:/XAConnectionFactory\n- Remove javax.transaction:jta managed dependency\n- Removed unused JtaProperties argument\n\nFixes gh-947"}

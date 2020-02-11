@@ -1,0 +1,1 @@
+{"author_date": "2018-02-20 16:25:51+01:00", "msg": "Rework Hikari metrics registration\n\nThis commits move the Hikari metrics registration to a BeanPostProcessor\nas the Hikari datasource cannot be modified once its configuration has\nbeen sealed (usually happens when `getConnection` is invoked on the\npool).\n\nCloses gh-12129"}

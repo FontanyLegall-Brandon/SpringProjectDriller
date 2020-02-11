@@ -1,0 +1,1 @@
+{"author_date": "2013-06-14 21:40:35-04:00", "msg": "[BS-157] Add MultipartConfig support\n\nUse Servlet 3.0 features to autodetect a MultipartConfigElement and\nhence autowire multipart support in the servlet container."}

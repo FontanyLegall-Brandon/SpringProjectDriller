@@ -1,0 +1,1 @@
+{"author_date": "2014-11-24 10:45:34+00:00", "msg": "Disable Undertow auto-config if required XNIO classes are unavailable \n\nFixes gh-1986"}

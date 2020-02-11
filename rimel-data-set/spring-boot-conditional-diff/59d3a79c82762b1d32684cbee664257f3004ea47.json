@@ -1,0 +1,1 @@
+{"author_date": "2017-02-28 19:59:33+00:00", "msg": "Avoid eager initialization when finding beans by annotation\n\nCloses gh-8269"}

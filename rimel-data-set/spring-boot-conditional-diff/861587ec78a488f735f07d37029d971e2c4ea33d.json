@@ -1,0 +1,1 @@
+{"author_date": "2018-10-12 11:23:47+01:00", "msg": "Allow @ConditionalOnEnabledEndpoint to be used on any component\n\nCloses gh-14787"}

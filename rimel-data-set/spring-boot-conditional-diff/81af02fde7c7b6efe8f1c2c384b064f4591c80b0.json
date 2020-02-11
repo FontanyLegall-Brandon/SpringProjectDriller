@@ -1,0 +1,1 @@
+{"author_date": "2017-12-28 14:57:13+01:00", "msg": "Improve JVM metrics\n\nThis commit adds GC and thread jvm metrics to the existing memory\nmetrics. All three are now managed by a unique\nmanagement.metrics.binders.jvm.enabled property.\n\nCloses gh-11425"}

@@ -1,0 +1,1 @@
+{"author_date": "2018-10-23 17:49:01-07:00", "msg": "Support parameterizedContainer in bean conditions\n\nAdd a `parameterizedContainer` attribute to `ConditionalOnBean` and\n`ConditionalOnMissingBean` which can be used to support generic types\nwhen checking for the presence of beans.\n\nCloses gh-14940"}

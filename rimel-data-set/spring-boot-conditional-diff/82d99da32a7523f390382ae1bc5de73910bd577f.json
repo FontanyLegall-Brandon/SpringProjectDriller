@@ -1,0 +1,1 @@
+{"author_date": "2018-11-18 23:49:26+03:00", "msg": "Configure MessageSource if no \"messageSource\" bean defined\n\nEnable MessageSourceAutoConfiguration OnMissingBeanCondition by name\nrather than class since AbstractApplicationContext expects MessageSource\nto be defined only with \"messageSource\" name.\n\nSee gh-15212"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-09-30 15:08:58+01:00", "msg": "Fix missing resource exception if spring-cloud not on classpath"}

@@ -1,0 +1,1 @@
+{"author_date": "2015-12-30 18:00:49+00:00", "msg": "Make springIntegrationPublicMetrics conditional on bean by name not type\n\nBy type is too restrictive and surprising for users who wanted to add their\nown MetricReaderPublicMetrics for other reasons."}

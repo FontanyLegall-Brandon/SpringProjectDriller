@@ -1,0 +1,1 @@
+{"author_date": "2014-04-16 10:15:15-05:00", "msg": "Add auto-configuration for @EnableHypermediaSupport\n\nIf Spring HATEOAS is on the class path, then @EnableHypermediaSupport\nwill be auto-configured with HAL support."}

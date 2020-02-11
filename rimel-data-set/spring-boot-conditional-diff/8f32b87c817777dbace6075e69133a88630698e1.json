@@ -1,0 +1,1 @@
+{"author_date": "2014-06-07 01:00:59+03:00", "msg": "Improve Spring Mobile Auto-configuration\n\n- Upgrade Spring Mobile dependency to 1.1.2\n- Rename SitePreferenceAutoConfiguration \"enabled\" property\n- Add Auto-configuration for LiteDeviceDelegatingViewResolver\n- Update docs\n\nFixes gh-1049"}

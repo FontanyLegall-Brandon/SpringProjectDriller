@@ -1,0 +1,1 @@
+{"author_date": "2017-11-03 10:49:37-05:00", "msg": "Upgrade to Micrometer 1.0.0-rc.3\n\nUpgrade to Micrometer 1.0.0-rc.3 and refactor existing\nauto-configuration to align with updated APIs.\n\nNote that Spring MVC instrumentation has now changed from an interceptor\nto a Filter.\n\nSee gh-10906"}

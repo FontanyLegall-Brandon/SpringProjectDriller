@@ -1,0 +1,1 @@
+{"author_date": "2017-05-01 16:18:59-04:00", "msg": "Support direct AMQP container\n\nAdd support for auto configuration - select container type and separate\ndiscrete properties.\n\nSee gh-9055"}

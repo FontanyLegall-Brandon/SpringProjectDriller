@@ -1,0 +1,1 @@
+{"author_date": "2018-01-03 11:41:42-08:00", "msg": "Polish micrometer cache metrics\n\nChange `CacheMeterBinderProvider` to include a cache type\ngeneric which helps to simplify implementations. Also move\nand extract a few classes.\n\nSee gh-11221"}

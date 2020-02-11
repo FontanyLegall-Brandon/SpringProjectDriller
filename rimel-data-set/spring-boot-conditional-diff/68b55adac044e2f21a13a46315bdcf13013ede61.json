@@ -1,0 +1,1 @@
+{"author_date": "2015-08-21 15:44:01+01:00", "msg": "Add search=CURRENT to MessageSourceAutoConfiguration\n\nFixes gh-3803"}

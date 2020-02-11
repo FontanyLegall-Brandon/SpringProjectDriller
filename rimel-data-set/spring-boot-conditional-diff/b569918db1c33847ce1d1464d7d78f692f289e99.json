@@ -1,0 +1,1 @@
+{"author_date": "2015-07-28 16:27:56+02:00", "msg": "Add property to disable default health indicators\n\nAdd a \"management.health.defaults.enabled\" property that controls whether\nthe default health indicators are enabled. This allow to disable them all\nby default and still enable individual ones using their respective\nspecific property.\n\nCloses gh-2298"}

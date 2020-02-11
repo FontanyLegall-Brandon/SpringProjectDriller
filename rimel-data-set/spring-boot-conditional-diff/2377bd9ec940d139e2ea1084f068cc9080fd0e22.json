@@ -1,0 +1,1 @@
+{"author_date": "2014-01-09 17:50:03+00:00", "msg": "Don't load BatchAutoConfiguration at all if there is no JobLauncher\n\nFixes gh-204"}

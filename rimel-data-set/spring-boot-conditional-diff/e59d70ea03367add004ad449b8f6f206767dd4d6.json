@@ -1,0 +1,1 @@
+{"author_date": "2017-09-14 21:09:00-07:00", "msg": "Change micrometer properties to use adapters\n\nUpdate configuration property classes used with micrometer so that\nthey no longer directly implement `Config` interfaces. Properties\nare now adapted to Config implementations independently.\n\nSee gh-9970"}

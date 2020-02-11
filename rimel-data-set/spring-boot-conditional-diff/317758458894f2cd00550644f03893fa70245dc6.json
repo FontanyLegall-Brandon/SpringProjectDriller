@@ -1,0 +1,1 @@
+{"author_date": "2018-10-18 10:31:10+01:00", "msg": "Back off auto-config of Log4J2Metrics when context is backed by SLF4J\n\nCloses gh-14883"}

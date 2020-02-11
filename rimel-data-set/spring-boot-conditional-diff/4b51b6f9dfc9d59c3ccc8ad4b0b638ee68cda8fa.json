@@ -1,0 +1,1 @@
+{"author_date": "2014-05-10 00:08:38+01:00", "msg": "Support relaxed names with ConditionalOnProperty\n\nUpdate ConditionalOnProperty to optionally support relaxed form names.\n\nFixes gh-835"}

@@ -1,0 +1,1 @@
+{"author_date": "2016-10-11 14:59:03-07:00", "msg": "Add @ConditionalOnCloudPlatform\n\nAdd a @ConditionalOnCloudPlatform annotation that matches based on the\nactive ClouldPlatform.\n\nFixes gh-7155"}

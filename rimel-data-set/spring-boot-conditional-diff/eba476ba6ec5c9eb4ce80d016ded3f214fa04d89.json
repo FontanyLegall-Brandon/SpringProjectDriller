@@ -1,0 +1,1 @@
+{"author_date": "2018-01-29 16:37:28+01:00", "msg": "Disable LoggersEndpoint if the logging system is disabled\n\nCloses gh-11793"}

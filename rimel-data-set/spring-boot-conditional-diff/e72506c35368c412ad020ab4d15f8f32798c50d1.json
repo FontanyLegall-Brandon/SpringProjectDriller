@@ -1,0 +1,1 @@
+{"author_date": "2018-02-16 09:07:12+00:00", "msg": "Protect TomcatMetrics auto-config against early MeterBinder init\n\nCloses gh-11916"}

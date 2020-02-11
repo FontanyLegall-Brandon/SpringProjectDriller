@@ -1,0 +1,1 @@
+{"author_date": "2014-08-26 11:33:09-07:00", "msg": "Add property for JNDI DataSource lookup\n\nAdd `spring.datasource.jndi-name` property to allow a DataSource to be\nlooked up from JNDI as an alternative to defining a URL connection.\n\nFixes gh-989"}

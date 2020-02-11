@@ -1,0 +1,1 @@
+{"author_date": "2016-01-18 21:17:55+01:00", "msg": "Introduce HealthIndicatorRegistry\n\nThis commit introduces HealthIndicatorRegistry which handles\nregistration of HealthIndicator instances. Registering new\nHealthIndicator instances is now possible in runtime.\n\nSee gh-4965"}

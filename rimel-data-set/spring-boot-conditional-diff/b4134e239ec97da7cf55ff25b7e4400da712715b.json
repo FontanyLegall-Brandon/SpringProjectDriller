@@ -1,0 +1,1 @@
+{"author_date": "2017-02-15 11:58:53-08:00", "msg": "Add autoconfiguration for JWKTokenStore\nIf `jwk.key-set-uri` is present.\n\nCloses gh-4437"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-04-17 23:59:36+02:00", "msg": "Added liquibase autoconfiguration for database migrations\n\nIf Liquibase is on the classpath it will fire up on startup. Various\nconfig options are available (as well as the option to disable it).\nLiquibase uses a YAML format for changes (in classpath:db/changelog)."}

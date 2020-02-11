@@ -1,0 +1,1 @@
+{"author_date": "2014-11-03 13:28:26+00:00", "msg": "Add JMX MBean for Tomcat DataSource\n\nIf the DataSource is a Tomcat one we force it to register an MBean\nif spring.jmx.enabled=true\n\nFixes gh-1590"}

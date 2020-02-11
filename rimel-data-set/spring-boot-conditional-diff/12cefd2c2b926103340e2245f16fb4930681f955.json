@@ -1,0 +1,1 @@
+{"author_date": "2015-12-28 13:49:12+01:00", "msg": "Only enable Tomcat's websocket support on Java7+\n\nTomcat's websocket support requires Java7 or later. That commit makes\nsure to register its support only when such requirement is met.\n\nCloses gh-4846"}

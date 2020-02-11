@@ -1,0 +1,1 @@
+{"author_date": "2017-06-05 11:00:14+02:00", "msg": "Revisit InfluxDB configuration structure\n\nThis commit removes the `client` namespace for InfluxDB as the\ncomponent that is created is `InfluxDB`, not `InfluxDBClient` or\nsomething.\n\nThis aligns with all the other url/user/password properties Spring\nBoot provides already\n\nSee gh-9066"}

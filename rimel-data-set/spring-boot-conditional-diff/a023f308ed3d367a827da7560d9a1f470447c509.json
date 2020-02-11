@@ -1,0 +1,1 @@
+{"author_date": "2019-07-08 14:36:19+01:00", "msg": "Make JDBC-based batch configurer back off without a DataSource\n\nCloses gh-17449"}

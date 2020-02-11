@@ -1,0 +1,1 @@
+{"author_date": "2014-01-09 17:52:55+01:00", "msg": "Migrate JolokiaAutoConfiguration to use ConfigurationProperties instead of accessing the environment directly to obtain configuration properties"}

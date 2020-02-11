@@ -1,0 +1,1 @@
+{"author_date": "2018-10-05 13:05:14+01:00", "msg": "Make JSON-B auto-config back of if no JSON-P implementation is available\n\nCloses gh-14675"}

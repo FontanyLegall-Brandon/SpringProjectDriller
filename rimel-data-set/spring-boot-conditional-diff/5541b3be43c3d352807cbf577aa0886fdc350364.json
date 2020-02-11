@@ -1,0 +1,1 @@
+{"author_date": "2015-07-01 09:06:54+01:00", "msg": "Remove @OnManagementMvcCondition and use a private class\n\nFixes gh-3373"}

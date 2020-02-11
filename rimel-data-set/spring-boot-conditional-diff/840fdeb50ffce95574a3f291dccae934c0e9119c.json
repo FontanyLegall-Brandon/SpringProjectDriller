@@ -1,0 +1,1 @@
+{"author_date": "2013-08-14 17:08:09-07:00", "msg": "Create common SpringBootCondition base class\n\nCreate a new SpringBootCondition that will log why a condition has\nor has not been applied. The removes the need for ConditionLogUtils\nand simplifies many of the existing condition implementations.\n\nIssue: #55203236"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-05-04 10:52:09+02:00", "msg": "Add specifying (fixed) date format via application properties\n\nFixes gh-778, Fixes gh-755"}

@@ -1,0 +1,1 @@
+{"author_date": "2016-04-18 13:35:39+02:00", "msg": "Polish spring session auto-configuration\n\nThis commit improves the initial submission by adding more tests and\nmore configuration options.\n\nCloses gh-5158"}

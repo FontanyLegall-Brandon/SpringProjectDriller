@@ -1,0 +1,1 @@
+{"author_date": "2018-02-28 11:45:49-05:00", "msg": "Remove redundant auto-configuration of SI Micrometer metrics\n\nSpring Integration no longer requires a `MicrometerMetricsFactory` to\nsupport Micrometer metrics so there's nothing for Boot to\nauto-configure.\n\nSee gh-12287"}

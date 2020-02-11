@@ -1,0 +1,1 @@
+{"author_date": "2013-05-01 08:36:33+01:00", "msg": "[bs-83] Rename \"container\" -> \"server\"\n\n* Also extracted ManagementServerProperties into a separate\nbean\n* TraceRepository was still causing problems during startup,\nfixed that\n* Allow management endpoints to be switched off with port=0\n\n[Fixes #49046013]"}

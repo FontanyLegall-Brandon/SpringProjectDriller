@@ -1,0 +1,1 @@
+{"author_date": "2013-04-26 07:01:37+01:00", "msg": "[bs-72], [bs-75] Add Batch plugin features\n\n* Auto config in main bootstrap jar\n* Compiler enhancements in groovy cli\n* Sample script in cli samples\n\n[Fixes #48716881], [Fixes #48788313]"}

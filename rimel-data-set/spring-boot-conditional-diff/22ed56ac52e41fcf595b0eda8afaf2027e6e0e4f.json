@@ -1,0 +1,1 @@
+{"author_date": "2019-10-01 13:22:25-07:00", "msg": "Add auto-config for Spring Security's SAML support\n\nCloses gh-18260\n\nCo-authored-by: Phillip Webb <pwebb@pivotal.io>"}

@@ -1,0 +1,1 @@
+{"author_date": "2013-05-31 13:58:04+01:00", "msg": "[bs-143] Add LiveBeansView to Actuator app on /beans\n\nAs per standard LiveBeansView features, if spring.liveBeansView.mbeanDomain\nis set in the Environment, then all application contexts are displayed,\notherwise only the local one.  Only JSON is served (via produces=).\n\n[Fixes #50879457]"}

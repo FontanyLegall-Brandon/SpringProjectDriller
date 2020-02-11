@@ -1,0 +1,1 @@
+{"author_date": "2017-08-28 10:18:19+02:00", "msg": "Disable Jolokia by default\n\nTo be consistent with Actuator web endpoints, Jolokia is now disabled\nby default.\n\nCloses gh-10090"}

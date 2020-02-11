@@ -1,0 +1,1 @@
+{"author_date": "2017-02-22 17:13:07+01:00", "msg": "Add support for reactive web servers auto-configuration\n\nThis commit adds the auto-configuration for creating reactive\n`EmbeddedWebServer` instances. This adds support for the\nfollowing servers: Reactor Netty, Tomcat, Jetty and Undertow.\n\nFixes gh-8302\nFixes gh-8117"}

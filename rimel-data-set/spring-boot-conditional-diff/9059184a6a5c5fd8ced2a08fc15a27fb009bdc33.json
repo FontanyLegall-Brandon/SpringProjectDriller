@@ -1,0 +1,1 @@
+{"author_date": "2016-05-02 14:12:18+02:00", "msg": "Clarify commons-pool2 requirement for redis\n\n`JedisConnectionFactory` needs `commons-pool2` for quite some time now\nand our auto-configuration had a special case to handle redis if\n`commons-pool2` isn't available.\n\nThis commit removes that code as using it would lead to a failure anyway.\n\nCloses gh-5718"}

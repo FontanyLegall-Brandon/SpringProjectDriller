@@ -1,0 +1,1 @@
+{"author_date": "2018-08-17 15:08:55+02:00", "msg": "Remove Narayana support\n\nThe Spring Boot integration is now handled by the Narayana project\nitself at https://github.com/snowdrop/narayana-spring-boot\n\nThis commit removes our support.\n\nCloses gh-12026"}

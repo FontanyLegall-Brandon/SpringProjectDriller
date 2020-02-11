@@ -1,0 +1,1 @@
+{"author_date": "2016-11-29 15:50:02-08:00", "msg": "Use empty message for Non-Spring Boot Condition\n\nUpdate `AbstractNestedCondition` to use an empty message for non\nSpring Boot nested conditions.\n\nFixes gh-7519\nCloses gh-7529"}

@@ -1,0 +1,1 @@
+{"author_date": "2018-04-02 12:57:28-07:00", "msg": "Fix conditions report message for same short name\n\nIf two auto-configuration classes with the same name are present,\nthe conditions report message now uses the fully qualified name for\nboth instead of the short name.\n\nFixes gh-11710"}

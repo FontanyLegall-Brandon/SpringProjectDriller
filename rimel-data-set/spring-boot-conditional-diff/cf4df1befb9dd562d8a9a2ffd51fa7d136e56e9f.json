@@ -1,0 +1,1 @@
+{"author_date": "2014-02-05 12:20:23+01:00", "msg": "Improve Mongo auto-configuration\n\nDisable Mongo auto-configuation when @EnableMongoRepositories is used\nand adapt the test helper classes accordingly.\n\nChange the property prefix and dependency management version property\nfrom `...mongo` to `...mongodb` for consistency with Spring Data.\n\nFixes gh-315"}

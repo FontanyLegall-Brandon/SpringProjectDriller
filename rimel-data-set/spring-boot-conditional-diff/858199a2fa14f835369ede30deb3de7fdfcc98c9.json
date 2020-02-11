@@ -1,0 +1,1 @@
+{"author_date": "2019-07-28 09:59:19+02:00", "msg": "Only configure Spring Data jdbc if a transaction manager is present\n\nThis commit adds an extra condition to JdbcRepositoriesAutoConfiguration\nso that it doesn't scan for repositories if a transaction manager is not\navailable as this dependency is now mandatory.\n\nCloses gh-17654"}

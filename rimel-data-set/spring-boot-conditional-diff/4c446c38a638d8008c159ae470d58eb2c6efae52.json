@@ -1,0 +1,1 @@
+{"author_date": "2019-08-25 18:32:16-07:00", "msg": "Only add management error page for Spring MVC\n\nMove management `ErrorPage` registration from the\n`WebMvcEndpointChildContextConfiguration` to\n`WebMvcEndpointChildContextConfiguration` and only add it when the\nerror controller is registered.\n\nFixes gh-17938"}

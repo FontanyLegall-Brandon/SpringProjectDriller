@@ -1,0 +1,1 @@
+{"author_date": "2014-04-19 16:48:56+02:00", "msg": "Add fixedlocaleresolver based on application property\n\nIf the user sets spring.mvc.locale and doesn't provide a @Bean\nof type LocaleResolver then a FixedLocaleResolver will be provided.\n\nFixes gh-697, fixes gh-669"}

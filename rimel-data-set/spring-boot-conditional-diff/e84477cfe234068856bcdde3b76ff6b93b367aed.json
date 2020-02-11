@@ -1,0 +1,1 @@
+{"author_date": "2019-07-17 09:04:17+01:00", "msg": "Only perform Quartz DataSource init when using JDBC store\n\nFixes gh-17545"}

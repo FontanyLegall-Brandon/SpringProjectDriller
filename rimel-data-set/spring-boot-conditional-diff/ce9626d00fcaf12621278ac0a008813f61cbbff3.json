@@ -1,0 +1,1 @@
+{"author_date": "2019-03-05 15:30:19+01:00", "msg": "Disable JMX by default\n\nThis commit switches the default value for the `spring.jmx.enabled`\nconfiguration property.\nJMX is now disabled by default and can be enabled with\n`spring.jmx.enabled=true`.\n\nCloses gh-16090"}

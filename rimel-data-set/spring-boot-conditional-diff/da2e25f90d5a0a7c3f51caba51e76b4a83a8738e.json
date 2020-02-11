@@ -1,0 +1,1 @@
+{"author_date": "2014-05-15 12:33:05+01:00", "msg": "Add Groovy template engine support for Spring MVC apps\n\nDefault suffix .tpl. If groovy-templates is on the classpath user\ncan now add templates and get them rendered and resolved in an MVC\napp.\n\nTODO: Macro helpers for message rendering etc.\n\nSee gh-878"}

@@ -1,0 +1,1 @@
+{"author_date": "2017-10-30 12:39:42+01:00", "msg": "Add auto-configuration for DataSources\n\nThis commit automatically instruments all available data sources with\na configurable metric name. The instrumentation can be disabled in case\nmore control is needed.\n\nCloses gh-10295"}

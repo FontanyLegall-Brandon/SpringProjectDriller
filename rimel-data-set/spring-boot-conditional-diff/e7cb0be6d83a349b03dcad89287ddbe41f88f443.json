@@ -1,0 +1,1 @@
+{"author_date": "2017-10-29 16:52:11+01:00", "msg": "Adapt to Spring Security change\n\nThis commit updates `WebFluxSecurityConfiguration` to look for a\n`WebFilterChainProxy` rather than the default configuration that\n`@EnableWebFluxSecurity` triggers. The latter is now package private."}

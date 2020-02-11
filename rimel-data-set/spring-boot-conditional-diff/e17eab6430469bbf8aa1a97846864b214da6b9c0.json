@@ -1,0 +1,1 @@
+{"author_date": "2015-10-06 09:31:47+01:00", "msg": "Add placeholder resolution to OnResourceCondition\n\nUsers can write @ConditionalOnResource(\"${path.to.file}\") and\nplaceholders are resolved from the environment."}

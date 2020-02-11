@@ -1,0 +1,1 @@
+{"author_date": "2016-04-15 18:10:58+02:00", "msg": "Move `shell.*` to `management.shell.*`\n\nThis commit moves the `shell` namespace to `management.shell`\n\nCloses gh-5703"}

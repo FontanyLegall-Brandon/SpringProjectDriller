@@ -1,0 +1,1 @@
+{"author_date": "2014-06-06 23:12:41-05:00", "msg": "Add ProviderSignInController for Spring Social\n\nUpdate SocialWebAutoConfiguration to add a ProviderSignInController.\nAlso fix default UserIdSource.\n\nFixes gh-1050"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-11-20 17:21:25-08:00", "msg": "Only use Gson if Jackson is missing\n\nUpdate HttpMessageConvertersAutoConfiguration to only register Gson\nsupport when Jackson is not on the classpath.\n\nFixes gh-1967"}

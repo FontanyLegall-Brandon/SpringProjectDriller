@@ -1,0 +1,1 @@
+{"author_date": "2014-09-28 21:11:57+02:00", "msg": "Expose RichGauges in MetricsEndpoint via PublicMetrics\n\nFixes gh-1635"}

@@ -1,0 +1,1 @@
+{"author_date": "2016-07-26 19:44:47-07:00", "msg": "Allow JSON Testers to be `@Autowired`\n\nSwitch `@AutoConfigureJsonTesters` to use regular `@Autowired` injection\nfor JSON testers. Prior to this commit JSON Tester fields were\ninitialized directly which caused IDE issues and was also a little\nconfusing.\n\nFixes gh-6451"}

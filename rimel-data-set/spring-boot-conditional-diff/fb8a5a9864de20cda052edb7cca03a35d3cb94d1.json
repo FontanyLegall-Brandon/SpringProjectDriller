@@ -1,0 +1,1 @@
+{"author_date": "2018-04-30 16:33:39+02:00", "msg": "Polish \"Add cache actuator endpoint\"\n\nThis commit improves the initial proposal by providing a by name read\noperation that returns the detail of a particular cache. It also adds\nmore tests and complete API documentation for the feature.\n\nCloses gh-12216"}

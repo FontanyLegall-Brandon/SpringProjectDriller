@@ -1,0 +1,1 @@
+{"author_date": "2017-09-05 11:51:11+02:00", "msg": "Add \"onClass\" condition on web server auto-configurations\n\nThis commit adds new Conditional annotations on auto-configurations\ncreating the Servlet/Reactive web servers. These conditions only depend\non request primitives used by the servers themselves and aren't\nframework specific.\n\nCloses gh-10163"}

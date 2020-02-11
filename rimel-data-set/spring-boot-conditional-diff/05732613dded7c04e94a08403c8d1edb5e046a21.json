@@ -1,0 +1,1 @@
+{"author_date": "2016-11-01 14:18:33+00:00", "msg": "Update ConditionalOnJava and its usage now that Boot requires Java 8\n\nCloses gh-6982"}

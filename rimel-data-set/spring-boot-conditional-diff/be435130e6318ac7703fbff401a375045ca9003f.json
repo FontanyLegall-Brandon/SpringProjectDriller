@@ -1,0 +1,1 @@
+{"author_date": "2019-05-25 15:42:42+03:00", "msg": "Fix Spring Data Cassandra auto-configure condition\n\nUpdate `CassandraDataAutoConfiguration` do that it's only applied when\na `Cluster` bean is found.\n\nFixes gh-16971"}

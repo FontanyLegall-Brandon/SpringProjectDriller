@@ -1,0 +1,1 @@
+{"author_date": "2019-05-27 15:19:22+02:00", "msg": "Avoid codec auto-configuration when WebFlux is not present\n\nThis commit prevents the `CodecsAutoConfiguration` from being processed\nif spring-webflux is not on classpath, since it is only useful for the\nWebFlux server infrastructure or `WebClient`.\n\nCloses gh-15690"}

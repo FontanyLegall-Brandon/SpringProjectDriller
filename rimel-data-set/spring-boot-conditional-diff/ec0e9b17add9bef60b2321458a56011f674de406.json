@@ -1,0 +1,1 @@
+{"author_date": "2013-04-30 17:36:55+01:00", "msg": "More ordering issues in service apps\n\n* The TraceAutoConfiguration in the service project\nwas loading too early because it contains a BPP\n* It also had a Spring Security dependency without any\n@Conditional* configuration\n* Fixed by nesting the BPP in a class with @Conditional*"}

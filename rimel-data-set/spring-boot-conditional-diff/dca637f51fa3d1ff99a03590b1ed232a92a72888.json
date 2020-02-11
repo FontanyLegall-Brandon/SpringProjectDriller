@@ -1,0 +1,1 @@
+{"author_date": "2014-10-10 11:12:04-07:00", "msg": "Replace @ConditionalOnExpression with OnProperty\n\nReplace where possible all @ConditionalOnExpression annotations with\n@ConditionalOnProperty which is both faster to run and more descriptive.\n\nFixes gh-1685"}

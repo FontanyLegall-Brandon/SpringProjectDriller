@@ -1,0 +1,1 @@
+{"author_date": "2015-05-12 18:01:34+01:00", "msg": "Extract metric export into a separate autoconfig class\n\nThis avoids a potential problems with ordering between Dropwizard and\nnormal repository configuration. A Dropwizard sample has been added to\nverify the behaviour."}

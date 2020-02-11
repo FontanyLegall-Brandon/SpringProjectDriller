@@ -1,0 +1,1 @@
+{"author_date": "2017-09-27 11:45:50+02:00", "msg": "Fix status handling of /application/env/{propertyName}\n\nThis commit makes sure to return a 404 status if the env endpoint is\ninvoked with a property that does not exist in the environment.\n\nCloses gh-10179"}

@@ -1,0 +1,1 @@
+{"author_date": "2017-04-10 21:01:13-05:00", "msg": "Add Jsonb support\n\nSpring Framework 5 will support Jsonb as a HttpMessageConverter, this\ncommit adds auto-configuration support. Also, support for Jsonb in the\n@JsonTest has been added.\n\nThis implementation is running against Apache Johnzon\n\nSee gh-9648"}

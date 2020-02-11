@@ -1,0 +1,1 @@
+{"author_date": "2017-09-27 15:33:26-07:00", "msg": "Simplify AuthenticationManagerConfiguration\n\nSimplify `AuthenticationManagerConfiguration` following the recent\nSpring Security auto-configuration updates.\n\nSee gh-7958"}

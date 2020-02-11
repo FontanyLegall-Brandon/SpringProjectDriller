@@ -1,0 +1,1 @@
+{"author_date": "2013-10-07 17:25:13-04:00", "msg": "Make default proxyTargetClass=false\n\nIf the default is true JPA repositories all have to have\ndefault constructors etc."}

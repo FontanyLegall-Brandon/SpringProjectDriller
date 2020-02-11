@@ -1,0 +1,1 @@
+{"author_date": "2019-09-23 16:50:13-07:00", "msg": "Restore HealthIndicatorRegistry beans\n\nRestore `HealthIndicatorRegistry` and `ReactiveHealthIndicatorRegistry`\nauto-configured beans with a version that adapts to the new contributor\ninterfaces.\n\nCloses gh-16903"}

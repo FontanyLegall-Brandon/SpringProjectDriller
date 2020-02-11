@@ -1,0 +1,1 @@
+{"author_date": "2014-09-03 18:35:45-07:00", "msg": "Allow custom JNDI ConnectionFactory lookup\n\nAdd a `spring.jms.jndi-name` property to allow a JMS ConnectionFactory\nto be obtained from a custom JNDI location.\n\nFixes gh-1471"}

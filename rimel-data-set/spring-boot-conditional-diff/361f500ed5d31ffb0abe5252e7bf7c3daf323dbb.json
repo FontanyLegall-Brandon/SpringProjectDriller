@@ -1,0 +1,1 @@
+{"author_date": "2013-04-30 10:17:39+01:00", "msg": "[bs-28] Add /shutdown endpoint to service apps\n\nDisabled by default use container.allow_shutdown=true to switch\nit on.  Then POST to /shutdown to shut down the app.\n\n[#48059059]"}

@@ -1,0 +1,1 @@
+{"author_date": "2018-02-23 13:57:02+01:00", "msg": "Fix usage of management.server.add-application-context-header\n\nCloses gh-12190"}

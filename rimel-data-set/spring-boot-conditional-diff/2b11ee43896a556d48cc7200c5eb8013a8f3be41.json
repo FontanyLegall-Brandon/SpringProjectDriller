@@ -1,0 +1,1 @@
+{"author_date": "2018-10-13 11:30:57+01:00", "msg": "Auto-configure binding of Micrometer's JettyServerThreadPoolMetrics\n\nCloses gh-14591"}

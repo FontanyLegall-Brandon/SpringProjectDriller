@@ -1,0 +1,1 @@
+{"author_date": "2014-11-06 20:55:04-08:00", "msg": "Default spring.datasource.jmx-enabled to false\n\nChange the default value of spring.datasource.jmx-enabled to false\nto prevent InstanceAlreadyExistsException problems when using the\nSpring Test Framework.\n\nFixes gh-1590"}

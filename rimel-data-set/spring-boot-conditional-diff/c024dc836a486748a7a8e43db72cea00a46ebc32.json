@@ -1,0 +1,1 @@
+{"author_date": "2016-06-28 16:16:34+02:00", "msg": "Support Spring Mobile for all template engines\n\nPreviously, Spring Mobile was only supported for Thymeleaf and JSPs. This\ncommit improves the auto-configuration to also provide device delegating\nsupport for Freemarker, Groovy Templates and Mustache.\n\nCloses gh-5140"}

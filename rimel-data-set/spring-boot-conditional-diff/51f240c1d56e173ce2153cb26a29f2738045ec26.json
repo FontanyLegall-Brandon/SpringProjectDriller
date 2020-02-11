@@ -1,0 +1,1 @@
+{"author_date": "2013-11-06 12:45:49+00:00", "msg": "Jpa auto configuration updates for new Spring Data release\n\nUser now gets @EnableSpringDataWebSupport for free in any\nautoconfigured JPA webapp.\n\n[Fixes #53028329] [bs-216]"}

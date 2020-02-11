@@ -1,0 +1,1 @@
+{"author_date": "2015-01-06 20:10:48+01:00", "msg": "Add /logfile MVC actuator endpoint\n\nAdd a `/logfile` endpoint which can be used to fetch the contents of\nthe log file (if one is being used).\n\nFixes gh-2137\nCloses gh-2294"}

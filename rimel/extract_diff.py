@@ -23,13 +23,12 @@ def extract_diff(repo, out_folder, regexpr):
                 # Catch only commit where @conditional is in diff
                 if len(matches) > 0:
                     print("FOUND {} in {}".format(matches, commit.hash))
-                    f = open(out_folder + "/{}_commit_info.json".format(commit.hash), 'w')
 
-                    print(json.dumps(m.__dict__,  default=lambda o: '<not serializable>'), file=f)
-                    f.close()
-                    f = open(out_folder + "/{}.txt".format(commit.hash), 'w')
-                    print(code, file=f)
-                    f.close()
+                    with open(out_folder + "/{}.json".format(commit.hash), 'w') as f1 :
+                        f1.write(str(json.dumps({"author_date": str(commit.author_date), "msg": str(commit.msg)})))
+
+                    with open(out_folder + "/{}.txt".format(commit.hash), 'w') as f :
+                        print(code, file=f)
 
         except TypeError:
             # print("WARNING cannot analyse commit : ", commit.hash)

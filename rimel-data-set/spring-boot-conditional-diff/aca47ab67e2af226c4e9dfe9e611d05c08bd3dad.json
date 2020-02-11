@@ -1,0 +1,1 @@
+{"author_date": "2015-02-04 17:58:17+00:00", "msg": "Allow FaviconConfiguration to be disabled\n\nSetting spring.favicon.enabled to false will now disable the\n/**/favicon.ico handler mapping.\n\nCloses gh-2377"}

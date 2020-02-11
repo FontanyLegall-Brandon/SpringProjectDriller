@@ -1,0 +1,1 @@
+{"author_date": "2017-02-07 12:03:27+01:00", "msg": "Restore couchbase support\n\nThis commit effectively reverts the changes that were applied to\nworkaround the breakage in spring-data-couchbase.\n\nCloses gh-8200"}

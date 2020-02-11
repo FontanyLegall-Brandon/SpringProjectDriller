@@ -1,0 +1,1 @@
+{"author_date": "2018-09-08 16:52:07+02:00", "msg": "Add Prometheus push gateway support\n\nAdd support for Prometheus push gateway so that short lived processes\n(for example batch jobs) can still submit metrics to Prometheus.\n\nCloses gh-14353"}

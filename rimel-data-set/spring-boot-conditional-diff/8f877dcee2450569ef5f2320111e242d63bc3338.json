@@ -1,0 +1,1 @@
+{"author_date": "2017-07-24 10:42:40+01:00", "msg": "Disable auto-config of Narayana's JMS support when JMS module absent\n\nCloses gh-9844"}

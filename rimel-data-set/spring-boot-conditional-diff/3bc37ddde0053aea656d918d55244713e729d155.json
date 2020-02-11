@@ -1,0 +1,1 @@
+{"author_date": "2014-03-04 15:50:59+00:00", "msg": "Strip out most of websocket autoconfig\n\n... leaving only the embedded Tomcat enabling feature (registering\nthe WsSci).\n\nFixes part of gh-65"}

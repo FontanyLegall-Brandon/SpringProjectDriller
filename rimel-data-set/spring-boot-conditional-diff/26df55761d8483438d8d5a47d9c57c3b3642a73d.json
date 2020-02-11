@@ -1,0 +1,1 @@
+{"author_date": "2019-05-20 13:52:59+02:00", "msg": "Merge enablement and exposure conditions for Actuator endpoints\n\nThis commit merges the conditions for determining if an endpoint is\navailable in a single condition, deprecating\n`ConditionalOnEnabledEndpoint` in the process.\n\nCloses gh-16169"}

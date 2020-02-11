@@ -1,0 +1,1 @@
+{"author_date": "2015-10-05 11:41:23+01:00", "msg": "Only try to auto-configure Jetty when jetty-webapp is on the classpath\n\nCloses gh-4089"}

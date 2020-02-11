@@ -1,0 +1,1 @@
+{"author_date": "2018-06-19 19:58:48+02:00", "msg": "Fix conditions for CachingConnectionFactory support\n\nCloses gh-12161"}

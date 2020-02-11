@@ -1,0 +1,1 @@
+{"author_date": "2014-11-20 14:47:40-08:00", "msg": "Improve MongoDataAutoConfiguration\n\nUpdate MongoDataAutoConfiguration to provide easier configuration of\nCustomConversions, the MappingMongoConverter, MongoMappingContext\nand an authentication database.\n\nFixes gh-1619\nFixes gh-1730"}

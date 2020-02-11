@@ -1,0 +1,1 @@
+{"author_date": "2013-06-20 14:32:49-04:00", "msg": "Add MultipartAutoConfigure to spring.factories\n\nUpdate META-INF/spring.factories to include MultipartAutoConfigure.\nAlso tweaked the class @Conditionals and Javadoc.\n\nIssue: BS-157"}

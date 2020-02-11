@@ -1,0 +1,1 @@
+{"author_date": "2014-05-02 12:25:30+01:00", "msg": "Restore freeMarkerConfiguration for web\n\nRestore `freemarker.template.Configuration` bean for the\nFreeMarkerWebConfiguration. The @Bean method no longer uses a\n@Condition since `FreeMarkerConfig` must already exist."}

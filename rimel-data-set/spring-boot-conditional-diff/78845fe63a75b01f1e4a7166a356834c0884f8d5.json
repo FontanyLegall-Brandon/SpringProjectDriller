@@ -1,0 +1,1 @@
+{"author_date": "2017-04-04 17:27:00+03:00", "msg": "Switch default value of spring.aop.proxy-target-class\n\nThis commit ensures that the default proxying value matches the opinion we\nhave applied for `@EnableTransactionManagement`\n\nCloses gh-8786"}

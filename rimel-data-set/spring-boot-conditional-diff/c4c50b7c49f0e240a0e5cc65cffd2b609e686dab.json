@@ -1,0 +1,1 @@
+{"author_date": "2018-02-28 17:18:32+00:00", "msg": "Only auto-configure LogbackMetrics when Logback is actually being used\n\nCloses gh-12286"}

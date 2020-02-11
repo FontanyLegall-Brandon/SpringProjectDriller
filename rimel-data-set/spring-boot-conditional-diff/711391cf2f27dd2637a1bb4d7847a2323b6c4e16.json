@@ -1,0 +1,1 @@
+{"author_date": "2020-01-14 10:45:31+01:00", "msg": "Move spring.http.* config properties namespace\n\nCloses gh-18827"}

@@ -1,0 +1,1 @@
+{"author_date": "2018-06-18 17:54:10+02:00", "msg": "Add missing `@ConditionalOnClass` check on RedisCacheConfiguration\n\nCloses gh-13508"}

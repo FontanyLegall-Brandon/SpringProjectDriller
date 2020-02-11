@@ -1,0 +1,1 @@
+{"author_date": "2019-07-20 13:36:56+01:00", "msg": "Polish OnBeanCondition\n\nPolish `OnBeanCondition` and make it easier to remove `BeanTypeRegistry`\nin the future.\n\nSee gh-17594"}

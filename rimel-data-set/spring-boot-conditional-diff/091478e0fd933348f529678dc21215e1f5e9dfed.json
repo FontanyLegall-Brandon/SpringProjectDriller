@@ -1,0 +1,1 @@
+{"author_date": "2015-11-26 16:15:29+01:00", "msg": "Disable ehcache statistics if necessary\n\n`EhCacheStatisticsProvider` uses the `StatisticsGateway` API introduced\nin ehcache 2.7 (march 2013). If an older ehcache version is present, we\nshould back-off as this class is not available.\n\nCloses gh-4621"}

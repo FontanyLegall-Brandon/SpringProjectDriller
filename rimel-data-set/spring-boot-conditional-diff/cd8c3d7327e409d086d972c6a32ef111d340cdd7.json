@@ -1,0 +1,1 @@
+{"author_date": "2015-03-08 20:21:13+01:00", "msg": "Add mail health check\n\nDefine an additional health indicator for each JavaMailSenderImpl\ninstance in the context.\n\nCloses gh-2017 and gh-2617"}

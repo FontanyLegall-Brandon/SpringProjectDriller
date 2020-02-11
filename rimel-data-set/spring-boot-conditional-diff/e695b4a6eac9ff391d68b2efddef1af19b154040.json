@@ -1,0 +1,1 @@
+{"author_date": "2013-07-24 16:58:50-07:00", "msg": "Use Registrar to register BeanPostProcessors\n\nUse a ImportBeanDefinitionRegistrar to register BeanPostProcessors\nrather than using @Bean definitions. Prevents warnings about\nbeans not having all BeanPostProcessors applied."}

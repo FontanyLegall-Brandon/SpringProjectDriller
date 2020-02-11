@@ -1,0 +1,1 @@
+{"author_date": "2018-05-02 10:35:17+02:00", "msg": "Guard IntegrationJmxConfiguration if no mBeanServer is available\n\nCloses gh-12966"}

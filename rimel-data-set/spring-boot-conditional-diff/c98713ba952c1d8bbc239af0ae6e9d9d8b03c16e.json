@@ -1,0 +1,1 @@
+{"author_date": "2014-08-25 14:01:13-07:00", "msg": "Inject PlatformTransactionManager bean for JMS\n\nUpdate JmsAutoConfiguration to inject any PlatformTransactionManager\nbean into the DefaultJmsListenerContainerFactory.\n\nFixes gh-1444"}

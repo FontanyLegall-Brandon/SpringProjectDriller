@@ -1,0 +1,1 @@
+{"author_date": "2019-07-29 09:27:10+02:00", "msg": "Refine back-off strategy of Neo4j SessionFactory\n\nThis commit separates the auto-configuration of the `SessionFactory` in\nan isolated class so that the rest of the auto-configuration is still\napplied if the user provides a custom `SessionFactory` bean.\n\nSee gh-17662"}

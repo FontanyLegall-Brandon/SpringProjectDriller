@@ -1,0 +1,1 @@
+{"author_date": "2013-12-09 09:48:40+00:00", "msg": "Change @Conditional for existing security configuration\n\nFixed by using `WebSecurityConfiguration` to detect existing\nsecurity configuration (not the annotation).\n\nFixes gh-151"}

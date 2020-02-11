@@ -1,0 +1,1 @@
+{"author_date": "2013-07-29 10:56:42+01:00", "msg": "Two choices are available to users for welcome page\n\n* For a jar deployment add classpath:static/index.html\n(works via Spring MVC mapping)\n* For a war the same thing works, but so does adding\nindex.html to src/main/webapp (works via container\ndefault servlet)\n\n[Fixes #54092261] [bs-252]"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-03-22 14:44:30+00:00", "msg": "Allow user to opt out of ContentNegotiatingViewResolver\n\nThe bean ID for the ContentNegotiatingViewResolver is now\n\"viewResolver\" (it is the *one*). The conditions have been changed\nso that a user only has to define a bean of the same name to switch\nit off.\n\nFixes gh-546"}

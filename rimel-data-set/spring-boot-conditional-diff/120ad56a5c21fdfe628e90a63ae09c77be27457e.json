@@ -1,0 +1,1 @@
+{"author_date": "2014-07-17 11:50:13+02:00", "msg": "Replace @ConditionalOnExpression\n\nThis commit replaces @ConditionalOnExpression instances that are\nchecking for a specific value to @ConditionalOnPropertyValue"}

@@ -1,0 +1,1 @@
+{"author_date": "2016-01-20 18:18:38+01:00", "msg": "Use ConditionalOnSingleCandidate when appropriate\n\nThis commit updates various auto-configuration to use\n`@ConditionalOnSingleCandidate` rather than assuming that at most one\nbean of a given type will be available.\n\nCloses gh-2784"}

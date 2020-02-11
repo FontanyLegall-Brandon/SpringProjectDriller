@@ -1,0 +1,1 @@
+{"author_date": "2019-03-28 00:08:22+01:00", "msg": "Add missing class condition on thymeleaf-spring5\n\nThis commit adds an extra check for the presence of thymeleaf-spring5\nlibrary on the classpath. ThymeleafAutoConfiguration is now only\nconsidered if both thymeleaf-spring5 and thymeleaf jars are present.\n\nCloses gh-16341"}

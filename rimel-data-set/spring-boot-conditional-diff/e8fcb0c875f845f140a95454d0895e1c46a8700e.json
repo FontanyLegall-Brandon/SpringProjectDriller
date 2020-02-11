@@ -1,0 +1,1 @@
+{"author_date": "2014-06-10 17:37:42+01:00", "msg": "Use classname instead of value in @ConditionalOnMissingClass\n\nSee gh-1065"}

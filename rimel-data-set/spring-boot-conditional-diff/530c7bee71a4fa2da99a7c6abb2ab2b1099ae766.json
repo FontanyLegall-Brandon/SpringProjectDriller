@@ -1,0 +1,1 @@
+{"author_date": "2019-01-18 14:57:14-05:00", "msg": "Do not auto-configure HttpMessageConverters in reactive web apps\n\nCloses gh-15712"}

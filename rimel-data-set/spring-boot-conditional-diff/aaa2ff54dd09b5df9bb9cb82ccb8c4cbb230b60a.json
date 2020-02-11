@@ -1,0 +1,1 @@
+{"author_date": "2015-06-02 11:06:50-07:00", "msg": "Extract @ConditionalOnEnabledEndpoint\n\nExtract @ConditionalOnEnabledEndpoint to a top level class.\n\nSee gh-2798"}

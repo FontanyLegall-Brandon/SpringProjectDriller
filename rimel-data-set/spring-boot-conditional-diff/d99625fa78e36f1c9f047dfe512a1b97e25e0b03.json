@@ -1,0 +1,1 @@
+{"author_date": "2017-11-22 13:12:25-08:00", "msg": "Rename properties that have `-` in their prefix\n\nRename `reactive-repositories` to `reactiverepositories` and replace\n`spring.resources.cache-control` with `spring.resources.cache.control`.\n\nFixes gh-11090"}

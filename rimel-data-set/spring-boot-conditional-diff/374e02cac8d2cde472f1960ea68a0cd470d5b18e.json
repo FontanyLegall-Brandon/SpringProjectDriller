@@ -1,0 +1,1 @@
+{"author_date": "2019-06-21 15:22:28+02:00", "msg": "Simplify HibernateJpaAutoConfiguration classes check\n\nThis commit removes the now outdated `HibernateEntityManagerCondition`\nin favour of a simple check of `SessionImplementor`. As of\nHibernate 5.2, a single `hibernate-core` jar is required so a single\nclass check is enough.\n\nCloses gh-17288"}

@@ -1,0 +1,1 @@
+{"author_date": "2013-12-18 22:32:39-08:00", "msg": "Disable jmx by default\n\nChange JmxAutoConfiguration so that by default JMX exposure is not\nenabled. This matches the Javdoc text."}

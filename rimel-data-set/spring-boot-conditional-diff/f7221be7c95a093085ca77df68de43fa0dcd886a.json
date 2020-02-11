@@ -1,0 +1,1 @@
+{"author_date": "2015-02-25 11:36:28-08:00", "msg": "Rename spring.favicon.enabled property\n\nRename `spring.favicon.enabled` to `spring.mvc.favicon.enabled`.\n\nSee gh-2377"}

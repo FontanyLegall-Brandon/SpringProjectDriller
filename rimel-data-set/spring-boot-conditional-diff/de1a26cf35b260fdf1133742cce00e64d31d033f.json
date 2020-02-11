@@ -1,0 +1,1 @@
+{"author_date": "2020-02-03 14:02:39-06:00", "msg": "Revert \"Remove deprecated HealthIndicator and HealthAggregator 2.2 code\"\n\nThis reverts commit df1837a16bc39a9314e34e5e89c76e1ddf56372c."}

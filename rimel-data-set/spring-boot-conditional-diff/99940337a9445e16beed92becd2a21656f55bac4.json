@@ -1,0 +1,1 @@
+{"author_date": "2014-06-01 12:32:46+01:00", "msg": "Add support for Elasticsearch\n\nAdd auto-configuration and starters for Elasticsearch.\n\nFixes gh-408"}

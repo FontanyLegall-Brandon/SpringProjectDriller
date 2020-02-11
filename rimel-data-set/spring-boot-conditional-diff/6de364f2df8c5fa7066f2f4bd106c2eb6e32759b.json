@@ -1,0 +1,1 @@
+{"author_date": "2017-09-11 17:54:34+02:00", "msg": "Configure SessionRepositoryFilter with a custom SessionRepository\n\nThis commit makes sure that customizations on the\nSessionRepositoryFilter are also applied when the user provides its\nown SessionRepository.\n\nCloses gh-10254"}

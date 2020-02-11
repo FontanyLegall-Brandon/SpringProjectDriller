@@ -1,0 +1,1 @@
+{"author_date": "2013-12-17 17:15:05+00:00", "msg": "Split SecurityAutoConfiguration\n\nSpring Security 3.2 has a new annotation @EnableWebMvcSecurity that we\nshould use if MVC is being used."}

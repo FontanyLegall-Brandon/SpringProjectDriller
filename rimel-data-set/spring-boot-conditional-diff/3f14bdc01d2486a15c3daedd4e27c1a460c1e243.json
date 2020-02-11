@@ -1,0 +1,1 @@
+{"author_date": "2016-07-29 14:23:12+02:00", "msg": "Add missing type condition on JdbcTemplateAutoConfiguration\n\nCloses gh-6499"}

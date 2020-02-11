@@ -1,0 +1,1 @@
+{"author_date": "2016-11-04 16:43:38-07:00", "msg": "Default `management.cloudfoundry.enabled` to true\n\nUpdate `CloudFoundryActuatorAutoConfiguration` so that it is enabled\nwhen `management.cloudfoundry.enabled` is missing.\n\nSee gh-7108"}

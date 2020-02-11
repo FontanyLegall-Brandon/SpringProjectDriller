@@ -1,0 +1,1 @@
+{"author_date": "2017-10-10 21:36:57-04:00", "msg": "Change @ConditionalOnClass from Servlet to Flux\n\nUpdate `ReactiveManagementContextAutoConfiguration` to check for a\n`Flux` class rather than `Servlet`.\n\nCloses gh-10590"}

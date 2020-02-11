@@ -1,0 +1,1 @@
+{"author_date": "2016-09-29 14:05:49+01:00", "msg": "Remove support for Velocity following its deprecation in 1.4\n\nCloses gh-6971"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-12-05 15:11:50-08:00", "msg": "Fix JmsProperties bean not found exception\n\nUpdate JndiConnectionFactoryAutoConfiguration to ensure that the\nJmsProperties bean is created. Prior to this commit deployment to\na WildFly would fail with a NoSuchBeanDefinitionException.\n\nFixes gh-2072"}

@@ -1,0 +1,1 @@
+{"author_date": "2017-04-25 09:11:14-07:00", "msg": "Refine Mustache support\n\nRefine Mustache support to provide a cleaner separation between the\nreactive and servlet implementations. The views have now moved to the\n`spring-boot` project and the auto-configuration has been split into\ntwo distinct `@Imports` to save needing full package declarations.\n\nSee gh-8941"}

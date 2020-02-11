@@ -1,0 +1,1 @@
+{"author_date": "2015-06-15 12:06:10+02:00", "msg": "Add test for CacheConfigFileCondition\n\nCacheConfigFileCondition was not properly tested, leading to various\npotential source of errors (that last one being gh-3233). This condition\nis now tested properly."}

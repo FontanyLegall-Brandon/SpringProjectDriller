@@ -1,0 +1,1 @@
+{"author_date": "2018-05-16 16:15:45+02:00", "msg": "Add support for ReactiveHealthIndicatorRegistry\n\nThis commit updates the initial proposal to add support for reactive\nuse cases as well. A reactive application can use\nReactiveHealthIndicatorRegistry as an alternative to\nHealthIndicatorRegistry.\n\nCloses gh-4965"}

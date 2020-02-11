@@ -1,0 +1,1 @@
+{"author_date": "2018-10-15 15:26:26+01:00", "msg": "Keep Liquibase-specific DataSource open for use by LiquibaseEndpoint\n\nCloses gh-13832"}

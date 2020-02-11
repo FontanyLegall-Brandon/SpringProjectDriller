@@ -1,0 +1,1 @@
+{"author_date": "2015-04-16 12:47:32-07:00", "msg": "Refactor CacheStatisticsProvider to use generics\n\nUpdate CacheStatisticsProvider to use a generic to indicate the type\nof cache supported. Also extract individual CacheStatisticsProvider\nimplementations and made statistics an auto-configuration.\n\nSee gh-2633"}

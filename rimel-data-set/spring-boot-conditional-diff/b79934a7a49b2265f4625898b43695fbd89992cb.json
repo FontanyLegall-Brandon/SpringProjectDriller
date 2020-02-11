@@ -1,0 +1,1 @@
+{"author_date": "2014-11-10 17:21:21-08:00", "msg": "Detect existing MultipartResolver beans\n\nUpdate MultipartAutoConfiguration to detect any MultipartResolver beans\nrather than just StandardServletMultipartResolvers.\n\nFixes gh-1857"}

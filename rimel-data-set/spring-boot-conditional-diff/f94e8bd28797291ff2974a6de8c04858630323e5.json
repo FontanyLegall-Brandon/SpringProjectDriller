@@ -1,0 +1,1 @@
+{"author_date": "2016-02-22 17:29:37+00:00", "msg": "Do not try to auto-configure Jolokia if Spring MVC is not on classpath\n\nThe Jolokia auto-configuration requires ServletWrappingController from\nSpring MVC to be on the classpath. This commit updates the\nauto-configuration to make it conditional on the presence of this\nclass.\n\nCloses gh-5153"}

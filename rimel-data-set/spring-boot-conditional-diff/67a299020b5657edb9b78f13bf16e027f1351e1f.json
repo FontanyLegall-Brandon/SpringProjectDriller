@@ -1,0 +1,1 @@
+{"author_date": "2018-01-16 18:24:33+00:00", "msg": "Rework mappings endpoint\n\nImprove the structure of the response and include mappings from\nWebFlux and Servlet and Filter registrations in addition to the\nmappings from Spring MVC.\n\nCloses gh-9979"}

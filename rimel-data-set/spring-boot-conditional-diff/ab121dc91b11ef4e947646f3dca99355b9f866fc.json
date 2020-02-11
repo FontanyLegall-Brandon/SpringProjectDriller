@@ -1,0 +1,1 @@
+{"author_date": "2013-05-18 16:18:34+01:00", "msg": "[bs-127] Add DataSourceTransactionManager if no others are in use\n\n* If the auto config class has a high Order it can check for\nan existing transaction manager\n* Unit tests added, and checked also witrh petclinic\n\n[Fixes #50064347]"}

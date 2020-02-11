@@ -1,0 +1,1 @@
+{"author_date": "2019-09-24 09:50:45-07:00", "msg": "Explicitly configure SecurityWebFilterChain bean for reactive oauth2 client\n\nThis will ensure that ReactiveManagementWebSecurityAutoConfiguration backs\noff and that the actuator endpoints are also secured via OAuth2.\n\nFixes gh-17949"}

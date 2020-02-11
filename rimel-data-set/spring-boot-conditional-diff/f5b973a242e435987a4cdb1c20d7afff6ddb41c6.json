@@ -1,0 +1,1 @@
+{"author_date": "2016-01-15 17:44:04+00:00", "msg": "Polish contribution\n\n - Update copyright headers\n - Use kebab-case for the property name\n - Set the header unconditionally when the filter's registered\n\nCloses gh-4320"}

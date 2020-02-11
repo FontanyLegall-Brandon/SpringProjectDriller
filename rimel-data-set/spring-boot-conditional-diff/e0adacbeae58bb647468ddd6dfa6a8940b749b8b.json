@@ -1,0 +1,1 @@
+{"author_date": "2016-07-25 16:52:51-07:00", "msg": "Add TransactionManager only on single DataSource\n\nUpdate auto-configuration logic so that a `DataSourceTransactionManager`\nis only added when there is a single candidate DataSource bean.\n\nSee gh-6449"}

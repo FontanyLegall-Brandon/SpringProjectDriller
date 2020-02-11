@@ -1,0 +1,1 @@
+{"author_date": "2015-06-01 13:23:47-07:00", "msg": "Trigger livereload on remote updates\n\nAdd livereload support to RemoteClientConfiguration which is triggered\nwhenever updates are pushed to the remote application.\n\nCloses gh-3086"}

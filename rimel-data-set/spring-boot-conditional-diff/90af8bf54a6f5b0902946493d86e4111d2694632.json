@@ -1,0 +1,1 @@
+{"author_date": "2014-11-19 14:40:05+00:00", "msg": "Add auto-configuration for Jetty 9's WebSocket support\n\nCloses gh-1269"}

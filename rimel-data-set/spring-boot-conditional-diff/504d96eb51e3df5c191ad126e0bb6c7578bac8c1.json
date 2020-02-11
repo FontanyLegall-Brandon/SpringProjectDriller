@@ -1,0 +1,1 @@
+{"author_date": "2013-05-02 15:33:35+01:00", "msg": "[bs-92] Add simple main wrapper for SpringApplication\n\n* Added Spring class\n* Used in demo project in README\n* Also fixed cycle in spring-bootstrap jar\n\n[Fixes #49121565]"}

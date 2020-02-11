@@ -1,0 +1,1 @@
+{"author_date": "2015-06-10 11:28:47+02:00", "msg": "Polish\n\nReview 105039c that still refer to \"lifecycle\" instead of \"admin\". In\nparticular, harmonized the configuration properties.\n\nCloses gh-3124"}

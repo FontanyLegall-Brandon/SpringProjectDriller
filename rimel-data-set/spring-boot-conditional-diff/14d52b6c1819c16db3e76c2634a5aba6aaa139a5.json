@@ -1,0 +1,1 @@
+{"author_date": "2014-03-12 09:19:00+00:00", "msg": "Avoid creating a new EmbeddedServletContainerFactory for websockets\n\nUser can now also switch off and customize the websockets customizer by adding\na bean named \"websocketContainerCustomizer\".\n\nFixes gh-479"}

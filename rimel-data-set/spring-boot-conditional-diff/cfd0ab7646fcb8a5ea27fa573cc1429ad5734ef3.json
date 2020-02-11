@@ -1,0 +1,1 @@
+{"author_date": "2018-08-29 15:46:03+02:00", "msg": "Remove `spring.cloud.enabled` property\n\nThis commit removes an undocumented property and rename the Spring\nCloud Service Connectors auto-configuration.\n\nCloses gh-14219"}

@@ -1,0 +1,1 @@
+{"author_date": "2014-02-18 17:34:02+00:00", "msg": "Ensure DispatcherServlet is available in a deployed WAR\n\nThe DispatcherServletAutoConfiguration had a condition on it that\nmeant it wasn't used at all if there was no EmbeddedServletContainerFactory.\nIt's amazing that any WAR ever deployed.\n\nAlso added some info logging to servlet and filter registrations."}

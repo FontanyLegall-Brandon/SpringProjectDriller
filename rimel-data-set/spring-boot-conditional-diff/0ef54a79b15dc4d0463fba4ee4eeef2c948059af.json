@@ -1,0 +1,1 @@
+{"author_date": "2018-06-06 14:44:26+02:00", "msg": "Add support for connection pooling with Artemis\n\nThis commit expands ActiveMQ's connection pooling to artemis. The same\npooling features are now shared by the two brokers and a\nPooledConnectionFactory can be auto-configured when the necessary jar is\npresent.\n\nCloses gh-13523"}

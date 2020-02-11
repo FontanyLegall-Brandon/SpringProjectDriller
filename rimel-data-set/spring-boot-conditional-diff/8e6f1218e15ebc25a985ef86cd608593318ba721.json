@@ -1,0 +1,1 @@
+{"author_date": "2017-02-07 11:55:08+01:00", "msg": "Detect Reactive web applications\n\nThis commit improves `@ConditionalOnWebApplication` to specify the\nrequested web application type. By default, any web application will\nmatch but it can also match only if a recactive (or servlet) web\napplication is present.\n\nCloses gh-8118"}

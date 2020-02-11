@@ -1,0 +1,1 @@
+{"author_date": "2018-02-12 11:43:38-08:00", "msg": "Migrate to Spring Integration Micrometer support\n\nRemove custom `SpringIntegrationMetrics` and instead provide\nauto-configuration to the direct Micrometer support added in Spring\nIntegration 5.0.2.\n\nCloses gh-11985"}

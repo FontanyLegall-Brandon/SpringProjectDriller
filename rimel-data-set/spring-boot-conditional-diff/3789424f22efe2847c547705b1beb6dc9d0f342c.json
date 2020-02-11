@@ -1,0 +1,1 @@
+{"author_date": "2013-12-17 14:22:18+00:00", "msg": "Add JodaModule bean if detected on classpath\n\nFixes gh-146"}

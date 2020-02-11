@@ -1,0 +1,1 @@
+{"author_date": "2015-02-24 13:34:45-08:00", "msg": "Relax MultipartConfigElement condition\n\nAllow MultipartConfigElement bean to be created even if a\nMultipartResolver bean has been defined by the user.\n\nFixes gh-2538"}

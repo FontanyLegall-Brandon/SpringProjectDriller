@@ -1,0 +1,1 @@
+{"author_date": "2014-11-04 14:43:49+01:00", "msg": "Permit to disable JTA using a single property\n\nDisable JTA auto-configuration altogether with a simple property. This\ncan be useful if the environment is JTA capable but the application does\nnot require it.\n\nFixes gh-1457"}

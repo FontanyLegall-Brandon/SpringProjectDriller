@@ -1,0 +1,1 @@
+{"author_date": "2017-04-27 10:44:33-07:00", "msg": "Remove Spring Session Mongo support\n\nRemove auto-configuration support for Spring Session Mongo since it is\nno longer supported in Spring Session 2.0.\n\nSee gh-9011"}

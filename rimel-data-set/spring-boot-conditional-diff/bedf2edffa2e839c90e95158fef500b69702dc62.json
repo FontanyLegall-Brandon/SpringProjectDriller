@@ -1,0 +1,1 @@
+{"author_date": "2015-07-15 17:05:54+01:00", "msg": "Update auto-configuration @Bean methods to return most specific type\n\nCloses gh-2536\nCloses gh-2403"}

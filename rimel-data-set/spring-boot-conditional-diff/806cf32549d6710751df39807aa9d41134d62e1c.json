@@ -1,0 +1,1 @@
+{"author_date": "2017-11-12 11:19:14+00:00", "msg": "Drop redundant web extension for sessions endpoint\n\nChanges made in f1cfad67 mean that the web-specific extension is no\nlonger required as the infrastructure now automatically produces a\nbad request (400) response when a required query parameter is absent.\n\nSee gh-10372"}

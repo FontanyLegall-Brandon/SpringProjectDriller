@@ -1,0 +1,1 @@
+{"author_date": "2014-10-29 15:25:39+01:00", "msg": "Add email support\n\nThis commit adds a new starter to auto-configure a MailSender when the\nnecessary classes are present and when the property \"spring.mail.host\" is\nset.\n\nThe auto-configuration also accepts any arbitrary properties that\nJavaMail might need using the \"spring.mail.properties\" prefix.\n\nFixes gh-1760"}

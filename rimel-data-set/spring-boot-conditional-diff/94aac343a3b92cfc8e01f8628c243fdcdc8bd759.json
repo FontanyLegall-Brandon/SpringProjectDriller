@@ -1,0 +1,1 @@
+{"author_date": "2017-09-21 13:55:23+01:00", "msg": "Ensure that MongoSessionConfiguration backs off when classes are missing\n\nCloses gh-9552"}

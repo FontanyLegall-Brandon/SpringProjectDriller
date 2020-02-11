@@ -1,0 +1,1 @@
+{"author_date": "2014-03-25 16:32:06+00:00", "msg": "Switch on @EnableTransactionManagement by default\n\nFixes gh-576"}

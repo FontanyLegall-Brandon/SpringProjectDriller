@@ -1,0 +1,1 @@
+{"author_date": "2016-05-31 09:28:39-07:00", "msg": "Provide web client Auto-configuration\n\nAdd auto-configuration for use with typical web clients. Currently\nclient auto-configuration consists of a RestTemplateBuilder\npre-configured with HttpMessageConverters.\n\nCloses gh-5507"}

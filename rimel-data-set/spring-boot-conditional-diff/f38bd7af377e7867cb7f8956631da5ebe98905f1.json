@@ -1,0 +1,1 @@
+{"author_date": "2016-08-02 15:10:59-07:00", "msg": "Extract GSON/Jackson config to inner classes\n\nUpdate JsonTestersAutoConfiguration so that GSON and Jackson specific\nconfiguration are inner classes. This should prevent ClassNotFound\nexception when the libraries are not on the classpath.\n\nFixes gh-6502"}

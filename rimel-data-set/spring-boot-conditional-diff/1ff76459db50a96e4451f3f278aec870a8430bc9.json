@@ -1,0 +1,1 @@
+{"author_date": "2013-08-12 22:17:13-07:00", "msg": "Polish ConditionalOn annotations\n\nUpdate ConditionalOn annotations :\n- Use consistent attribute names for OnClass and OnMissingClass\n- Update javadoc\n- Rename tests to reflect the annotation rather than the interface"}

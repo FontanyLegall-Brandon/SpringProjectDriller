@@ -1,0 +1,1 @@
+{"author_date": "2016-11-22 14:32:38-08:00", "msg": "Check for Spring Data before configuring Couchbase\n\nAdd guard to `CouchbaseAutoConfiguration` so ensure that Spring Data\nCouchbase is on the classpath.\n\nFixes gh-7453"}

@@ -1,0 +1,1 @@
+{"author_date": "2019-05-17 10:03:31+02:00", "msg": "Fix NoClassDefFound when missing Spring Security\n\nUpdate Spring Session auto-configuration to ensure that the\n`DefaultCookieSerializer` doesn't break when Spring Security is not\npresent on the classpath.\n\nCloses gh-16889"}

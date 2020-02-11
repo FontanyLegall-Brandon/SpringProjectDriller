@@ -1,0 +1,1 @@
+{"author_date": "2015-08-10 12:59:21+02:00", "msg": "Add statsd metric export auto-configuration\n\nUpdate MetricExportAutoConfiguration to auto-configure statsd metrics\nexport when a `spring.metrics.export.statsd.host` property is set.\n\nCloses gh-3719"}

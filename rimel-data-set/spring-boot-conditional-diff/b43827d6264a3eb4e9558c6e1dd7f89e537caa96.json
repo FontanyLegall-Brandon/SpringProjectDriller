@@ -1,0 +1,1 @@
+{"author_date": "2019-08-22 14:50:10+01:00", "msg": "Configure ping (formerly application) health indicator by default\n\nThis commit renames ApplicationHealthIndicator to PingHealthIndicator\nand changes the auto-configuration so that it is now always configured\nby default.\n\nCloses gh-17926"}

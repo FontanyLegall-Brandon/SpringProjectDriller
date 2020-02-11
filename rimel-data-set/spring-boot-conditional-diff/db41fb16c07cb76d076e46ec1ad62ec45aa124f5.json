@@ -1,0 +1,1 @@
+{"author_date": "2015-09-02 21:39:59-07:00", "msg": "Polish Hazelcast auto-configuration\n\nExtract a HazelcastInstanceFactory class and cleanup some formatting.\n\nSee gh-2942"}

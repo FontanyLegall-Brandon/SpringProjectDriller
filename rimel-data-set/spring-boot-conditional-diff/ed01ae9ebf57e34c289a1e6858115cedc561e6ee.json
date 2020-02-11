@@ -1,0 +1,1 @@
+{"author_date": "2016-02-05 11:34:02-08:00", "msg": "Use deterministic DataSource config import order\n\nUpdate DataSourceAutoConfiguration so that pooled datasource\nconfigurations are only loaded via an @Import. If left as nested\nclasses, the load order is JVM specific and can result in the wrong\nconfiguration being loaded.\n\nCloses gh-2183"}

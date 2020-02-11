@@ -1,0 +1,1 @@
+{"author_date": "2015-09-03 14:19:43-07:00", "msg": "Fix package tangle in spring-boot-actuator\n\nIntroduce ManagementServletContext interface as a facade for\nManagementServerProperties to resolve the package tangle between\n`o.s.boot.actuate.endpoint.mvc` and `o.s.boot.actuate`\n\nFixes gh-3887"}

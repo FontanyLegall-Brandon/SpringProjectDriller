@@ -1,0 +1,1 @@
+{"author_date": "2013-07-26 11:50:02+01:00", "msg": "Change package names zero->boot\n\n* actuator -> boot-ops\n* cli -> boot-cli\n* launcher -> boot-load\n* autoconfig -> boot-config\n* bootstrap -> boot-strap\n* starters -> boot-up\n\n[#54095231] [bs-253] Refactor Zero->Boot"}

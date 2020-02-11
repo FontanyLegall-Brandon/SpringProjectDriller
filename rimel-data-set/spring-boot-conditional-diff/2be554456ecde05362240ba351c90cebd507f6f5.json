@@ -1,0 +1,1 @@
+{"author_date": "2016-11-28 15:39:05+00:00", "msg": "Introduce SearchStrategy.ANCESTORS as a replacement for .PARENTS\n\nCloses gh-6763"}

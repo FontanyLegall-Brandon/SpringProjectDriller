@@ -1,0 +1,1 @@
+{"author_date": "2014-07-28 23:17:34-07:00", "msg": "Rename some ConditionalOnProperty attributes\n\nRename the newly introduced @ConditionalOnProperty `match` and\n`defaultMatch` attributes to `havingValue` and `matchIfMissing`.\n\nAlso added a new `name` attribute as an alternative to `value` to\naid readability.\n\nCloses gh-1000"}

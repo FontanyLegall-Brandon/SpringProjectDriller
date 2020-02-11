@@ -1,0 +1,1 @@
+{"author_date": "2016-03-17 11:44:56+01:00", "msg": "Add Couchbase cache support\n\nThis commit updates the cache auto-configuration to provide a\n`CouchbaseCacheManager` if a `Bucket` has been configured.\n\nThe global customizer infrastructure allows to further tune the cache\nmanager if necessary.\n\nCloses gh-5176"}

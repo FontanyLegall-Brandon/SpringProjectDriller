@@ -1,0 +1,1 @@
+{"author_date": "2016-09-16 14:14:21-07:00", "msg": "Allow HttpPutFormContentFilter to be disabled\n\nAdd `spring.mvc.formcontent.putfilter.enabled` property to allow the\nHttpPutFormContentFilter to be disabled.\n\nFixes gh-6519"}

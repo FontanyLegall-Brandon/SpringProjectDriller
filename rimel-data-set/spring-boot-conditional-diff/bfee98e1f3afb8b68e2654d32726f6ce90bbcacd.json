@@ -1,0 +1,1 @@
+{"author_date": "2015-03-10 13:31:35+01:00", "msg": "Add JMS health indicator\n\nDefine an additional health indicator for each ConnectionFactory instance\ndefined in the context. Extracts the provider name from the connection\nmeta-data.\n\nFixes gh-2016"}

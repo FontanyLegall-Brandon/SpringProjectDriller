@@ -1,0 +1,1 @@
+{"author_date": "2013-07-11 18:11:47+01:00", "msg": "[bs-178] Use OpenEntityManagerInView by default in webapp with JPA\n\nIf JPA is used and the context is a webapp we add the OEMIV interceptor.\nIt can be switched off by the user declaring a bean of type OEMSIVI or\nthe corresponding Filter, or by setting spring.jpa.open_in_view=false.\n\n[Fixes #52939983]"}

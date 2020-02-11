@@ -1,0 +1,1 @@
+{"author_date": "2014-04-25 15:23:03+01:00", "msg": "Polish couchbase support\n\nPolish couchbase support to:\n- Extract properties into its own class\n- Remove unnecessary inner configuration class\n- Add since tags\n- Format code and add `this.` references"}

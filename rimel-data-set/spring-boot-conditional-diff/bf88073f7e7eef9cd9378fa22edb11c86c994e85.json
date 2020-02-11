@@ -1,0 +1,1 @@
+{"author_date": "2018-01-16 12:02:03+01:00", "msg": "Tighten Liquibase auto-configuration to require Liquibase 3\n\nCloses gh-11641"}
