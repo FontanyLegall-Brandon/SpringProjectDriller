@@ -14,31 +14,38 @@ def new_mont_value(value):
     return 1 if value == 0 else value
 
 
-for repo in repos[1:2]:
+for repo in repos:
+    if repo != "generator-jhipster":
+        continue
     repository_folder = "{}{}/".format(repo_folder, repo)
+    print(repository_folder)
     repository = RepositoryMining(repository_folder, only_modifications_with_file_types=['.java'])
 
     selected_commits = dict()
 
-    for commit in repository.traverse_commits():
-        commit_date = commit.committer_date.date()
-        str_date = '{}-{}'.format(commit_date.year, commit_date.month)
-
-        if str_date not in selected_commits.keys():
-            selected_commits[str_date] = commit.hash
-            #print('{}-{}'.format(commit_date.year, commit_date.month), commit.hash)
+    commits = repository.traverse_commits()
 
     with open("../out/{}.csv".format(repo.replace(".git", "")), 'w') as output:
 
-        for commit in selected_commits.keys():
-            p = subprocess.Popen('cd {}/ ; git checkout {} --quiet --force; grep -h -r -P "@Conditional.*\(" . | wc -l '.format(repository_folder, selected_commits[commit]), stdout=subprocess.PIPE, shell=True)
+        for commit in commits:
+            p = subprocess.Popen('cd {}/ ; git checkout {} --quiet --force; grep -h -r -P "@Conditional.*\(" --include=*.java . | wc -l '.format(repository_folder, commit.hash), stdout=subprocess.PIPE, shell=True)
 
             (stdout, stderr) = p.communicate()
             p.wait()
-            print(commit, int(stdout.decode()), sep=' ; ')
-            print(commit, int(stdout.decode()), sep=" ; ", file=output)
+            commit_date = commit.committer_date.date()
+            str_date = '{}-{}'.format(commit_date.year, commit_date.month)
+            p2 = subprocess.Popen(
+                'cd {}/ ; grep -h -r -P "@Profile.*\(" --include=*.java . | wc -l '.format(
+                    repository_folder, commit.hash), stdout=subprocess.PIPE, shell=True)
+
+            (stdout2, stderr2) = p2.communicate()
+            p2.wait()
+
+            print(commit.committer_date, int(stdout.decode()), int(stdout2.decode()), sep=" ; ")
+            print(commit.committer_date, int(stdout.decode()), int(stdout2.decode()), sep=" ; ", file=output)
 
             p = subprocess.Popen('cd {}/ ; git checkout master --force --quiet ; git reset HEAD --hard --quiet '.format(repository_folder), shell=True,
                                  stdout=subprocess.PIPE)
 
             p.wait()
+        output.close()
