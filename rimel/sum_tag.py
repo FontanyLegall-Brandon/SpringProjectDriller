@@ -1,6 +1,9 @@
 
 import os
+import re
 import subprocess
+from threading import Thread
+
 from pydriller import RepositoryMining
 import time
 repo_folder = "../../repos/"
@@ -27,25 +30,34 @@ for repo in repos:
 
     with open("../out/{}.csv".format(repo.replace(".git", "")), 'w') as output:
 
+        conditional_tag = re.compile(r'\+@Conditional.*\(')
+        profile_tag = re.compile(r'\+@Profile.*\(')
+        conditional_remove_tag = re.compile(r'-@Conditional.*\(')
+        profile_remove_tag = re.compile(r'-@Profile.*\(')
+        conds = dict()
+
+        repo = RepositoryMining(repo)
+
+        print("DATE, +@Conditional, +@Profile, -@Conditional, -@Profile")
+        print("DATE, +@Conditional, +@Profile, -@Conditional, -@Profile", file=output)
         for commit in commits:
-            p = subprocess.Popen('cd {}/ ; git checkout {} --quiet --force; grep -h -r -P "@Conditional.*\(" --include=*.java . | wc -l '.format(repository_folder, commit.hash), stdout=subprocess.PIPE, shell=True)
+            for m in commit.modifications:
+                cond_introduce = re.findall(conditional_tag, m.diff)
+                profile_introduce = re.findall(profile_tag, m.diff)
 
-            (stdout, stderr) = p.communicate()
-            p.wait()
-            commit_date = commit.committer_date.date()
-            str_date = '{}-{}'.format(commit_date.year, commit_date.month)
-            p2 = subprocess.Popen(
-                'cd {}/ ; grep -h -r -P "@Profile.*\(" --include=*.java . | wc -l '.format(
-                    repository_folder, commit.hash), stdout=subprocess.PIPE, shell=True)
+                cond_removed = re.findall(conditional_remove_tag, m.diff)
+                profile_removed = re.findall(profile_remove_tag, m.diff)
 
-            (stdout2, stderr2) = p2.communicate()
-            p2.wait()
-
-            print(commit.committer_date, int(stdout.decode()), int(stdout2.decode()), sep=" ; ")
-            print(commit.committer_date, int(stdout.decode()), int(stdout2.decode()), sep=" ; ", file=output)
-
-            p = subprocess.Popen('cd {}/ ; git checkout master --force --quiet ; git reset HEAD --hard --quiet '.format(repository_folder), shell=True,
-                                 stdout=subprocess.PIPE)
-
-            p.wait()
-        output.close()
+                if len(cond_introduce) > 0 or len(profile_introduce) > 0 or len(cond_removed) > 0 or len(profile_removed) > 0:
+                    print(commit.committer_date,
+                          len(cond_introduce),
+                          len(profile_introduce),
+                          len(cond_removed),
+                          len(profile_removed),
+                          sep=',')
+                    print(commit.committer_date,
+                          len(cond_introduce),
+                          len(profile_introduce),
+                          len(cond_removed),
+                          len(profile_removed),
+                          sep=',', file=output)
