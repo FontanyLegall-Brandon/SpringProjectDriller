@@ -26,16 +26,19 @@ for repo in repos[1:2]:
 
         if str_date not in selected_commits.keys():
             selected_commits[str_date] = commit.hash
-            print('{}-{}'.format(commit_date.year, commit_date.month), commit.hash)
+            #print('{}-{}'.format(commit_date.year, commit_date.month), commit.hash)
 
+    with open("../out/{}.csv".format(repo.replace(".git", "")), 'w') as output:
 
-    for commit in selected_commits.keys():
-        p = subprocess.Popen('cd {}/ ; git checkout {} --quiet ; grep -h -r -P "@Conditional.*\(" . | wc -l '.format(repository_folder, selected_commits[commit]), stdout=subprocess.PIPE, shell=True)
+        for commit in selected_commits.keys():
+            p = subprocess.Popen('cd {}/ ; git checkout {} --quiet --force; grep -h -r -P "@Conditional.*\(" . | wc -l '.format(repository_folder, selected_commits[commit]), stdout=subprocess.PIPE, shell=True)
 
-        (stderr, stdout) = p.communicate()
-        p.wait()
+            (stdout, stderr) = p.communicate()
+            p.wait()
+            print(commit, int(stdout.decode()), sep=' ; ')
+            print(commit, int(stdout.decode()), sep=" ; ", file=output)
 
-        print(stderr, stdout, sep=" \n ")
+            p = subprocess.Popen('cd {}/ ; git checkout master --force --quiet ; git reset HEAD --hard --quiet '.format(repository_folder), shell=True,
+                                 stdout=subprocess.PIPE)
 
-        p = subprocess.Popen('cd {}/ ; git checkout master --force --quiet ; git reset HEAD --hard --quiet '.format(repository_folder), shell=True,
-                             stdout=subprocess.PIPE)
+            p.wait()
